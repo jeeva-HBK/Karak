@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- <ImageView
+             android:layout_gravity="center"
+             android:layout_height="60dp"
+             android:layout_width="match_parent"
+             android:src="@drawable/ic_logo_splash"
+             android:background="@color/black"/>-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/permission"
+            android:textColor="#795548"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/please_grant_us_following_permissions"
+            android:textColor="#795548"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:drawableStart="@drawable/ic_marker"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:text="@string/location"
+            android:textColor="#795548"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:text="@string/location_permission_description"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:drawableStart="@drawable/ic_bluetooth"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:text="@string/bluetooth"
+            android:textColor="#795548"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:text="@string/connecting_to_ibrew_machines_that_uses_bluetooth"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:drawableStart="@drawable/ic_wifi"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:text="@string/wifi"
+            android:textColor="#795548"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:text="@string/connecting_to_ibrew_machines_that_uses_wifi"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/btnAllowAccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="@string/allow_access" />
+
+
+    </LinearLayout>
+</layout>

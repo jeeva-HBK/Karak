@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">karak</string>
+
+    <string name="scan">Scan</string>
+    <string name="pairing_request">Pairing request</string>
+    <string name="preference_file_key">MachineList</string>
+    <string name="permission">PERMISSION</string>
+    <string name="please_grant_us_following_permissions">PLEASE GRANT US FOLLOWING PERMISSIONS</string>
+    <string name="camera">CAMERA</string>
+    <string name="scan_qr_codes_found_in_ibrew_machines">Scan QR Codes found in IBrew Machines.</string>
+    <string name="location">LOCATION</string>
+    <string name="location_permission_description">This app does not use location information, but scanning for iBrew Machines requires this permission. \n The scan result can contain location information, so Google decided that starting with android 6.0 apps have to request permission.</string>
+    <string name="connecting_to_ibrew_machines_that_uses_bluetooth">Connecting to iBrew Machines that uses Bluetooth.</string>
+    <string name="bluetooth">BLUETOOTH</string>
+    <string name="connecting_to_ibrew_machines_that_uses_wifi">Connecting to iBrew Machines that uses Wifi.</string>
+    <string name="wifi">WIFI</string>
+    <string name="allow_access">Allow access</string>
+    <string name="acra_toast_text">Sorry the application crashed</string>
+    <string name="machine_not_ready_n_contact_machine_operator">Machine not ready \n Contact machine operator</string>
+    <string name="favourites">Favourites</string>
+</resources>

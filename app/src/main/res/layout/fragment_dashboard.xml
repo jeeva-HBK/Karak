@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/appbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/bg_brown_bar"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                android:layout_margin="7dp"
+                android:background="@drawable/ic_logo_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/btn_operator"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_operator"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar">
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.25" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.75" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_button_state"
+                app:layout_constraintBottom_toTopOf="@+id/view2"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </View>
+
+            <TextView
+                android:id="@+id/txt_karak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Karak"
+                style="@style/textAppearence"
+                app:layout_constraintHorizontal_bias="0.15"
+                app:layout_constraintBottom_toBottomOf="@id/view"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintLeft_toLeftOf="@id/img_karak"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toTopOf="@id/view" />
+
+
+            <ImageView
+                android:id="@+id/img_karak"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_strong_tea"
+                app:layout_constraintBottom_toBottomOf="@id/view"
+                app:layout_constraintEnd_toEndOf="@id/view"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toStartOf="@+id/guideline1"
+                app:layout_constraintTop_toTopOf="@id/view" />
+
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_button_state"
+                app:layout_constraintBottom_toTopOf="@+id/view3"
+                app:layout_constraintEnd_toEndOf="@id/view"
+                app:layout_constraintStart_toStartOf="@id/view"
+                app:layout_constraintTop_toBottomOf="@+id/view">
+
+            </View>
+
+            <TextView
+                android:id="@+id/txt_ginger_karak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ginger Karak"
+                style="@style/textAppearence"
+                app:layout_constraintBottom_toBottomOf="@+id/view2"
+                app:layout_constraintLeft_toLeftOf="@id/img_karak"
+                app:layout_constraintStart_toStartOf="@+id/txt_karak"
+                app:layout_constraintTop_toTopOf="@+id/view2" />
+
+
+            <ImageView
+                android:id="@+id/img_ginger_karak"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_strong_tea"
+                app:layout_constraintBottom_toBottomOf="@id/view2"
+                app:layout_constraintEnd_toEndOf="@+id/img_karak"
+                app:layout_constraintStart_toStartOf="@+id/img_karak"
+                app:layout_constraintTop_toTopOf="@id/view2" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_button_state"
+                app:layout_constraintBottom_toTopOf="@+id/view4"
+                app:layout_constraintEnd_toEndOf="@id/view2"
+                app:layout_constraintStart_toStartOf="@id/view2"
+                app:layout_constraintTop_toBottomOf="@+id/view2">
+
+            </View>
+
+            <TextView
+                android:id="@+id/txt_sulaimani"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sulaimai"
+                style="@style/textAppearence"
+                app:layout_constraintBottom_toBottomOf="@id/view3"
+                app:layout_constraintStart_toStartOf="@+id/txt_ginger_karak"
+                app:layout_constraintTop_toTopOf="@id/view3" />
+
+
+            <ImageView
+                android:id="@+id/img_sulaimani"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_strong_tea"
+                app:layout_constraintBottom_toBottomOf="@id/view3"
+                app:layout_constraintEnd_toEndOf="@+id/img_ginger_karak"
+                app:layout_constraintStart_toStartOf="@+id/img_ginger_karak"
+                app:layout_constraintTop_toTopOf="@id/view3" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_button_state"
+                app:layout_constraintBottom_toTopOf="@+id/view5"
+                app:layout_constraintEnd_toEndOf="@id/view3"
+                app:layout_constraintStart_toStartOf="@id/view3"
+                app:layout_constraintTop_toBottomOf="@+id/view3">
+
+            </View>
+
+            <TextView
+                android:id="@+id/txt_masala_karak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Masala Karak"
+                style="@style/textAppearence"
+                app:layout_constraintBottom_toBottomOf="@id/view4"
+                app:layout_constraintStart_toStartOf="@+id/txt_sulaimani"
+                app:layout_constraintTop_toTopOf="@id/view4" />
+
+
+            <ImageView
+                android:id="@+id/img_masala_karak"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_strong_tea"
+                app:layout_constraintBottom_toBottomOf="@id/view4"
+                app:layout_constraintEnd_toEndOf="@+id/img_sulaimani"
+                app:layout_constraintStart_toStartOf="@+id/img_sulaimani"
+                app:layout_constraintTop_toTopOf="@id/view4" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_button_state"
+                app:layout_constraintBottom_toTopOf="@+id/view6"
+                app:layout_constraintEnd_toEndOf="@id/view4"
+                app:layout_constraintStart_toStartOf="@id/view4"
+                app:layout_constraintTop_toBottomOf="@+id/view4">
+
+            </View>
+
+            <TextView
+                android:id="@+id/txt_cardmom_karak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cardmom karak"
+                style="@style/textAppearence"
+                app:layout_constraintBottom_toBottomOf="@id/view5"
+                app:layout_constraintStart_toStartOf="@+id/txt_masala_karak"
+                app:layout_constraintTop_toTopOf="@id/view5" />
+
+
+            <ImageView
+                android:id="@+id/img_cardmom_karak"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_strong_tea"
+                app:layout_constraintBottom_toBottomOf="@id/view5"
+                app:layout_constraintEnd_toEndOf="@+id/img_masala_karak"
+                app:layout_constraintStart_toStartOf="@+id/img_masala_karak"
+                app:layout_constraintTop_toTopOf="@id/view5" />
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_button_state"
+                app:layout_constraintBottom_toTopOf="@+id/view7"
+                app:layout_constraintEnd_toEndOf="@id/view5"
+                app:layout_constraintStart_toStartOf="@id/view5"
+                app:layout_constraintTop_toBottomOf="@+id/view5">
+
+            </View>
+
+            <TextView
+                android:id="@+id/txt_hot_milk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hot Milk"
+                style="@style/textAppearence"
+                app:layout_constraintBottom_toBottomOf="@id/view6"
+                app:layout_constraintStart_toStartOf="@+id/txt_cardmom_karak"
+                app:layout_constraintTop_toTopOf="@id/view6" />
+
+
+            <ImageView
+                android:id="@+id/img_hot_milk"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_strong_tea"
+                app:layout_constraintBottom_toBottomOf="@id/view6"
+                app:layout_constraintEnd_toEndOf="@+id/img_cardmom_karak"
+                app:layout_constraintStart_toStartOf="@+id/img_cardmom_karak"
+                app:layout_constraintTop_toTopOf="@id/view6" />
+
+            <View
+                android:id="@+id/view7"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_button_state"
+                app:layout_constraintBottom_toTopOf="@+id/txt_select_drink"
+                app:layout_constraintEnd_toEndOf="@id/view6"
+                app:layout_constraintStart_toStartOf="@id/view6"
+                app:layout_constraintTop_toBottomOf="@+id/view6">
+
+            </View>
+
+            <TextView
+                android:id="@+id/txt_hot_water"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hot Water"
+                style="@style/textAppearence"
+                app:layout_constraintBottom_toBottomOf="@id/view7"
+                app:layout_constraintStart_toStartOf="@+id/txt_hot_milk"
+                app:layout_constraintTop_toTopOf="@id/view7" />
+
+
+            <ImageView
+                android:id="@+id/img_hot_water"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_strong_tea"
+                app:layout_constraintBottom_toBottomOf="@id/view7"
+                app:layout_constraintEnd_toEndOf="@+id/img_hot_milk"
+                app:layout_constraintStart_toStartOf="@+id/img_hot_milk"
+                app:layout_constraintTop_toTopOf="@id/view7" />
+
+            <TextView
+                android:id="@+id/txt_select_drink"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Select Your Drink"
+                android:textColor="@color/textColor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/view7"
+                app:layout_constraintStart_toStartOf="@id/view7"
+                app:layout_constraintTop_toBottomOf="@+id/view7" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bg_dashboard_line"
+                app:layout_constraintEnd_toEndOf="@id/txt_select_drink"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/txt_select_drink"
+                app:layout_constraintTop_toBottomOf="@+id/txt_select_drink" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+

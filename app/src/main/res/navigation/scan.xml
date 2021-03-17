@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scan"
+    app:startDestination="@+id/fragment_machine_list">
+
+    <fragment
+        android:id="@+id/fragment_machine_list"
+        android:name="com.pradeep.karak.Fragment.FragmentMachineList"
+        tools:layout="@layout/fragment_machine_list">
+
+        <action
+            android:id="@+id/action_fragment_machine_list_to_dialogBluetoothList"
+            app:destination="@id/dialogBluetoothList" />
+    </fragment>
+    <fragment
+        android:id="@+id/dialogBluetoothList"
+        android:name="com.pradeep.karak.Fragment.DialogBluetoothList"
+        android:label="DialogBluetoothList" />
+
+</navigation>
