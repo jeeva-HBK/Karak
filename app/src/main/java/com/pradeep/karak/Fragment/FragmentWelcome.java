@@ -14,12 +14,13 @@ import androidx.fragment.app.Fragment;
 import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
-import com.pradeep.karak.databinding.FragmentMachineListBinding;
+import com.pradeep.karak.databinding.FragmentWelcomeBinding;
 
-public class FragmentMachineList extends Fragment {
+
+public class FragmentWelcome extends Fragment {
     private static final String TAG = "MachineListFragment";
     private static String SERIAL_NO = "SerialNo", ADDRESS = "Address", END_POINT = "EndPoint", connectPacket = "1;";
-    private FragmentMachineListBinding mBinding;
+    private FragmentWelcomeBinding mBinding;
     private ApplicationClass mAppClass;
     private BaseActivity mActivity;
     private Context mContext;
@@ -27,7 +28,7 @@ public class FragmentMachineList extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.fragment_machine_list, container, false);
+        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.fragment_welcome, container, false);
         return mBinding.getRoot();
     }
 

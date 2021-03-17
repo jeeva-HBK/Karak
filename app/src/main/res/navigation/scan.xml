@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/fragment_machine_list"
-        android:name="com.pradeep.karak.Fragment.FragmentMachineList"
-        tools:layout="@layout/fragment_machine_list">
+        android:name="com.pradeep.karak.Fragment.FragmentWelcome"
+        tools:layout="@layout/fragment_welcome">
 
         <action
             android:id="@+id/action_fragment_machine_list_to_dialogBluetoothList"

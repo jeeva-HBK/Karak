@@ -10,25 +10,20 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
-import com.pradeep.karak.Adapter.MaintenancePagerAdapter;
 import com.pradeep.karak.R;
-import com.pradeep.karak.databinding.FragmentChildAdminBinding;
-import com.pradeep.karak.databinding.FragmentChildMaintenanceBinding;
+import com.pradeep.karak.databinding.FargmentSubchildMaStatusBinding;
 
-public class FragmentChildMaintenance extends Fragment {
-    FragmentChildMaintenanceBinding mBinding;
-
+public class FragmentMaSubChildStatus extends Fragment {
+    FargmentSubchildMaStatusBinding mBinding;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_child_maintenance, container, false);
+        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.fargment_subchild_ma_status, container, false);
         return mBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        mBinding.viewPagerMaintenance.setAdapter(new MaintenancePagerAdapter(getActivity()));
     }
 }

@@ -13,26 +13,27 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.pradeep.karak.R;
-import com.pradeep.karak.databinding.FragmentConfigurationBinding;
+import com.pradeep.karak.databinding.FragmentRootConfigurationBinding;
+
 
 public class FragmentRootConfiguration extends Fragment {
-    private FragmentConfigurationBinding mBinding;
+    private FragmentRootConfigurationBinding mBinding;
     private String[] mainMenuList;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_configuration, container, false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_root_configuration, container, false);
         return mBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mainMenuList = new String[]{"Admin", "maintenance", "master"};
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
         mBinding.autoComplete.setAdapter(arrayAdapter);
         getParentFragmentManager().beginTransaction().add(mBinding.configFragHost.getId(), new FragmentChildAdmin(), "TAG_ADMIN").commit();
-        mainMenuList = new String[]{"Admin", "maintenance", "master"};
         mBinding.autoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
