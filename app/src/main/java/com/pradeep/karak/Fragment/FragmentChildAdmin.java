@@ -29,19 +29,19 @@ public class FragmentChildAdmin extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mainMenuList = new String[]{"statistics", "Boilmode", "Set Dispense Ratio", "Set Password"};
+        mainMenuList = new String[]{"statistics", "Boil mode", "Set Dispense Ratio", "Set Password"};
+        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildStatistics(), "TAG_STATISTICS").commit();
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
         mBinding.autoComplete.setAdapter(arrayAdapter);
-
         mBinding.autoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 switch (position) {
                     case 0:
-
+                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildStatistics(), "TAG_BOILMODE").commit();
                         break;
                     case 1:
-                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildBoilMode(), "TAG_BOILMODE").commit();
+                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildBoilMode(), "TAG_STATISTICS").commit();
                         break;
                     case 2:
 
