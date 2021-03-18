@@ -11,14 +11,16 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.pradeep.karak.R;
-import com.pradeep.karak.databinding.FargmentSubchildMaStatusBinding;
+import com.pradeep.karak.databinding.FargmentSubchildMnStatusBinding;
 
-public class FragmentMaSubChildStatus extends Fragment {
-    FargmentSubchildMaStatusBinding mBinding;
+
+public class FragmentMnSubChildStatus extends Fragment {
+    FargmentSubchildMnStatusBinding mBinding;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.fargment_subchild_ma_status, container, false);
+        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.fargment_subchild_mn_status, container, false);
         return mBinding.getRoot();
     }
 

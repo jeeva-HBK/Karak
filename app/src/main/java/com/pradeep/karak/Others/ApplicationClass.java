@@ -28,6 +28,11 @@ public class ApplicationClass extends Application {
         Navigation.findNavController((Activity) fragAct, R.id.nav_host_fragment).navigate(desID, bundle);
     }
 
+    public void popStackBack(FragmentActivity activity) {
+        Navigation.findNavController((Activity) activity, R.id.nav_host_fragment).popBackStack();
+    }
+
+
     public boolean hasPermissions(Context context, String... permissions) {
         if (context != null && permissions != null) {
             for (String permission : permissions) {

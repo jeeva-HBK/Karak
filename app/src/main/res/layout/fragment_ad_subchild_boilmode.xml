@@ -2,78 +2,294 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView"
-            style="@style/textAppearence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Boil Time"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/bg_dashboard_line"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            <TextView
+                android:id="@+id/textView"
+                style="@style/textAppearence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Boil Time"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/edt_boilTime_Karak"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:background="@drawable/bg_edtxt"
-            android:cursorVisible="false"
-            android:gravity="center"
-            android:imeOptions="flagNoExtractUi|actionDone"
-            android:inputType="numberPassword"
-            android:maxLength="5"
-            android:padding="5dp"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/ash"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toStartOf="@+id/imageView3"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline3" />
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bg_dashboard_line"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <EditText
-            android:id="@+id/edt_boilTime_Ckarak"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:background="@drawable/bg_edtxt"
-            android:cursorVisible="false"
-            android:gravity="center"
-            android:imeOptions="flagNoExtractUi|actionDone"
-            android:inputType="numberPassword"
-            android:maxLength="5"
-            android:padding="5dp"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/ash"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/imageView3"
-            app:layout_constraintTop_toTopOf="@+id/guideline3" />
+            <!--KARAK-->
+            <EditText
+                android:id="@+id/edt_boilTime_Karak"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/bg_edtxt"
+                android:gravity="center"
+                android:hint="000"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="5"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.10" />
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/textAppearence"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Karak"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="@+id/edt_boilTime_Karak"
+                app:layout_constraintStart_toStartOf="@+id/edt_boilTime_Karak"
+                app:layout_constraintTop_toBottomOf="@+id/edt_boilTime_Karak" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--CARDOMON KARAK-->
+            <EditText
+                android:id="@+id/edt_boilTime_cKarak"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_edtxt"
+                android:gravity="center"
+                android:hint="000"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="5"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="@+id/edt_boilTime_Karak" />
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/textAppearence"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Cardmon Karak"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="@+id/edt_boilTime_cKarak"
+                app:layout_constraintStart_toStartOf="@+id/edt_boilTime_cKarak"
+                app:layout_constraintTop_toBottomOf="@+id/edt_boilTime_cKarak" />
+
+            <!--MASALA KARAK-->
+            <EditText
+                android:id="@+id/edt_boilTime_mKarak"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_edtxt"
+                android:gravity="center"
+                android:hint="000"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="5"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/textAppearence"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Masala Karak"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="@+id/edt_boilTime_Karak"
+                app:layout_constraintStart_toStartOf="@+id/edt_boilTime_Karak"
+                app:layout_constraintTop_toBottomOf="@+id/edt_boilTime_mKarak" />
+
+            <!--Sulaimani-->
+            <EditText
+                android:id="@+id/edt_boilTime_sulaimani"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/bg_edtxt"
+                android:gravity="center"
+                android:hint="000"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="5"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/textView5"
+                app:layout_constraintEnd_toEndOf="@+id/edt_boilTime_cKarak"
+                app:layout_constraintStart_toStartOf="@+id/edt_boilTime_cKarak"
+                app:layout_constraintTop_toTopOf="@+id/edt_boilTime_mKarak" />
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/textAppearence"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Sulamani"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="@+id/edt_boilTime_sulaimani"
+                app:layout_constraintStart_toStartOf="@+id/edt_boilTime_sulaimani"
+                app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+            <!--Ginger Karak-->
+            <EditText
+                android:id="@+id/edt_boilTime_gKarak"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_edtxt"
+                android:gravity="center"
+                android:hint="000"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="5"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/edt_boilTime_mKarak"
+                app:layout_constraintStart_toStartOf="@+id/edt_boilTime_mKarak"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+            <TextView
+                android:id="@+id/textView7"
+                style="@style/textAppearence"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Ginger Karak"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="@+id/edt_boilTime_gKarak"
+                app:layout_constraintStart_toStartOf="@+id/edt_boilTime_gKarak"
+                app:layout_constraintTop_toBottomOf="@+id/edt_boilTime_gKarak" />
+
+            <!--Hot Milk-->
+            <EditText
+                android:id="@+id/edt_boilTime_hMilk"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_edtxt"
+                android:gravity="center"
+                android:hint="000"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="5"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/edt_boilTime_sulaimani"
+                app:layout_constraintStart_toStartOf="@+id/edt_boilTime_sulaimani"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView8"
+                style="@style/textAppearence"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Hot Milk"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="@+id/edt_boilTime_hMilk"
+                app:layout_constraintStart_toStartOf="@+id/edt_boilTime_hMilk"
+                app:layout_constraintTop_toBottomOf="@+id/edt_boilTime_hMilk" />
+
+
+            <!--Hot Water-->
+            <EditText
+                android:id="@+id/edt_boilTime_hWater"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_edtxt"
+                android:gravity="center"
+                android:hint="000"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="5"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/textView8"
+                app:layout_constraintStart_toEndOf="@+id/textView7"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <TextView
+                android:id="@+id/textView9"
+                style="@style/textAppearence"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Hot Milk"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="@+id/edt_boilTime_hWater"
+                app:layout_constraintStart_toStartOf="@+id/edt_boilTime_hWater"
+                app:layout_constraintTop_toBottomOf="@+id/edt_boilTime_hWater" />
+
+            <View
+                android:id="@+id/view9"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edt_back_new"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/edt_boilTime_hWater"
+                app:layout_constraintStart_toStartOf="@+id/edt_boilTime_hWater"
+                app:layout_constraintTop_toBottomOf="@+id/textView9"
+                app:layout_constraintVertical_bias="0" />
+
+            <TextView
+                android:id="@+id/textView_go"
+                style="@style/textAppearence"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="SAVE"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/view9"
+                app:layout_constraintEnd_toEndOf="@+id/view9"
+                app:layout_constraintStart_toStartOf="@+id/view9"
+                app:layout_constraintTop_toTopOf="@+id/view9" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

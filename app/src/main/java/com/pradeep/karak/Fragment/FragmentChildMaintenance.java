@@ -8,15 +8,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
+import androidx.databinding.Observable;
+import androidx.databinding.ObservableBoolean;
 import androidx.fragment.app.Fragment;
 
 import com.pradeep.karak.Adapter.MaintenancePagerAdapter;
 import com.pradeep.karak.R;
-import com.pradeep.karak.databinding.FragmentChildAdminBinding;
 import com.pradeep.karak.databinding.FragmentChildMaintenanceBinding;
 
 public class FragmentChildMaintenance extends Fragment {
-    FragmentChildMaintenanceBinding mBinding;
+    private FragmentChildMaintenanceBinding mBinding;
+    public ObservableBoolean oVisible = new ObservableBoolean(true);
 
     @Nullable
     @Override
@@ -28,7 +30,29 @@ public class FragmentChildMaintenance extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        oVisible.set(true);
+        mBinding.setMVisible(oVisible.get());
+
+        oVisible.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                mBinding.setMVisible(oVisible.get());
+            }
+        });
+
+        mBinding.IvMnLeftArrow.setOnClickListener((view1 -> {
+            mBinding.viewPagerMaintenance.setCurrentItem(0);
+            oVisible.set(true);
+        }));
+        mBinding.IvMnRightArrow.setOnClickListener((view1 -> {
+            mBinding.viewPagerMaintenance.setCurrentItem(1);
+            oVisible.set(false);
+        }));
 
         mBinding.viewPagerMaintenance.setAdapter(new MaintenancePagerAdapter(getActivity()));
+        mBinding.viewPagerMaintenance.setUserInputEnabled(false);
+
     }
+
+
 }

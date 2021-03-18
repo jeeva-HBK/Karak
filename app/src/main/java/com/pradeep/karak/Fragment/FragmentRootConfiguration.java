@@ -12,12 +12,14 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentRootConfigurationBinding;
 
 
 public class FragmentRootConfiguration extends Fragment {
     private FragmentRootConfigurationBinding mBinding;
+    private ApplicationClass mAppClass;
     private String[] mainMenuList;
 
     @Nullable
@@ -31,6 +33,7 @@ public class FragmentRootConfiguration extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mainMenuList = new String[]{"Admin", "maintenance", "master"};
+        mAppClass = (ApplicationClass) getActivity().getApplicationContext();
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
         mBinding.autoComplete.setAdapter(arrayAdapter);
         getParentFragmentManager().beginTransaction().add(mBinding.configFragHost.getId(), new FragmentChildAdmin(), "TAG_ADMIN").commit();
@@ -52,5 +55,8 @@ public class FragmentRootConfiguration extends Fragment {
                 }
             }
         });
+        mBinding.IbBackArrow.setOnClickListener((view1 -> {
+            mAppClass.popStackBack(getActivity());
+        }));
     }
 }

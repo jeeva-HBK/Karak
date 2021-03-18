@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
@@ -11,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.15" />
+            app:layout_constraintGuide_percent="0.2" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline4"
@@ -25,32 +26,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.1" />
+            app:layout_constraintGuide_percent="0.2" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintGuide_percent="0.8" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.11" />
+            app:layout_constraintGuide_percent="0.16" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.21" />
+            app:layout_constraintGuide_percent="0.25" />
 
 
         <View
-            android:id="@+id/view_status"
+            android:id="@+id/view_item"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/maintanance_back"
@@ -65,52 +66,44 @@
             android:layout_height="0dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/bg_button_state"
+            android:background="@drawable/bg_app_button"
             app:layout_constraintBottom_toTopOf="@id/guideline8"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
         <TextView
-            android:id="@+id/txt_status1"
+            android:id="@+id/txt_item1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="N/A"
-            app:layout_constraintEnd_toEndOf="@+id/view_status"
-            app:layout_constraintStart_toStartOf="@+id/view_status"
+            android:text="Induction Heater"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/view_item"
+            app:layout_constraintStart_toStartOf="@id/view_item"
             app:layout_constraintTop_toBottomOf="@id/guideline8" />
 
         <TextView
-            android:id="@+id/txt_status2"
+            android:id="@+id/txt_item2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="N/A"
-            app:layout_constraintEnd_toEndOf="@+id/txt_status1"
-            app:layout_constraintStart_toStartOf="@+id/txt_status1"
-            app:layout_constraintTop_toBottomOf="@+id/txt_status1" />
+            android:text="Proximity Sensor"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/txt_item1"
+            app:layout_constraintStart_toStartOf="@id/txt_item1"
+            app:layout_constraintTop_toBottomOf="@id/txt_item1" />
 
         <TextView
-            android:id="@+id/txt_status_header"
+            android:id="@+id/txt_item_header"
             style="@style/titleTextAppearence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status"
+            android:text="Item"
             app:layout_constraintBottom_toTopOf="@+id/guideline8"
             app:layout_constraintEnd_toEndOf="@+id/view_maintance_item"
             app:layout_constraintStart_toStartOf="@+id/view_maintance_item"
             app:layout_constraintTop_toTopOf="@+id/guideline7" />
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4"
-            app:layout_constraintEnd_toStartOf="@+id/guideline5"
-            app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/ic_left_arrow_karak"
-            app:layout_constraintTop_toTopOf="@+id/guideline3" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
