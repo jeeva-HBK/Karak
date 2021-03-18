@@ -49,7 +49,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.9" />
-
         <ImageView
             android:id="@+id/Iv_adLeftArrow"
             android:layout_width="30dp"

@@ -31,12 +31,12 @@ public class FragmentChildMaintenance extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         oVisible.set(true);
-        mBinding.setMVisible(oVisible.get());
+        mBinding.setAVisible(oVisible.get());
 
         oVisible.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
             public void onPropertyChanged(Observable sender, int propertyId) {
-                mBinding.setMVisible(oVisible.get());
+                mBinding.setAVisible(oVisible.get());
             }
         });
 

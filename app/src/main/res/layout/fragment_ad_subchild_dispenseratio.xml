@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <import type="android.view.View" />
+
         <variable
-            name="aVisible"
+            name="bVisible"
             type="java.lang.Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager_maintenance"
@@ -24,27 +25,22 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/Iv_mnLeftArrow"
+            android:id="@+id/Iv_adLeftArrow"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="10dp"
             android:src="@drawable/ic_left_arrow_karak"
-            android:visibility="@{aVisible ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/Iv_mnRightArrow"
+            android:id="@+id/Iv_adRightArrow"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="10dp"
             android:src="@drawable/ic_right_arrow_karak"
-            android:visibility="@{aVisible ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/viewPager_maintenance"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

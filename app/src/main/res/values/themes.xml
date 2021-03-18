@@ -54,4 +54,22 @@
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
+
+    <!--Sila-->
+    <style name="textgms" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/caviardreams</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="textpercup" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/caviardreams</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="textstyledispenseRation" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>
