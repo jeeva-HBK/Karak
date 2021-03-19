@@ -19,21 +19,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.05"/>
+            app:layout_constraintGuide_percent="0.05" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.17"/>
+            app:layout_constraintGuide_percent="0.17" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.27"/>
+            app:layout_constraintGuide_percent="0.27" />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -41,49 +41,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.35"/>
+            app:layout_constraintGuide_percent="0.35" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.45"/>
+            app:layout_constraintGuide_percent="0.45" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.53"/>
+            app:layout_constraintGuide_percent="0.53" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.63"/>
+            app:layout_constraintGuide_percent="0.63" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.7"/>
+            app:layout_constraintGuide_percent="0.7" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline17"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.8"/>
+            app:layout_constraintGuide_percent="0.8" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline18"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.89"/>
+            app:layout_constraintGuide_percent="0.89" />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -127,7 +127,7 @@
             style="@style/textAppearence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Boil Time"
+            android:text="Correction Factor"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +143,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView_correction_factor" />
 
         <EditText
-            android:id="@+id/flow_rate_karak"
+            android:id="@+id/correction_factor_karak"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -158,12 +158,12 @@
             android:textColorHint="@color/textColor"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
-            app:layout_constraintEnd_toStartOf="@+id/flowrate_cardmom_karak"
+            app:layout_constraintEnd_toStartOf="@+id/correction_factor_cardmom_karak"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toTopOf="@+id/guideline12" />
 
         <EditText
-            android:id="@+id/flowrate_cardmom_karak"
+            android:id="@+id/correction_factor_cardmom_karak"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -173,7 +173,7 @@
             android:hint="0000"
             android:imeOptions="actionNext"
             android:inputType="number"
-            android:maxLength="5"
+            android:maxLength="4"
             android:padding="5dp"
             android:textColor="@color/textColor"
             android:textColorHint="@color/textColor"
@@ -181,8 +181,8 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/flow_rate_karak"
-            app:layout_constraintTop_toTopOf="@+id/flow_rate_karak" />
+            app:layout_constraintStart_toEndOf="@+id/correction_factor_karak"
+            app:layout_constraintTop_toTopOf="@+id/correction_factor_karak" />
 
         <TextView
             android:id="@+id/textView10"
@@ -192,9 +192,9 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="Karak"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_karak"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_karak"
-            app:layout_constraintTop_toBottomOf="@+id/flow_rate_karak" />
+            app:layout_constraintEnd_toEndOf="@+id/correction_factor_karak"
+            app:layout_constraintStart_toStartOf="@+id/correction_factor_karak"
+            app:layout_constraintTop_toBottomOf="@+id/correction_factor_karak" />
 
         <TextView
             android:id="@+id/textView1"
@@ -204,13 +204,13 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="Cardmom Karak"
-            app:layout_constraintEnd_toEndOf="@+id/flowrate_cardmom_karak"
-            app:layout_constraintStart_toStartOf="@+id/flowrate_cardmom_karak"
-            app:layout_constraintTop_toBottomOf="@+id/flowrate_cardmom_karak" />
+            app:layout_constraintEnd_toEndOf="@+id/correction_factor_cardmom_karak"
+            app:layout_constraintStart_toStartOf="@+id/correction_factor_cardmom_karak"
+            app:layout_constraintTop_toBottomOf="@+id/correction_factor_cardmom_karak" />
 
 
         <EditText
-            android:id="@+id/flow_rate_masala_karak"
+            android:id="@+id/correction_masala_karak"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -231,7 +231,7 @@
 
 
         <EditText
-            android:id="@+id/flow_rate_milk"
+            android:id="@+id/correction_milk"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -245,7 +245,7 @@
             android:textColor="@color/textColor"
             android:textColorHint="@color/textColor"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@+id/flow_rate_masala_karak"
+            app:layout_constraintBottom_toBottomOf="@+id/correction_masala_karak"
             app:layout_constraintEnd_toEndOf="@+id/textView1"
             app:layout_constraintStart_toStartOf="@+id/textView1"
             app:layout_constraintTop_toTopOf="@+id/guideline13" />
@@ -258,9 +258,9 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="Masala Karak"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_masala_karak"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_masala_karak"
-            app:layout_constraintTop_toBottomOf="@+id/flow_rate_masala_karak" />
+            app:layout_constraintEnd_toEndOf="@+id/correction_masala_karak"
+            app:layout_constraintStart_toStartOf="@+id/correction_masala_karak"
+            app:layout_constraintTop_toBottomOf="@+id/correction_masala_karak" />
 
         <TextView
             android:id="@+id/textView12"
@@ -270,12 +270,12 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="Milk"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_milk"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_milk"
-            app:layout_constraintTop_toBottomOf="@+id/flow_rate_milk" />
+            app:layout_constraintEnd_toEndOf="@+id/correction_milk"
+            app:layout_constraintStart_toStartOf="@+id/correction_milk"
+            app:layout_constraintTop_toBottomOf="@+id/correction_milk" />
 
         <EditText
-            android:id="@+id/flow_rate_ginger_karak"
+            android:id="@+id/correction_ginger_karak"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -296,7 +296,7 @@
 
 
         <EditText
-            android:id="@+id/flow_rate_water"
+            android:id="@+id/correction_water"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -310,6 +310,7 @@
             android:textColor="@color/textColor"
             android:textColorHint="@color/textColor"
             android:textSize="15sp"
+
             app:layout_constraintBottom_toTopOf="@+id/guideline14"
             app:layout_constraintEnd_toEndOf="@+id/textView12"
             app:layout_constraintStart_toStartOf="@+id/textView12"
@@ -323,9 +324,9 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="Ginger Karak"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_ginger_karak"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_ginger_karak"
-            app:layout_constraintTop_toBottomOf="@+id/flow_rate_ginger_karak" />
+            app:layout_constraintEnd_toEndOf="@+id/correction_ginger_karak"
+            app:layout_constraintStart_toStartOf="@+id/correction_ginger_karak"
+            app:layout_constraintTop_toBottomOf="@+id/correction_ginger_karak" />
 
         <TextView
             android:id="@+id/textView14"
@@ -335,13 +336,13 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="Water"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_water"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_water"
-            app:layout_constraintTop_toBottomOf="@+id/flow_rate_water" />
+            app:layout_constraintEnd_toEndOf="@+id/correction_water"
+            app:layout_constraintStart_toStartOf="@+id/correction_water"
+            app:layout_constraintTop_toBottomOf="@+id/correction_water" />
 
 
         <EditText
-            android:id="@+id/flow_rate_sugar"
+            android:id="@+id/correction_sugar"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -368,9 +369,9 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="Sugar"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_sugar"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_sugar"
-            app:layout_constraintTop_toBottomOf="@+id/flow_rate_sugar" />
+            app:layout_constraintEnd_toEndOf="@+id/correction_sugar"
+            app:layout_constraintStart_toStartOf="@+id/correction_sugar"
+            app:layout_constraintTop_toBottomOf="@+id/correction_sugar" />
 
 
         <View
@@ -378,13 +379,14 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/edt_back_new"
+
             app:layout_constraintBottom_toTopOf="@+id/guideline19"
             app:layout_constraintEnd_toEndOf="@id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toTopOf="@+id/guideline18" />
 
         <TextView
-            android:id="@+id/flow_rate_save"
+            android:id="@+id/textView_go"
             style="@style/textAppearence"
             android:layout_width="0dp"
             android:layout_height="0dp"

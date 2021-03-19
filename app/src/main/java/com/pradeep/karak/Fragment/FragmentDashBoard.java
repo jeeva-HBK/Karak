@@ -1,11 +1,15 @@
 package com.pradeep.karak.Fragment;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -29,10 +33,31 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener 
         mAppclass = (ApplicationClass) getActivity().getApplication();
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
         mBinding.btnOperator.setOnClickListener(view1 -> {
-            mAppclass.navigateTo(getActivity(), R.id.action_dashboard_to_fragmentConfiguration);
+            checkPassword();
         });
 
         mBinding.karakView.setOnClickListener(this);
+    }
+
+    private void checkPassword() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_password, null);
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.setCancelable(false);
+        AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alertDialog.show();
+
+        EditText editText = dialogView.findViewById(R.id.edt_password);
+        View view = dialogView.findViewById(R.id.dialogPass_submit);
+
+        view.setOnClickListener((view1 -> {
+            if (editText.getText().toString().equals("0000")) {
+                mAppclass.navigateTo(getActivity(), R.id.action_dashboard_to_fragmentConfiguration);
+                alertDialog.dismiss();
+            }
+        }));
     }
 
     @Override

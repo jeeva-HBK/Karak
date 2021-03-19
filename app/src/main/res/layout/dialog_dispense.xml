@@ -1,37 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/ic_bg_box"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="250dp">
+    <View
+        android:id="@+id/view13"
+        android:layout_width="350dp"
+        android:layout_height="230dp"
+        android:background="@drawable/maintanance_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:text="Sulaimani"
-            android:textColor="@color/textColor"
-            app:layout_constraintBottom_toTopOf="@+id/iv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageView
-            android:id="@+id/iv"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:src="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Karak Cardmom"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/view13"
+        app:layout_constraintStart_toStartOf="@+id/view13"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/ic_strong_tea"
+        app:layout_constraintBottom_toBottomOf="@+id/view13"
+        app:layout_constraintEnd_toEndOf="@+id/view13"
+        app:layout_constraintStart_toStartOf="@+id/view13"
+        app:layout_constraintTop_toTopOf="@+id/view13" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

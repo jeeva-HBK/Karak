@@ -41,6 +41,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
             case R.id.view:
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
                 LayoutInflater inflater = this.getLayoutInflater();
+                dialogBuilder.setCancelable(false);
                 View dialogView = inflater.inflate(R.layout.dialog_dispense, null);
                 dialogBuilder.setView(dialogView);
                 AlertDialog alertDialog = dialogBuilder.create();

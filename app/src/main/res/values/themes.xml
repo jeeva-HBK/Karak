@@ -35,6 +35,11 @@
         <item name="android:textColor">@color/textColor</item>
     </style>
 
+    <style name="textAppearence2" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
     <style name="titleTextAppearence" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">@color/cream</item>
