@@ -47,7 +47,7 @@ public class FragmentChildAdmin extends Fragment {
                         getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildDispenseRatio(), "TAG_STATISTICS").commit();
                         break;
                     case 3:
-
+                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildSetPassword(), "TAG_STATISTICS").commit();
                         break;
                 }
             }

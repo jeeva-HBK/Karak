@@ -11,15 +11,16 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.pradeep.karak.R;
-import com.pradeep.karak.databinding.FragmentSubchildAdDrKarakBinding;
+import com.pradeep.karak.databinding.FragmentAdSubchildSetpasswordBinding;
 
-public class FragmentSubChildAdDrKarak extends Fragment {
-    FragmentSubchildAdDrKarakBinding mBinding;
+
+public class FragmentAdSubChildSetPassword extends Fragment {
+    FragmentAdSubchildSetpasswordBinding mBinding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.fragment_subchild_ad_dr_karak, container, false);
+        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.fragment_ad_subchild_setpassword, container, false);
         return mBinding.getRoot();
     }
 

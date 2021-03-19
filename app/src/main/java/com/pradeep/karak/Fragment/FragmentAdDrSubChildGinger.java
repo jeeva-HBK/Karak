@@ -11,16 +11,18 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.pradeep.karak.R;
-import com.pradeep.karak.databinding.FragmentSubchildAdDrWaterBinding;
+import com.pradeep.karak.databinding.FragmentAdDrSubchildGingerBinding;
 
 
-public class FragmentSubChildAdDrWater extends Fragment {
-    FragmentSubchildAdDrWaterBinding mBinding;
+public class FragmentAdDrSubChildGinger extends Fragment {
+    FragmentAdDrSubchildGingerBinding mBinding;
+
 
     @Nullable
     @Override
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.fragment_subchild_ad_dr_water, container, false);
+        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.fragment_ad_dr_subchild_ginger, container, false);
         return mBinding.getRoot();
     }
 

@@ -20,18 +20,18 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.pradeep.karak.R;
-import com.pradeep.karak.databinding.FragmentSubchildAdStatisticsBinding;
+import com.pradeep.karak.databinding.FragmentAdSubchildStatisticsBinding;
 
 import java.util.ArrayList;
 
 public class FragmentAdSubChildStatistics extends Fragment {
-    FragmentSubchildAdStatisticsBinding mBinding;
+    FragmentAdSubchildStatisticsBinding mBinding;
     int i = 0;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_subchild_ad_statistics, container, false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_ad_subchild_statistics, container, false);
         return mBinding.getRoot();
     }
 
@@ -157,7 +157,7 @@ public class FragmentAdSubChildStatistics extends Fragment {
         mBinding.chart1.getAxisLeft().setDrawGridLines(false);
         mBinding.chart1.getXAxis().setDrawGridLines(false);
         mBinding.chart1.getAxisRight().setDrawGridLines(false);
-        mBinding.chart1.setExtraOffsets(0, 0, 0, 10);
+        mBinding.chart1.setExtraOffsets(0, 0, 0, 0);
         mBinding.chart1.invalidate();
     }
 

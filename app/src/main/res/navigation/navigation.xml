@@ -13,10 +13,25 @@
         <action
             android:id="@+id/action_dashboard_to_fragmentConfiguration"
             app:destination="@id/fragmentConfiguration" />
+        <action
+            android:id="@+id/action_dashboard_to_fragmentDashBoardCups"
+            app:destination="@id/fragmentDashBoardCups" />
     </fragment>
     <fragment
         android:id="@+id/fragmentConfiguration"
         android:name="com.pradeep.karak.Fragment.FragmentRootConfiguration"
         android:label="FragmentConfiguration" />
+    <fragment
+        android:id="@+id/fragmentDashBoardCups"
+        android:name="com.pradeep.karak.Fragment.FragmentDashBoardCups"
+        android:label="FragmentDashBoardCups" >
+        <action
+            android:id="@+id/action_fragmentDashBoardCups_to_fragmentDashBoardSugar"
+            app:destination="@id/fragmentDashBoardSugar" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDashBoardSugar"
+        android:name="com.pradeep.karak.Fragment.FragmentDashBoardSugar"
+        android:label="FragmentDashBoardSugar" />
 
 </navigation>

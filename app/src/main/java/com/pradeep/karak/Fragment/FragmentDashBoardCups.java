@@ -12,15 +12,15 @@ import androidx.fragment.app.Fragment;
 
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
-import com.pradeep.karak.databinding.FragmentDashboardBinding;
+import com.pradeep.karak.databinding.FragmentDashboardCupsBinding;
 
-public class FragmentDashBoard extends Fragment implements View.OnClickListener {
-    FragmentDashboardBinding mBinding;
+public class FragmentDashBoardCups extends Fragment {
+    FragmentDashboardCupsBinding mBinding;
     ApplicationClass mAppclass;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard, container, false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard_cups, container, false);
         return mBinding.getRoot();
     }
 
@@ -28,19 +28,12 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener 
         super.onViewCreated(view, savedInstanceState);
         mAppclass = (ApplicationClass) getActivity().getApplication();
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-        mBinding.btnOperator.setOnClickListener(view1 -> {
-            mAppclass.navigateTo(getActivity(), R.id.action_dashboard_to_fragmentConfiguration);
+
+        mBinding.view11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAppclass.navigateTo(getActivity(), R.id.action_fragmentDashBoardCups_to_fragmentDashBoardSugar);
+            }
         });
-
-        mBinding.karakView.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.karakView:
-                mAppclass.navigateTo(getActivity(), R.id.action_dashboard_to_fragmentDashBoardCups);
-                break;
-        }
     }
 }

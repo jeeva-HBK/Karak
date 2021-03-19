@@ -52,7 +52,7 @@
             app:layout_constraintGuide_percent="0.8" />
 
         <View
-            android:id="@+id/view"
+            android:id="@+id/karakView"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:background="@drawable/bg_button_state"
@@ -69,12 +69,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Karak"
-            app:layout_constraintBottom_toBottomOf="@id/view"
+            app:layout_constraintBottom_toBottomOf="@id/karakView"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintLeft_toLeftOf="@id/img_karak"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toTopOf="@id/view" />
+            app:layout_constraintTop_toTopOf="@id/karakView" />
 
 
         <ImageView
@@ -82,11 +82,11 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_strong_tea"
-            app:layout_constraintBottom_toBottomOf="@id/view"
-            app:layout_constraintEnd_toEndOf="@id/view"
+            app:layout_constraintBottom_toBottomOf="@id/karakView"
+            app:layout_constraintEnd_toEndOf="@id/karakView"
             app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toTopOf="@id/view" />
+            app:layout_constraintTop_toTopOf="@id/karakView" />
 
 
         <View
@@ -95,9 +95,9 @@
             android:layout_height="70dp"
             android:background="@drawable/bg_button_state"
             app:layout_constraintBottom_toTopOf="@+id/view3"
-            app:layout_constraintEnd_toEndOf="@id/view"
-            app:layout_constraintStart_toStartOf="@id/view"
-            app:layout_constraintTop_toBottomOf="@+id/view">
+            app:layout_constraintEnd_toEndOf="@id/karakView"
+            app:layout_constraintStart_toStartOf="@id/karakView"
+            app:layout_constraintTop_toBottomOf="@+id/karakView">
 
         </View>
 

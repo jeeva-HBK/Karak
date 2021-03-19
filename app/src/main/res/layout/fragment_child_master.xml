@@ -6,12 +6,12 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:textSize="50dp"
-            android:textColor="@color/cream"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Master" />
+            android:gravity="center"
+            android:text="Master"
+            android:textColor="@color/cream"
+            android:textSize="50dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

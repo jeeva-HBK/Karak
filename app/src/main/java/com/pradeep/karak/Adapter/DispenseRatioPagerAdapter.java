@@ -6,13 +6,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.pradeep.karak.Fragment.FragmentSubChildAdDMasala;
-import com.pradeep.karak.Fragment.FragmentSubChildAdDrCardmom;
-import com.pradeep.karak.Fragment.FragmentSubChildAdDrGinger;
-import com.pradeep.karak.Fragment.FragmentSubChildAdDrKarak;
-import com.pradeep.karak.Fragment.FragmentSubChildAdDrMilk;
-import com.pradeep.karak.Fragment.FragmentSubChildAdDrSulaimani;
-import com.pradeep.karak.Fragment.FragmentSubChildAdDrWater;
+import com.pradeep.karak.Fragment.FragmentAdDrSubChildMasala;
+import com.pradeep.karak.Fragment.FragmentAdDrSubChildCardmom;
+import com.pradeep.karak.Fragment.FragmentAdDrSubChildGinger;
+import com.pradeep.karak.Fragment.FragmentAdDrSubChildKarak;
+import com.pradeep.karak.Fragment.FragmentAdDrSubChildMilk;
+import com.pradeep.karak.Fragment.FragmentAdDrSubChildSulaimani;
+import com.pradeep.karak.Fragment.FragmentAdDrSubChildWater;
 
 public class DispenseRatioPagerAdapter extends FragmentStateAdapter {
     private int Num = 7;
@@ -27,19 +27,19 @@ public class DispenseRatioPagerAdapter extends FragmentStateAdapter {
         switch (position) {
 
             case 0:
-                return new FragmentSubChildAdDrCardmom();
+                return new FragmentAdDrSubChildCardmom();
             case 1:
-                return new FragmentSubChildAdDrGinger();
+                return new FragmentAdDrSubChildGinger();
             case 2:
-                return new FragmentSubChildAdDMasala();
+                return new FragmentAdDrSubChildMasala();
             case 3:
-                return new FragmentSubChildAdDrMilk();
+                return new FragmentAdDrSubChildMilk();
             case 4:
-                return new FragmentSubChildAdDrSulaimani();
+                return new FragmentAdDrSubChildSulaimani();
             case 5:
-                return new FragmentSubChildAdDrKarak();
+                return new FragmentAdDrSubChildKarak();
             case 6:
-                return new FragmentSubChildAdDrWater();
+                return new FragmentAdDrSubChildWater();
         }
         return null;
     }

@@ -10,6 +10,7 @@
             android:id="@+id/button2"
             android:layout_width="100dp"
             android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/ic_reset"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +22,7 @@
             android:gravity="center"
             android:text="RESET"
             android:textColor="@color/textColor"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/button2"
             app:layout_constraintEnd_toEndOf="@+id/button2"
             app:layout_constraintStart_toStartOf="@+id/button2"
             app:layout_constraintTop_toTopOf="@+id/button2" />
@@ -49,6 +50,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.9" />
+
         <ImageView
             android:id="@+id/Iv_adLeftArrow"
             android:layout_width="30dp"

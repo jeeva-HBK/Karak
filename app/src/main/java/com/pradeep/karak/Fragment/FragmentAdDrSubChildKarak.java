@@ -11,15 +11,16 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.pradeep.karak.R;
-import com.pradeep.karak.databinding.FragmentSubchildAdDrMasalaBinding;
+import com.pradeep.karak.databinding.FragmentAdDrSubchildKarakBinding;
 
-public class FragmentSubChildAdDMasala extends Fragment {
-    FragmentSubchildAdDrMasalaBinding mBinding;
+
+public class FragmentAdDrSubChildKarak extends Fragment {
+    FragmentAdDrSubchildKarakBinding mBinding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.fragment_subchild_ad_dr_masala, container, false);
+        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.fragment_ad_dr_subchild_karak, container, false);
         return mBinding.getRoot();
     }
 
@@ -27,5 +28,4 @@ public class FragmentSubChildAdDMasala extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
-
 }
