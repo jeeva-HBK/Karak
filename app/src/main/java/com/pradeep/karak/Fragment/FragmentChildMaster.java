@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
@@ -30,6 +31,7 @@ public class FragmentChildMaster extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         masterMenuList = new String[]{"flow rate", "correction factor", "Preset Boil Time", "Factory Reset", "Total Reset"};
+        mBinding.autoCompleteFlowrate.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(),R.drawable.bg_brown_bar));
         getParentFragmentManager().beginTransaction().replace(mBinding.masterFragHost.getId(), new FragmentMaSubChildFlowRate(), "TAG_FlowRate").commit();
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, masterMenuList);
         mBinding.autoCompleteFlowrate.setAdapter(arrayAdapter);

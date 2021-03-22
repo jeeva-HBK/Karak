@@ -199,7 +199,7 @@
         <TextView
             android:id="@+id/textView1"
             style="@style/textAppearence"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
@@ -349,7 +349,7 @@
             android:background="@drawable/edt_back_new"
             android:gravity="center"
             android:hint="0000"
-            android:imeOptions="actionNext"
+            android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLength="4"
             android:padding="5dp"

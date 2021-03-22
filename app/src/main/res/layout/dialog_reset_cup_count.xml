@@ -23,14 +23,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Maintenance Access"
+            android:text="Cup Count Reset"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <EditText
-            android:id="@+id/edt_password"
+            android:id="@+id/edt_cup_count_reset"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -68,6 +68,7 @@
             android:layout_height="0dp"
             android:gravity="center"
             android:text="Go"
+
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/dialogPass_submit"
             app:layout_constraintEnd_toEndOf="@+id/dialogPass_submit"

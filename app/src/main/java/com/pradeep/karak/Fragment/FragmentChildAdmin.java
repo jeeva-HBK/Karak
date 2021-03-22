@@ -1,5 +1,6 @@
 package com.pradeep.karak.Fragment;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
@@ -29,7 +31,8 @@ public class FragmentChildAdmin extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mainMenuList = new String[]{"statistics", "Boil mode", "Set Dispense Ratio", "Set Password"};
+        mainMenuList = new String[]{"statistics", "Boil Time", "Set Dispense Ratio", "Set Password"};
+        mBinding.autoComplete.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(),R.drawable.bg_brown_bar));
         getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildStatistics(), "TAG_STATISTICS").commit();
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
         mBinding.autoComplete.setAdapter(arrayAdapter);

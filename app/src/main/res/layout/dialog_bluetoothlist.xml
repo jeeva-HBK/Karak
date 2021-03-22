@@ -8,6 +8,7 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/progress_circular"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone">
@@ -19,7 +20,7 @@
 
         </RelativeLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <ListView
             android:id="@+id/rvBluetoothList"
             android:layout_width="match_parent"
             android:layout_height="0dp"

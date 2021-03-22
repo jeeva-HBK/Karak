@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
@@ -33,6 +34,7 @@ public class FragmentRootConfiguration extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mainMenuList = new String[]{"Admin", "maintenance", "master"};
+        mBinding.autoComplete.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(),R.drawable.bg_brown_bar));
         mAppClass = (ApplicationClass) getActivity().getApplicationContext();
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
         mBinding.autoComplete.setAdapter(arrayAdapter);
