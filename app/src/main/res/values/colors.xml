@@ -4,6 +4,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFF</color>
     <color name="ash">#202020</color>
+    <color name="materialgrey">#9E9E9E</color>
     <color name="cream">#fbcbc9</color>
     <color name="trans">#80000000</color>
     <color name="textColor">#FFC4A5</color>

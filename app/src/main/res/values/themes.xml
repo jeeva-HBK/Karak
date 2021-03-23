@@ -42,7 +42,7 @@
 
     <style name="titleTextAppearence" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">25sp</item>
-        <item name="android:textColor">@color/cream</item>
+        <item name="android:textColor">@color/textColor</item>
     </style>
 
     <style name="centerBlackText">
@@ -60,9 +60,15 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
-    <!--Sila-->
+
     <style name="textgms" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/caviardreams</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="dashboardTheme" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/caviardreams</item>
         <item name="android:textColor">@color/textColor</item>
     </style>

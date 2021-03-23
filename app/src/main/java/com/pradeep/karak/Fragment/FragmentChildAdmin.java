@@ -14,12 +14,14 @@ import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentChildAdminBinding;
 
 public class FragmentChildAdmin extends Fragment {
     private FragmentChildAdminBinding mBinding;
     private String[] mainMenuList;
+    BaseActivity mActivity;
 
     @Nullable
     @Override
@@ -36,6 +38,7 @@ public class FragmentChildAdmin extends Fragment {
         getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildStatistics(), "TAG_STATISTICS").commit();
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
         mBinding.autoComplete.setAdapter(arrayAdapter);
+
         mBinding.autoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {

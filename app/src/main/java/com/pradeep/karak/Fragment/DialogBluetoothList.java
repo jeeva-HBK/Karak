@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.SimpleAdapter;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.pradeep.karak.Activity.BaseActivity;
+import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.DialogBluetoothlistBinding;
 
@@ -28,6 +30,7 @@ public class DialogBluetoothList extends Fragment {
     BaseActivity mActivity;
     List<Map<String, String>> deviceList;
     Context mContext;
+    ApplicationClass mAppClass;
 
     @Nullable
     @Override
@@ -42,11 +45,16 @@ public class DialogBluetoothList extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mActivity = (BaseActivity) getActivity();
         mActivity.getSupportActionBar().hide();
-        mBinding.progressCircular.setVisibility(View.VISIBLE);
+        mAppClass = (ApplicationClass)getActivity().getApplication();
+        mContext = getContext();
         mBinding.btnScan.setAlpha(.5f);
         mBinding.btnScan.setEnabled(false);
+        mActivity.showProgress();
         deviceList = new ArrayList<>();
-        mContext = getContext();
+        mAppClass.framePacket("01;");
+
+
+
         ArrayList<String> listName = new ArrayList<>();
         listName.add("HMSoft");
         listName.add("RealMe");
@@ -73,10 +81,10 @@ public class DialogBluetoothList extends Fragment {
         }
 
         SimpleAdapter listAdapter = new SimpleAdapter(getContext(), data,
-                android.R.layout.simple_list_item_2,
+                R.layout.item_ble_list,
                 new String[]{"Name", "Company"},
-                new int[]{android.R.id.text1,
-                        android.R.id.text2});
+                new int[]{R.id.text_main,R.id.text_sub_main});
+
 
         mBinding.rvBluetoothList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -89,9 +97,10 @@ public class DialogBluetoothList extends Fragment {
             public void run() {
                 mBinding.btnScan.setAlpha(1.0f);
                 mBinding.btnScan.setEnabled(true);
-                mBinding.progressCircular.setVisibility(View.GONE);
+                mActivity.dismissProgress();
                 mBinding.rvBluetoothList.setAdapter(listAdapter);
-                mBinding.btnScan.setText("RESCAN");
+              //  mBinding.btnScan.setText("RESCAN");
+                mActivity.dismissProgress();
             }
         }, 2000);
 

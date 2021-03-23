@@ -5,8 +5,7 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
-    dataBinding.enabled = true;
-
+    android.buildFeatures.dataBinding = true
     defaultConfig {
         applicationId "com.pradeep.karak"
         minSdkVersion 22
@@ -42,4 +41,6 @@ dependencies {
 
     // Mp Chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    //lottie
+    implementation "com.airbnb.android:lottie:3.4.0"
 }

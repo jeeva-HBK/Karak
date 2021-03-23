@@ -10,14 +10,19 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
 
+import com.pradeep.karak.BuildConfig;
 import com.pradeep.karak.R;
 
 // Created on 15 Mar 2021 by Jeeva
 public class ApplicationClass extends Application {
 
+    public static String START_PACKET = "PSIP";
+    public static String END_PACKET = "CRCPSIPE";
+
     @Override
     public void onCreate() {
         super.onCreate();
+
     }
 
     public void navigateTo(FragmentActivity fragAct, int desID) {
@@ -32,6 +37,9 @@ public class ApplicationClass extends Application {
         Navigation.findNavController((Activity) activity, R.id.nav_host_fragment).popBackStack();
     }
 
+    public String framePacket(String packet) {
+        return START_PACKET + packet + END_PACKET;
+    }
 
     public boolean hasPermissions(Context context, String... permissions) {
         if (context != null && permissions != null) {

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
@@ -27,6 +28,8 @@ public class BaseActivity extends AppCompatActivity {
     ActivityBaseBinding mBinding;
     NavController mNavController;
     AppBarConfiguration mAppBarConfiguration;
+    public boolean canGoBack;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,20 @@ public class BaseActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    public void showProgress() {
+        mBinding.mainProgressCircular.setVisibility(View.VISIBLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        canGoBack = false;
+
+
+    }
+
+    public void dismissProgress() {
+        mBinding.mainProgressCircular.setVisibility(View.GONE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        canGoBack = true;
+    }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -81,6 +98,14 @@ public class BaseActivity extends AppCompatActivity {
         if (activity != null && activity.getWindow() != null && activity.getWindow().getDecorView() != null) {
             InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
+        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (canGoBack) {
+            super.onBackPressed();
         }
     }
 

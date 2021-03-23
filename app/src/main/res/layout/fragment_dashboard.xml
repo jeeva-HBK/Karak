@@ -7,6 +7,7 @@
         android:layout_height="match_parent"
         android:background="@color/black">
 
+
         <View
             android:id="@+id/appbar"
             android:layout_width="0dp"
@@ -65,7 +66,7 @@
 
         <TextView
             android:id="@+id/txt_karak"
-            style="@style/textAppearence"
+            style="@style/dashboardTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Karak"
@@ -103,7 +104,7 @@
 
         <TextView
             android:id="@+id/txt_ginger_karak"
-            style="@style/textAppearence"
+            style="@style/dashboardTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ginger Karak"
@@ -137,7 +138,7 @@
 
         <TextView
             android:id="@+id/txt_sulaimani"
-            style="@style/textAppearence"
+            style="@style/dashboardTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sulaimai"
@@ -170,7 +171,7 @@
 
         <TextView
             android:id="@+id/txt_masala_karak"
-            style="@style/textAppearence"
+            style="@style/dashboardTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Masala Karak"
@@ -204,7 +205,7 @@
 
         <TextView
             android:id="@+id/txt_cardmom_karak"
-            style="@style/textAppearence"
+            style="@style/dashboardTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cardmom karak"
@@ -237,7 +238,7 @@
 
         <TextView
             android:id="@+id/txt_hot_milk"
-            style="@style/textAppearence"
+            style="@style/dashboardTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hot Milk"
@@ -270,7 +271,7 @@
 
         <TextView
             android:id="@+id/txt_hot_water"
-            style="@style/textAppearence"
+            style="@style/dashboardTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hot Water"
@@ -294,6 +295,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            style="@style/dashboardTheme"
             android:text="Select Your Drink"
             android:textColor="@color/textColor"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -310,7 +312,9 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@id/txt_select_drink"
             app:layout_constraintTop_toBottomOf="@+id/txt_select_drink" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
 
 

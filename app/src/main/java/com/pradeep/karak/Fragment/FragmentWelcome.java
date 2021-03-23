@@ -37,6 +37,7 @@ public class FragmentWelcome extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mActivity = (BaseActivity) getActivity();
+        mActivity.getSupportActionBar().show();
         mContext = getActivity().getApplicationContext();
         mBinding.imgScan.setOnClickListener(new View.OnClickListener() {
             @Override

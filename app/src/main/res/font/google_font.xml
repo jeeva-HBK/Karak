@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <font
-        android:font="@font/product_sans"
+        android:font="@font/caviardreams"
         android:fontStyle="normal"
         android:fontWeight="400"
-        app:font="@font/product_sans"
+        app:font="@font/caviardreams"
         app:fontStyle="normal"
         app:fontWeight="400"
         tools:targetApi="o" />

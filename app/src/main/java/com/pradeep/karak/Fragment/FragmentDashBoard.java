@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentDashboardBinding;
@@ -21,6 +22,7 @@ import com.pradeep.karak.databinding.FragmentDashboardBinding;
 public class FragmentDashBoard extends Fragment implements View.OnClickListener {
     FragmentDashboardBinding mBinding;
     ApplicationClass mAppclass;
+    BaseActivity mActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,10 +34,11 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener 
         super.onViewCreated(view, savedInstanceState);
         mAppclass = (ApplicationClass) getActivity().getApplication();
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        mActivity = (BaseActivity) getActivity();
+        mActivity.dismissProgress();
         mBinding.btnOperator.setOnClickListener(view1 -> {
             checkPassword();
         });
-
         mBinding.karakView.setOnClickListener(this);
     }
 
@@ -62,6 +65,7 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
+
         switch (view.getId()) {
             case R.id.karakView:
                 mAppclass.navigateTo(getActivity(), R.id.action_dashboard_to_fragmentDashBoardCups);
