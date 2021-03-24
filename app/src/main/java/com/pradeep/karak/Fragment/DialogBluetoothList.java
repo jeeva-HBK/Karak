@@ -1,14 +1,15 @@
 package com.pradeep.karak.Fragment;
 
+import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,21 +17,26 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.pradeep.karak.Activity.BaseActivity;
+import com.pradeep.karak.BLE.BluetoothHelper;
+import com.pradeep.karak.BLE.BluetoothScannerCallback;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.DialogBluetoothlistBinding;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DialogBluetoothList extends Fragment {
     DialogBluetoothlistBinding mBinding;
     BaseActivity mActivity;
-    List<Map<String, String>> deviceList;
+    ArrayList<String> deviceList;
     Context mContext;
     ApplicationClass mAppClass;
+    private static final String TAG = "DialogBluetoothList";
+
+    // Ble
+    ArrayAdapter<String> listAdapter;
+    List<BluetoothDevice> scannedDevices;
 
     @Nullable
     @Override
@@ -45,7 +51,7 @@ public class DialogBluetoothList extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mActivity = (BaseActivity) getActivity();
         mActivity.getSupportActionBar().hide();
-        mAppClass = (ApplicationClass)getActivity().getApplication();
+        mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
         mBinding.btnScan.setAlpha(.5f);
         mBinding.btnScan.setEnabled(false);
@@ -53,9 +59,11 @@ public class DialogBluetoothList extends Fragment {
         deviceList = new ArrayList<>();
         mAppClass.framePacket("01;");
 
-
-
-        ArrayList<String> listName = new ArrayList<>();
+        deviceList = new ArrayList<>();
+        scannedDevices = new ArrayList<>();
+        listAdapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_single_choice, deviceList);
+        startScan();
+        /* ArrayList<String> listName = new ArrayList<>();
         listName.add("HMSoft");
         listName.add("RealMe");
         listName.add("Boat");
@@ -80,10 +88,8 @@ public class DialogBluetoothList extends Fragment {
             data.add(datum);
         }
 
-        SimpleAdapter listAdapter = new SimpleAdapter(getContext(), data,
-                R.layout.item_ble_list,
-                new String[]{"Name", "Company"},
-                new int[]{R.id.text_main,R.id.text_sub_main});
+
+        */
 
 
         mBinding.rvBluetoothList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -92,18 +98,59 @@ public class DialogBluetoothList extends Fragment {
                 mActivity.updateNavigationUi();
             }
         });
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mBinding.btnScan.setAlpha(1.0f);
-                mBinding.btnScan.setEnabled(true);
-                mActivity.dismissProgress();
-                mBinding.rvBluetoothList.setAdapter(listAdapter);
-              //  mBinding.btnScan.setText("RESCAN");
-                mActivity.dismissProgress();
-            }
-        }, 2000);
 
     }
+
+    private void startScan() {
+        deviceList.clear();
+        listAdapter.notifyDataSetChanged();
+        //mBinding.btnScan.setText(R.string.scanning);
+        mBinding.btnScan.setEnabled(false);
+        BluetoothHelper helper = BluetoothHelper.getInstance(getActivity());
+        helper.turnOn();
+        helper.disConnect();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    helper.scanBLE(new BluetoothScannerCallback() {
+                        @Override
+                        public void OnScanCompleted(List<BluetoothDevice> devices) {
+                            // 0 mBinding.btnScan.setText(R.string.scan);
+                            //  mBinding.btnScan.setEnabled(true);
+                            if (devices.size() == 0) {
+                                Toast.makeText(mContext, "NoDeviceFound", Toast.LENGTH_SHORT).show();
+                            }
+                            //  mBinding.btnScan.performClick();
+                        }
+
+                        @Override
+                        public void SearchResult(BluetoothDevice device) {
+                            Log.e(TAG, "SearchResult: " + device);
+                        }
+
+                        @Override
+                        public void OnDeviceFoundUpdate(List<BluetoothDevice> devices) {
+                            scannedDevices.clear();
+                            scannedDevices.addAll(devices);
+                            for (BluetoothDevice device : devices) {
+                                String listItem = (device.getName() == null ? getString(R.string.unkown) : device.getName())
+                                        + "\n" + (device.getAddress() == null ? getString(R.string.unkown) : device.getAddress());
+                                if (!deviceList.contains(listItem)) {
+                                    deviceList.add(listItem);
+                                }
+                            }
+                            listAdapter.notifyDataSetChanged();
+                            mBinding.rvBluetoothList.setAdapter(listAdapter);
+                            mActivity.dismissProgress();
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
 
 }

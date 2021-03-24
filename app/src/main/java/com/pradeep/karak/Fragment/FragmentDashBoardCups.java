@@ -35,5 +35,11 @@ public class FragmentDashBoardCups extends Fragment {
                 mAppclass.navigateTo(getActivity(), R.id.action_fragmentDashBoardCups_to_fragmentDashBoardSugar);
             }
         });
+        mBinding.viewBackCups.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAppclass.popStackBack(getActivity());
+            }
+        });
     }
 }

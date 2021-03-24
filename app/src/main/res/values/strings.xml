@@ -18,4 +18,5 @@
     <string name="acra_toast_text">Sorry the application crashed</string>
     <string name="machine_not_ready_n_contact_machine_operator">Machine not ready \n Contact machine operator</string>
     <string name="favourites">Favourites</string>
+    <string name="unkown">unknown</string>
 </resources>

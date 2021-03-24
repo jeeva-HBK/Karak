@@ -24,7 +24,7 @@
     <fragment
         android:id="@+id/fragmentDashBoardCups"
         android:name="com.pradeep.karak.Fragment.FragmentDashBoardCups"
-        android:label="FragmentDashBoardCups" >
+        android:label="FragmentDashBoardCups">
         <action
             android:id="@+id/action_fragmentDashBoardCups_to_fragmentDashBoardSugar"
             app:destination="@id/fragmentDashBoardSugar" />
@@ -32,6 +32,10 @@
     <fragment
         android:id="@+id/fragmentDashBoardSugar"
         android:name="com.pradeep.karak.Fragment.FragmentDashBoardSugar"
-        android:label="FragmentDashBoardSugar" />
+        android:label="FragmentDashBoardSugar">
+        <action
+            android:id="@+id/action_fragmentDashBoardSugar_to_dashboard"
+            app:destination="@id/dashboard" />
+    </fragment>
 
 </navigation>
