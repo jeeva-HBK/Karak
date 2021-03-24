@@ -62,12 +62,13 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
             }
         });
         mBinding.IbBackArrow.setOnClickListener((view1 -> {
-            mAppClass.sendData(getActivity(), FragmentRootConfiguration.this, mAppClass.framePacket("08;"), getContext());
+            mAppClass.sendData(getActivity(), FragmentRootConfiguration.this, mAppClass.framePacket(";08;"), getContext());
         }));
     }
 
     @Override
     public void OnDataReceived(String data) {
+        Log.e(TAG, "OnDataReceived: " + data);
         mAppClass.popStackBack(getActivity());
     }
 

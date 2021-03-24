@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +16,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.pradeep.karak.Activity.BaseActivity;
+import com.pradeep.karak.BLE.BluetoothConnectCallback;
+import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.BLE.BluetoothHelper;
 import com.pradeep.karak.BLE.BluetoothScannerCallback;
 import com.pradeep.karak.Others.ApplicationClass;
@@ -24,11 +25,10 @@ import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.DialogBluetoothlistBinding;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DialogBluetoothList extends Fragment {
+public class DialogBluetoothList extends Fragment implements BluetoothDataCallback {
     DialogBluetoothlistBinding mBinding;
     BaseActivity mActivity;
     ArrayList<String> deviceList;
@@ -40,6 +40,7 @@ public class DialogBluetoothList extends Fragment {
     // Ble
     ArrayAdapter<String> listAdapter;
     List<BluetoothDevice> scannedDevices;
+    BluetoothDevice mBleDevice;
 
     @Nullable
     @Override
@@ -61,48 +62,85 @@ public class DialogBluetoothList extends Fragment {
         mActivity.showProgress();
         deviceList = new ArrayList<>();
         mDeviceList = new ArrayList<>();
-        mAppClass.framePacket("01;");
 
         deviceList = new ArrayList<>();
         scannedDevices = new ArrayList<>();
-        listAdapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_single_choice, deviceList);
+        listAdapter = new ArrayAdapter<>(mContext, R.layout.item_bluethoot_list, deviceList);
         startScan();
-        /* ArrayList<String> listName = new ArrayList<>();
-        listName.add("HMSoft");
-        listName.add("RealMe");
-        listName.add("Boat");
-        listName.add("Sony");
-        listName.add("OnePlus");
-        listName.add("Pixel");
-
-        ArrayList<String> listMac = new ArrayList<>();
-        listMac.add("E4:14:C8:B6:K8:11");
-        listMac.add("D5:10:T2:B6:J4:10");
-        listMac.add("H6:31:H5:B6:O5:08");
-        listMac.add("O7:22:T9:B6:P2:99");
-        listMac.add("L8:88:Y2:B6:F8:23");
-        listMac.add("P9:24:H4:B6:G0:16");
-        deviceList = new ArrayList<Map<String, String>>();
-        List<Map<String, String>> data = new ArrayList<Map<String, String>>();
-
-        for (int i = 0; i < listName.size(); i++) {
-            Map<String, String> datum = new HashMap<String, String>();
-            datum.put("Name", listName.get(i));
-            datum.put("Company", listMac.get(i));
-            data.add(datum);
-        }
-
-
-        */
-
 
         mBinding.rvBluetoothList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mActivity.updateNavigationUi();
+                mBinding.txtConnect.setText("Connecting");
+                mActivity.showProgress();
+                BluetoothHelper helper = BluetoothHelper.getInstance(getActivity());
+                helper.disConnect();
+                mBleDevice = scannedDevices.get(position);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            helper.connectBLE(mContext, mBleDevice, new BluetoothConnectCallback() {
+                                @Override
+                                public void OnConnectSuccess() {
+                                    try {
+                                        stopScan();
+                                        sendConnectPacket(mAppClass.framePacket("01;"));
+                                        // mActivity.updateNavigationUi();
+                                        Log.e(TAG, "OnConnectSuccess: Success");
+                                    } catch (Exception e) {
+                                        stopScan();
+                                        Log.e(TAG, "OnConnectSuccess: Catch");
+                                        mActivity.dismissProgress();
+                                        mBinding.txtConnect.setText("Rescan");
+                                        mAppClass.showSnackBar(mContext, "Error Occurred");
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                                @Override
+                                public void OnConnectFailed(Exception e) {
+                                    stopScan();
+                                    mBinding.txtConnect.setText("Rescan");
+                                    e.printStackTrace();
+                                    getActivity().runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Log.e(TAG, "OnConnectSuccess: Failed");
+                                            mActivity.dismissProgress();
+                                            mAppClass.showSnackBar(mContext, "Connection Failed");
+                                        }
+                                    });
+                                }
+                            });
+                        } catch (Exception e) {
+                            stopScan();
+                            mBinding.txtConnect.setText("Rescan");
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
             }
         });
 
+        mBinding.txtConnect.setOnClickListener((view1 -> {
+            if (mBinding.txtConnect.getText().toString().equals("Rescan")) {
+                mAppClass.showSnackBar(mContext, "Refreshing");
+                startScan();
+            }
+        }));
+    }
+
+    private void sendConnectPacket(String packet) {
+        packet = "PSIPS01;CRC;PSIPE/r/n";
+        mAppClass.sendData(getActivity(), DialogBluetoothList.this, packet, getContext());
+    }
+
+    private void stopScan() {
+        mBinding.txtConnect.setText(R.string.scan);
+        mBinding.txtConnect.setEnabled(true);
+        BluetoothHelper helper = BluetoothHelper.getInstance(getActivity());
+        helper.stopScan();
     }
 
     private void startScan() {
@@ -120,12 +158,12 @@ public class DialogBluetoothList extends Fragment {
                     helper.scanBLE(new BluetoothScannerCallback() {
                         @Override
                         public void OnScanCompleted(List<BluetoothDevice> devices) {
-                            //  mBinding.btnScan.setText(R.string.scan);
-                            //  mBinding.btnScan.setEnabled(true);
+
                             if (devices.size() == 0) {
-                                Toast.makeText(mContext, "NoDeviceFound", Toast.LENGTH_SHORT).show();
+                                mAppClass.showSnackBar(mContext, "NoDeviceFound");
+                                stopScan();
+                                mBinding.txtConnect.setText("Rescan");
                             }
-                            //  mBinding.btnScan.performClick();
                         }
 
                         @Override
@@ -141,24 +179,43 @@ public class DialogBluetoothList extends Fragment {
                                 String listItem = (device.getName() == null ? getString(R.string.unkown) : device.getName())
                                         + "\n" + (device.getAddress() == null ? getString(R.string.unkown) : device.getAddress());
                                 if (!deviceList.contains(listItem)) {
-                                    Map<String, String> datum = new HashMap<String, String>();
-                                    String[] mArr = listItem.split("\n");
-                                    datum.put(mArr[0], mArr[1]);
-                                    mDeviceList.add(datum);
                                     deviceList.add(listItem);
                                 }
                             }
                             listAdapter.notifyDataSetChanged();
                             mBinding.rvBluetoothList.setAdapter(listAdapter);
                             mActivity.dismissProgress();
+                            mBinding.txtConnect.setText("Rescan");
                         }
                     });
                 } catch (Exception e) {
+                    mBinding.txtConnect.setText("Rescan");
+                    stopScan();
                     e.printStackTrace();
                 }
             }
         }).start();
     }
 
-// Commit to Dev
+    @Override
+    public void OnDataReceived(String data) {
+        Log.e(TAG, "OnDataReceived: " + data);
+        handleResponse(data);
+    }
+
+    private void handleResponse(String data) {
+        String[] spiltData = data.split(";");
+        if (spiltData[2].equals("ACK")) {
+            mActivity.updateNavigationUi();
+            mActivity.dismissProgress();
+        } else {
+            mActivity.dismissProgress();
+            mAppClass.showSnackBar(getContext(), "Please Try Again !");
+        }
+    }
+
+    @Override
+    public void OnDataReceivedError(Exception e) {
+        e.printStackTrace();
+    }
 }

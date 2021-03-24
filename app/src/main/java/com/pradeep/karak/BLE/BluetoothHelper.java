@@ -287,7 +287,7 @@ public class BluetoothHelper implements SerialListener {
     }
 
     public void sendDataBLE(BluetoothDataCallback callback, String data) throws Exception {
-        Log.e(TAG, "Sent -->" + data);
+        Log.e(TAG, "Sent-->" + data);
         this.dataCallback = callback;
         SerialSocket socket = SerialSocket.getInstance();
         socket.write(this, data.getBytes());
@@ -346,6 +346,7 @@ public class BluetoothHelper implements SerialListener {
     }
 
     private void sendDataToCallback(final String s) {
+       // Log.e(TAG, "Received<--" + s);
         mActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -364,13 +365,12 @@ public class BluetoothHelper implements SerialListener {
                         }
                     }
                     if (dataCallback != null) {
-                        /* if (UtilMethods.checkCRC(builder.toString(), splitted[splitted.length - 1])) {
+                       /* if (UtilMethods.checkCRC(builder.toString(), splitted[splitted.length - 1])) {
                             dataCallback.OnDataReceived(builder.toString());
                         } else {
                             dataCallback.OnDataReceivedError(new Exception("Invalid CRC"));
                         }*/
                         dataCallback.OnDataReceived(framedData);
-                        Log.e(TAG, "Received <--" + framedData);
                     } else {
                         Toast.makeText(mContext, "Please Restart and Try Again", Toast.LENGTH_SHORT).show();
                     }
@@ -384,7 +384,7 @@ public class BluetoothHelper implements SerialListener {
 
     @Override
     public void onSerialIoError(Exception e) {
-        e.printStackTrace();
+
     }
 
     @Override
