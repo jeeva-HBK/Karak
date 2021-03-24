@@ -13,7 +13,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.pradeep.karak.ENUM.ConnectStatus;
-import com.pradeep.karak.Others.UtilMethods;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,7 @@ import java.util.List;
 public class BluetoothHelper implements SerialListener {
     private static final String TAG = "BluetoothHelper";
     private static BluetoothHelper helper;
-    private static String END_CHAR = "#";
+    private static String END_CHAR = "PSIPE";
     BluetoothConnectCallback connectCallback;
     private BluetoothScannerCallback callBack;
     private Boolean isRegistered = false;
@@ -347,7 +346,7 @@ public class BluetoothHelper implements SerialListener {
     }
 
     private void sendDataToCallback(final String s) {
-        Log.e(TAG, "Received<--" + s);
+       // Log.e(TAG, "Received<--" + s);
         mActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -356,7 +355,7 @@ public class BluetoothHelper implements SerialListener {
                 if (dataBuilder.toString().contains(END_CHAR)) {
                     indexOfSplit = dataBuilder.indexOf(END_CHAR);
                     String framedData = dataBuilder.toString().substring(0, indexOfSplit + (END_CHAR.length()));
-                    String data = framedData.split("\\*")[1].split("#")[0];
+                    String data = framedData.split("PSIPS")[1].split("PSIPE")[0];
                     String[] splitted = data.split(";");
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < splitted.length; i++) {
@@ -366,11 +365,12 @@ public class BluetoothHelper implements SerialListener {
                         }
                     }
                     if (dataCallback != null) {
-                        if (UtilMethods.checkCRC(builder.toString(), splitted[splitted.length - 1])) {
+                       /* if (UtilMethods.checkCRC(builder.toString(), splitted[splitted.length - 1])) {
                             dataCallback.OnDataReceived(builder.toString());
                         } else {
                             dataCallback.OnDataReceivedError(new Exception("Invalid CRC"));
-                        }
+                        }*/
+                        dataCallback.OnDataReceived(framedData);
                     } else {
                         Toast.makeText(mContext, "Please Restart and Try Again", Toast.LENGTH_SHORT).show();
                     }

@@ -116,6 +116,7 @@
                 app:layout_constraintVertical_chainStyle="spread" />
 
             <TextView
+                android:id="@+id/txtCup1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -139,7 +140,7 @@
                 app:layout_constraintVertical_chainStyle="spread" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/txtCup2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -163,6 +164,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view11" />
 
             <TextView
+                android:id="@+id/txtCup3"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -185,6 +187,7 @@
 
             <!--row 3-->
             <TextView
+                android:id="@+id/txtCup4"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -208,6 +211,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view21" />
 
             <TextView
+                android:id="@+id/txtCup5"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -230,6 +234,7 @@
             <!--row 4-->
 
             <TextView
+                android:id="@+id/txtCup6"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -253,6 +258,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view31" />
 
             <TextView
+                android:id="@+id/txtCup7"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -273,6 +279,7 @@
                 app:layout_constraintTop_toTopOf="@+id/view41" />
 
             <TextView
+                android:id="@+id/txtCup8"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -295,6 +302,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view41" />
 
             <TextView
+                android:id="@+id/txtCup9"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -316,6 +324,7 @@
                 app:layout_constraintTop_toTopOf="@+id/view51" />
 
             <TextView
+                android:id="@+id/txtCup10"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"

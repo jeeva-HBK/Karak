@@ -53,11 +53,11 @@
             app:layout_constraintGuide_percent="0.8" />
 
         <View
-            android:id="@+id/karakView"
+            android:id="@+id/v_karak"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:background="@drawable/bg_button_state"
-            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintBottom_toTopOf="@+id/v_gingerKarak"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/appbar">
@@ -70,12 +70,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Karak"
-            app:layout_constraintBottom_toBottomOf="@id/karakView"
+            app:layout_constraintBottom_toBottomOf="@id/v_karak"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintLeft_toLeftOf="@id/img_karak"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toTopOf="@id/karakView" />
+            app:layout_constraintTop_toTopOf="@id/v_karak" />
 
 
         <ImageView
@@ -83,22 +83,22 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_strong_tea"
-            app:layout_constraintBottom_toBottomOf="@id/karakView"
-            app:layout_constraintEnd_toEndOf="@id/karakView"
+            app:layout_constraintBottom_toBottomOf="@id/v_karak"
+            app:layout_constraintEnd_toEndOf="@id/v_karak"
             app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toTopOf="@id/karakView" />
+            app:layout_constraintTop_toTopOf="@id/v_karak" />
 
 
         <View
-            android:id="@+id/view2"
+            android:id="@+id/v_gingerKarak"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:background="@drawable/bg_button_state"
-            app:layout_constraintBottom_toTopOf="@+id/view3"
-            app:layout_constraintEnd_toEndOf="@id/karakView"
-            app:layout_constraintStart_toStartOf="@id/karakView"
-            app:layout_constraintTop_toBottomOf="@+id/karakView">
+            app:layout_constraintBottom_toTopOf="@+id/v_sulaimani"
+            app:layout_constraintEnd_toEndOf="@id/v_karak"
+            app:layout_constraintStart_toStartOf="@id/v_karak"
+            app:layout_constraintTop_toBottomOf="@+id/v_karak">
 
         </View>
 
@@ -108,10 +108,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ginger Karak"
-            app:layout_constraintBottom_toBottomOf="@+id/view2"
+            app:layout_constraintBottom_toBottomOf="@+id/v_gingerKarak"
             app:layout_constraintLeft_toLeftOf="@id/img_karak"
             app:layout_constraintStart_toStartOf="@+id/txt_karak"
-            app:layout_constraintTop_toTopOf="@+id/view2" />
+            app:layout_constraintTop_toTopOf="@+id/v_gingerKarak" />
 
 
         <ImageView
@@ -119,20 +119,20 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_strong_tea"
-            app:layout_constraintBottom_toBottomOf="@id/view2"
+            app:layout_constraintBottom_toBottomOf="@id/v_gingerKarak"
             app:layout_constraintEnd_toEndOf="@+id/img_karak"
             app:layout_constraintStart_toStartOf="@+id/img_karak"
-            app:layout_constraintTop_toTopOf="@id/view2" />
+            app:layout_constraintTop_toTopOf="@id/v_gingerKarak" />
 
         <View
-            android:id="@+id/view3"
+            android:id="@+id/v_sulaimani"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:background="@drawable/bg_button_state"
-            app:layout_constraintBottom_toTopOf="@+id/view4"
-            app:layout_constraintEnd_toEndOf="@id/view2"
-            app:layout_constraintStart_toStartOf="@id/view2"
-            app:layout_constraintTop_toBottomOf="@+id/view2">
+            app:layout_constraintBottom_toTopOf="@+id/v_masalaKarak"
+            app:layout_constraintEnd_toEndOf="@id/v_gingerKarak"
+            app:layout_constraintStart_toStartOf="@id/v_gingerKarak"
+            app:layout_constraintTop_toBottomOf="@+id/v_gingerKarak">
 
         </View>
 
@@ -141,10 +141,10 @@
             style="@style/dashboardTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sulaimai"
-            app:layout_constraintBottom_toBottomOf="@id/view3"
+            android:text="Sulaimani"
+            app:layout_constraintBottom_toBottomOf="@id/v_sulaimani"
             app:layout_constraintStart_toStartOf="@+id/txt_ginger_karak"
-            app:layout_constraintTop_toTopOf="@id/view3" />
+            app:layout_constraintTop_toTopOf="@id/v_sulaimani" />
 
 
         <ImageView
@@ -152,20 +152,20 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_strong_tea"
-            app:layout_constraintBottom_toBottomOf="@id/view3"
+            app:layout_constraintBottom_toBottomOf="@id/v_sulaimani"
             app:layout_constraintEnd_toEndOf="@+id/img_ginger_karak"
             app:layout_constraintStart_toStartOf="@+id/img_ginger_karak"
-            app:layout_constraintTop_toTopOf="@id/view3" />
+            app:layout_constraintTop_toTopOf="@id/v_sulaimani" />
 
         <View
-            android:id="@+id/view4"
+            android:id="@+id/v_masalaKarak"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:background="@drawable/bg_button_state"
-            app:layout_constraintBottom_toTopOf="@+id/view5"
-            app:layout_constraintEnd_toEndOf="@id/view3"
-            app:layout_constraintStart_toStartOf="@id/view3"
-            app:layout_constraintTop_toBottomOf="@+id/view3">
+            app:layout_constraintBottom_toTopOf="@+id/v_cardmonKarak"
+            app:layout_constraintEnd_toEndOf="@id/v_sulaimani"
+            app:layout_constraintStart_toStartOf="@id/v_sulaimani"
+            app:layout_constraintTop_toBottomOf="@+id/v_sulaimani">
 
         </View>
 
@@ -175,9 +175,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Masala Karak"
-            app:layout_constraintBottom_toBottomOf="@id/view4"
+            app:layout_constraintBottom_toBottomOf="@id/v_masalaKarak"
             app:layout_constraintStart_toStartOf="@+id/txt_sulaimani"
-            app:layout_constraintTop_toTopOf="@id/view4" />
+            app:layout_constraintTop_toTopOf="@id/v_masalaKarak" />
 
 
         <ImageView
@@ -185,21 +185,21 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_strong_tea"
-            app:layout_constraintBottom_toBottomOf="@id/view4"
+            app:layout_constraintBottom_toBottomOf="@id/v_masalaKarak"
             app:layout_constraintEnd_toEndOf="@+id/img_sulaimani"
             app:layout_constraintStart_toStartOf="@+id/img_sulaimani"
-            app:layout_constraintTop_toTopOf="@id/view4" />
+            app:layout_constraintTop_toTopOf="@id/v_masalaKarak" />
 
         <View
-            android:id="@+id/view5"
+            android:id="@+id/v_cardmonKarak"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/bg_button_state"
-            app:layout_constraintBottom_toTopOf="@+id/view6"
-            app:layout_constraintEnd_toEndOf="@id/view4"
-            app:layout_constraintStart_toStartOf="@id/view4"
-            app:layout_constraintTop_toBottomOf="@+id/view4">
+            app:layout_constraintBottom_toTopOf="@+id/v_hotMilk"
+            app:layout_constraintEnd_toEndOf="@id/v_masalaKarak"
+            app:layout_constraintStart_toStartOf="@id/v_masalaKarak"
+            app:layout_constraintTop_toBottomOf="@+id/v_masalaKarak">
 
         </View>
 
@@ -209,9 +209,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cardmom karak"
-            app:layout_constraintBottom_toBottomOf="@id/view5"
+            app:layout_constraintBottom_toBottomOf="@id/v_cardmonKarak"
             app:layout_constraintStart_toStartOf="@+id/txt_masala_karak"
-            app:layout_constraintTop_toTopOf="@id/view5" />
+            app:layout_constraintTop_toTopOf="@id/v_cardmonKarak" />
 
 
         <ImageView
@@ -219,20 +219,20 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_strong_tea"
-            app:layout_constraintBottom_toBottomOf="@id/view5"
+            app:layout_constraintBottom_toBottomOf="@id/v_cardmonKarak"
             app:layout_constraintEnd_toEndOf="@+id/img_masala_karak"
             app:layout_constraintStart_toStartOf="@+id/img_masala_karak"
-            app:layout_constraintTop_toTopOf="@id/view5" />
+            app:layout_constraintTop_toTopOf="@id/v_cardmonKarak" />
 
         <View
-            android:id="@+id/view6"
+            android:id="@+id/v_hotMilk"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:background="@drawable/bg_button_state"
-            app:layout_constraintBottom_toTopOf="@+id/view7"
-            app:layout_constraintEnd_toEndOf="@id/view5"
-            app:layout_constraintStart_toStartOf="@id/view5"
-            app:layout_constraintTop_toBottomOf="@+id/view5">
+            app:layout_constraintBottom_toTopOf="@+id/v_hotWater"
+            app:layout_constraintEnd_toEndOf="@id/v_cardmonKarak"
+            app:layout_constraintStart_toStartOf="@id/v_cardmonKarak"
+            app:layout_constraintTop_toBottomOf="@+id/v_cardmonKarak">
 
         </View>
 
@@ -242,9 +242,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hot Milk"
-            app:layout_constraintBottom_toBottomOf="@id/view6"
+            app:layout_constraintBottom_toBottomOf="@id/v_hotMilk"
             app:layout_constraintStart_toStartOf="@+id/txt_cardmom_karak"
-            app:layout_constraintTop_toTopOf="@id/view6" />
+            app:layout_constraintTop_toTopOf="@id/v_hotMilk" />
 
 
         <ImageView
@@ -252,20 +252,20 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_strong_tea"
-            app:layout_constraintBottom_toBottomOf="@id/view6"
+            app:layout_constraintBottom_toBottomOf="@id/v_hotMilk"
             app:layout_constraintEnd_toEndOf="@+id/img_cardmom_karak"
             app:layout_constraintStart_toStartOf="@+id/img_cardmom_karak"
-            app:layout_constraintTop_toTopOf="@id/view6" />
+            app:layout_constraintTop_toTopOf="@id/v_hotMilk" />
 
         <View
-            android:id="@+id/view7"
+            android:id="@+id/v_hotWater"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:background="@drawable/bg_button_state"
             app:layout_constraintBottom_toTopOf="@+id/txt_select_drink"
-            app:layout_constraintEnd_toEndOf="@id/view6"
-            app:layout_constraintStart_toStartOf="@id/view6"
-            app:layout_constraintTop_toBottomOf="@+id/view6">
+            app:layout_constraintEnd_toEndOf="@id/v_hotMilk"
+            app:layout_constraintStart_toStartOf="@id/v_hotMilk"
+            app:layout_constraintTop_toBottomOf="@+id/v_hotMilk">
 
         </View>
 
@@ -275,9 +275,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hot Water"
-            app:layout_constraintBottom_toBottomOf="@id/view7"
+            app:layout_constraintBottom_toBottomOf="@id/v_hotWater"
             app:layout_constraintStart_toStartOf="@+id/txt_hot_milk"
-            app:layout_constraintTop_toTopOf="@id/view7" />
+            app:layout_constraintTop_toTopOf="@id/v_hotWater" />
 
 
         <ImageView
@@ -285,10 +285,10 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_strong_tea"
-            app:layout_constraintBottom_toBottomOf="@id/view7"
+            app:layout_constraintBottom_toBottomOf="@id/v_hotWater"
             app:layout_constraintEnd_toEndOf="@+id/img_hot_milk"
             app:layout_constraintStart_toStartOf="@+id/img_hot_milk"
-            app:layout_constraintTop_toTopOf="@id/view7" />
+            app:layout_constraintTop_toTopOf="@id/v_hotWater" />
 
         <TextView
             android:id="@+id/txt_select_drink"
@@ -299,9 +299,9 @@
             android:text="Select Your Drink"
             android:textColor="@color/textColor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/view7"
-            app:layout_constraintStart_toStartOf="@id/view7"
-            app:layout_constraintTop_toBottomOf="@+id/view7" />
+            app:layout_constraintEnd_toEndOf="@id/v_hotWater"
+            app:layout_constraintStart_toStartOf="@id/v_hotWater"
+            app:layout_constraintTop_toBottomOf="@+id/v_hotWater" />
 
         <ImageView
             android:id="@+id/imageView3"

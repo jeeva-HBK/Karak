@@ -4,25 +4,43 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
 
-import com.pradeep.karak.BuildConfig;
+import com.google.android.material.snackbar.Snackbar;
+import com.pradeep.karak.BLE.BluetoothDataCallback;
+import com.pradeep.karak.BLE.BluetoothHelper;
 import com.pradeep.karak.R;
 
 // Created on 15 Mar 2021 by Jeeva
 public class ApplicationClass extends Application {
 
-    public static String START_PACKET = "PSIP";
-    public static String END_PACKET = "CRCPSIPE";
+    // Packet_keys
+    public static String START_PACKET = "PSIPS", CRC = "CRC;",
+            END_PACKET = "PSIPE/r/n", BevaragePacket, BeverageSubPacketCup, BevarageSubPacketSugar;
+
+    // Static_Keys
+    public static String KEY_BEVERAGE_SELECTION = "pckBeverageSelection", KEY_CUP = "pckCup";
 
     @Override
     public void onCreate() {
         super.onCreate();
+    }
 
+    public void sendData(Activity activity, BluetoothDataCallback callback, String packetToSend, Context mContext) {
+        try {
+            BluetoothHelper helper = BluetoothHelper.getInstance(activity);
+            helper.sendDataBLE(callback, packetToSend);
+        } catch (Exception e) {
+            Toast.makeText(mContext, R.string.errorOccurred, Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
     }
 
     public void navigateTo(FragmentActivity fragAct, int desID) {
@@ -38,7 +56,7 @@ public class ApplicationClass extends Application {
     }
 
     public String framePacket(String packet) {
-        return START_PACKET + packet + END_PACKET;
+        return START_PACKET + packet + CRC + END_PACKET;
     }
 
     public boolean hasPermissions(Context context, String... permissions) {
@@ -50,6 +68,13 @@ public class ApplicationClass extends Application {
             }
         }
         return true;
+    }
+
+    public void showSnackBar(Context context, String message) {
+        Snackbar snackbar = Snackbar.make(((Activity) context).findViewById(R.id.cord_lay), message, Snackbar.LENGTH_SHORT);
+        TextView tv = (TextView) snackbar.getView().findViewById(com.google.android.material.R.id.snackbar_text);
+        tv.setTextColor(Color.WHITE);
+        snackbar.show();
     }
 
 }

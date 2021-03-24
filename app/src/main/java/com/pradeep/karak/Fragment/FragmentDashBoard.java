@@ -19,6 +19,8 @@ import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentDashboardBinding;
 
+import static com.pradeep.karak.Others.ApplicationClass.KEY_BEVERAGE_SELECTION;
+
 public class FragmentDashBoard extends Fragment implements View.OnClickListener {
     FragmentDashboardBinding mBinding;
     ApplicationClass mAppclass;
@@ -39,7 +41,13 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener 
         mBinding.btnOperator.setOnClickListener(view1 -> {
             checkPassword();
         });
-        mBinding.karakView.setOnClickListener(this);
+        mBinding.vKarak.setOnClickListener(this);
+        mBinding.vGingerKarak.setOnClickListener(this);
+        mBinding.vSulaimani.setOnClickListener(this);
+        mBinding.vMasalaKarak.setOnClickListener(this);
+        mBinding.vCardmonKarak.setOnClickListener(this);
+        mBinding.vHotMilk.setOnClickListener(this);
+        mBinding.vHotWater.setOnClickListener(this);
     }
 
     private void checkPassword() {
@@ -47,7 +55,6 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener 
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_password, null);
         dialogBuilder.setView(dialogView);
-        dialogBuilder.setCancelable(false);
         AlertDialog alertDialog = dialogBuilder.create();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
@@ -65,11 +72,36 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-
+        Bundle b = new Bundle();
         switch (view.getId()) {
-            case R.id.karakView:
-                mAppclass.navigateTo(getActivity(), R.id.action_dashboard_to_fragmentDashBoardCups);
+            case R.id.v_karak:
+                b.putString(KEY_BEVERAGE_SELECTION, "02,01,01");
+                break;
+
+            case R.id.v_gingerKarak:
+                b.putString(KEY_BEVERAGE_SELECTION, "02,01,02");
+                break;
+
+            case R.id.v_sulaimani:
+                b.putString(KEY_BEVERAGE_SELECTION, "02,01,04");
+                break;
+
+            case R.id.v_masalaKarak:
+                b.putString(KEY_BEVERAGE_SELECTION, "02,01,03");
+                break;
+
+            case R.id.v_cardmonKarak:
+                b.putString(KEY_BEVERAGE_SELECTION, "02,01,05");
+                break;
+
+            case R.id.v_hotMilk:
+                b.putString(KEY_BEVERAGE_SELECTION, "02,01,06");
+                break;
+
+            case R.id.v_hotWater:
+                b.putString(KEY_BEVERAGE_SELECTION , "02,01,07");
                 break;
         }
+        mAppclass.navigateTo(getActivity(), R.id.action_dashboard_to_fragmentDashBoardCups, b);
     }
 }

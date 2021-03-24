@@ -128,6 +128,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/guideline27" />
 
             <TextView
+                android:id="@+id/txtSugar0"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -151,6 +152,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view" />
 
             <TextView
+                android:id="@+id/txtSugar1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -173,7 +175,7 @@
                 app:layout_constraintTop_toTopOf="@+id/view11" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/txtSugar2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -197,6 +199,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view11" />
 
             <TextView
+                android:id="@+id/txtSugar3"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -219,6 +222,7 @@
 
             <!--row 3-->
             <TextView
+                android:id="@+id/txtSugar4"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"

@@ -19,4 +19,5 @@
     <string name="machine_not_ready_n_contact_machine_operator">Machine not ready \n Contact machine operator</string>
     <string name="favourites">Favourites</string>
     <string name="unkown">unknown</string>
+    <string name="errorOccurred">error occurred</string>
 </resources>
