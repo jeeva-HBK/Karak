@@ -24,12 +24,15 @@ import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.DialogBluetoothlistBinding;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DialogBluetoothList extends Fragment {
     DialogBluetoothlistBinding mBinding;
     BaseActivity mActivity;
     ArrayList<String> deviceList;
+    ArrayList<Map<String, String>> mDeviceList;
     Context mContext;
     ApplicationClass mAppClass;
     private static final String TAG = "DialogBluetoothList";
@@ -57,6 +60,7 @@ public class DialogBluetoothList extends Fragment {
         mBinding.btnScan.setEnabled(false);
         mActivity.showProgress();
         deviceList = new ArrayList<>();
+        mDeviceList = new ArrayList<>();
         mAppClass.framePacket("01;");
 
         deviceList = new ArrayList<>();
@@ -116,7 +120,7 @@ public class DialogBluetoothList extends Fragment {
                     helper.scanBLE(new BluetoothScannerCallback() {
                         @Override
                         public void OnScanCompleted(List<BluetoothDevice> devices) {
-                            // 0 mBinding.btnScan.setText(R.string.scan);
+                            //  mBinding.btnScan.setText(R.string.scan);
                             //  mBinding.btnScan.setEnabled(true);
                             if (devices.size() == 0) {
                                 Toast.makeText(mContext, "NoDeviceFound", Toast.LENGTH_SHORT).show();
@@ -137,6 +141,10 @@ public class DialogBluetoothList extends Fragment {
                                 String listItem = (device.getName() == null ? getString(R.string.unkown) : device.getName())
                                         + "\n" + (device.getAddress() == null ? getString(R.string.unkown) : device.getAddress());
                                 if (!deviceList.contains(listItem)) {
+                                    Map<String, String> datum = new HashMap<String, String>();
+                                    String[] mArr = listItem.split("\n");
+                                    datum.put(mArr[0], mArr[1]);
+                                    mDeviceList.add(datum);
                                     deviceList.add(listItem);
                                 }
                             }
