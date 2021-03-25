@@ -364,7 +364,7 @@ public class BluetoothHelper implements SerialListener {
                         }
                     }
                     if (dataCallback != null) {
-                        /* if (UtilMethods.checkCRC(builder.toString(), splitted[splitted.length - 1])) {
+                        /*if (UtilMethods.checkCRC(builder.toString(), splitted[splitted.length - 1])) {
                             dataCallback.OnDataReceived(builder.toString());
                         } else {
                             dataCallback.OnDataReceivedError(new Exception("Invalid CRC"));

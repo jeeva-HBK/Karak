@@ -75,31 +75,31 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener 
         Bundle b = new Bundle();
         switch (view.getId()) {
             case R.id.v_karak:
-                b.putString(KEY_BEVERAGE_SELECTION, "02,01,01");
+                b.putString(KEY_BEVERAGE_SELECTION, "02;01,01");
                 break;
 
             case R.id.v_gingerKarak:
-                b.putString(KEY_BEVERAGE_SELECTION, "02,01,02");
+                b.putString(KEY_BEVERAGE_SELECTION, "02;01,02");
                 break;
 
             case R.id.v_sulaimani:
-                b.putString(KEY_BEVERAGE_SELECTION, "02,01,04");
+                b.putString(KEY_BEVERAGE_SELECTION, "02;01,04");
                 break;
 
             case R.id.v_masalaKarak:
-                b.putString(KEY_BEVERAGE_SELECTION, "02,01,03");
+                b.putString(KEY_BEVERAGE_SELECTION, "02;01,03");
                 break;
 
             case R.id.v_cardmonKarak:
-                b.putString(KEY_BEVERAGE_SELECTION, "02,01,05");
+                b.putString(KEY_BEVERAGE_SELECTION, "02;01,05");
                 break;
 
             case R.id.v_hotMilk:
-                b.putString(KEY_BEVERAGE_SELECTION, "02,01,06");
+                b.putString(KEY_BEVERAGE_SELECTION, "02;01,06");
                 break;
 
             case R.id.v_hotWater:
-                b.putString(KEY_BEVERAGE_SELECTION , "02,01,07");
+                b.putString(KEY_BEVERAGE_SELECTION, "02;01,07");
                 break;
         }
         mAppclass.navigateTo(getActivity(), R.id.action_dashboard_to_fragmentDashBoardCups, b);

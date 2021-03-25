@@ -25,7 +25,6 @@ public class ApplicationClass extends Application {
     public static String START_PACKET = "PSIPS", CRC = "CRC;",
             END_PACKET = "PSIPE/r/n", BevaragePacket, BeverageSubPacketCup, BevarageSubPacketSugar  ,
 
-
     // MessageIDs
     CUP_COUNT_RESET_MESSAGE_ID = "09;",
             DISPENSING_RATIO_MESSAGE_ID = "10;",

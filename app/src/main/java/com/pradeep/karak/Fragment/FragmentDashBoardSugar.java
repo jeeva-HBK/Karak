@@ -28,6 +28,8 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
     ApplicationClass mAppclass;
     private static final String TAG = "FragmentDashBoardSugar";
 
+    AlertDialog alertDialog;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard_sugar, container, false);
@@ -86,7 +88,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
         dialogBuilder.setCancelable(false);
         View dialogView = inflater.inflate(R.layout.dailog_confirm_dispense, null);
         dialogBuilder.setView(dialogView);
-        AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog = dialogBuilder.create();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
         View ok = dialogView.findViewById(R.id.dialogPass_ok);
@@ -121,7 +123,14 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
 
     @Override
     public void OnDataReceived(String data) {
-        Log.e(TAG, "OnDataReceived: " + data);
+        handleResponse(data);
+    }
+
+    private void handleResponse(String data) {
+        String[] spiltData = data.split(";");
+        if (spiltData[0].substring(5, 7).equals("02")) {
+            alertDialog.dismiss();
+        }
     }
 
     @Override

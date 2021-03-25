@@ -217,6 +217,36 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
     }
 
     private void waitForDispenseStatus() {
+        String data = "PSIPS03;01,00;02,0000;03,00;CRC;PSIPE";
+        String[] spiltData = data.split(";");
+        if (spiltData[0].substring(5, 7).equals("03")) {
+            String[] dispenseMessage = spiltData[1].split(","), boilTime = spiltData[2].split(","), bevarageName = spiltData[3].split(",");
+
+            switch (dispenseMessage[1]) {
+                case "01":
+                    showPanDailog();
+                    break;
+                case "02":
+
+                    break;
+                case "03":
+
+                    break;
+                case "04":
+
+                    break;
+                case "05":
+
+                    break;
+
+            }
+
+
+        }
+
+    }
+
+    private void showPanDailog() {
 
     }
 
