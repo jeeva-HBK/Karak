@@ -23,7 +23,7 @@ public class ApplicationClass extends Application {
 
     // Packet_keys
     public static String START_PACKET = "PSIPS", CRC = "CRC;",
-            END_PACKET = "PSIPE/r/n", BevaragePacket, BeverageSubPacketCup, BevarageSubPacketSugar,
+            END_PACKET = "PSIPE/r/n", BevaragePacket, BeverageSubPacketCup, BevarageSubPacketSugar ,
 
 
     // MessageIDs
