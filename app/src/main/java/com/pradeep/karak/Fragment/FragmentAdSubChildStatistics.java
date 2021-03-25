@@ -1,5 +1,6 @@
 package com.pradeep.karak.Fragment;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -23,15 +24,23 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.pradeep.karak.Activity.BaseActivity;
+import com.pradeep.karak.BLE.BluetoothDataCallback;
+import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentAdSubchildStatisticsBinding;
 
 import java.util.ArrayList;
 
-public class FragmentAdSubChildStatistics extends Fragment {
+import static com.pradeep.karak.Others.ApplicationClass.CUP_COUNT_RESET_MESSAGE_ID;
+
+public class FragmentAdSubChildStatistics extends Fragment implements BluetoothDataCallback {
     FragmentAdSubchildStatisticsBinding mBinding;
-    int i = 0;
+    ApplicationClass mAppClass;
     BaseActivity mActivity;
+    Context context;
+    AlertDialog alertDialog;
+
+    public static final String TAG = "Statistics";
 
     @Nullable
     @Override
@@ -43,11 +52,12 @@ public class FragmentAdSubChildStatistics extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mAppClass = (ApplicationClass) getActivity().getApplication();
+        context = getContext();
         ObservableInt pageCount = new ObservableInt(0);
         mBinding.IvAdLeftArrow.setVisibility(View.GONE);
         mBinding.IvAdRightArrow.setVisibility(View.VISIBLE);
         setDataToChart(getChartData(0), getChartbevarage(0));
-
         Log.e("TAG", "onPropertyChanged: " + pageCount.get());
         pageCount.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
@@ -84,7 +94,7 @@ public class FragmentAdSubChildStatistics extends Fragment {
         mBinding.statisticsReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               resetPassword();
+                resetPassword();
             }
         });
     }
@@ -94,9 +104,16 @@ public class FragmentAdSubChildStatistics extends Fragment {
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_reset_cup_count, null);
         dialogBuilder.setView(dialogView);
-        AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog = dialogBuilder.create();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
+        View Go = dialogView.findViewById(R.id.dialog_cup_count_reset);
+        Go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAppClass.sendData(getActivity(), FragmentAdSubChildStatistics.this, mAppClass.framePacket(CUP_COUNT_RESET_MESSAGE_ID), getContext());
+            }
+        });
 
 
     }
@@ -183,6 +200,20 @@ public class FragmentAdSubChildStatistics extends Fragment {
         mBinding.chart1.getAxisRight().setDrawGridLines(false);
         mBinding.chart1.setExtraOffsets(0, 0, 0, 0);
         mBinding.chart1.invalidate();
+    }
+
+    @Override
+    public void OnDataReceived(String data) {
+        handleResponse(data);
+    }
+
+    private void handleResponse(String data) {
+        alertDialog.dismiss();
+    }
+
+    @Override
+    public void OnDataReceivedError(Exception e) {
+        e.printStackTrace();
     }
 
     public class valueFormatter extends ValueFormatter {

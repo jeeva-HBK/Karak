@@ -31,7 +31,7 @@ public class FragmentChildMaster extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         masterMenuList = new String[]{"flow rate", "correction factor", "Preset Boil Time", "Factory Reset", "Total Reset"};
-        mBinding.autoCompleteFlowrate.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(),R.drawable.bg_brown_bar));
+        mBinding.autoCompleteFlowrate.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.bg_brown_bar));
         getParentFragmentManager().beginTransaction().replace(mBinding.masterFragHost.getId(), new FragmentMaSubChildFlowRate(), "TAG_FlowRate").commit();
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, masterMenuList);
         mBinding.autoCompleteFlowrate.setAdapter(arrayAdapter);
@@ -46,7 +46,7 @@ public class FragmentChildMaster extends Fragment {
                         getParentFragmentManager().beginTransaction().replace(mBinding.masterFragHost.getId(), new FragmentMaSubChildCorrectionFactor(), "TAG_Correction").commit();
                         break;
                     case 2:
-                        getParentFragmentManager().beginTransaction().replace(mBinding.masterFragHost.getId(), new FragmentMaSubChildPresentBoilTime(), "TAG_BoilTime").commit();
+                        getParentFragmentManager().beginTransaction().replace(mBinding.masterFragHost.getId(), new FragmentMaSubChildPresetBoilTime(), "TAG_BoilTime").commit();
                         break;
 
                     case 3:

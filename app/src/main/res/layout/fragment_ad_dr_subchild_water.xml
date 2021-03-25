@@ -171,7 +171,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
-        <View
+      <!--  <View
             android:id="@+id/view2"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -189,7 +189,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/view2"
             app:layout_constraintEnd_toEndOf="@+id/view2"
             app:layout_constraintStart_toStartOf="@+id/view2"
-            app:layout_constraintTop_toTopOf="@+id/view2" />
+            app:layout_constraintTop_toTopOf="@+id/view2" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

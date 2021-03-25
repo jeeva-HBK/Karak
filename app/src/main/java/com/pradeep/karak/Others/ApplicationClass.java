@@ -25,35 +25,36 @@ public class ApplicationClass extends Application {
     public static String START_PACKET = "PSIPS", CRC = "CRC;",
             END_PACKET = "PSIPE/r/n", BevaragePacket, BeverageSubPacketCup, BevarageSubPacketSugar,
 
-    //CupCountReset
+
+    // MessageIDs
     CUP_COUNT_RESET_MESSAGE_ID = "09;",
+            DISPENSING_RATIO_MESSAGE_ID = "10;",
+            BOIL_TIME_MESSAGE_ID = "11;",
+            SEND_PASSWORD_MESSAGE_ID = "12;",
+
+    PRESENT_BOIL_TIME_MESSAGE_ID = "15;",
+            FACTORY_RESET_MESSAGE_ID = "16;",
+            TOTAL_RESET_MESSAGE_ID = "17;",
 
     // SendPassword
-    SEND_PASSWORD_MESSAGE_ID = "12;",
-            ADMIN_PASSWORD_SUB_ID = "01,", MAINTENANCE_PASSWORD = "02,", CUP_COUNT_PASSWORD = "03,",
+    ADMIN_PASSWORD_SUB_ID = "01,", MAINTENANCE_PASSWORD = "02,", CUP_COUNT_PASSWORD = "03,",
 
     // BoilTime
-    BOIL_TIME_MESSAGE_ID = "11;", BOIL_TIME_KARAK_SUB_ID = "01,",
+    BOIL_TIME_KARAK_SUB_ID = "01,",
             BOIL_TIME_MASALA_KARAK_SUB_ID = "02,", BOIL_TIME_GINGER_SUB_ID = "03,",
             BOIL_TIME_CARDAMOM_SUB_ID = "04,", BOIL_TIME__SULAIMANI_SUB_ID = "05,",
             BOIL_TIME_HOT_MILK = "06,", BOIL_TIME_HOT_WATER = "07,",
 
     // PresentBoilTime
-    PRESENT_BOIL_TIME_MESSAGE_ID = "15;", PRESENT_BOIL_TIME_100ML = "01,",
+    PRESENT_BOIL_TIME_100ML = "01,",
             PRESENT_BOIL_TIME_200ML = "02,", PRESENT_BOIL_TIME_300ML = "03,",
             PRESENT_BOIL_TIME_400ML = "04,", PRESENT_BOIL_TIME_500ML = "05,",
             PRESENT_BOIL_TIME_600ML = "06,", PRESENT_BOIL_TIME_700ML = "07,",
             PRESENT_BOIL_TIME_800ML = "08,", PRESENT_BOIL_TIME_900ML = "09,",
             PRESENT_BOIL_TIME_1000ML = "10,",
 
-    // FactoryReset
-    FACTORY_RESET_MESSAGE_ID = "16;",
-
-    // TotalReset
-    TOTAL_RESET_MESSAGE_ID = "17;",
-
     // DispensingRatio
-    DISPENSING_RATIO_MESSAGE_ID = "10;", KARAK_SUB_ID = "01,", KARAK_MILK_SUB_ID = "02,",
+    KARAK_SUB_ID = "01,", KARAK_MILK_SUB_ID = "02,",
             KARAK_WATER_SUB_ID = "03,", MASALA_KARAK_TEA_SUB_ID = "04,", MASALA_KARAK_MASALA_SUB_ID = "05,",
             MASALA_KARAK_MILK_SUB_ID = "06,", MASALA_KARAK_WATER_SUB_ID = "07,", SULAIMANI_TEA_SUB_ID = "08,",
             SULAIMANI_WATER_SUB_ID = "09,", GINGER_KARAK_TEA_SUB_ID = "10,", GINGER_KARAK_GINGER_SUB_ID = "11,",

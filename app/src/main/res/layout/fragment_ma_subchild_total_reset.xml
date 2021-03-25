@@ -102,7 +102,7 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:background="@drawable/ic_total_reset"
-            app:layout_constraintBottom_toTopOf="@+id/view9"
+            app:layout_constraintBottom_toTopOf="@+id/guideline5"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
             app:layout_constraintTop_toTopOf="@+id/guideline3" />
@@ -125,27 +125,27 @@
             app:layout_constraintGuide_percent="0.95" />
 
 
-        <View
-            android:id="@+id/view9"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/edt_back_new"
-            app:layout_constraintBottom_toTopOf="@+id/guideline6"
-            app:layout_constraintEnd_toEndOf="@+id/textView_total_reset"
-            app:layout_constraintStart_toStartOf="@+id/textView_total_reset"
-            app:layout_constraintTop_toTopOf="@+id/guideline5" />
+        <!-- <View
+             android:id="@+id/view9"
+             android:layout_width="0dp"
+             android:layout_height="0dp"
+             android:background="@drawable/edt_back_new"
+             app:layout_constraintBottom_toTopOf="@+id/guideline6"
+             app:layout_constraintEnd_toEndOf="@+id/textView_total_reset"
+             app:layout_constraintStart_toStartOf="@+id/textView_total_reset"
+             app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
-        <TextView
-            android:id="@+id/total_reset_save"
-            style="@style/textAppearence"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="SAVE"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/view9"
-            app:layout_constraintEnd_toEndOf="@+id/view9"
-            app:layout_constraintStart_toStartOf="@+id/view9"
-            app:layout_constraintTop_toTopOf="@+id/view9" />
+         <TextView
+             android:id="@+id/total_reset_save"
+             style="@style/textAppearence"
+             android:layout_width="0dp"
+             android:layout_height="0dp"
+             android:gravity="center"
+             android:text="SAVE"
+             android:textColor="@color/white"
+             app:layout_constraintBottom_toBottomOf="@+id/view9"
+             app:layout_constraintEnd_toEndOf="@+id/view9"
+             app:layout_constraintStart_toStartOf="@+id/view9"
+             app:layout_constraintTop_toTopOf="@+id/view9" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

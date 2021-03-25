@@ -143,7 +143,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView_correction_factor" />
 
         <EditText
-            android:id="@+id/flow_rate_karak"
+            android:id="@+id/edt_boil_time_karak"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -158,7 +158,7 @@
             android:textColorHint="@color/textColor"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
-            app:layout_constraintEnd_toStartOf="@+id/flowrate_cardmom_karak"
+            app:layout_constraintEnd_toStartOf="@+id/edt_boil_time_cardmom_karak"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toTopOf="@+id/guideline12" />
 
@@ -168,15 +168,15 @@
             android:text="sec"
             android:textColor="@color/textColor"
             android:textSize="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/flow_rate_karak"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_karak"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_boil_time_karak"
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_karak"
             app:layout_constraintHorizontal_bias="0.75"
             android:layout_marginTop="3dp"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
             app:layout_constraintTop_toTopOf="@+id/guideline12" />
 
         <EditText
-            android:id="@+id/flowrate_cardmom_karak"
+            android:id="@+id/edt_boil_time_cardmom_karak"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -194,8 +194,8 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/flow_rate_karak"
-            app:layout_constraintTop_toTopOf="@+id/flow_rate_karak" />
+            app:layout_constraintStart_toEndOf="@+id/edt_boil_time_karak"
+            app:layout_constraintTop_toTopOf="@+id/edt_boil_time_karak" />
 
 
         <TextView
@@ -204,12 +204,12 @@
             android:text="sec"
             android:textColor="@color/textColor"
             android:textSize="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/flowrate_cardmom_karak"
-            app:layout_constraintEnd_toEndOf="@+id/flowrate_cardmom_karak"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_boil_time_cardmom_karak"
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_cardmom_karak"
             app:layout_constraintHorizontal_bias="0.75"
             android:layout_marginTop="3dp"
-            app:layout_constraintStart_toStartOf="@+id/flowrate_cardmom_karak"
-            app:layout_constraintTop_toTopOf="@+id/flowrate_cardmom_karak" />
+            app:layout_constraintStart_toStartOf="@+id/edt_boil_time_cardmom_karak"
+            app:layout_constraintTop_toTopOf="@+id/edt_boil_time_cardmom_karak" />
 
 
         <TextView
@@ -220,9 +220,9 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="Karak"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_karak"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_karak"
-            app:layout_constraintTop_toBottomOf="@+id/flow_rate_karak" />
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_karak"
+            app:layout_constraintStart_toStartOf="@+id/edt_boil_time_karak"
+            app:layout_constraintTop_toBottomOf="@+id/edt_boil_time_karak" />
 
         <TextView
             android:id="@+id/textView1"
@@ -232,13 +232,13 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="Cardmom Karak"
-            app:layout_constraintEnd_toEndOf="@+id/flowrate_cardmom_karak"
-            app:layout_constraintStart_toStartOf="@+id/flowrate_cardmom_karak"
-            app:layout_constraintTop_toBottomOf="@+id/flowrate_cardmom_karak" />
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_cardmom_karak"
+            app:layout_constraintStart_toStartOf="@+id/edt_boil_time_cardmom_karak"
+            app:layout_constraintTop_toBottomOf="@+id/edt_boil_time_cardmom_karak" />
 
 
         <EditText
-            android:id="@+id/flow_rate_masala_karak"
+            android:id="@+id/edt_boil_time_masala_karak"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -263,16 +263,16 @@
             android:text="sec"
             android:textColor="@color/textColor"
             android:textSize="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/flow_rate_masala_karak"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_masala_karak"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_boil_time_masala_karak"
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_masala_karak"
             app:layout_constraintHorizontal_bias="0.75"
             android:layout_marginTop="3dp"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_masala_karak"
-            app:layout_constraintTop_toTopOf="@+id/flow_rate_masala_karak" />
+            app:layout_constraintStart_toStartOf="@+id/edt_boil_time_masala_karak"
+            app:layout_constraintTop_toTopOf="@+id/edt_boil_time_masala_karak" />
 
 
         <EditText
-            android:id="@+id/flow_rate_milk"
+            android:id="@+id/edt_boil_time_sulamani"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -286,7 +286,7 @@
             android:textColor="@color/textColor"
             android:textColorHint="@color/textColor"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@+id/flow_rate_masala_karak"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_boil_time_masala_karak"
             app:layout_constraintEnd_toEndOf="@+id/textView1"
             app:layout_constraintStart_toStartOf="@+id/textView1"
             app:layout_constraintTop_toTopOf="@+id/guideline13" />
@@ -297,12 +297,12 @@
             android:text="sec"
             android:textColor="@color/textColor"
             android:textSize="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/flow_rate_milk"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_milk"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_boil_time_sulamani"
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_sulamani"
             app:layout_constraintHorizontal_bias="0.75"
             android:layout_marginTop="3dp"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_milk"
-            app:layout_constraintTop_toTopOf="@+id/flow_rate_milk" />
+            app:layout_constraintStart_toStartOf="@+id/edt_boil_time_sulamani"
+            app:layout_constraintTop_toTopOf="@+id/edt_boil_time_sulamani" />
 
         <TextView
             android:id="@+id/textView11"
@@ -312,9 +312,9 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="Masala Karak"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_masala_karak"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_masala_karak"
-            app:layout_constraintTop_toBottomOf="@+id/flow_rate_masala_karak" />
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_masala_karak"
+            app:layout_constraintStart_toStartOf="@+id/edt_boil_time_masala_karak"
+            app:layout_constraintTop_toBottomOf="@+id/edt_boil_time_masala_karak" />
 
         <TextView
             android:id="@+id/textView12"
@@ -323,13 +323,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Milk"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_milk"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_milk"
-            app:layout_constraintTop_toBottomOf="@+id/flow_rate_milk" />
+            android:text="Sulaimani"
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_sulamani"
+            app:layout_constraintStart_toStartOf="@+id/edt_boil_time_sulamani"
+            app:layout_constraintTop_toBottomOf="@+id/edt_boil_time_sulamani" />
 
         <EditText
-            android:id="@+id/flow_rate_ginger_karak"
+            android:id="@+id/edt_boil_time_ginger_karak"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -355,16 +355,16 @@
             android:text="sec"
             android:textColor="@color/textColor"
             android:textSize="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/flow_rate_ginger_karak"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_ginger_karak"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_boil_time_ginger_karak"
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_ginger_karak"
             app:layout_constraintHorizontal_bias="0.75"
             android:layout_marginTop="3dp"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_ginger_karak"
-            app:layout_constraintTop_toTopOf="@+id/flow_rate_ginger_karak" />
+            app:layout_constraintStart_toStartOf="@+id/edt_boil_time_ginger_karak"
+            app:layout_constraintTop_toTopOf="@+id/edt_boil_time_ginger_karak" />
 
 
         <EditText
-            android:id="@+id/flow_rate_water"
+            android:id="@+id/edt_boil_time_milk"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -389,12 +389,12 @@
             android:text="sec"
             android:textColor="@color/textColor"
             android:textSize="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/flow_rate_water"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_water"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_boil_time_milk"
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_milk"
             app:layout_constraintHorizontal_bias="0.75"
             android:layout_marginTop="3dp"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_water"
-            app:layout_constraintTop_toTopOf="@+id/flow_rate_water" />
+            app:layout_constraintStart_toStartOf="@+id/edt_boil_time_milk"
+            app:layout_constraintTop_toTopOf="@+id/edt_boil_time_milk" />
 
         <TextView
             android:id="@+id/textView13"
@@ -404,9 +404,9 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="Ginger Karak"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_ginger_karak"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_ginger_karak"
-            app:layout_constraintTop_toBottomOf="@+id/flow_rate_ginger_karak" />
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_ginger_karak"
+            app:layout_constraintStart_toStartOf="@+id/edt_boil_time_ginger_karak"
+            app:layout_constraintTop_toBottomOf="@+id/edt_boil_time_ginger_karak" />
 
         <TextView
             android:id="@+id/textView14"
@@ -415,14 +415,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Water"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_water"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_water"
-            app:layout_constraintTop_toBottomOf="@+id/flow_rate_water" />
+            android:text="Hot Milk"
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_milk"
+            app:layout_constraintStart_toStartOf="@+id/edt_boil_time_milk"
+            app:layout_constraintTop_toBottomOf="@+id/edt_boil_time_milk" />
 
 
         <EditText
-            android:id="@+id/flow_rate_sugar"
+            android:id="@+id/edt_boil_time_hot_water"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -447,12 +447,12 @@
             android:text="sec"
             android:textColor="@color/textColor"
             android:textSize="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/flow_rate_sugar"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_sugar"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_boil_time_hot_water"
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_hot_water"
             app:layout_constraintHorizontal_bias="0.75"
             android:layout_marginTop="3dp"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_sugar"
-            app:layout_constraintTop_toTopOf="@+id/flow_rate_sugar" />
+            app:layout_constraintStart_toStartOf="@+id/edt_boil_time_hot_water"
+            app:layout_constraintTop_toTopOf="@+id/edt_boil_time_hot_water" />
 
         <TextView
             android:id="@+id/textView5"
@@ -461,10 +461,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Sugar"
-            app:layout_constraintEnd_toEndOf="@+id/flow_rate_sugar"
-            app:layout_constraintStart_toStartOf="@+id/flow_rate_sugar"
-            app:layout_constraintTop_toBottomOf="@+id/flow_rate_sugar" />
+            android:text="Hot Water"
+            app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_hot_water"
+            app:layout_constraintStart_toStartOf="@+id/edt_boil_time_hot_water"
+            app:layout_constraintTop_toBottomOf="@+id/edt_boil_time_hot_water" />
 
 
         <View
@@ -478,7 +478,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline18" />
 
         <TextView
-            android:id="@+id/flow_rate_save"
+            android:id="@+id/txt_boil_time_save"
             style="@style/textAppearence"
             android:layout_width="0dp"
             android:layout_height="0dp"

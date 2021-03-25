@@ -62,13 +62,12 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/dialogPass_t"
+            android:id="@+id/dialog_cup_count_reset"
             style="@style/textAppearence"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
             android:text="Go"
-
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/dialogPass_submit"
             app:layout_constraintEnd_toEndOf="@+id/dialogPass_submit"

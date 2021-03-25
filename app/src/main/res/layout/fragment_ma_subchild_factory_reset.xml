@@ -44,7 +44,7 @@
             app:layout_constraintGuide_percent="0.8" />
 
         <View
-            android:id="@+id/view10"
+            android:id="@+id/view_factory_reset"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:background="@drawable/ic_factory_reset"
@@ -71,7 +71,7 @@
             app:layout_constraintGuide_percent="0.9" />
 
 
-        <View
+        <!--<View
             android:id="@+id/view9"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -92,6 +92,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/view9"
             app:layout_constraintEnd_toEndOf="@+id/view9"
             app:layout_constraintStart_toStartOf="@+id/view9"
-            app:layout_constraintTop_toTopOf="@+id/view9" />
+            app:layout_constraintTop_toTopOf="@+id/view9" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
