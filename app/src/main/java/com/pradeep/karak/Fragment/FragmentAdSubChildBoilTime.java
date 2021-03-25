@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentAdSubchildBoilmodeBinding;
 
-public class FragmentAdSubChildBoilMode extends Fragment {
+public class FragmentAdSubChildBoilTime extends Fragment {
     private FragmentAdSubchildBoilmodeBinding mBinding;
 
     @Nullable

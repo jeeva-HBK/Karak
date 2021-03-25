@@ -1,6 +1,7 @@
 package com.pradeep.karak.Fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import static com.pradeep.karak.Others.ApplicationClass.KEY_CUP;
 public class FragmentDashBoardCups extends Fragment implements View.OnClickListener {
     FragmentDashboardCupsBinding mBinding;
     ApplicationClass mAppclass;
+    private static final String TAG = "FragmentDashBoardCups";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class FragmentDashBoardCups extends Fragment implements View.OnClickListe
         Bundle b = getArguments();
         BevaragePacket = b.getString(KEY_BEVERAGE_SELECTION);
         BeverageSubPacketCup = "";
+        Log.e(TAG, "onViewCreated: " + BevaragePacket);
+
         mBinding.viewBackCups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

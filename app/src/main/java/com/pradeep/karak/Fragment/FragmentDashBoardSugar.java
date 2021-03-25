@@ -42,6 +42,8 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
 
         Bundle b = getArguments();
         BevaragePacket = b.getString(KEY_CUP);
+        BevarageSubPacketSugar = "";
+        Log.e(TAG, "onViewCreated: " + BevaragePacket);
         mBinding.viewBackSugar.setOnClickListener((view1 -> {
             mAppclass.popStackBack(getActivity());
         }));
@@ -78,7 +80,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
         confirmDispense(BevaragePacket + BevarageSubPacketSugar);
     }
 
-    private void confirmDispense(String bevarageSubPacketSugar) {
+    private void confirmDispense(String finalDispensePacket) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = this.getLayoutInflater();
         dialogBuilder.setCancelable(false);
@@ -93,8 +95,8 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
             @Override
             public void onClick(View v) {
                 alertDialog.dismiss();
-                Log.e(TAG, "onClick: " + bevarageSubPacketSugar);
-                sendPacket(alertDialog, mAppclass.framePacket(bevarageSubPacketSugar));
+                Log.e(TAG, "onClick: " + finalDispensePacket);
+                sendPacket(alertDialog, mAppclass.framePacket(finalDispensePacket));
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {

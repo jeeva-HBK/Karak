@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/dialogBluetoothList"
-        android:name="com.pradeep.karak.Fragment.DialogBluetoothList"
+        android:name="com.pradeep.karak.Fragment.FragmentBluetoothList"
         android:label="DialogBluetoothList" />
 
 </navigation>

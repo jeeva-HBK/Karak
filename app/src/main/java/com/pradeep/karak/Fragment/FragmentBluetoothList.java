@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class DialogBluetoothList extends Fragment implements BluetoothDataCallback {
+public class FragmentBluetoothList extends Fragment implements BluetoothDataCallback {
     DialogBluetoothlistBinding mBinding;
     BaseActivity mActivity;
     ArrayList<String> deviceList;
@@ -44,7 +44,6 @@ public class DialogBluetoothList extends Fragment implements BluetoothDataCallba
 
     @Nullable
     @Override
-
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.dialog_bluetoothlist, container, false);
         return mBinding.getRoot();
@@ -86,8 +85,6 @@ public class DialogBluetoothList extends Fragment implements BluetoothDataCallba
                                     try {
                                         stopScan();
                                         sendConnectPacket(mAppClass.framePacket("01;"));
-                                        // mActivity.updateNavigationUi();
-                                        Log.e(TAG, "OnConnectSuccess: Success");
                                     } catch (Exception e) {
                                         stopScan();
                                         Log.e(TAG, "OnConnectSuccess: Catch");
@@ -132,8 +129,7 @@ public class DialogBluetoothList extends Fragment implements BluetoothDataCallba
     }
 
     private void sendConnectPacket(String packet) {
-        packet = "PSIPS01;CRC;PSIPE/r/n";
-        mAppClass.sendData(getActivity(), DialogBluetoothList.this, packet, getContext());
+        mAppClass.sendData(getActivity(), FragmentBluetoothList.this, packet, getContext());
     }
 
     private void stopScan() {
@@ -199,19 +195,29 @@ public class DialogBluetoothList extends Fragment implements BluetoothDataCallba
 
     @Override
     public void OnDataReceived(String data) {
-        Log.e(TAG, "OnDataReceived: " + data);
         handleResponse(data);
     }
 
     private void handleResponse(String data) {
+        BluetoothHelper helper = BluetoothHelper.getInstance(getActivity());
         String[] spiltData = data.split(";");
         if (spiltData[2].equals("ACK")) {
+            //  if (spiltData[1].equals("00")) {
             mActivity.updateNavigationUi();
-            mActivity.dismissProgress();
+            //  } else if (spiltData[1].equals("01")) {
+            //      waitForDispenseStatus();
+            //  }
+            helper.setConnected(true);
         } else {
+            helper.setConnected(false);
             mActivity.dismissProgress();
             mAppClass.showSnackBar(getContext(), "Please Try Again !");
         }
+
+    }
+
+    private void waitForDispenseStatus() {
+
     }
 
     @Override

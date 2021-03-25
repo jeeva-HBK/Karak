@@ -75,6 +75,13 @@ public class BaseActivity extends AppCompatActivity {
         canGoBack = true;
     }
 
+    public boolean isProgressVisible() {
+        if (mBinding.mainProgressCircular.getVisibility() == View.VISIBLE) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         View v = getCurrentFocus();
