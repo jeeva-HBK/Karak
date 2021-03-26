@@ -47,8 +47,8 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void updateNavigationUi() {
-        mNavController.setGraph(R.navigation.navigation);
+    public void updateNavigationUi(int navigation) {
+        mNavController.setGraph(navigation);
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.dashboard).build();
         NavigationUI.setupActionBarWithNavController(this, mNavController, mAppBarConfiguration);
     }
@@ -65,8 +65,6 @@ public class BaseActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         canGoBack = false;
-
-
     }
 
     public void dismissProgress() {

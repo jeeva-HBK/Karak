@@ -129,7 +129,6 @@ public class BluetoothHelper implements SerialListener {
         } else {
             return "";
         }
-
     }
 
     public ConnectStatus getConnectionStatus() {

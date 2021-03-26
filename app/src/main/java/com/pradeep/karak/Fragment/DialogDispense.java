@@ -31,9 +31,5 @@ public class DialogDispense extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mActivity = (BaseActivity) getActivity();
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-        mBinding.btnScan.setOnClickListener(view1 -> {
-            mActivity.updateNavigationUi();
-        });
-
     }
 }

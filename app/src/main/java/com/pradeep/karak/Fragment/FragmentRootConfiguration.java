@@ -1,7 +1,6 @@
 package com.pradeep.karak.Fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
@@ -21,9 +21,11 @@ import com.pradeep.karak.databinding.FragmentRootConfigurationBinding;
 
 
 public class FragmentRootConfiguration extends Fragment implements BluetoothDataCallback {
-    private FragmentRootConfigurationBinding mBinding;
-    private ApplicationClass mAppClass;
-    private String[] mainMenuList;
+    FragmentRootConfigurationBinding mBinding;
+    ApplicationClass mAppClass;
+    String[] mainMenuList;
+
+    BaseActivity mActivity;
 
     private static final String TAG = "FragmentRootConfig";
 
@@ -39,7 +41,8 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
         super.onViewCreated(view, savedInstanceState);
         mainMenuList = new String[]{"Admin", "maintenance", "master"};
         mBinding.autoComplete.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.bg_brown_bar));
-        mAppClass = (ApplicationClass) getActivity().getApplicationContext();
+        mAppClass = (ApplicationClass) getActivity().getApplication();
+        mActivity = (BaseActivity) getActivity();
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
         mBinding.autoComplete.setAdapter(arrayAdapter);
         getParentFragmentManager().beginTransaction().add(mBinding.configFragHost.getId(), new FragmentChildAdmin(), "TAG_ADMIN").commit();
@@ -62,13 +65,23 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
             }
         });
         mBinding.IbBackArrow.setOnClickListener((view1 -> {
+            mActivity.showProgress();
             mAppClass.sendData(getActivity(), FragmentRootConfiguration.this, mAppClass.framePacket("08;"), getContext());
         }));
     }
 
     @Override
     public void OnDataReceived(String data) {
-        mAppClass.popStackBack(getActivity());
+        handleResponse(data);
+    }
+
+    private void handleResponse(String data) {
+        String[] spiltData = data.split(";");
+        if (spiltData[0].substring(5, 7).equals("08")) {
+            if (spiltData[1].equals("ACK")) {
+                mAppClass.popStackBack(getActivity());
+            }
+        }
     }
 
     @Override

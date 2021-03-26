@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ public class ApplicationClass extends Application {
 
     // Packet_keys
     public static String START_PACKET = "PSIPS", CRC = "CRC;",
-            END_PACKET = "PSIPE/r/n", BevaragePacket, BeverageSubPacketCup, BevarageSubPacketSugar  ,
+            END_PACKET = "PSIPE/r/n", BevaragePacket, BeverageSubPacketCup, BevarageSubPacketSugar,
 
     // MessageIDs
     CUP_COUNT_RESET_MESSAGE_ID = "09;",
