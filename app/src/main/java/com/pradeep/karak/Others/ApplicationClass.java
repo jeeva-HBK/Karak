@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +23,7 @@ public class ApplicationClass extends Application {
 
     // Packet_keys
     public static String START_PACKET = "PSIPS", CRC = "CRC;",
-            END_PACKET = "PSIPE/r/n", BevaragePacket, BeverageSubPacketCup, BevarageSubPacketSugar,
+            END_PACKET = "PSIPE", BevaragePacket, BeverageSubPacketCup, BevarageSubPacketSugar,
 
     // MessageIDs
     CUP_COUNT_RESET_MESSAGE_ID = "09;",
@@ -37,21 +36,22 @@ public class ApplicationClass extends Application {
             TOTAL_RESET_MESSAGE_ID = "17;",
 
     // SendPassword
-    ADMIN_PASSWORD_SUB_ID = "01,", MAINTENANCE_PASSWORD = "02,", CUP_COUNT_PASSWORD = "03,",
+    ADMIN_PASSWORD_SUB_ID = "01,", MAINTENANCE_PASSWORD_SUB_ID = "02,", CUP_COUNT_PASSWORD_SUB_ID = "03,",
 
     // BoilTime
+
     BOIL_TIME_KARAK_SUB_ID = "01,",
             BOIL_TIME_MASALA_KARAK_SUB_ID = "02,", BOIL_TIME_GINGER_SUB_ID = "03,",
             BOIL_TIME_CARDAMOM_SUB_ID = "04,", BOIL_TIME__SULAIMANI_SUB_ID = "05,",
-            BOIL_TIME_HOT_MILK = "06,", BOIL_TIME_HOT_WATER = "07,",
+            BOIL_TIME_HOT_MILK_SUB_ID = "06,", BOIL_TIME_HOT_WATER_SUB_ID = "07,",
 
     // PresentBoilTime
-    PRESENT_BOIL_TIME_100ML = "01,",
-            PRESENT_BOIL_TIME_200ML = "02,", PRESENT_BOIL_TIME_300ML = "03,",
-            PRESENT_BOIL_TIME_400ML = "04,", PRESENT_BOIL_TIME_500ML = "05,",
-            PRESENT_BOIL_TIME_600ML = "06,", PRESENT_BOIL_TIME_700ML = "07,",
-            PRESENT_BOIL_TIME_800ML = "08,", PRESENT_BOIL_TIME_900ML = "09,",
-            PRESENT_BOIL_TIME_1000ML = "10,",
+    PRESENT_BOIL_TIME_100ML_SUB_ID = "01,",
+            PRESENT_BOIL_TIME_200ML_SUB_ID = "02,", PRESENT_BOIL_TIME_300ML_SUB_ID = "03,",
+            PRESENT_BOIL_TIME_400ML_SUB_ID = "04,", PRESENT_BOIL_TIME_500ML_SUB_ID = "05,",
+            PRESENT_BOIL_TIME_600ML_SUB_ID = "06,", PRESENT_BOIL_TIME_700ML_SUB_ID = "07,",
+            PRESENT_BOIL_TIME_800ML_SUB_ID = "08,", PRESENT_BOIL_TIME_900ML_SUB_ID = "09,",
+            PRESENT_BOIL_TIME_1000ML_SUB_ID = "10,",
 
     // DispensingRatio
     KARAK_SUB_ID = "01,", KARAK_MILK_SUB_ID = "02,",
@@ -60,7 +60,13 @@ public class ApplicationClass extends Application {
             SULAIMANI_WATER_SUB_ID = "09,", GINGER_KARAK_TEA_SUB_ID = "10,", GINGER_KARAK_GINGER_SUB_ID = "11,",
             GINGER_KARAK_MILK_SUB_ID = "12,", GINGER_KARAK_WATER_SUB_ID = "13,", CARDAMOM_KARAK_TEA_SUB_ID = "14,",
             CARDAMOM_KARAK_CARDAMOM_SUB_ID = "15,", CARDMOM_KARAK_MILK_SUB_ID = "16,", CARDMOM_KARAK_WATER = "17,",
-            MILK_SUB_ID = "18,", MILK_WATER_SUB_ID = "19,";
+            MILK_SUB_ID = "18,", MILK_WATER_SUB_ID = "19,",
+
+    // Passwords
+    ADMIN_PASSWORD = "", MAINTENANCE_PASSWORD = "", CUP_COUNT_PASSWORD = "",
+
+    // CupCount
+    KARAK_CUPCOUNT = "", GINGER_KARAK_CUPCOUNT = "", MASALA_KARAK_CUPCOUNT = "", SULAIMANI_CUPCOUNT = "", CARDAMOM_CUPCOUNT = "", MILK_CUPCOUNT = "", WATER_CUPCOUNT = "";
 
     // Static_Keys
     public static String KEY_BEVERAGE_SELECTION = "pckBeverageSelection", KEY_CUP = "pckCup";

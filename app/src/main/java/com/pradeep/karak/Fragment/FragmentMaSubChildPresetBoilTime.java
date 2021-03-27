@@ -17,16 +17,16 @@ import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentMaSubchildPresetBoilTimeBinding;
 
-import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_1000ML;
-import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_100ML;
-import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_200ML;
-import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_300ML;
-import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_400ML;
-import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_500ML;
-import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_600ML;
-import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_700ML;
-import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_800ML;
-import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_900ML;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_1000ML_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_100ML_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_200ML_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_300ML_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_400ML_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_500ML_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_600ML_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_700ML_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_800ML_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_900ML_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_MESSAGE_ID;
 
 public class FragmentMaSubChildPresetBoilTime extends Fragment implements BluetoothDataCallback {
@@ -84,12 +84,12 @@ public class FragmentMaSubChildPresetBoilTime extends Fragment implements Blueto
         edt900ml = mAppClass.formDigits(4, mBinding.edt900ml.getText().toString()) + ";";
         edt1000ml = mAppClass.formDigits(4, mBinding.edt1000ml.getText().toString()) + ";";
 
-        return mAppClass.framePacket(PRESENT_BOIL_TIME_MESSAGE_ID + PRESENT_BOIL_TIME_100ML +
-                edt100ml + PRESENT_BOIL_TIME_200ML + edt200ml + PRESENT_BOIL_TIME_300ML +
-                edt300ml + PRESENT_BOIL_TIME_400ML + edt400ml + PRESENT_BOIL_TIME_500ML +
-                edt500ml + PRESENT_BOIL_TIME_600ML + edt600ml + PRESENT_BOIL_TIME_700ML +
-                edt700ml + PRESENT_BOIL_TIME_800ML + edt800ml + PRESENT_BOIL_TIME_900ML +
-                edt900ml + PRESENT_BOIL_TIME_1000ML + edt1000ml);
+        return mAppClass.framePacket(PRESENT_BOIL_TIME_MESSAGE_ID + PRESENT_BOIL_TIME_100ML_SUB_ID +
+                edt100ml + PRESENT_BOIL_TIME_200ML_SUB_ID + edt200ml + PRESENT_BOIL_TIME_300ML_SUB_ID +
+                edt300ml + PRESENT_BOIL_TIME_400ML_SUB_ID + edt400ml + PRESENT_BOIL_TIME_500ML_SUB_ID +
+                edt500ml + PRESENT_BOIL_TIME_600ML_SUB_ID + edt600ml + PRESENT_BOIL_TIME_700ML_SUB_ID +
+                edt700ml + PRESENT_BOIL_TIME_800ML_SUB_ID + edt800ml + PRESENT_BOIL_TIME_900ML_SUB_ID +
+                edt900ml + PRESENT_BOIL_TIME_1000ML_SUB_ID + edt1000ml);
     }
 
     @Override

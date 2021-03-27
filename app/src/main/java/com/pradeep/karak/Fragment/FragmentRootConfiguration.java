@@ -21,13 +21,11 @@ import com.pradeep.karak.databinding.FragmentRootConfigurationBinding;
 
 
 public class FragmentRootConfiguration extends Fragment implements BluetoothDataCallback {
+    private static final String TAG = "FragmentRootConfig";
     FragmentRootConfigurationBinding mBinding;
     ApplicationClass mAppClass;
     String[] mainMenuList;
-
     BaseActivity mActivity;
-
-    private static final String TAG = "FragmentRootConfig";
 
     @Nullable
     @Override
@@ -43,15 +41,19 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
         mBinding.autoComplete.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.bg_brown_bar));
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mActivity = (BaseActivity) getActivity();
+
+        //Bundle b = getArguments();
+        //String data = b.getString("CUPCOUNT");
+
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
         mBinding.autoComplete.setAdapter(arrayAdapter);
-        getParentFragmentManager().beginTransaction().add(mBinding.configFragHost.getId(), new FragmentChildAdmin(), "TAG_ADMIN").commit();
+        getParentFragmentManager().beginTransaction().add(mBinding.configFragHost.getId(), new FragmentChildAdmin(getArguments().getString("CUPCOUNT")), "INIT_ADMIN").commit();
         mBinding.autoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 switch (position) {
                     case 0:
-                        getParentFragmentManager().beginTransaction().replace(mBinding.configFragHost.getId(), new FragmentChildAdmin(), "TAG_ADMIN").commit();
+                        getParentFragmentManager().beginTransaction().replace(mBinding.configFragHost.getId(), new FragmentChildAdmin("emptyData"), "TAG_ADMIN").commit();
                         break;
 
                     case 1:
@@ -77,7 +79,7 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
 
     private void handleResponse(String data) {
         String[] spiltData = data.split(";");
-        if (spiltData[0].substring(5, 7).equals("08")) {
+        if (spiltData[0].startsWith("08", 5)) {
             if (spiltData[1].equals("ACK")) {
                 mAppClass.popStackBack(getActivity());
             }

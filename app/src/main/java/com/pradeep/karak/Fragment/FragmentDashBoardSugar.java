@@ -181,7 +181,6 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
                 mActivity.updateNavigationUi(R.navigation.navigation);
             }
         }
-        //  mActivity.dismissProgress();
     }
 
     private void showPanNotAvailable() {

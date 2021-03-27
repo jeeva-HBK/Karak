@@ -18,8 +18,8 @@ import com.pradeep.karak.databinding.FragmentAdSubchildBoiltimeBinding;
 
 import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_CARDAMOM_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_GINGER_SUB_ID;
-import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_HOT_MILK;
-import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_HOT_WATER;
+import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_HOT_MILK_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_HOT_WATER_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_KARAK_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_MASALA_KARAK_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_MESSAGE_ID;
@@ -76,8 +76,8 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
         return mAppClass.framePacket(BOIL_TIME_MESSAGE_ID + BOIL_TIME_KARAK_SUB_ID + KarakParameter +
                 BOIL_TIME_MASALA_KARAK_SUB_ID + MasalaKarakParameter + BOIL_TIME_GINGER_SUB_ID +
                 GingerKarakParameter + BOIL_TIME_CARDAMOM_SUB_ID + CardamomKarakParameter +
-                BOIL_TIME__SULAIMANI_SUB_ID + SulamaimaniParameter + BOIL_TIME_HOT_MILK +
-                HotMilkParameter + BOIL_TIME_HOT_WATER + HotWaterParameter);
+                BOIL_TIME__SULAIMANI_SUB_ID + SulamaimaniParameter + BOIL_TIME_HOT_MILK_SUB_ID +
+                HotMilkParameter + BOIL_TIME_HOT_WATER_SUB_ID + HotWaterParameter);
     }
 
     @Override

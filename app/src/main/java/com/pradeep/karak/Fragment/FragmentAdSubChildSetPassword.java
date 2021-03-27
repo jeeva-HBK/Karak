@@ -18,8 +18,8 @@ import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentAdSubchildSetpasswordBinding;
 
 import static com.pradeep.karak.Others.ApplicationClass.ADMIN_PASSWORD_SUB_ID;
-import static com.pradeep.karak.Others.ApplicationClass.CUP_COUNT_PASSWORD;
-import static com.pradeep.karak.Others.ApplicationClass.MAINTENANCE_PASSWORD;
+import static com.pradeep.karak.Others.ApplicationClass.CUP_COUNT_PASSWORD_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.MAINTENANCE_PASSWORD_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.SEND_PASSWORD_MESSAGE_ID;
 
 
@@ -84,7 +84,7 @@ public class FragmentAdSubChildSetPassword extends Fragment implements Bluetooth
         CupCountResetParameter = mBinding.editTextCupCountReset.getText().toString() + ";";
 
         return mAppClass.framePacket(SEND_PASSWORD_MESSAGE_ID + ADMIN_PASSWORD_SUB_ID + AdminPasswordParameter
-                + MAINTENANCE_PASSWORD + MaintenancePassword + CUP_COUNT_PASSWORD + CupCountResetParameter);
+                + MAINTENANCE_PASSWORD_SUB_ID + MaintenancePassword + CUP_COUNT_PASSWORD_SUB_ID + CupCountResetParameter);
     }
 
     @Override

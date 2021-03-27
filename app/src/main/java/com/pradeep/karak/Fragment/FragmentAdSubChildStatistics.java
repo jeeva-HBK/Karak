@@ -4,10 +4,10 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +17,6 @@ import androidx.databinding.Observable;
 import androidx.databinding.ObservableInt;
 import androidx.fragment.app.Fragment;
 
-import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -31,7 +30,10 @@ import com.pradeep.karak.databinding.FragmentAdSubchildStatisticsBinding;
 
 import java.util.ArrayList;
 
+import static com.pradeep.karak.Others.ApplicationClass.ADMIN_PASSWORD;
+import static com.pradeep.karak.Others.ApplicationClass.CUP_COUNT_PASSWORD;
 import static com.pradeep.karak.Others.ApplicationClass.CUP_COUNT_RESET_MESSAGE_ID;
+import static com.pradeep.karak.Others.ApplicationClass.MAINTENANCE_PASSWORD;
 
 public class FragmentAdSubChildStatistics extends Fragment implements BluetoothDataCallback {
     FragmentAdSubchildStatisticsBinding mBinding;
@@ -39,14 +41,27 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     BaseActivity mActivity;
     Context context;
     AlertDialog alertDialog;
+    String data = "";
 
     public static final String TAG = "Statistics";
+
+    public FragmentAdSubChildStatistics(String data) {
+        this.data = data;
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_ad_subchild_statistics, container, false);
         return mBinding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getTag().equals("TAG_STATISTICS")) {
+            readOperatorData();
+        }
     }
 
     @Override
@@ -57,27 +72,29 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
         ObservableInt pageCount = new ObservableInt(0);
         mBinding.IvAdLeftArrow.setVisibility(View.GONE);
         mBinding.IvAdRightArrow.setVisibility(View.VISIBLE);
-        setDataToChart(getChartData(0), getChartbevarage(0));
-        Log.e("TAG", "onPropertyChanged: " + pageCount.get());
+        if (!data.equals("") && data != null && !data.equals("emptyData")) {
+            handleResponse(data);
+        }
+
         pageCount.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
             public void onPropertyChanged(Observable sender, int propertyId) {
-                Log.e("TAG", "onPropertyChanged: " + pageCount.get());
                 switch (pageCount.get()) {
                     case 0:
                         mBinding.IvAdLeftArrow.setVisibility(View.GONE);
                         mBinding.IvAdRightArrow.setVisibility(View.VISIBLE);
-                        setDataToChart(getChartData(0), getChartbevarage(0));
+                        setDataToChart(getChartData(0), getChartbevarage(0), 0);
                         break;
                     case 1:
                         mBinding.IvAdLeftArrow.setVisibility(View.VISIBLE);
                         mBinding.IvAdRightArrow.setVisibility(View.VISIBLE);
-                        setDataToChart(getChartData(1), getChartbevarage(1));
+                        // setDataToChart(getChartData(1), getChartbevarage(1), 1);
+                        sendThree(getChartData(1), getChartbevarage(1), 0);
                         break;
                     case 2:
                         mBinding.IvAdLeftArrow.setVisibility(View.VISIBLE);
                         mBinding.IvAdRightArrow.setVisibility(View.GONE);
-                        setDataToChart(getChartData(2), getChartbevarage(2));
+                        setDataToChart(getChartData(2), getChartbevarage(2), 2);
                         break;
                 }
             }
@@ -99,6 +116,14 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
         });
     }
 
+    private void readOperatorData() {
+        sendData(mAppClass.framePacket("07;01;"));
+    }
+
+    private void sendData(String framedPacket) {
+        mAppClass.sendData(getActivity(), FragmentAdSubChildStatistics.this, framedPacket, getContext());
+    }
+
     private void resetPassword() {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = this.getLayoutInflater();
@@ -114,8 +139,6 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
                 mAppClass.sendData(getActivity(), FragmentAdSubChildStatistics.this, mAppClass.framePacket(CUP_COUNT_RESET_MESSAGE_ID), getContext());
             }
         });
-
-
     }
 
     private ArrayList<String> getChartbevarage(int mode) {
@@ -124,17 +147,20 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
             case 0:
                 values.add("Karak");
                 values.add("Sulaimani");
+                //   str = new String[]{"Karak", "sulaimani"};
                 break;
 
             case 1:
                 values.add("Cardomon Karak");
                 values.add("Ginger Karak");
                 values.add("Masala Karak");
+                //  str = new String[]{"Cardomon Karak", "Ginger Karak", "Masala karak"};
                 break;
 
             case 2:
                 values.add("Milk");
                 values.add("water");
+                //  str = new String[]{"Milk", "Water"};
                 break;
         }
         return values;
@@ -144,26 +170,26 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
         ArrayList<BarEntry> entries = new ArrayList<>();
         switch (mode) {
             case 0:
-                entries.add(new BarEntry(0, 100));
-                entries.add(new BarEntry(1, 200));
+                entries.add(0, new BarEntry(0, 100));
+                entries.add(1, new BarEntry(1, 200));
                 break;
 
             case 1:
-                entries.add(new BarEntry(0, 300));
-                entries.add(new BarEntry(1, 400));
-                entries.add(new BarEntry(1, 500));
+                entries.add(0, new BarEntry(0, 300));
+                entries.add(1, new BarEntry(1, 400));
+                entries.add(2, new BarEntry(2, 500));
                 break;
 
             case 2:
-                entries.add(new BarEntry(0, 600));
-                entries.add(new BarEntry(1, 700));
+                entries.add(0, new BarEntry(0, 600));
+                entries.add(1, new BarEntry(1, 700));
                 break;
         }
         return entries;
     }
 
-    private void setDataToChart(ArrayList<BarEntry> entry, ArrayList<String> beverage) {
-        ArrayList<BarEntry> entries = entry;
+    private void setDataToChart(ArrayList yValues, ArrayList<String> xValues, int mode) {
+        ArrayList<BarEntry> entries = yValues;
         BarDataSet dataSet = new BarDataSet(entries, "Beverages");
         ArrayList<Integer> colors = new ArrayList<>();
         colors.add(getResources().getColor(R.color.textColor));
@@ -176,18 +202,23 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
 
         mBinding.chart1.setData(data);
         mBinding.chart1.setScaleEnabled(false);
-        ArrayList<String> beverages = beverage;
+        ArrayList<String> beverages = xValues;
         XAxis xAxis = mBinding.chart1.getXAxis();
         xAxis.setTextColor(getResources().getColor(R.color.textColor));
         xAxis.setGridColor(getResources().getColor(R.color.black));
-        xAxis.setLabelCount(1);
+        xAxis.setLabelCount(entries.size());
         mBinding.chart1.getAxisLeft().setGridColor(getResources().getColor(R.color.black));
 
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new ValueFormatter() {
             @Override
-            public String getAxisLabel(float value, AxisBase axis) {
-                return beverages.get((int) value);
+            public String getFormattedValue(float value) {
+                if (value == 0.0) {
+                    return beverages.get(0);
+                } else if (value == 1.0) {
+                    return beverages.get(1);
+                }
+                return "";
             }
         });
         mBinding.chart1.getDescription().setEnabled(false);
@@ -202,13 +233,79 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
         mBinding.chart1.invalidate();
     }
 
+
+    private void sendThree(ArrayList yValues, ArrayList<String> xValues, int mode) {
+        ArrayList<BarEntry> entries = yValues;
+        BarDataSet dataSet = new BarDataSet(entries, "Beverages");
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(getResources().getColor(R.color.textColor));
+        dataSet.setColors(colors);
+        BarData data = new BarData(dataSet);
+        data.setValueTextSize(20f);
+        data.setValueFormatter(new valueFormatter());
+        data.setValueTextColor(getResources().getColor(R.color.textColor));
+        data.setBarWidth(0.5f);
+
+        mBinding.chart1.setData(data);
+        mBinding.chart1.setScaleEnabled(false);
+        ArrayList<String> beverages = xValues;
+        XAxis xAxis = mBinding.chart1.getXAxis();
+        xAxis.setTextColor(getResources().getColor(R.color.textColor));
+        xAxis.setGridColor(getResources().getColor(R.color.black));
+        xAxis.setLabelCount(entries.size());
+        mBinding.chart1.getAxisLeft().setGridColor(getResources().getColor(R.color.black));
+
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                if (value == 0.0) {
+                    return beverages.get(0);
+                } else if (value == 1.0) {
+                    return beverages.get(1);
+                } else if (value == 2.0) {
+                    return beverages.get(2);
+                }
+                return "";
+            }
+        });
+        mBinding.chart1.getDescription().setEnabled(false);
+        mBinding.chart1.getLegend().setEnabled(false);
+        mBinding.chart1.getAxisLeft().setDrawAxisLine(false);
+        mBinding.chart1.getAxisRight().setDrawAxisLine(false);
+        mBinding.chart1.getXAxis().setDrawAxisLine(false);
+        mBinding.chart1.getAxisLeft().setDrawGridLines(false);
+        mBinding.chart1.getXAxis().setDrawGridLines(false);
+        mBinding.chart1.getAxisRight().setDrawGridLines(false);
+        mBinding.chart1.setExtraOffsets(0, 0, 0, 0);
+        mBinding.chart1.invalidate();
+    }
+
+
     @Override
     public void OnDataReceived(String data) {
         handleResponse(data);
     }
 
     private void handleResponse(String data) {
-        alertDialog.dismiss();
+        String[] spiltData = data.split(";");
+        if (spiltData[0].substring(5, 7).equals("09")) {
+            if (spiltData[1].equals("ACK")) {
+                alertDialog.dismiss();
+                Toast.makeText(context, "CupCount Reset Success !", Toast.LENGTH_SHORT).show();
+            }
+        } else if (spiltData[0].substring(5, 7).equals("07")) {
+            String[] adminPassword = spiltData[2].split(","), maintenancePassword = spiltData[2].split(","), cupcountPassword = spiltData[3].split(","),
+                    ccKarak = spiltData[4].split(","), ccGKarak = spiltData[5].split(","), ccMKarak = spiltData[6].split(","),
+                    ccSulaimani = spiltData[7].split(","), ccCKarak = spiltData[8].split(","), ccMilk = spiltData[9].split(","),
+                    ccWater = spiltData[10].split(",");
+
+            ADMIN_PASSWORD = adminPassword[1];
+            MAINTENANCE_PASSWORD = maintenancePassword[1];
+            CUP_COUNT_PASSWORD = cupcountPassword[1];
+            setDataToChart(getChartData(0), getChartbevarage(0), 0);
+        }
+
     }
 
     @Override

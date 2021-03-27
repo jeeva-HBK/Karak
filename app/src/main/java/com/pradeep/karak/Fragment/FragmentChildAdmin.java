@@ -1,6 +1,7 @@
 package com.pradeep.karak.Fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,10 @@ public class FragmentChildAdmin extends Fragment {
     private FragmentChildAdminBinding mBinding;
     private String[] mainMenuList;
     BaseActivity mActivity;
+    String data = "";
+    public FragmentChildAdmin(String data) {
+        this.data = data;
+    }
 
     @Nullable
     @Override
@@ -32,9 +37,9 @@ public class FragmentChildAdmin extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mainMenuList = new String[]{"statistics", "Boil Time", "Set Dispense Ratio", "Set Password"};
-        mBinding.autoComplete.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(),R.drawable.bg_brown_bar));
-        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildStatistics(), "TAG_STATISTICS").commit();
+        mainMenuList = new String[]{"Statistics", "Boil Time", "Set Dispense Ratio", "Set Password"};
+        mBinding.autoComplete.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.bg_brown_bar));
+        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildStatistics(data), "INIT_STATISTICS").commit();
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
         mBinding.autoComplete.setAdapter(arrayAdapter);
 
@@ -43,16 +48,16 @@ public class FragmentChildAdmin extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 switch (position) {
                     case 0:
-                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildStatistics(), "TAG_BOILMODE").commit();
+                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildStatistics("emptyData"), "TAG_STATISTICS").commit();
                         break;
                     case 1:
-                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildBoilTime(), "TAG_STATISTICS").commit();
+                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildBoilTime(), "TAG_BOIL_TIME").commit();
                         break;
                     case 2:
-                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildDispenseRatio(), "TAG_STATISTICS").commit();
+                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildDispenseRatio(), "TAG_DISPENSE").commit();
                         break;
                     case 3:
-                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildSetPassword(), "TAG_STATISTICS").commit();
+                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildSetPassword(), "TAG_SET_PASSWORD").commit();
                         break;
                 }
             }
