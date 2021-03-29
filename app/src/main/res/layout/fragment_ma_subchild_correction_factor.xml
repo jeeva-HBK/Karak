@@ -386,7 +386,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline18" />
 
         <TextView
-            android:id="@+id/textView_go"
+            android:id="@+id/tv_correction_factor_submit"
             style="@style/textAppearence"
             android:layout_width="0dp"
             android:layout_height="0dp"

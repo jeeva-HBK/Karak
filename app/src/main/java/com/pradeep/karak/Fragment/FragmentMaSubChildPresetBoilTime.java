@@ -2,7 +2,6 @@ package com.pradeep.karak.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,17 @@ import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentMaSubchildPresetBoilTimeBinding;
 
+import static com.pradeep.karak.Others.ApplicationClass.GO_TO_OPERATOR_PAGE_MESSAGE_ID;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_1000ML;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_100ML;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_200ML;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_300ML;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_400ML;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_500ML;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_600ML;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_700ML;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_800ML;
+import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_900ML;
 import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_1000ML_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_100ML_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_200ML_SUB_ID;
@@ -28,6 +38,7 @@ import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_700ML_
 import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_800ML_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_900ML_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.PRESENT_BOIL_TIME_MESSAGE_ID;
+import static com.pradeep.karak.Others.ApplicationClass.PRESET_BOIL_TIME_READ_SUB_ID;
 
 public class FragmentMaSubChildPresetBoilTime extends Fragment implements BluetoothDataCallback {
     private static final String TAG = "PresentBoilTime";
@@ -58,6 +69,7 @@ public class FragmentMaSubChildPresetBoilTime extends Fragment implements Blueto
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
+        sendData(mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + PRESET_BOIL_TIME_READ_SUB_ID));
         mBinding.presetBoilSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,10 +106,45 @@ public class FragmentMaSubChildPresetBoilTime extends Fragment implements Blueto
 
     @Override
     public void OnDataReceived(String data) {
-    handleResponse(data);
+        handleResponse(data);
     }
 
     private void handleResponse(String data) {
+        String[] handleData = data.split(";");
+        if (handleData[0].substring(5, 7).equals("07")) {
+            String[] pbt100ml = handleData[1].split(","),
+                    pbt200ml = handleData[2].split(","),
+                    pbt300ml = handleData[3].split(","),
+                    pbt400ml = handleData[4].split(","),
+                    pbt500ml = handleData[5].split(","),
+                    pbt600ml = handleData[6].split(","),
+                    pbt700ml = handleData[7].split(","),
+                    pbt800ml = handleData[8].split(","),
+                    pbt900ml = handleData[9].split(","),
+                    pbt1000ml = handleData[10].split(",");
+            PRESENT_BOIL_100ML = pbt100ml[1];
+            PRESENT_BOIL_200ML = pbt200ml[1];
+            PRESENT_BOIL_300ML = pbt300ml[1];
+            PRESENT_BOIL_400ML = pbt400ml[1];
+            PRESENT_BOIL_500ML = pbt500ml[1];
+            PRESENT_BOIL_600ML = pbt600ml[1];
+            PRESENT_BOIL_700ML = pbt700ml[1];
+            PRESENT_BOIL_800ML = pbt800ml[1];
+            PRESENT_BOIL_900ML = pbt900ml[1];
+            PRESENT_BOIL_1000ML = pbt1000ml[1];
+            mBinding.edt100ml.setText(PRESENT_BOIL_100ML);
+            mBinding.edt200ml.setText(PRESENT_BOIL_200ML);
+            mBinding.edt300ml.setText(PRESENT_BOIL_300ML);
+            mBinding.edt400ml.setText(PRESENT_BOIL_400ML);
+            mBinding.edt500ml.setText(PRESENT_BOIL_500ML);
+            mBinding.edt600ml.setText(PRESENT_BOIL_600ML);
+            mBinding.edt700ml.setText(PRESENT_BOIL_700ML);
+            mBinding.edt800ml.setText(PRESENT_BOIL_800ML);
+            mBinding.edt900ml.setText(PRESENT_BOIL_900ML);
+            mBinding.edt1000ml.setText(PRESENT_BOIL_1000ML);
+        } else {
+            mAppClass.showSnackBar(getContext(), "Update successfully");
+        }
     }
 
     @Override

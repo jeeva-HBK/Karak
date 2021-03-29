@@ -41,7 +41,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     BaseActivity mActivity;
     Context context;
     AlertDialog alertDialog;
-    String data = "", cupKarak, cupGinger, cupSulaimani, cupMasala, cupCardmom, cupMilk, cupHotWater;
+    String data = "", cupKarak = "", cupGinger = "", cupSulaimani = "", cupMasala = "", cupCardmom = "", cupMilk = "", cupHotWater = "";
 
     public static final String TAG = "Statistics";
 

@@ -116,7 +116,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
         <EditText
-            android:id="@+id/txt_sulaimani_tea_gms"
+            android:id="@+id/txt_water_water_gms"
             style="@style/textgms"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
@@ -140,13 +140,11 @@
             style="@style/textpercup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginRight="5dp"
             android:text="percup"
-            app:layout_constraintBottom_toBottomOf="@+id/txt_sulaimani_tea_gms"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_water_water_gms"
             app:layout_constraintEnd_toEndOf="@+id/view8"
-            app:layout_constraintStart_toEndOf="@+id/txt_sulaimani_tea_gms"
-            app:layout_constraintTop_toTopOf="@id/txt_sulaimani_tea_gms" />
+            app:layout_constraintStart_toEndOf="@+id/txt_sulaimani_tea_gms" />
 
         <View
             android:id="@+id/view"

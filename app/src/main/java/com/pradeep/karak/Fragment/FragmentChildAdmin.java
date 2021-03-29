@@ -1,7 +1,6 @@
 package com.pradeep.karak.Fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +22,7 @@ public class FragmentChildAdmin extends Fragment {
     private String[] mainMenuList;
     BaseActivity mActivity;
     String data = "";
+
     public FragmentChildAdmin(String data) {
         this.data = data;
     }
@@ -37,7 +37,7 @@ public class FragmentChildAdmin extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mainMenuList = new String[]{"Statistics", "Boil Time", "Set Dispense Ratio", "Set Password"};
+        mainMenuList = new String[]{"Statistics", "Boil Time", "Set Dispense Ratio", "Set Password", "Serial Number"};
         mBinding.autoComplete.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.bg_brown_bar));
         getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildStatistics(data), "INIT_STATISTICS").commit();
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
@@ -58,6 +58,9 @@ public class FragmentChildAdmin extends Fragment {
                         break;
                     case 3:
                         getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildSetPassword(), "TAG_SET_PASSWORD").commit();
+                        break;
+                    case 4:
+                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildMachineNumber(), "TAG_MACHINE_NUMBER").commit();
                         break;
                 }
             }

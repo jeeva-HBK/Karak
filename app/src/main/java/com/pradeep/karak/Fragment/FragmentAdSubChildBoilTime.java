@@ -23,7 +23,16 @@ import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_HOT_WATER_SUB_
 import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_KARAK_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_MASALA_KARAK_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_MESSAGE_ID;
+import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME_READ_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.BOIL_TIME__SULAIMANI_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.CARDAMOM_KARAK_BOIL_TIME;
+import static com.pradeep.karak.Others.ApplicationClass.GINGER_KARAK_BOIL_TIME;
+import static com.pradeep.karak.Others.ApplicationClass.GO_TO_OPERATOR_PAGE_MESSAGE_ID;
+import static com.pradeep.karak.Others.ApplicationClass.HOTMILK_BOIL_TIME;
+import static com.pradeep.karak.Others.ApplicationClass.HOT_WATER_BOIL_TIME;
+import static com.pradeep.karak.Others.ApplicationClass.KARAK_BOIL_TIME;
+import static com.pradeep.karak.Others.ApplicationClass.MASALA_KARAK_BOIL_TIME;
+import static com.pradeep.karak.Others.ApplicationClass.SULAIMANI_BOIL_TIME;
 
 public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDataCallback {
     private FragmentAdSubchildBoiltimeBinding mBinding;
@@ -51,6 +60,9 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
+        mAppClass.sendData(getActivity(), FragmentAdSubChildBoilTime.this,
+                mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + BOIL_TIME_READ_SUB_ID), getContext());
+
         mBinding.txtBoilTimeSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +98,32 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
     }
 
     private void handleResponse(String data) {
-
+        String[] handleData = data.split(";");
+        if (handleData[0].substring(5, 7).equals("07")) {
+            String[] karakBoilTime = handleData[1].split(","),
+                    MasalaBoilTime = handleData[2].split(","),
+                    GingerBoilTime = handleData[3].split(","),
+                    CardamomBoilTime = handleData[4].split(","),
+                    SulaimaniBoilTime = handleData[5].split(","),
+                    HotMilkBoilTime = handleData[6].split(","),
+                    HotWaterBoilTime = handleData[7].split(",");
+            KARAK_BOIL_TIME = karakBoilTime[1];
+            MASALA_KARAK_BOIL_TIME = MasalaBoilTime[1];
+            GINGER_KARAK_BOIL_TIME = GingerBoilTime[1];
+            CARDAMOM_KARAK_BOIL_TIME = CardamomBoilTime[1];
+            SULAIMANI_BOIL_TIME = SulaimaniBoilTime[1];
+            HOTMILK_BOIL_TIME = HotMilkBoilTime[1];
+            HOT_WATER_BOIL_TIME = HotWaterBoilTime[1];
+            mBinding.edtBoilTimeKarak.setText(KARAK_BOIL_TIME);
+            mBinding.edtBoilTimeMasalaKarak.setText(MASALA_KARAK_BOIL_TIME);
+            mBinding.edtBoilTimeGingerKarak.setText(GINGER_KARAK_BOIL_TIME);
+            mBinding.edtBoilTimeCardmomKarak.setText(CARDAMOM_KARAK_BOIL_TIME);
+            mBinding.edtBoilTimeSulamani.setText(SULAIMANI_BOIL_TIME);
+            mBinding.edtBoilTimeMilk.setText(HOTMILK_BOIL_TIME);
+            mBinding.edtBoilTimeHotWater.setText(HOT_WATER_BOIL_TIME);
+        } else {
+            mAppClass.showSnackBar(getContext(), "Updated");
+        }
     }
 
     @Override

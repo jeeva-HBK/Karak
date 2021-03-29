@@ -81,7 +81,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline18" />
 
         <TextView
-            android:id="@+id/txt_boil_time_save"
+            android:id="@+id/txt_dr_save"
             style="@style/textAppearence"
             android:layout_width="0dp"
             android:layout_height="0dp"

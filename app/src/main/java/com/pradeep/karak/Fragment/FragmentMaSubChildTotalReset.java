@@ -1,6 +1,8 @@
 package com.pradeep.karak.Fragment;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,6 +21,8 @@ import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentMaSubchildTotalResetBinding;
 
+import static com.pradeep.karak.Others.ApplicationClass.GO_TO_OPERATOR_PAGE_MESSAGE_ID;
+import static com.pradeep.karak.Others.ApplicationClass.INDUCTION_HEATER_PROXIMITY_SENSOR_FIRMWARE;
 import static com.pradeep.karak.Others.ApplicationClass.TOTAL_RESET_MESSAGE_ID;
 
 public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothDataCallback {
@@ -40,6 +44,7 @@ public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothD
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
+        sendData(mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + INDUCTION_HEATER_PROXIMITY_SENSOR_FIRMWARE));
         mBinding.TotalReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +90,27 @@ public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothD
     }
 
     private void handleResponse(String data) {
-
+        String[] handleData = data.split(";");
+        if (handleData[0].substring(5, 7).equals("07")) {
+            String[] FirmWareVersion = handleData[3].split(",");
+            mBinding.txtFimwareAppVersion.setText(FirmWareVersion[1]);
+            String version = "";
+            try {
+                PackageInfo pInfo = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0);
+                version = pInfo.versionName;
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+            if (!version.equals("")) {
+                mBinding.txtMobileAppVersion.setText("v"+version);
+            } else {
+                mBinding.txtMobileAppVersion.setText("version_Error");
+            }
+        } else if (handleData[0].substring(5, 7).equals("17")) {
+            if (handleData[1].equals("ACK")) {
+                mAppClass.showSnackBar(getContext(), "Update successfully");
+            }
+        }
     }
 
     @Override
