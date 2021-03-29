@@ -37,6 +37,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/btn_disConnect"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/appbar"
+            app:layout_constraintEnd_toStartOf="@+id/btn_operator"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"

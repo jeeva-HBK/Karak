@@ -2,7 +2,6 @@ package com.pradeep.karak.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +16,11 @@ import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentAdSubchildSetpasswordBinding;
 
+import static com.pradeep.karak.Others.ApplicationClass.ADMIN_PASSWORD;
 import static com.pradeep.karak.Others.ApplicationClass.ADMIN_PASSWORD_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.CUP_COUNT_PASSWORD;
 import static com.pradeep.karak.Others.ApplicationClass.CUP_COUNT_PASSWORD_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.MAINTENANCE_PASSWORD;
 import static com.pradeep.karak.Others.ApplicationClass.MAINTENANCE_PASSWORD_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.SEND_PASSWORD_MESSAGE_ID;
 
@@ -45,6 +47,11 @@ public class FragmentAdSubChildSetPassword extends Fragment implements Bluetooth
         super.onViewCreated(view, savedInstanceState);
         mContext = getContext();
         mAppClass = (ApplicationClass) getActivity().getApplication();
+
+        mBinding.editTextAdminPassword.setText(ADMIN_PASSWORD);
+        mBinding.editTextMaintenancePassword.setText(MAINTENANCE_PASSWORD);
+        mBinding.editTextCupCountReset.setText(CUP_COUNT_PASSWORD);
+
         mBinding.viewSavePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +100,12 @@ public class FragmentAdSubChildSetPassword extends Fragment implements Bluetooth
     }
 
     private void handleResponse(String data) {
+        String[] splitData = data.split(";");
+        if (splitData[0].substring(5, 7).equals("12")) {
+            if (splitData[1].equals("ACK")) {
+                mAppClass.showSnackBar(getContext(),"Updated SuccessFully");
+            }
+        }
     }
 
     @Override

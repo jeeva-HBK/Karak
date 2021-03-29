@@ -84,7 +84,11 @@ public class FragmentMaSubChildFactoryReset extends Fragment implements Bluetoot
     }
 
     private void handleResponse(String data) {
-        alertDialog.dismiss();
+        String[] splitData = data.split(";");
+        if (splitData[0].substring(5,7).equals("16"))
+            if (splitData[1].equals("ACK")){
+                alertDialog.dismiss();
+            }
     }
 
     @Override

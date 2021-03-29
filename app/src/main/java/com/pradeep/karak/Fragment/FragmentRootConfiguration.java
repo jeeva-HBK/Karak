@@ -1,14 +1,18 @@
 package com.pradeep.karak.Fragment;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -18,6 +22,8 @@ import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentRootConfigurationBinding;
+
+import static com.pradeep.karak.Others.ApplicationClass.MAINTENANCE_PASSWORD;
 
 
 public class FragmentRootConfiguration extends Fragment implements BluetoothDataCallback {
@@ -57,7 +63,9 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
                         break;
 
                     case 1:
-                        getParentFragmentManager().beginTransaction().replace(mBinding.configFragHost.getId(), new FragmentChildMaintenance(), "TAG_MAINTENANCE").commit();
+                        if (checkPassword(MAINTENANCE_PASSWORD)) {
+                            getParentFragmentManager().beginTransaction().replace(mBinding.configFragHost.getId(), new FragmentChildMaintenance(), "TAG_MAINTENANCE").commit();
+                        }
                         break;
 
                     case 2:
@@ -70,6 +78,31 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
             mActivity.showProgress();
             mAppClass.sendData(getActivity(), FragmentRootConfiguration.this, mAppClass.framePacket("08;"), getContext());
         }));
+    }
+
+    private boolean checkPassword(String password) {
+        final boolean[] accessGranted = {false};
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_password, null);
+        dialogBuilder.setView(dialogView);
+        AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alertDialog.show();
+
+        EditText editText = dialogView.findViewById(R.id.edt_password);
+        View view = dialogView.findViewById(R.id.dialogPass_submit);
+
+        view.setOnClickListener((view1 -> {
+            if (editText.getText().toString().equals(password)) {
+                accessGranted[0] = true;
+            } else {
+                accessGranted[0] = false;
+                editText.setError("Password Wrong !");
+                return;
+            }
+        }));
+        return accessGranted[0];
     }
 
     @Override

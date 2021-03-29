@@ -39,7 +39,7 @@ public class ApplicationClass extends Application {
             MACHINE_NUMBER_MESSAGE_ID = "18;",
 
 
-    //10-> DispensingRatio
+    // 10 -> DispensingRatio
     KARAK_SUB_ID = "01,", KARAK_MILK_SUB_ID = "02,",
             KARAK_WATER_SUB_ID = "03,", MASALA_KARAK_TEA_SUB_ID = "04,", MASALA_KARAK_MASALA_SUB_ID = "05,",
             MASALA_KARAK_MILK_SUB_ID = "06,", MASALA_KARAK_WATER_SUB_ID = "07,", SULAIMANI_TEA_SUB_ID = "08,",
@@ -48,23 +48,23 @@ public class ApplicationClass extends Application {
             CARDAMOM_KARAK_CARDAMOM_SUB_ID = "15,", CARDMOM_KARAK_MILK_SUB_ID = "16,", CARDMOM_KARAK_WATER = "17,",
             MILK_SUB_ID = "18,", MILK_WATER_SUB_ID = "19,", HOT_WATER_SUB_ID = "20,",
 
-    // 11-> BoilTime
+    // 11 -> BoilTime
     BOIL_TIME_KARAK_SUB_ID = "01,",
             BOIL_TIME_MASALA_KARAK_SUB_ID = "02,", BOIL_TIME_GINGER_SUB_ID = "03,",
             BOIL_TIME_CARDAMOM_SUB_ID = "04,", BOIL_TIME__SULAIMANI_SUB_ID = "05,",
             BOIL_TIME_HOT_MILK_SUB_ID = "06,", BOIL_TIME_HOT_WATER_SUB_ID = "07,",
 
-    // 12-> SendPassword
+    // 12 -> SendPassword
     ADMIN_PASSWORD_SUB_ID = "01,", MAINTENANCE_PASSWORD_SUB_ID = "02,", CUP_COUNT_PASSWORD_SUB_ID = "03,",
 
 
-    //13->SendCorrectionFactor
+    // 13 -> SendCorrectionFactor
     KARAK_CORRECTION_FACTOR_SUB_ID = "01,", MASALA_KARAK_CORRECTION_FACTOR_SUB_ID = "02,",
             GINGER_KARAK_CORRECTION_FACTOR_SUB_ID = "03,", CARDAMOM_KARAK_CORRECTION_FACTOR_SUB_ID = "04,",
             MILK_CORRECTION_FACTOR_SUB_ID = "05,", WATER_CORRECTION_FACTOR_SUB_ID = "06,",
             SUGAR_CORRECTION_FACTOR_SUB_ID = "07,",
 
-    //14->SendFlowRate
+    // 14 -> SendFlowRate
     KARAK_FLOW_RATE_SUB_ID = "01,", MASALA_KARAK_FLOW_RATE_FACTOR_SUB_ID = "02,",
             GINGER_KARAK_FLOW_RATE_SUB_ID = "03,", CARDAMOM_KARAK_FLOW_RATE_SUB_ID = "04,",
             MILK_FLOW_RATE_SUB_ID = "05,", WATER_FLOW_RATE_SUB_ID = "06,",
@@ -78,7 +78,7 @@ public class ApplicationClass extends Application {
             PRESENT_BOIL_TIME_800ML_SUB_ID = "08,", PRESENT_BOIL_TIME_900ML_SUB_ID = "09,",
             PRESENT_BOIL_TIME_1000ML_SUB_ID = "10,",
 
-    //Data Read Packet
+    // Data Read Packet
     DISPENSING_READ_SUB_ID = "11;", BOIL_TIME_READ_SUB_ID = "31;",
             CORRECTION_FACTOR_READ_SUB_ID = "38", FLOW_RATE_READ_SUB_ID = "45;",
             PRESET_BOIL_TIME_READ_SUB_ID = "52;", INDUCTION_HEATER_PROXIMITY_SENSOR_FIRMWARE = "62;";
@@ -86,7 +86,7 @@ public class ApplicationClass extends Application {
     // Static_Keys
     public static String KEY_BEVERAGE_SELECTION = "pckBeverageSelection", KEY_CUP = "pckCup";
 
-    //ParameterKeyForDispensingRatio
+    // ParameterKeyForDispensingRatio
     public static String DR_KARAK = "", DR_KARAK_MILK = "", DR_KARAK_WATER = "",
             DR_MASALA_KARAK_TEA = "", DR_MASALA_KARAK_MASALA = "", DR_MASALA_KARAK_MILK = "",
             DR_MASALA_KARAKA_WATER = "", DR_SULAIMANI_TEA = "", DR_SULAIMANI_WATER = "",
@@ -95,18 +95,18 @@ public class ApplicationClass extends Application {
             DR_CARDAMOM_KARAK_MILK = "", DR_CARDAMOM_KARAK_WATER = "", DR_MILK = "",
             DR_MILK_WATER = "", DR_HOT_WATER = "";
 
-    //ParameterKeyForBoilTime
+    // ParameterKeyForBoilTime
     public static String KARAK_BOIL_TIME = "", MASALA_KARAK_BOIL_TIME = "",
             GINGER_KARAK_BOIL_TIME = "", CARDAMOM_KARAK_BOIL_TIME = "",
             SULAIMANI_BOIL_TIME = "", HOTMILK_BOIL_TIME = "", HOT_WATER_BOIL_TIME = "";
 
-    //ParameterKeyForCorrectionFactor
+    // ParameterKeyForCorrectionFactor
     public static String KARAK_CORRECTION_FACTOR = "", MASALA_KARAK_CORRECTION_FACTOR = "",
             GINGER_KARAK_CORRECTION_FACTOR = "", CARDAMOM_KARAK_CORRECTION_FACTOR = "",
             MILK_CORRECTION_FACTOR = "", WATER_CORRECTION_FACTOR = "",
             SUGAR_CORRECTION_FACTOR = "";
 
-    //ParameterKeyForFlowRate
+    // ParameterKeyForFlowRate
     public static String KARAK_FLOW_RATE = "", MASALA_KARAK_FLOW_RATE = "",
             GINGER_KARAK_FLOW_RATE = "", CARDAMOM_KARAK_FLOW_RATE = "",
             MILK_FLOW_RATE = "", WATER_FLOW_RATE = "",

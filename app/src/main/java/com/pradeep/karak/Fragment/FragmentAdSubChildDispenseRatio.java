@@ -88,7 +88,7 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
         mBinding.IvAdRightArrow.setVisibility(View.VISIBLE);
         mBinding.viewPagerMaintenance.setOffscreenPageLimit(6);
         //mActivity.showProgress();
-        sendData (mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + DISPENSING_READ_SUB_ID));
+        sendData(mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + DISPENSING_READ_SUB_ID));
 
         pageCount.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
@@ -220,8 +220,10 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
             DR_HOT_WATER = HotWater[1];
             mBinding.viewPagerMaintenance.setAdapter(new DispenseRatioPagerAdapter(getActivity()));
             mBinding.viewPagerMaintenance.setUserInputEnabled(false);
-        } else {
-            mAppClass.showSnackBar(getContext(),"Update successfully");
+        } else if (handleData[0].substring(5, 7).equals("10")) {
+            if (handleData[1].equals("ACK")) {
+                mAppClass.showSnackBar(getContext(), "Update successfully");
+            }
         }
     }
 

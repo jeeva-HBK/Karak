@@ -142,8 +142,10 @@ public class FragmentMaSubChildPresetBoilTime extends Fragment implements Blueto
             mBinding.edt800ml.setText(PRESENT_BOIL_800ML);
             mBinding.edt900ml.setText(PRESENT_BOIL_900ML);
             mBinding.edt1000ml.setText(PRESENT_BOIL_1000ML);
-        } else {
-            mAppClass.showSnackBar(getContext(), "Update successfully");
+        } else if (handleData[0].substring(5, 7).equals("15")) {
+            if (handleData[1].equals("ACK")) {
+                mAppClass.showSnackBar(getContext(), "Update successfully");
+            }
         }
     }
 

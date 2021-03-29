@@ -131,7 +131,6 @@ public class SerialSocket extends BluetoothGattCallback {
         if (connected || gatt != null) {
             return true;
         }
-
         return false;
     }
 

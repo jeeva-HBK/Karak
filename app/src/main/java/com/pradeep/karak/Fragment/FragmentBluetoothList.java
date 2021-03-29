@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -49,6 +50,8 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
     BluetoothDevice mBleDevice;
     boolean dataReceived = false;
 
+    CountDownTimer connecTimer;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -91,8 +94,18 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                                 public void OnConnectSuccess() {
                                     try {
                                         stopScan();
+                                        connecTimer = new CountDownTimer(1000, 2000) {
+                                            @Override
+                                            public void onTick(long l) {
 
-                                        sendPacket(mAppClass.framePacket("01;"));
+                                            }
+
+                                            @Override
+                                            public void onFinish() {
+                                                sendPacket(mAppClass.framePacket("01;"));
+                                            }
+                                        };
+                                        starTimer();
                                         mActivity.runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
@@ -148,6 +161,14 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                 startScan();
             }
         }));
+    }
+
+    private void starTimer() {
+        connecTimer.start();
+    }
+
+    private void stopTimer() {
+        connecTimer.cancel();
     }
 
     private void sendPacket(String packet) {
@@ -222,6 +243,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
     }
 
     private void handleResponse(String data) {
+        stopTimer();
         dataReceived = true;
         BluetoothHelper helper = BluetoothHelper.getInstance(getActivity());
         String[] spiltData = data.split(";");
@@ -231,7 +253,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                     mActivity.updateNavigationUi(R.navigation.navigation);
                 } else if (spiltData[1].equals("01")) {
                     Toast.makeText(mContext, "Dispensing Please Wait!", Toast.LENGTH_SHORT).show();
-                } // PSIPS07;01,0000;02,0000;03,0000;04,00000;05,00000;06,00000;07,00000;08,00000;09,00000;10,00000;11,000;
+                }
             }
             helper.setConnected(true);
         } else if (spiltData[0].startsWith("03", 5)) {
