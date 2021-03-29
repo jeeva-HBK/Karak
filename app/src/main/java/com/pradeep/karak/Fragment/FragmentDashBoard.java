@@ -3,10 +3,12 @@ package com.pradeep.karak.Fragment;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -29,6 +31,7 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
     FragmentDashboardBinding mBinding;
     ApplicationClass mAppclass;
     BaseActivity mActivity;
+    private boolean dataReceived = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,7 +62,22 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
 
     private void sendPacket(String framedPacket) {
         mActivity.showProgress();
+        dataReceived = false;
         mAppclass.sendData(getActivity(), FragmentDashBoard.this, framedPacket, getContext());
+        mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!dataReceived) {
+                            Toast.makeText(getContext(), "Timed Out!", Toast.LENGTH_SHORT).show();
+                            mActivity.dismissProgress();
+                        }
+                    }
+                }, 10000);
+            }
+        });
     }
 
     private void checkPassword(String password, Bundle b) {
@@ -78,6 +96,9 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
             if (editText.getText().toString().equals(password)) {
                 mAppclass.navigateTo(getActivity(), R.id.action_dashboard_to_fragmentConfiguration, b);
                 alertDialog.dismiss();
+            } else {
+                Toast.makeText(getContext(),
+                        "Password wrong!", Toast.LENGTH_SHORT).show();
             }
         }));
     }
@@ -123,7 +144,8 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
     }
 
     private void handleResponse(String data) {
-        data = "PSIPS07;01,0000;02,0000;03,0000;04,00000;05,00000;06,00000;07,00000;08,00000;09,00000;10,00000;CRC;PSIPE";
+        ///  data = "PSIPS07;01,0000;02,0000;03,0000;04,12345;05,54321;06,98765;07,56789;08,55555;09,77777;10,16164;CRC;PSIPE";
+        dataReceived = true;
         String[] spiltData = data.split(";");
         if (spiltData[0].substring(5, 7).equals("07")) {
             mActivity.dismissProgress();

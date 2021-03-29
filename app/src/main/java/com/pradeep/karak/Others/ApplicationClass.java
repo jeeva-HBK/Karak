@@ -30,8 +30,7 @@ public class ApplicationClass extends Application {
             DISPENSING_RATIO_MESSAGE_ID = "10;",
             BOIL_TIME_MESSAGE_ID = "11;",
             SEND_PASSWORD_MESSAGE_ID = "12;",
-
-    PRESENT_BOIL_TIME_MESSAGE_ID = "15;",
+            PRESENT_BOIL_TIME_MESSAGE_ID = "15;",
             FACTORY_RESET_MESSAGE_ID = "16;",
             TOTAL_RESET_MESSAGE_ID = "17;",
 
@@ -39,7 +38,6 @@ public class ApplicationClass extends Application {
     ADMIN_PASSWORD_SUB_ID = "01,", MAINTENANCE_PASSWORD_SUB_ID = "02,", CUP_COUNT_PASSWORD_SUB_ID = "03,",
 
     // BoilTime
-
     BOIL_TIME_KARAK_SUB_ID = "01,",
             BOIL_TIME_MASALA_KARAK_SUB_ID = "02,", BOIL_TIME_GINGER_SUB_ID = "03,",
             BOIL_TIME_CARDAMOM_SUB_ID = "04,", BOIL_TIME__SULAIMANI_SUB_ID = "05,",
@@ -63,10 +61,7 @@ public class ApplicationClass extends Application {
             MILK_SUB_ID = "18,", MILK_WATER_SUB_ID = "19,",
 
     // Passwords
-    ADMIN_PASSWORD = "", MAINTENANCE_PASSWORD = "", CUP_COUNT_PASSWORD = "",
-
-    // CupCount
-    KARAK_CUPCOUNT = "", GINGER_KARAK_CUPCOUNT = "", MASALA_KARAK_CUPCOUNT = "", SULAIMANI_CUPCOUNT = "", CARDAMOM_CUPCOUNT = "", MILK_CUPCOUNT = "", WATER_CUPCOUNT = "";
+    ADMIN_PASSWORD = "", MAINTENANCE_PASSWORD = "", CUP_COUNT_PASSWORD = "";
 
     // Static_Keys
     public static String KEY_BEVERAGE_SELECTION = "pckBeverageSelection", KEY_CUP = "pckCup";

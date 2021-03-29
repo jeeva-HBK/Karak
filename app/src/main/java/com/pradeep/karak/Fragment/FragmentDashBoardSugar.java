@@ -136,7 +136,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
             String[] status = spiltData[1].split(","), boilTime = spiltData[2].split(","), bevarageName = spiltData[3].split(",");
             mActivity.dismissProgress();
 
-            if (status[1].equals("1")) {
+            if (status[1].equals("01")) {
                 showPanNotAvailable();
             } else {
                 switch (bevarageName[1]) {
@@ -163,6 +163,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
                         break;
                 }
             }
+            sendPacket(data);
         } // Pan Release
         else if (spiltData[0].substring(5, 7).equals("05")) {
             if (spiltData[1].equals("ACK")) {
@@ -172,7 +173,6 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
         // Dispense Completed
         else if (spiltData[0].substring(5, 7).equals("04")) {
             sendPacket(mAppclass.framePacket("04;ACK:"));
-
         }
         // Cancel Dispense
         else if (spiltData[0].substring(5, 7).equals("06")) {

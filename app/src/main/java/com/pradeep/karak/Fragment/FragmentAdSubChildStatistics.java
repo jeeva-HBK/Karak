@@ -41,7 +41,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     BaseActivity mActivity;
     Context context;
     AlertDialog alertDialog;
-    String data = "";
+    String data = "", cupKarak, cupGinger, cupSulaimani, cupMasala, cupCardmom, cupMilk, cupHotWater;
 
     public static final String TAG = "Statistics";
 
@@ -88,17 +88,18 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
                     case 1:
                         mBinding.IvAdLeftArrow.setVisibility(View.VISIBLE);
                         mBinding.IvAdRightArrow.setVisibility(View.VISIBLE);
-                        // setDataToChart(getChartData(1), getChartbevarage(1), 1);
-                        sendThree(getChartData(1), getChartbevarage(1), 0);
+                        setDataToChart(getChartData(1), getChartbevarage(1), 1);
+                        // sendThree(getChartData(1), getChartbevarage(1), );
                         break;
                     case 2:
                         mBinding.IvAdLeftArrow.setVisibility(View.VISIBLE);
                         mBinding.IvAdRightArrow.setVisibility(View.GONE);
-                        setDataToChart(getChartData(2), getChartbevarage(2), 2);
+                        setDataToChart(getChartData(2), getChartbevarage(2), 0);
                         break;
                 }
             }
         });
+
         mBinding.IvAdLeftArrow.setOnClickListener((view1 -> {
             pageCount.set(pageCount.get() - 1);
         }));
@@ -147,20 +148,17 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
             case 0:
                 values.add("Karak");
                 values.add("Sulaimani");
-                //   str = new String[]{"Karak", "sulaimani"};
                 break;
 
             case 1:
-                values.add("Cardomon Karak");
-                values.add("Ginger Karak");
-                values.add("Masala Karak");
-                //  str = new String[]{"Cardomon Karak", "Ginger Karak", "Masala karak"};
+                values.add("Cardomon");
+                values.add("Ginger");
+                values.add("Masala");
                 break;
 
             case 2:
                 values.add("Milk");
                 values.add("water");
-                //  str = new String[]{"Milk", "Water"};
                 break;
         }
         return values;
@@ -170,19 +168,19 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
         ArrayList<BarEntry> entries = new ArrayList<>();
         switch (mode) {
             case 0:
-                entries.add(0, new BarEntry(0, 100));
-                entries.add(1, new BarEntry(1, 200));
+                entries.add(0, new BarEntry(0, Float.parseFloat(cupKarak)));
+                entries.add(1, new BarEntry(1, Float.parseFloat(cupSulaimani)));
                 break;
 
             case 1:
-                entries.add(0, new BarEntry(0, 300));
-                entries.add(1, new BarEntry(1, 400));
-                entries.add(2, new BarEntry(2, 500));
+                entries.add(0, new BarEntry(0, Float.parseFloat(cupCardmom)));
+                entries.add(1, new BarEntry(1, Float.parseFloat(cupGinger)));
+                entries.add(2, new BarEntry(2, Float.parseFloat(cupMasala)));
                 break;
 
             case 2:
-                entries.add(0, new BarEntry(0, 600));
-                entries.add(1, new BarEntry(1, 700));
+                entries.add(0, new BarEntry(0, Float.parseFloat(cupMilk)));
+                entries.add(1, new BarEntry(1, Float.parseFloat(cupHotWater)));
                 break;
         }
         return entries;
@@ -210,17 +208,34 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
         mBinding.chart1.getAxisLeft().setGridColor(getResources().getColor(R.color.black));
 
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setValueFormatter(new ValueFormatter() {
-            @Override
-            public String getFormattedValue(float value) {
-                if (value == 0.0) {
-                    return beverages.get(0);
-                } else if (value == 1.0) {
-                    return beverages.get(1);
+
+        if (mode == 0) {
+            xAxis.setValueFormatter(new ValueFormatter() {
+                @Override
+                public String getFormattedValue(float value) {
+                    if (value == 0.0) {
+                        return beverages.get(0);
+                    } else if (value == 1.0) {
+                        return beverages.get(1);
+                    }
+                    return "";
                 }
-                return "";
-            }
-        });
+            });
+        } else if (mode == 1) {
+            xAxis.setValueFormatter(new ValueFormatter() {
+                @Override
+                public String getFormattedValue(float value) {
+                    if (value == 0.0) {
+                        return beverages.get(0);
+                    } else if (value == 1.0) {
+                        return beverages.get(1);
+                    } else if (value == 2.0) {
+                        return beverages.get(2);
+                    }
+                    return "";
+                }
+            });
+        }
         mBinding.chart1.getDescription().setEnabled(false);
         mBinding.chart1.getLegend().setEnabled(false);
         mBinding.chart1.getAxisLeft().setDrawAxisLine(false);
@@ -232,55 +247,6 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
         mBinding.chart1.setExtraOffsets(0, 0, 0, 0);
         mBinding.chart1.invalidate();
     }
-
-
-    private void sendThree(ArrayList yValues, ArrayList<String> xValues, int mode) {
-        ArrayList<BarEntry> entries = yValues;
-        BarDataSet dataSet = new BarDataSet(entries, "Beverages");
-        ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(getResources().getColor(R.color.textColor));
-        dataSet.setColors(colors);
-        BarData data = new BarData(dataSet);
-        data.setValueTextSize(20f);
-        data.setValueFormatter(new valueFormatter());
-        data.setValueTextColor(getResources().getColor(R.color.textColor));
-        data.setBarWidth(0.5f);
-
-        mBinding.chart1.setData(data);
-        mBinding.chart1.setScaleEnabled(false);
-        ArrayList<String> beverages = xValues;
-        XAxis xAxis = mBinding.chart1.getXAxis();
-        xAxis.setTextColor(getResources().getColor(R.color.textColor));
-        xAxis.setGridColor(getResources().getColor(R.color.black));
-        xAxis.setLabelCount(entries.size());
-        mBinding.chart1.getAxisLeft().setGridColor(getResources().getColor(R.color.black));
-
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setValueFormatter(new ValueFormatter() {
-            @Override
-            public String getFormattedValue(float value) {
-                if (value == 0.0) {
-                    return beverages.get(0);
-                } else if (value == 1.0) {
-                    return beverages.get(1);
-                } else if (value == 2.0) {
-                    return beverages.get(2);
-                }
-                return "";
-            }
-        });
-        mBinding.chart1.getDescription().setEnabled(false);
-        mBinding.chart1.getLegend().setEnabled(false);
-        mBinding.chart1.getAxisLeft().setDrawAxisLine(false);
-        mBinding.chart1.getAxisRight().setDrawAxisLine(false);
-        mBinding.chart1.getXAxis().setDrawAxisLine(false);
-        mBinding.chart1.getAxisLeft().setDrawGridLines(false);
-        mBinding.chart1.getXAxis().setDrawGridLines(false);
-        mBinding.chart1.getAxisRight().setDrawGridLines(false);
-        mBinding.chart1.setExtraOffsets(0, 0, 0, 0);
-        mBinding.chart1.invalidate();
-    }
-
 
     @Override
     public void OnDataReceived(String data) {
@@ -303,6 +269,14 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
             ADMIN_PASSWORD = adminPassword[1];
             MAINTENANCE_PASSWORD = maintenancePassword[1];
             CUP_COUNT_PASSWORD = cupcountPassword[1];
+
+            cupKarak = ccKarak[1];
+            cupGinger = ccGKarak[1];
+            cupCardmom = ccCKarak[1];
+            cupMasala = ccMKarak[1];
+            cupSulaimani = ccSulaimani[1];
+            cupMilk = ccMilk[1];
+            cupHotWater = ccWater[1];
             setDataToChart(getChartData(0), getChartbevarage(0), 0);
         }
 

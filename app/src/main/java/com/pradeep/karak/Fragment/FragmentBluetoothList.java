@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,18 +36,18 @@ import java.util.List;
 import java.util.Map;
 
 public class FragmentBluetoothList extends Fragment implements BluetoothDataCallback {
+    private static final String TAG = "DialogBluetoothList";
     DialogBluetoothlistBinding mBinding;
     BaseActivity mActivity;
     ArrayList<String> deviceList;
     ArrayList<Map<String, String>> mDeviceList;
     Context mContext;
     ApplicationClass mAppClass;
-    private static final String TAG = "DialogBluetoothList";
-
     // Ble
     ArrayAdapter<String> listAdapter;
     List<BluetoothDevice> scannedDevices;
     BluetoothDevice mBleDevice;
+    boolean dataReceived = false;
 
     @Nullable
     @Override
@@ -90,11 +91,26 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                                 public void OnConnectSuccess() {
                                     try {
                                         stopScan();
+
                                         sendPacket(mAppClass.framePacket("01;"));
+                                        mActivity.runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                new Handler().postDelayed(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        if (!dataReceived) {
+                                                            mAppClass.showSnackBar(getContext(), "Timed Out");
+                                                            mActivity.dismissProgress();
+                                                            startScan();
+                                                        }
+                                                    }
+                                                }, 10000);
+                                            }
+                                        });
                                     } catch (Exception e) {
                                         stopScan();
                                         Log.e(TAG, "OnConnectSuccess: Catch");
-                                        mActivity.dismissProgress();
                                         mBinding.txtConnect.setText("Rescan");
                                         mAppClass.showSnackBar(mContext, "Error Occurred");
                                         e.printStackTrace();
@@ -135,6 +151,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
     }
 
     private void sendPacket(String packet) {
+        dataReceived = false;
         mAppClass.sendData(getActivity(), FragmentBluetoothList.this, packet, getContext());
     }
 
@@ -148,7 +165,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
     private void startScan() {
         deviceList.clear();
         listAdapter.notifyDataSetChanged();
-        //mBinding.btnScan.setText(R.string.scanning);
+        // mBinding.btnScan.setText(R.string.scanning);
         mBinding.btnScan.setEnabled(false);
         BluetoothHelper helper = BluetoothHelper.getInstance(getActivity());
         helper.turnOn();
@@ -205,9 +222,10 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
     }
 
     private void handleResponse(String data) {
+        dataReceived = true;
         BluetoothHelper helper = BluetoothHelper.getInstance(getActivity());
         String[] spiltData = data.split(";");
-        if (spiltData[0].substring(5, 7).equals("01")) {
+        if (spiltData[0].startsWith("01", 5)) {
             if (spiltData[2].equals("ACK")) {
                 if (spiltData[1].equals("00")) {
                     mActivity.updateNavigationUi(R.navigation.navigation);
@@ -216,7 +234,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                 } // PSIPS07;01,0000;02,0000;03,0000;04,00000;05,00000;06,00000;07,00000;08,00000;09,00000;10,00000;11,000;
             }
             helper.setConnected(true);
-        } else if (spiltData[0].substring(5, 7).equals("03")) {
+        } else if (spiltData[0].startsWith("03", 5)) {
             String[] status = spiltData[1].split(","), boilTime = spiltData[2].split(","), bevarageName = spiltData[3].split(",");
 
             if (status[1].equals("1")) {
@@ -247,13 +265,13 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                 }
             }
         } // Pan Release
-        else if (spiltData[0].substring(5, 7).equals("05")) {
+        else if (spiltData[0].startsWith("05", 5)) {
             if (spiltData[1].equals("ACK")) {
                 Toast.makeText(getContext(), "Pan Release Ack", Toast.LENGTH_SHORT).show();
             }
         }
         // Dispense Completed
-        else if (spiltData[0].substring(5, 7).equals("04")) {
+        else if (spiltData[0].startsWith("04", 5)) {
             sendPacket(mAppClass.framePacket("04;ACK:"));
         }
 
