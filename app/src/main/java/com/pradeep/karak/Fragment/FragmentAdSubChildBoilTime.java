@@ -2,6 +2,7 @@ package com.pradeep.karak.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,8 +122,11 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
             mBinding.edtBoilTimeSulamani.setText(SULAIMANI_BOIL_TIME);
             mBinding.edtBoilTimeMilk.setText(HOTMILK_BOIL_TIME);
             mBinding.edtBoilTimeHotWater.setText(HOT_WATER_BOIL_TIME);
-        } else {
-            mAppClass.showSnackBar(getContext(), "Updated");
+
+        } else if (handleData[0].substring(5, 7).equals("11")) {
+            if (handleData[0].equals("ACK")) {
+                mAppClass.showSnackBar(getContext(), "Updated");
+            }// TODO: 31-03-2021 check here
         }
     }
 

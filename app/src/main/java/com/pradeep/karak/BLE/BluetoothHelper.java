@@ -13,6 +13,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.pradeep.karak.ENUM.ConnectStatus;
+import com.pradeep.karak.Others.UtilMethods;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -363,12 +364,12 @@ public class BluetoothHelper implements SerialListener {
                         }
                     }
                     if (dataCallback != null) {
-                        /*if (UtilMethods.checkCRC(builder.toString(), splitted[splitted.length - 1])) {
+                     /*   if (UtilMethods.checkCRC(builder.toString(), splitted[splitted.length - 1])) {
                             dataCallback.OnDataReceived(builder.toString());
                         } else {
                             dataCallback.OnDataReceivedError(new Exception("Invalid CRC"));
-                        }*/
-                        dataCallback.OnDataReceived(framedData);
+                        }
+                        dataCallback.OnDataReceived(framedData);*/
                         Log.e(TAG, "Received <--" + framedData);
                     } else {
                         Toast.makeText(mContext, "Please Restart and Try Again", Toast.LENGTH_SHORT).show();
