@@ -46,8 +46,6 @@ public class FragmentMaSubChildCorrectionFactor extends Fragment implements Blue
     String MilkParameter;
     String WaterParameter;
     String SugarParamter;
-    int retryCount = 0;
-    String lastSentPacket = "";
     BaseActivity mActivity;
 
     @Nullable
@@ -76,7 +74,6 @@ public class FragmentMaSubChildCorrectionFactor extends Fragment implements Blue
     private void send(String framedPacket) {
         mActivity.showProgress();
         mAppClass.sendData(getActivity(), FragmentMaSubChildCorrectionFactor.this, framedPacket, getContext());
-        lastSentPacket = framedPacket;
     }
 
     private String framePacket() {

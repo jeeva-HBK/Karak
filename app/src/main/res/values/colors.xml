@@ -8,7 +8,7 @@
     <color name="cream">#fbcbc9</color>
     <color name="trans">#80000000</color>
     <color name="textColor">#FFC4A5</color>
-
+    <color name="colorAccent">#fbcbc9</color>
     <!--Primary - LIGHT-->
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#2f2f2f</color>
