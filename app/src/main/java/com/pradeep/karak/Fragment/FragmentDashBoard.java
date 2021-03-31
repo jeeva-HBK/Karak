@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentDashboardBinding;
+
 
 import static com.pradeep.karak.Others.ApplicationClass.ADMIN_PASSWORD;
 import static com.pradeep.karak.Others.ApplicationClass.CUP_COUNT_PASSWORD;
@@ -47,10 +49,12 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
         mActivity.dismissProgress();
         mBinding.btnOperator.setOnClickListener(view1 -> {
             sendPacket(mAppclass.framePacket("07;01;"));
-          /*  Bundle b = new Bundle();
-            b.putString("CUPCOUNT", "myData");
-            checkPassword("0000", b);*/
         });
+
+        mBinding.btnDisConnect.setOnClickListener((view1 -> {
+            confirmDisconnect();
+        }));
+
         mBinding.vKarak.setOnClickListener(this);
         mBinding.vGingerKarak.setOnClickListener(this);
         mBinding.vSulaimani.setOnClickListener(this);
@@ -78,6 +82,34 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
                 }, 10000);
             }
         });
+    }
+
+    private void confirmDisconnect() {
+        AlertDialog.Builder disconnectDialog = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_disconnect, null);
+        disconnectDialog.setView(dialogView);
+        AlertDialog alertDialog = disconnectDialog.create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alertDialog.show();
+
+        TextView txtView = dialogView.findViewById(R.id.dialogPass);
+        TextView txtView1 = dialogView.findViewById(R.id.dialogPass_t);
+        txtView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAppclass.disconnect();
+                mActivity.updateNavigationUi(R.navigation.scan);
+                alertDialog.dismiss();
+            }
+        });
+        txtView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+
     }
 
     private void checkPassword(String password, Bundle b) {

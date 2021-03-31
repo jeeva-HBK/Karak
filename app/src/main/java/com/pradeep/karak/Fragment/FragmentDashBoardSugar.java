@@ -34,6 +34,9 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
     private static final String TAG = "FragmentDashBoardSugar";
 
     AlertDialog dispenseAlert, panAlert, confirmDispenseAlert;
+    ImageView iv;
+    TextView tv;
+    boolean isVisible = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -140,26 +143,69 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
                 showPanNotAvailable();
             } else {
                 switch (bevarageName[1]) {
-                    case "1":
-                        showDispenseAlert("Karak", R.drawable.dispense_back);
+                    case "01":
+                        if (!isVisible) {
+                            showDispenseAlert("Karak", R.drawable.dispense_back);
+                        } else {
+                            changeDispenseMsg("Karak", R.drawable.dispense_back);
+                        }
                         break;
-                    case "2":
-                        showDispenseAlert("Ginger Karak", R.drawable.bg_app_button);
+                    case "02":
+                        if (!isVisible) {
+                            showDispenseAlert("Ginger Karak", R.drawable.bg_app_button);
+                        } else {
+                            changeDispenseMsg("Ginger Karak", R.drawable.bg_app_button);
+                        }
                         break;
-                    case "3":
-                        showDispenseAlert("Sulaimani", R.drawable.bg_top_curved);
+                    case "03":
+                        if (!isVisible) {
+                            showDispenseAlert("Sulaimani", R.drawable.bg_top_curved);
+                        } else {
+                            changeDispenseMsg("Sulaimani", R.drawable.bg_top_curved);
+                        }
                         break;
-                    case "4":
-                        showDispenseAlert("Masala Karak", R.drawable.ic_bg_box);
+                    case "04":
+                        if (!isVisible) {
+                            showDispenseAlert("Masala Karak", R.drawable.ic_bg_box);
+                        } else {
+                            changeDispenseMsg("Masala Karak", R.drawable.ic_bg_box);
+                        }
                         break;
-                    case "5":
-                        showDispenseAlert("Cardomom Karak", R.drawable.ic_camera);
+                    case "05":
+                        if (!isVisible) {
+                            showDispenseAlert("Cardomom Karak", R.drawable.ic_camera);
+                        } else {
+                            changeDispenseMsg("Cardomom Karak", R.drawable.ic_camera);
+                        }
                         break;
-                    case "6":
-                        showDispenseAlert("Hot milk", R.drawable.ic_heart);
+                    case "06":
+                        if (!isVisible) {
+                            showDispenseAlert("Hot milk", R.drawable.ic_heart);
+                        } else {
+                            changeDispenseMsg("Hot milk", R.drawable.ic_heart);
+                        }
                         break;
-                    case "7":
-                        showDispenseAlert("Hot Water", R.drawable.ic_operator);
+                    case "07":
+                        if (!isVisible) {
+                            showDispenseAlert("Hot Water", R.drawable.ic_operator);
+                        } else {
+                            changeDispenseMsg("Hot Water", R.drawable.ic_operator);
+                        }
+                        break;
+                }
+
+                switch (status[1]) {
+                    case "02":
+                        mAppclass.showSnackBar(getContext(), "Dispensing Milk & Water");
+                        break;
+                    case "03":
+                        mAppclass.showSnackBar(getContext(), "Preheating");
+                        break;
+                    case "04":
+                        mAppclass.showSnackBar(getContext(), "Dispensing ingredients");
+                        break;
+                    case "05":
+                        mAppclass.showSnackBar(getContext(), "Boiling");
                         break;
                 }
             }
@@ -173,12 +219,20 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
         // Dispense Completed
         else if (spiltData[0].substring(5, 7).equals("04")) {
             sendPacket(mAppclass.framePacket("04;ACK:"));
+            if (dispenseAlert.isShowing()) {
+                dispenseAlert.dismiss();
+            }
+            mAppclass.showSnackBar(getContext(), "Dispense Completed !");
+            mActivity.updateNavigationUi(R.navigation.navigation);
         }
         // Cancel Dispense
         else if (spiltData[0].substring(5, 7).equals("06")) {
             if (spiltData[1].equals("ACK")) {
                 Toast.makeText(getContext(), "Dispense Canceled !", Toast.LENGTH_SHORT).show();
                 mActivity.updateNavigationUi(R.navigation.navigation);
+                if (panAlert.isShowing()) {
+                    panAlert.dismiss();
+                }
             }
         }
     }
@@ -196,7 +250,6 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
             sendPacket(mAppclass.framePacket("05;"));
             panAlert.dismiss();
             mActivity.showProgress();
-            // TODO: 26-03-2021 after PanRelase
         }));
 
         cancel.setOnClickListener(view -> {
@@ -214,14 +267,20 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
         View dialogView2 = inflater.inflate(R.layout.dialog_dispense, null);
         dialogBuilder2.setView(dialogView2);
 
-        ImageView iv = dialogView2.findViewById(R.id.dispenseAlertImageView);
-        TextView tV = dialogView2.findViewById(R.id.dispenseAlertTextView);
+        iv = dialogView2.findViewById(R.id.dispenseAlertImageView);
+        tv = dialogView2.findViewById(R.id.dispenseAlertTextView);
         iv.setBackgroundResource(resourceID);
-        tV.setText(bevarageName);
+        tv.setText(bevarageName);
 
-        AlertDialog dispenseAlert = dialogBuilder2.create();
+        dispenseAlert = dialogBuilder2.create();
         dispenseAlert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dispenseAlert.show();
+        isVisible = true;
+    }
+
+    private void changeDispenseMsg(String beverageName, int resourceID) {
+        tv.setText(beverageName);
+        iv.setBackgroundResource(resourceID);
     }
 
     @Override

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,8 +49,6 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
     BluetoothDevice mBleDevice;
     boolean dataReceived = false;
 
-    CountDownTimer connecTimer;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -80,6 +77,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
         mBinding.rvBluetoothList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                stopScan();
                 mBinding.txtConnect.setText("Connecting");
                 mActivity.showProgress();
                 BluetoothHelper helper = BluetoothHelper.getInstance(getActivity());
@@ -93,39 +91,31 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                                 @Override
                                 public void OnConnectSuccess() {
                                     try {
+                                        mActivity.runOnUiThread(new Runnable() {
+                                            int i = 0;
+
+                                            @Override
+                                            public void run() {
+                                                while (i < 5) {
+                                                    if (!dataReceived) {
+                                                        sendPacket(mAppClass.framePacket("01;"));
+                                                    }
+                                                    i++;
+                                                }
+                                            }
+                                        });
+                                    } catch (
+                                            Exception e) {
                                         stopScan();
-                                        connecTimer = new CountDownTimer(1000, 2000) {
-                                            @Override
-                                            public void onTick(long l) {
-
-                                            }
-
-                                            @Override
-                                            public void onFinish() {
-                                                sendPacket(mAppClass.framePacket("01;"));
-                                            }
-                                        };
-                                        starTimer();
+                                        Log.e(TAG, "OnConnectSuccess: Catch");
                                         mActivity.runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                new Handler().postDelayed(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        if (!dataReceived) {
-                                                            mAppClass.showSnackBar(getContext(), "Timed Out");
-                                                            mActivity.dismissProgress();
-                                                            startScan();
-                                                        }
-                                                    }
-                                                }, 10000);
+                                                mActivity.dismissProgress();
+                                                mAppClass.showSnackBar(mContext, "Error Occurred");
+                                                mBinding.txtConnect.setText("Rescan");
                                             }
                                         });
-                                    } catch (Exception e) {
-                                        stopScan();
-                                        Log.e(TAG, "OnConnectSuccess: Catch");
-                                        mBinding.txtConnect.setText("Rescan");
-                                        mAppClass.showSnackBar(mContext, "Error Occurred");
                                         e.printStackTrace();
                                     }
                                 }
@@ -145,34 +135,36 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                                     });
                                 }
                             });
-                        } catch (Exception e) {
+                        } catch (
+                                Exception e) {
                             stopScan();
                             mBinding.txtConnect.setText("Rescan");
                             e.printStackTrace();
                         }
                     }
                 }).start();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!dataReceived) {
+                            mAppClass.showSnackBar(getContext(), "Timed Out");
+                            mActivity.dismissProgress();
+                            startScan();
+                        }
+                    }
+                }, 10000);
             }
         });
 
         mBinding.txtConnect.setOnClickListener((view1 -> {
             if (mBinding.txtConnect.getText().toString().equals("Rescan")) {
-                mAppClass.showSnackBar(mContext, "Refreshing");
+                mBinding.txtConnect.setText("Scanning..");
                 startScan();
             }
         }));
     }
 
-    private void starTimer() {
-        connecTimer.start();
-    }
-
-    private void stopTimer() {
-        connecTimer.cancel();
-    }
-
     private void sendPacket(String packet) {
-        dataReceived = false;
         mAppClass.sendData(getActivity(), FragmentBluetoothList.this, packet, getContext());
     }
 
@@ -198,11 +190,11 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                     helper.scanBLE(new BluetoothScannerCallback() {
                         @Override
                         public void OnScanCompleted(List<BluetoothDevice> devices) {
-
                             if (devices.size() == 0) {
-                                mAppClass.showSnackBar(mContext, "NoDeviceFound");
+                                mAppClass.showSnackBar(mContext, "Refreshing..");
                                 stopScan();
-                                mBinding.txtConnect.setText("Rescan");
+                                startScan();
+                                mBinding.txtConnect.setText("Scanning..");
                             }
                         }
 
@@ -243,11 +235,10 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
     }
 
     private void handleResponse(String data) {
-        stopTimer();
         dataReceived = true;
         BluetoothHelper helper = BluetoothHelper.getInstance(getActivity());
         String[] spiltData = data.split(";");
-        if (spiltData[0].startsWith("01", 5)) {
+        if (spiltData[0].substring(5, 7).equals("01")) {
             if (spiltData[2].equals("ACK")) {
                 if (spiltData[1].equals("00")) {
                     mActivity.updateNavigationUi(R.navigation.navigation);
@@ -256,7 +247,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                 }
             }
             helper.setConnected(true);
-        } else if (spiltData[0].startsWith("03", 5)) {
+        } else if (spiltData[0].substring(5, 7).equals("03")) {
             String[] status = spiltData[1].split(","), boilTime = spiltData[2].split(","), bevarageName = spiltData[3].split(",");
 
             if (status[1].equals("1")) {
@@ -287,17 +278,17 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                 }
             }
         } // Pan Release
-        else if (spiltData[0].startsWith("05", 5)) {
+        else if (spiltData[0].substring(5, 7).equals("05")) {
             if (spiltData[1].equals("ACK")) {
                 Toast.makeText(getContext(), "Pan Release Ack", Toast.LENGTH_SHORT).show();
             }
         }
         // Dispense Completed
-        else if (spiltData[0].startsWith("04", 5)) {
+        else if (spiltData[0].substring(5, 7).equals("04")) {
             sendPacket(mAppClass.framePacket("04;ACK:"));
         }
 
-        mActivity.dismissProgress();
+        //  mActivity.dismissProgress();
     }
 
     private void showPanNotAvailable() {
