@@ -155,10 +155,13 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
     private void updateRV(ArrayList<String> deviceList) {
         try {
             List<String> list = new ArrayList<>();
-            JSONArray arr = new JSONArray(preferences.getString("savedMac", ""));
-            for (int i = 0; i < arr.length(); i++) {
-                JSONObject obj = arr.getJSONObject(i);
-                list.add(obj.getString("mac"));
+            if (!preferences.getString("savedMac", "").equals("")
+                    && preferences.getString("savedMac", "") != null) {
+                JSONArray arr = new JSONArray(preferences.getString("savedMac", ""));
+                for (int i = 0; i < arr.length(); i++) {
+                    JSONObject obj = arr.getJSONObject(i);
+                    list.add(obj.getString("mac"));
+                }
             }
             bluetoothListAdapter = new BluetoothListAdapter(deviceList, list, this);
             mBinding.rvBluetoothList.setAdapter(bluetoothListAdapter);

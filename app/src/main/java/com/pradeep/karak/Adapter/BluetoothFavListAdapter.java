@@ -50,7 +50,7 @@ public class BluetoothFavListAdapter extends RecyclerView.Adapter<BluetoothFavLi
             holder.root.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    listener.onSaveClicked(deviceMac);
                 }
             });
 

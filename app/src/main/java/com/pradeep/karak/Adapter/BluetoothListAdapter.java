@@ -40,10 +40,12 @@ public class BluetoothListAdapter extends RecyclerView.Adapter<BluetoothListAdap
         String deviceName = mDeviceList.get(position);
         holder.Name.setText(deviceName);
 
-        for (int i = 0; i < mList.size(); i++) {
-            String[] strArr = mDeviceList.get(position).split("\n");
-            if (strArr[1].equals(mList.get(i))) {
-                holder.fav.setChecked(true);
+        if (!mList.isEmpty()) {
+            for (int i = 0; i < mList.size(); i++) {
+                String[] strArr = mDeviceList.get(position).split("\n");
+                if (strArr[1].equals(mList.get(i))) {
+                    holder.fav.setChecked(true);
+                }
             }
         }
 
