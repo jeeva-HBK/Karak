@@ -20,4 +20,7 @@
     <string name="favourites">Favourites</string>
     <string name="unkown">unknown</string>
     <string name="errorOccurred">error occurred</string>
+    <string name="Timeout">Timeout</string>
+    <string name="UpdateSuccessfully">Update successfully</string>
+    <string name="MachineNumberAddedSuccessfully">Machine Number Added Successfully</string>
 </resources>

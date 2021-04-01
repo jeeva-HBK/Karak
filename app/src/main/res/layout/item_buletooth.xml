@@ -36,6 +36,8 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginEnd="5dp"
+        android:buttonTint="@color/red"
+        android:button="@drawable/ic_drawable_heart_uncheck_cheked"
         app:layout_constraintBottom_toBottomOf="@+id/txt_name"
         app:layout_constraintEnd_toEndOf="@+id/txt_name"
         app:layout_constraintTop_toTopOf="@+id/txt_name" />

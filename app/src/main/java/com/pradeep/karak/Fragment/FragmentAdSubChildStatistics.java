@@ -68,6 +68,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
+        mActivity = (BaseActivity) getActivity();
         context = getContext();
         ObservableInt pageCount = new ObservableInt(0);
         mBinding.IvAdLeftArrow.setVisibility(View.GONE);
@@ -89,7 +90,6 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
                         mBinding.IvAdLeftArrow.setVisibility(View.VISIBLE);
                         mBinding.IvAdRightArrow.setVisibility(View.VISIBLE);
                         setDataToChart(getChartData(1), getChartbevarage(1), 1);
-                        // sendThree(getChartData(1), getChartbevarage(1), );
                         break;
                     case 2:
                         mBinding.IvAdLeftArrow.setVisibility(View.VISIBLE);
@@ -255,35 +255,37 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     }
 
     private void handleResponse(String data) {
-        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")){
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
             mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(),"Response Error");
-        }
-        String[] spiltData = data.split(";");
-        if (spiltData[0].substring(5, 7).equals("09")) {
-            if (spiltData[1].equals("ACK")) {
-                alertDialog.dismiss();
-                Toast.makeText(context, "CupCount Reset Success !", Toast.LENGTH_SHORT).show();
+            mAppClass.showSnackBar(getContext(), "Response Error");
+        } else {
+            mActivity.dismissProgress();
+            String[] spiltData = data.split(";");
+            if (spiltData[0].substring(5, 7).equals("09")) {
+                if (spiltData[1].equals("ACK")) {
+                    alertDialog.dismiss();
+                    Toast.makeText(context, "CupCount Reset Success !", Toast.LENGTH_SHORT).show();
+                }
+            } else if (spiltData[0].substring(5, 7).equals("07")) {
+                String[] adminPassword = spiltData[2].split(","), maintenancePassword = spiltData[2].split(","), cupcountPassword = spiltData[3].split(","),
+                        ccKarak = spiltData[4].split(","), ccGKarak = spiltData[5].split(","), ccMKarak = spiltData[6].split(","),
+                        ccSulaimani = spiltData[7].split(","), ccCKarak = spiltData[8].split(","), ccMilk = spiltData[9].split(","),
+                        ccWater = spiltData[10].split(",");
+
+                ADMIN_PASSWORD = adminPassword[1];
+                MAINTENANCE_PASSWORD = maintenancePassword[1];
+                CUP_COUNT_PASSWORD = cupcountPassword[1];
+
+                cupKarak = ccKarak[1];
+                cupGinger = ccGKarak[1];
+                cupCardmom = ccCKarak[1];
+                cupMasala = ccMKarak[1];
+                cupSulaimani = ccSulaimani[1];
+                cupMilk = ccMilk[1];
+                cupHotWater = ccWater[1];
+                setDataToChart(getChartData(0), getChartbevarage(0), 0);
+
             }
-        } else if (spiltData[0].substring(5, 7).equals("07")) {
-            String[] adminPassword = spiltData[2].split(","), maintenancePassword = spiltData[2].split(","), cupcountPassword = spiltData[3].split(","),
-                    ccKarak = spiltData[4].split(","), ccGKarak = spiltData[5].split(","), ccMKarak = spiltData[6].split(","),
-                    ccSulaimani = spiltData[7].split(","), ccCKarak = spiltData[8].split(","), ccMilk = spiltData[9].split(","),
-                    ccWater = spiltData[10].split(",");
-
-            ADMIN_PASSWORD = adminPassword[1];
-            MAINTENANCE_PASSWORD = maintenancePassword[1];
-            CUP_COUNT_PASSWORD = cupcountPassword[1];
-
-            cupKarak = ccKarak[1];
-            cupGinger = ccGKarak[1];
-            cupCardmom = ccCKarak[1];
-            cupMasala = ccMKarak[1];
-            cupSulaimani = ccSulaimani[1];
-            cupMilk = ccMilk[1];
-            cupHotWater = ccWater[1];
-            setDataToChart(getChartData(0), getChartbevarage(0), 0);
-            mActivity.dismissProgress();
         }
 
     }

@@ -94,32 +94,34 @@ public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothD
     }
 
     private void handleResponse(String data) {
-        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")){
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
             mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(),"Response Error");
+            mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
+        } else {
+            String[] handleData = data.split(";");
+            if (handleData[0].substring(5, 7).equals("07")) {
+                String[] FirmWareVersion = handleData[3].split(",");
+                mBinding.txtFimwareAppVersion.setText(FirmWareVersion[1]);
+                String version = "";
+                try {
+                    PackageInfo pInfo = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0);
+                    version = pInfo.versionName;
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+                if (!version.equals("")) {
+                    mBinding.txtMobileAppVersion.setText("v" + version);
+                } else {
+                    mBinding.txtMobileAppVersion.setText("version_Error");
+                }
+            } else if (handleData[0].substring(5, 7).equals("17")) {
+                if (handleData[1].equals("ACK")) {
+                    mAppClass.showSnackBar(getContext(), getString(R.string.UpdateSuccessfully));
+                }
+            }
+            mActivity.dismissProgress();
         }
-        String[] handleData = data.split(";");
-        if (handleData[0].substring(5, 7).equals("07")) {
-            String[] FirmWareVersion = handleData[3].split(",");
-            mBinding.txtFimwareAppVersion.setText(FirmWareVersion[1]);
-            String version = "";
-            try {
-                PackageInfo pInfo = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0);
-                version = pInfo.versionName;
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
-            }
-            if (!version.equals("")) {
-                mBinding.txtMobileAppVersion.setText("v"+version);
-            } else {
-                mBinding.txtMobileAppVersion.setText("version_Error");
-            }
-        } else if (handleData[0].substring(5, 7).equals("17")) {
-            if (handleData[1].equals("ACK")) {
-                mAppClass.showSnackBar(getContext(), "Update successfully");
-            }
-        }
-        mActivity.dismissProgress();
+
     }
 
     @Override

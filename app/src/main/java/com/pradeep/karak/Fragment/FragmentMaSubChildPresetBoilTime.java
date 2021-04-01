@@ -116,46 +116,48 @@ public class FragmentMaSubChildPresetBoilTime extends Fragment implements Blueto
     private void handleResponse(String data) {
         if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
             mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(), "Response Error");
-        }
-        String[] handleData = data.split(";");
-        if (handleData[0].substring(5, 7).equals("07")) {
-            String[] pbt100ml = handleData[1].split(","),
-                    pbt200ml = handleData[2].split(","),
-                    pbt300ml = handleData[3].split(","),
-                    pbt400ml = handleData[4].split(","),
-                    pbt500ml = handleData[5].split(","),
-                    pbt600ml = handleData[6].split(","),
-                    pbt700ml = handleData[7].split(","),
-                    pbt800ml = handleData[8].split(","),
-                    pbt900ml = handleData[9].split(","),
-                    pbt1000ml = handleData[10].split(",");
-            PRESENT_BOIL_100ML = pbt100ml[1];
-            PRESENT_BOIL_200ML = pbt200ml[1];
-            PRESENT_BOIL_300ML = pbt300ml[1];
-            PRESENT_BOIL_400ML = pbt400ml[1];
-            PRESENT_BOIL_500ML = pbt500ml[1];
-            PRESENT_BOIL_600ML = pbt600ml[1];
-            PRESENT_BOIL_700ML = pbt700ml[1];
-            PRESENT_BOIL_800ML = pbt800ml[1];
-            PRESENT_BOIL_900ML = pbt900ml[1];
-            PRESENT_BOIL_1000ML = pbt1000ml[1];
-            mBinding.edt100ml.setText(PRESENT_BOIL_100ML);
-            mBinding.edt200ml.setText(PRESENT_BOIL_200ML);
-            mBinding.edt300ml.setText(PRESENT_BOIL_300ML);
-            mBinding.edt400ml.setText(PRESENT_BOIL_400ML);
-            mBinding.edt500ml.setText(PRESENT_BOIL_500ML);
-            mBinding.edt600ml.setText(PRESENT_BOIL_600ML);
-            mBinding.edt700ml.setText(PRESENT_BOIL_700ML);
-            mBinding.edt800ml.setText(PRESENT_BOIL_800ML);
-            mBinding.edt900ml.setText(PRESENT_BOIL_900ML);
-            mBinding.edt1000ml.setText(PRESENT_BOIL_1000ML);
-        } else if (handleData[0].substring(5, 7).equals("15")) {
-            if (handleData[1].equals("ACK")) {
-                mAppClass.showSnackBar(getContext(), "Update successfully");
+            mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
+        }else{
+            String[] handleData = data.split(";");
+            if (handleData[0].substring(5, 7).equals("07")) {
+                String[] pbt100ml = handleData[1].split(","),
+                        pbt200ml = handleData[2].split(","),
+                        pbt300ml = handleData[3].split(","),
+                        pbt400ml = handleData[4].split(","),
+                        pbt500ml = handleData[5].split(","),
+                        pbt600ml = handleData[6].split(","),
+                        pbt700ml = handleData[7].split(","),
+                        pbt800ml = handleData[8].split(","),
+                        pbt900ml = handleData[9].split(","),
+                        pbt1000ml = handleData[10].split(",");
+                PRESENT_BOIL_100ML = pbt100ml[1];
+                PRESENT_BOIL_200ML = pbt200ml[1];
+                PRESENT_BOIL_300ML = pbt300ml[1];
+                PRESENT_BOIL_400ML = pbt400ml[1];
+                PRESENT_BOIL_500ML = pbt500ml[1];
+                PRESENT_BOIL_600ML = pbt600ml[1];
+                PRESENT_BOIL_700ML = pbt700ml[1];
+                PRESENT_BOIL_800ML = pbt800ml[1];
+                PRESENT_BOIL_900ML = pbt900ml[1];
+                PRESENT_BOIL_1000ML = pbt1000ml[1];
+                mBinding.edt100ml.setText(PRESENT_BOIL_100ML);
+                mBinding.edt200ml.setText(PRESENT_BOIL_200ML);
+                mBinding.edt300ml.setText(PRESENT_BOIL_300ML);
+                mBinding.edt400ml.setText(PRESENT_BOIL_400ML);
+                mBinding.edt500ml.setText(PRESENT_BOIL_500ML);
+                mBinding.edt600ml.setText(PRESENT_BOIL_600ML);
+                mBinding.edt700ml.setText(PRESENT_BOIL_700ML);
+                mBinding.edt800ml.setText(PRESENT_BOIL_800ML);
+                mBinding.edt900ml.setText(PRESENT_BOIL_900ML);
+                mBinding.edt1000ml.setText(PRESENT_BOIL_1000ML);
+            } else if (handleData[0].substring(5, 7).equals("15")) {
+                if (handleData[1].equals("ACK")) {
+                    mAppClass.showSnackBar(getContext(),getString(R.string.UpdateSuccessfully));
+                }
             }
+            mActivity.dismissProgress();
         }
-        mActivity.dismissProgress();
+
     }
 
     @Override

@@ -177,59 +177,60 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
     private void handleResponse(String data) {
         if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")){
             mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(),"Response Error");
-        }
-        String[] handleData = data.split(";");
-        if (handleData[0].substring(5, 7).equals("07")) {
-            String[] Karak = handleData[1].split(","),
-                    KarakMilk = handleData[2].split(","),
-                    KarakWater = handleData[3].split(","),
-                    MasalaKarakTea = handleData[4].split(","),
-                    MasalaKarakMasala = handleData[5].split(","),
-                    MasalaMilk = handleData[6].split(","),
-                    MasalaWater = handleData[7].split(","),
-                    SulamaniTea = handleData[8].split(","),
-                    SulamaniWater = handleData[9].split(","),
-                    Gingerkarak = handleData[10].split(","),
-                    GingerKaraKGinger = handleData[11].split(","),
-                    GingerMilk = handleData[12].split(","),
-                    GingerWater = handleData[13].split(","),
-                    CardamomTea = handleData[14].split(","),
-                    CardamomKarak = handleData[15].split(","),
-                    CardamomMilk = handleData[16].split(","),
-                    CardamomWater = handleData[17].split(","),
-                    Milk = handleData[18].split(","),
-                    MilkWater = handleData[19].split(","),
-                    HotWater = handleData[20].split(",");
+            mAppClass.showSnackBar(getContext(),getString(R.string.Timeout));
+        }else {
+            String[] handleData = data.split(";");
+            if (handleData[0].substring(5, 7).equals("07")) {
+                String[] Karak = handleData[1].split(","),
+                        KarakMilk = handleData[2].split(","),
+                        KarakWater = handleData[3].split(","),
+                        MasalaKarakTea = handleData[4].split(","),
+                        MasalaKarakMasala = handleData[5].split(","),
+                        MasalaMilk = handleData[6].split(","),
+                        MasalaWater = handleData[7].split(","),
+                        SulamaniTea = handleData[8].split(","),
+                        SulamaniWater = handleData[9].split(","),
+                        Gingerkarak = handleData[10].split(","),
+                        GingerKaraKGinger = handleData[11].split(","),
+                        GingerMilk = handleData[12].split(","),
+                        GingerWater = handleData[13].split(","),
+                        CardamomTea = handleData[14].split(","),
+                        CardamomKarak = handleData[15].split(","),
+                        CardamomMilk = handleData[16].split(","),
+                        CardamomWater = handleData[17].split(","),
+                        Milk = handleData[18].split(","),
+                        MilkWater = handleData[19].split(","),
+                        HotWater = handleData[20].split(",");
 
-            DR_KARAK = Karak[1];
-            DR_KARAK_MILK = KarakMilk[1];
-            DR_KARAK_WATER = KarakWater[1];
-            DR_MASALA_KARAK_TEA = MasalaKarakTea[1];
-            DR_MASALA_KARAK_MASALA = MasalaKarakMasala[1];
-            DR_MASALA_KARAK_MILK = MasalaMilk[1];
-            DR_MASALA_KARAKA_WATER = MasalaWater[1];
-            DR_SULAIMANI_TEA = SulamaniTea[1];
-            DR_SULAIMANI_WATER = SulamaniWater[1];
-            DR_GINGER_KARAK_TEA = Gingerkarak[1];
-            DR_GINGER_KARAK_GINGER = GingerKaraKGinger[1];
-            DR_GINGER_KARAK_MILK = GingerMilk[1];
-            DR_GINGER_WATER = GingerWater[1];
-            DR_CARDAMOM_KARAK_TEA = CardamomTea[1];
-            DR_CARADMOM_KARAK_CARDMOM = CardamomKarak[1];
-            DR_CARDAMOM_KARAK_MILK = CardamomMilk[1];
-            DR_CARDAMOM_KARAK_WATER = CardamomWater[1];
-            DR_MILK = Milk[1];
-            DR_MILK_WATER = MilkWater[1];
-            DR_HOT_WATER = HotWater[1];
-            mBinding.viewPagerMaintenance.setAdapter(new DispenseRatioPagerAdapter(getActivity()));
-            mBinding.viewPagerMaintenance.setUserInputEnabled(false);
-        } else if (handleData[0].substring(5, 7).equals("10")) {
-            if (handleData[1].equals("ACK")) {
-                mAppClass.showSnackBar(getContext(), "Update successfully");
+                DR_KARAK = Karak[1];
+                DR_KARAK_MILK = KarakMilk[1];
+                DR_KARAK_WATER = KarakWater[1];
+                DR_MASALA_KARAK_TEA = MasalaKarakTea[1];
+                DR_MASALA_KARAK_MASALA = MasalaKarakMasala[1];
+                DR_MASALA_KARAK_MILK = MasalaMilk[1];
+                DR_MASALA_KARAKA_WATER = MasalaWater[1];
+                DR_SULAIMANI_TEA = SulamaniTea[1];
+                DR_SULAIMANI_WATER = SulamaniWater[1];
+                DR_GINGER_KARAK_TEA = Gingerkarak[1];
+                DR_GINGER_KARAK_GINGER = GingerKaraKGinger[1];
+                DR_GINGER_KARAK_MILK = GingerMilk[1];
+                DR_GINGER_WATER = GingerWater[1];
+                DR_CARDAMOM_KARAK_TEA = CardamomTea[1];
+                DR_CARADMOM_KARAK_CARDMOM = CardamomKarak[1];
+                DR_CARDAMOM_KARAK_MILK = CardamomMilk[1];
+                DR_CARDAMOM_KARAK_WATER = CardamomWater[1];
+                DR_MILK = Milk[1];
+                DR_MILK_WATER = MilkWater[1];
+                DR_HOT_WATER = HotWater[1];
+                mBinding.viewPagerMaintenance.setAdapter(new DispenseRatioPagerAdapter(getActivity()));
+                mBinding.viewPagerMaintenance.setUserInputEnabled(false);
+            } else if (handleData[0].substring(5, 7).equals("10")) {
+                if (handleData[1].equals("ACK")) {
+                    mAppClass.showSnackBar(getContext(),getString(R.string.UpdateSuccessfully));
+                }
             }
+            mActivity.dismissProgress();
         }
-        mActivity.dismissProgress();
     }
 
     @Override

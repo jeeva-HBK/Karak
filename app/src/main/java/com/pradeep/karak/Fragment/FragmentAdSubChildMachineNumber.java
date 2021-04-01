@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -64,19 +63,22 @@ public class FragmentAdSubChildMachineNumber extends Fragment implements Bluetoo
     }
 
     private void handleDataResponse(String data) {
-        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")){
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
             mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(),"Response Error");
-        }
-        String[] spiltData = data.split(";");
-        if (spiltData[0].substring(5, 7).equals("18")) {
-            if (spiltData[1].equals("ACK")) {
-                mAppClass.disconnect();
-                mActivity.updateNavigationUi(R.navigation.scan);
-                Toast.makeText(mContext, "Machine Number Added Successfully !", Toast.LENGTH_SHORT).show();
+            mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
+        } else {
+            String[] spiltData = data.split(";");
+            if (spiltData[0].substring(5, 7).equals("18")) {
+                if (spiltData[1].equals("ACK")) {
+                    mAppClass.disconnect();
+                    mActivity.updateNavigationUi(R.navigation.scan);
+                    mAppClass.showSnackBar(getContext(), getString(R.string.MachineNumberAddedSuccessfully));
+
+                }
             }
+            mActivity.dismissProgress();
         }
-        mActivity.dismissProgress();
+
     }
 
     @Override

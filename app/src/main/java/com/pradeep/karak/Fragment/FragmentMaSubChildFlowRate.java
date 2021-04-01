@@ -103,37 +103,39 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
     private void handleResponse(String data) {
         if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
             mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(), "Response Error");
-        }
-        String[] handelData = data.split(";");
-        if (handelData[0].substring(5, 7).equals("07")) {
-            String[] Karakfr = handelData[1].split(","),
-                    MasalaKarakfr = handelData[2].split(","),
-                    GingerKarakfr = handelData[3].split(","),
-                    CardamomKarakfr = handelData[4].split(","),
-                    Milkfr = handelData[5].split(","),
-                    Waterfr = handelData[6].split(","),
-                    Sugarfr = handelData[7].split(",");
-            KARAK_FLOW_RATE = Karakfr[1];
-            MASALA_KARAK_FLOW_RATE = MasalaKarakfr[1];
-            GINGER_KARAK_FLOW_RATE = GingerKarakfr[1];
-            CARDAMOM_KARAK_FLOW_RATE = CardamomKarakfr[1];
-            MILK_FLOW_RATE = Milkfr[1];
-            WATER_FLOW_RATE = Waterfr[1];
-            SUGAR_FLOW_RATE = Sugarfr[1];
-            mBinding.flowRateKarak.setText(KARAK_FLOW_RATE);
-            mBinding.flowRateMasalaKarak.setText(MASALA_KARAK_FLOW_RATE);
-            mBinding.flowRateGingerKarak.setText(GINGER_KARAK_FLOW_RATE);
-            mBinding.flowrateCardmomKarak.setText(CARDAMOM_KARAK_FLOW_RATE);
-            mBinding.flowRateMilk.setText(MILK_FLOW_RATE);
-            mBinding.flowRateWater.setText(WATER_FLOW_RATE);
-            mBinding.flowRateSugar.setText(SUGAR_FLOW_RATE);
-        } else if (handelData[0].substring(5, 7).equals("14")) {
-            if (handelData[1].equals("ACK")) {
-                mAppClass.showSnackBar(getContext(), "Update successfully");
+            mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
+        }else {
+            String[] handelData = data.split(";");
+            if (handelData[0].substring(5, 7).equals("07")) {
+                String[] Karakfr = handelData[1].split(","),
+                        MasalaKarakfr = handelData[2].split(","),
+                        GingerKarakfr = handelData[3].split(","),
+                        CardamomKarakfr = handelData[4].split(","),
+                        Milkfr = handelData[5].split(","),
+                        Waterfr = handelData[6].split(","),
+                        Sugarfr = handelData[7].split(",");
+                KARAK_FLOW_RATE = Karakfr[1];
+                MASALA_KARAK_FLOW_RATE = MasalaKarakfr[1];
+                GINGER_KARAK_FLOW_RATE = GingerKarakfr[1];
+                CARDAMOM_KARAK_FLOW_RATE = CardamomKarakfr[1];
+                MILK_FLOW_RATE = Milkfr[1];
+                WATER_FLOW_RATE = Waterfr[1];
+                SUGAR_FLOW_RATE = Sugarfr[1];
+                mBinding.flowRateKarak.setText(KARAK_FLOW_RATE);
+                mBinding.flowRateMasalaKarak.setText(MASALA_KARAK_FLOW_RATE);
+                mBinding.flowRateGingerKarak.setText(GINGER_KARAK_FLOW_RATE);
+                mBinding.flowrateCardmomKarak.setText(CARDAMOM_KARAK_FLOW_RATE);
+                mBinding.flowRateMilk.setText(MILK_FLOW_RATE);
+                mBinding.flowRateWater.setText(WATER_FLOW_RATE);
+                mBinding.flowRateSugar.setText(SUGAR_FLOW_RATE);
+            } else if (handelData[0].substring(5, 7).equals("14")) {
+                if (handelData[1].equals("ACK")) {
+                    mAppClass.showSnackBar(getContext(),getString(R.string.UpdateSuccessfully));
+                }
             }
+            mActivity.dismissProgress();
         }
-        mActivity.dismissProgress();
+
     }
 
     @Override

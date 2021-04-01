@@ -133,6 +133,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
             mActivity.dismissProgress();
             mAppclass.showSnackBar(getContext(), "Response Error");
         } else {
+            mActivity.dismissProgress();
             String[] spiltData = data.split(";");
             if (spiltData[0].substring(5, 7).equals("02")) {
                 if (spiltData[1].equals("ACK")) {

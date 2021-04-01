@@ -60,24 +60,26 @@ public class FragmentMnSubChildStatus extends Fragment implements BluetoothDataC
     private void handleResponse(String data) {
         if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
             mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(), "Response Error");
-        }
-        String[] spiltData = data.split(";");
-        if (spiltData[0].substring(5, 7).equals("07")) {
-            String[] inductionHeater = spiltData[1].split(",");
-            String[] proximitySensor = spiltData[2].split(",");
-            if (inductionHeater[1].equals("0")) {
-                mBinding.txtStatus1.setText("Normal");
-            } else if (inductionHeater[1].equals("1")) {
-                mBinding.txtStatus1.setText("Alert");
+            mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
+        }else {
+            String[] spiltData = data.split(";");
+            if (spiltData[0].substring(5, 7).equals("07")) {
+                String[] inductionHeater = spiltData[1].split(",");
+                String[] proximitySensor = spiltData[2].split(",");
+                if (inductionHeater[1].equals("0")) {
+                    mBinding.txtStatus1.setText("Normal");
+                } else if (inductionHeater[1].equals("1")) {
+                    mBinding.txtStatus1.setText("Alert");
+                }
+                if (proximitySensor[1].equals("0")) {
+                    mBinding.txtStatus2.setText("Normal");
+                } else if (proximitySensor[1].equals("1")) {
+                    mBinding.txtStatus2.setText("Alert");
+                }
             }
-            if (proximitySensor[1].equals("0")) {
-                mBinding.txtStatus2.setText("Normal");
-            } else if (proximitySensor[1].equals("1")) {
-                mBinding.txtStatus2.setText("Alert");
-            }
+            mActivity.dismissProgress();
         }
-        mActivity.dismissProgress();
+
     }
 
     @Override

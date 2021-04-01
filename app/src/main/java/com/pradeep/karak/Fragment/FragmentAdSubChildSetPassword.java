@@ -105,15 +105,17 @@ public class FragmentAdSubChildSetPassword extends Fragment implements Bluetooth
     private void handleResponse(String data) {
         if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")){
             mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(),"Response Error");
-        }
-        String[] splitData = data.split(";");
-        if (splitData[0].substring(5, 7).equals("12")) {
-            if (splitData[1].equals("ACK")) {
-                mAppClass.showSnackBar(getContext(),"Updated SuccessFully");
+            mAppClass.showSnackBar(getContext(),getString(R.string.Timeout));
+        }else {
+            String[] splitData = data.split(";");
+            if (splitData[0].substring(5, 7).equals("12")) {
+                if (splitData[1].equals("ACK")) {
+                    mAppClass.showSnackBar(getContext(),getString(R.string.UpdateSuccessfully));
+                }
             }
+            mActivity.dismissProgress();
         }
-        mActivity.dismissProgress();
+
     }
 
     @Override

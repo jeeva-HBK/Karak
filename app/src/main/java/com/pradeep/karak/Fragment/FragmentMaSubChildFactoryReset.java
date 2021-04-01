@@ -90,14 +90,15 @@ public class FragmentMaSubChildFactoryReset extends Fragment implements Bluetoot
     private void handleResponse(String data) {
         if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
             mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(), "Response Error");
+            mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
+        }else {
+            String[] splitData = data.split(";");
+            if (splitData[0].substring(5, 7).equals("16"))
+                if (splitData[1].equals("ACK")) { alertDialog.dismiss();
+                }
+            mActivity.dismissProgress();
         }
-        String[] splitData = data.split(";");
-        if (splitData[0].substring(5, 7).equals("16"))
-            if (splitData[1].equals("ACK")) {
-                alertDialog.dismiss();
-            }
-        mActivity.dismissProgress();
+
     }
 
     @Override

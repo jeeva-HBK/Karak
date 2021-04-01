@@ -100,7 +100,7 @@ public class FragmentMaSubChildCorrectionFactor extends Fragment implements Blue
     private void handleResponse(String data) {
         if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
             mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(), "Response Error");
+            mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
         } else {
             String[] handleData = data.split(";");
             if (handleData[0].substring(5, 7).equals("07")) {
@@ -127,7 +127,7 @@ public class FragmentMaSubChildCorrectionFactor extends Fragment implements Blue
                 mBinding.correctionSugar.setText(SUGAR_CORRECTION_FACTOR);
             } else if (handleData[0].substring(5, 7).equals("13")) {
                 if (handleData[1].equals("ACK")) {
-                    mAppClass.showSnackBar(getContext(), "Update successfully");
+                   mAppClass.showSnackBar(getContext(),getString(R.string.UpdateSuccessfully));
                 }
             }
             mActivity.dismissProgress();

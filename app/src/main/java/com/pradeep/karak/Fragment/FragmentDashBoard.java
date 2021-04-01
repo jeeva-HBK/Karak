@@ -115,22 +115,21 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
     private void checkPassword(String password, Bundle b) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = this.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_password, null);
+        View dialogView = inflater.inflate(R.layout.dailog_admin_password, null);
         dialogBuilder.setView(dialogView);
         AlertDialog alertDialog = dialogBuilder.create();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
 
-        EditText editText = dialogView.findViewById(R.id.edt_password);
-        View view = dialogView.findViewById(R.id.dialogPass_submit);
+        EditText editText = dialogView.findViewById(R.id.edt_admin_password);
+        TextView textView = dialogView.findViewById(R.id.dialogPass_t);
 
-        view.setOnClickListener((view1 -> {
+        textView.setOnClickListener((view1 -> {
             if (editText.getText().toString().equals(password)) {
                 mAppclass.navigateTo(getActivity(), R.id.action_dashboard_to_fragmentConfiguration, b);
                 alertDialog.dismiss();
             } else {
-                Toast.makeText(getContext(),
-                        "Password wrong!", Toast.LENGTH_SHORT).show();
+                mAppclass.showSnackBar(getContext(),"Password wrong!");
             }
         }));
     }
