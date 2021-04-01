@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
@@ -46,6 +47,7 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
     String MilkFrParameter;
     String WaterFrParameter;
     String SugarFrParameter;
+    BaseActivity mActivity;
     int retryCount = 0;
     String lastSentPacket = "";
 
@@ -61,6 +63,7 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
+        mActivity = (BaseActivity) getActivity();
         sendData(mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + FLOW_RATE_READ_SUB_ID));
         mBinding.flowRateSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +74,7 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
     }
 
     private void sendData(String framedPacket) {
+        mActivity.showProgress();
         mAppClass.sendData(getActivity(), FragmentMaSubChildFlowRate.this, framedPacket, getContext());
         lastSentPacket = framedPacket;
 
@@ -97,6 +101,10 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
     }
 
     private void handleResponse(String data) {
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
+            mActivity.dismissProgress();
+            mAppClass.showSnackBar(getContext(), "Response Error");
+        }
         String[] handelData = data.split(";");
         if (handelData[0].substring(5, 7).equals("07")) {
             String[] Karakfr = handelData[1].split(","),
@@ -125,6 +133,7 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
                 mAppClass.showSnackBar(getContext(), "Update successfully");
             }
         }
+        mActivity.dismissProgress();
     }
 
     @Override

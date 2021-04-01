@@ -98,39 +98,46 @@ public class FragmentMaSubChildCorrectionFactor extends Fragment implements Blue
     }
 
     private void handleResponse(String data) {
-        String[] handleData = data.split(";");
-        if (handleData[0].substring(5, 7).equals("07")) {
-            String[] KarakCf = handleData[1].split(","),
-                    MasalaKarakCf = handleData[2].split(","),
-                    GingerKarakcf = handleData[3].split(","),
-                    CardamomKarakCf = handleData[4].split(","),
-                    MilkCf = handleData[5].split(","),
-                    WaterCf = handleData[6].split(","),
-                    Sugarcf = handleData[7].split(",");
-            KARAK_CORRECTION_FACTOR = KarakCf[1];
-            MASALA_KARAK_CORRECTION_FACTOR = MasalaKarakCf[1];
-            GINGER_KARAK_CORRECTION_FACTOR = GingerKarakcf[1];
-            CARDAMOM_KARAK_CORRECTION_FACTOR = CardamomKarakCf[1];
-            MILK_CORRECTION_FACTOR = MilkCf[1];
-            WATER_CORRECTION_FACTOR = WaterCf[1];
-            SUGAR_CORRECTION_FACTOR = Sugarcf[1];
-            mBinding.correctionFactorKarak.setText(KARAK_CORRECTION_FACTOR);
-            mBinding.correctionMasalaKarak.setText(MASALA_KARAK_CORRECTION_FACTOR);
-            mBinding.correctionGingerKarak.setText(GINGER_KARAK_CORRECTION_FACTOR);
-            mBinding.correctionFactorCardmomKarak.setText(CARDAMOM_KARAK_CORRECTION_FACTOR);
-            mBinding.correctionMilk.setText(MILK_CORRECTION_FACTOR);
-            mBinding.correctionWater.setText(WATER_CORRECTION_FACTOR);
-            mBinding.correctionSugar.setText(SUGAR_CORRECTION_FACTOR);
-        } else if (handleData[0].substring(5, 7).equals("13")) {
-            if (handleData[1].equals("ACK")) {
-                mAppClass.showSnackBar(getContext(), "Update successfully");
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
+            mActivity.dismissProgress();
+            mAppClass.showSnackBar(getContext(), "Response Error");
+        } else {
+            String[] handleData = data.split(";");
+            if (handleData[0].substring(5, 7).equals("07")) {
+                String[] KarakCf = handleData[1].split(","),
+                        MasalaKarakCf = handleData[2].split(","),
+                        GingerKarakcf = handleData[3].split(","),
+                        CardamomKarakCf = handleData[4].split(","),
+                        MilkCf = handleData[5].split(","),
+                        WaterCf = handleData[6].split(","),
+                        Sugarcf = handleData[7].split(",");
+                KARAK_CORRECTION_FACTOR = KarakCf[1];
+                MASALA_KARAK_CORRECTION_FACTOR = MasalaKarakCf[1];
+                GINGER_KARAK_CORRECTION_FACTOR = GingerKarakcf[1];
+                CARDAMOM_KARAK_CORRECTION_FACTOR = CardamomKarakCf[1];
+                MILK_CORRECTION_FACTOR = MilkCf[1];
+                WATER_CORRECTION_FACTOR = WaterCf[1];
+                SUGAR_CORRECTION_FACTOR = Sugarcf[1];
+                mBinding.correctionFactorKarak.setText(KARAK_CORRECTION_FACTOR);
+                mBinding.correctionMasalaKarak.setText(MASALA_KARAK_CORRECTION_FACTOR);
+                mBinding.correctionGingerKarak.setText(GINGER_KARAK_CORRECTION_FACTOR);
+                mBinding.correctionFactorCardmomKarak.setText(CARDAMOM_KARAK_CORRECTION_FACTOR);
+                mBinding.correctionMilk.setText(MILK_CORRECTION_FACTOR);
+                mBinding.correctionWater.setText(WATER_CORRECTION_FACTOR);
+                mBinding.correctionSugar.setText(SUGAR_CORRECTION_FACTOR);
+            } else if (handleData[0].substring(5, 7).equals("13")) {
+                if (handleData[1].equals("ACK")) {
+                    mAppClass.showSnackBar(getContext(), "Update successfully");
+                }
             }
+            mActivity.dismissProgress();
         }
-        mActivity.dismissProgress();
     }
 
     @Override
     public void OnDataReceivedError(Exception e) {
+        mActivity.dismissProgress();
+        mAppClass.showSnackBar(getContext(),"Operation Failed");
         e.printStackTrace();
     }
 }

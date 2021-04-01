@@ -2,6 +2,7 @@ package com.pradeep.karak.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
@@ -45,6 +47,7 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
     String SulamaimaniParameter;
     String HotMilkParameter;
     String HotWaterParameter;
+    BaseActivity mActivity;
 
     private static final String TAG = "BoilTime";
 
@@ -60,8 +63,8 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
-        mAppClass.sendData(getActivity(), FragmentAdSubChildBoilTime.this,
-                mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + BOIL_TIME_READ_SUB_ID), getContext());
+        mActivity = (BaseActivity) getActivity();
+        sendData(mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + BOIL_TIME_READ_SUB_ID));
 
         mBinding.txtBoilTimeSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +75,7 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
     }
 
     private void sendData(String framedPacket) {
+        mActivity.showProgress();
         mAppClass.sendData(getActivity(), FragmentAdSubChildBoilTime.this, framedPacket, getContext());
     }
 
@@ -98,6 +102,10 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
     }
 
     private void handleResponse(String data) {
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")){
+            mActivity.dismissProgress();
+            mAppClass.showSnackBar(getContext(),"Response Error");
+        }
         String[] handleData = data.split(";");
         if (handleData[0].substring(5, 7).equals("07")) {
             String[] karakBoilTime = handleData[1].split(","),
@@ -127,6 +135,7 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
                 mAppClass.showSnackBar(getContext(), "Updated");
             }// TODO: 31-03-2021 check here
         }
+        mActivity.dismissProgress();
     }
 
     @Override

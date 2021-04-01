@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
@@ -24,6 +25,7 @@ public class FragmentMnSubChildStatus extends Fragment implements BluetoothDataC
     FragmentMnSubchildStatusBinding mBinding;
     ApplicationClass mAppClass;
     Context mContext;
+    BaseActivity mActivity;
 
 
     @Nullable
@@ -38,8 +40,16 @@ public class FragmentMnSubChildStatus extends Fragment implements BluetoothDataC
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
+        mActivity = (BaseActivity) getActivity();
+        sendData();
+
+    }
+
+    private void sendData() {
+        mActivity.showProgress();
         mAppClass.sendData(getActivity(), FragmentMnSubChildStatus.this,
-                mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + INDUCTION_HEATER_PROXIMITY_SENSOR_FIRMWARE), getContext());
+                mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + INDUCTION_HEATER_PROXIMITY_SENSOR_FIRMWARE),
+                getContext());
     }
 
     @Override
@@ -48,6 +58,10 @@ public class FragmentMnSubChildStatus extends Fragment implements BluetoothDataC
     }
 
     private void handleResponse(String data) {
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
+            mActivity.dismissProgress();
+            mAppClass.showSnackBar(getContext(), "Response Error");
+        }
         String[] spiltData = data.split(";");
         if (spiltData[0].substring(5, 7).equals("07")) {
             String[] inductionHeater = spiltData[1].split(",");
@@ -63,6 +77,7 @@ public class FragmentMnSubChildStatus extends Fragment implements BluetoothDataC
                 mBinding.txtStatus2.setText("Alert");
             }
         }
+        mActivity.dismissProgress();
     }
 
     @Override

@@ -151,8 +151,8 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
     }
 
     private void sendData(String framedPacket) {
-        mAppClass.sendData(getActivity(), FragmentAdSubChildDispenseRatio.this, framedPacket, getContext());
         mActivity.showProgress();
+        mAppClass.sendData(getActivity(), FragmentAdSubChildDispenseRatio.this, framedPacket, getContext());
     }
 
     private String framePacket() {
@@ -175,6 +175,10 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
     }
 
     private void handleResponse(String data) {
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")){
+            mActivity.dismissProgress();
+            mAppClass.showSnackBar(getContext(),"Response Error");
+        }
         String[] handleData = data.split(";");
         if (handleData[0].substring(5, 7).equals("07")) {
             String[] Karak = handleData[1].split(","),
@@ -225,6 +229,7 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
                 mAppClass.showSnackBar(getContext(), "Update successfully");
             }
         }
+        mActivity.dismissProgress();
     }
 
     @Override

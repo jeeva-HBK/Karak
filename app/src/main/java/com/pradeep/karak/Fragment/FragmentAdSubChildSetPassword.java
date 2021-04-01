@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
@@ -32,6 +33,7 @@ public class FragmentAdSubChildSetPassword extends Fragment implements Bluetooth
     public String MaintenancePassword;
     Context mContext;
     ApplicationClass mAppClass;
+    BaseActivity mActivity;
     private static final String TAG = "SendPassword";
 
 
@@ -47,7 +49,7 @@ public class FragmentAdSubChildSetPassword extends Fragment implements Bluetooth
         super.onViewCreated(view, savedInstanceState);
         mContext = getContext();
         mAppClass = (ApplicationClass) getActivity().getApplication();
-
+        mActivity = (BaseActivity) getActivity();
         mBinding.editTextAdminPassword.setText(ADMIN_PASSWORD);
         mBinding.editTextMaintenancePassword.setText(MAINTENANCE_PASSWORD);
         mBinding.editTextCupCountReset.setText(CUP_COUNT_PASSWORD);
@@ -65,6 +67,7 @@ public class FragmentAdSubChildSetPassword extends Fragment implements Bluetooth
     }
 
     private void sendData(String framedPacket) {
+        mActivity.showProgress();
         mAppClass.sendData(getActivity(), FragmentAdSubChildSetPassword.this, framedPacket, getContext());
     }
 
@@ -100,12 +103,17 @@ public class FragmentAdSubChildSetPassword extends Fragment implements Bluetooth
     }
 
     private void handleResponse(String data) {
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")){
+            mActivity.dismissProgress();
+            mAppClass.showSnackBar(getContext(),"Response Error");
+        }
         String[] splitData = data.split(";");
         if (splitData[0].substring(5, 7).equals("12")) {
             if (splitData[1].equals("ACK")) {
                 mAppClass.showSnackBar(getContext(),"Updated SuccessFully");
             }
         }
+        mActivity.dismissProgress();
     }
 
     @Override

@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
@@ -27,6 +28,7 @@ public class FragmentMaSubChildFactoryReset extends Fragment implements Bluetoot
     ApplicationClass mAppClass;
     Context mContext;
     AlertDialog alertDialog;
+    BaseActivity mActivity;
 
 
     @Nullable
@@ -41,6 +43,7 @@ public class FragmentMaSubChildFactoryReset extends Fragment implements Bluetoot
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
+        mActivity = (BaseActivity) getActivity();
         mBinding.viewFactoryReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +78,7 @@ public class FragmentMaSubChildFactoryReset extends Fragment implements Bluetoot
     }
 
     private void sendData(String framedPacket) {
+        mActivity.showProgress();
         mAppClass.sendData(getActivity(), FragmentMaSubChildFactoryReset.this, framedPacket, getContext());
     }
 
@@ -84,11 +88,16 @@ public class FragmentMaSubChildFactoryReset extends Fragment implements Bluetoot
     }
 
     private void handleResponse(String data) {
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
+            mActivity.dismissProgress();
+            mAppClass.showSnackBar(getContext(), "Response Error");
+        }
         String[] splitData = data.split(";");
-        if (splitData[0].substring(5,7).equals("16"))
-            if (splitData[1].equals("ACK")){
+        if (splitData[0].substring(5, 7).equals("16"))
+            if (splitData[1].equals("ACK")) {
                 alertDialog.dismiss();
             }
+        mActivity.dismissProgress();
     }
 
     @Override

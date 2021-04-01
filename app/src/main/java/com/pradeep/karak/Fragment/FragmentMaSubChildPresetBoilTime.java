@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
@@ -55,6 +56,7 @@ public class FragmentMaSubChildPresetBoilTime extends Fragment implements Blueto
     String edt800ml;
     String edt900ml;
     String edt1000ml;
+    BaseActivity mActivity;
 
 
     @Nullable
@@ -69,6 +71,7 @@ public class FragmentMaSubChildPresetBoilTime extends Fragment implements Blueto
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
+        mActivity = (BaseActivity) getActivity();
         sendData(mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + PRESET_BOIL_TIME_READ_SUB_ID));
         mBinding.presetBoilSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +84,7 @@ public class FragmentMaSubChildPresetBoilTime extends Fragment implements Blueto
     }
 
     private void sendData(String framedPacket) {
+        mActivity.showProgress();
         mAppClass.sendData(getActivity(), FragmentMaSubChildPresetBoilTime.this, framedPacket, getContext());
     }
 
@@ -110,6 +114,10 @@ public class FragmentMaSubChildPresetBoilTime extends Fragment implements Blueto
     }
 
     private void handleResponse(String data) {
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
+            mActivity.dismissProgress();
+            mAppClass.showSnackBar(getContext(), "Response Error");
+        }
         String[] handleData = data.split(";");
         if (handleData[0].substring(5, 7).equals("07")) {
             String[] pbt100ml = handleData[1].split(","),
@@ -147,6 +155,7 @@ public class FragmentMaSubChildPresetBoilTime extends Fragment implements Blueto
                 mAppClass.showSnackBar(getContext(), "Update successfully");
             }
         }
+        mActivity.dismissProgress();
     }
 
     @Override

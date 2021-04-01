@@ -118,6 +118,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     }
 
     private void readOperatorData() {
+        mActivity.showProgress();
         sendData(mAppClass.framePacket("07;01;"));
     }
 
@@ -254,6 +255,10 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     }
 
     private void handleResponse(String data) {
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")){
+            mActivity.dismissProgress();
+            mAppClass.showSnackBar(getContext(),"Response Error");
+        }
         String[] spiltData = data.split(";");
         if (spiltData[0].substring(5, 7).equals("09")) {
             if (spiltData[1].equals("ACK")) {
@@ -278,6 +283,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
             cupMilk = ccMilk[1];
             cupHotWater = ccWater[1];
             setDataToChart(getChartData(0), getChartbevarage(0), 0);
+            mActivity.dismissProgress();
         }
 
     }

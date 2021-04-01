@@ -50,6 +50,7 @@ public class FragmentAdSubChildMachineNumber extends Fragment implements Bluetoo
     }
 
     private void send(String framedPacket) {
+        mActivity.showProgress();
         mAppClass.sendData(getActivity(), FragmentAdSubChildMachineNumber.this, framedPacket, getContext());
     }
 
@@ -63,6 +64,10 @@ public class FragmentAdSubChildMachineNumber extends Fragment implements Bluetoo
     }
 
     private void handleDataResponse(String data) {
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")){
+            mActivity.dismissProgress();
+            mAppClass.showSnackBar(getContext(),"Response Error");
+        }
         String[] spiltData = data.split(";");
         if (spiltData[0].substring(5, 7).equals("18")) {
             if (spiltData[1].equals("ACK")) {
@@ -71,6 +76,7 @@ public class FragmentAdSubChildMachineNumber extends Fragment implements Bluetoo
                 Toast.makeText(mContext, "Machine Number Added Successfully !", Toast.LENGTH_SHORT).show();
             }
         }
+        mActivity.dismissProgress();
     }
 
     @Override

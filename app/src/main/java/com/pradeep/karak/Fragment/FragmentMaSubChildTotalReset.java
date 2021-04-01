@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
@@ -31,6 +32,7 @@ public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothD
     ApplicationClass mAppClass;
     Context mContext;
     AlertDialog alertDialog;
+    BaseActivity mActivity;
 
     @Nullable
     @Override
@@ -44,6 +46,7 @@ public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothD
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
+        mActivity = (BaseActivity) getActivity();
         sendData(mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + INDUCTION_HEATER_PROXIMITY_SENSOR_FIRMWARE));
         mBinding.TotalReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +84,7 @@ public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothD
     }
 
     private void sendData(String framedPacket) {
+        mActivity.showProgress();
         mAppClass.sendData(getActivity(), FragmentMaSubChildTotalReset.this, framedPacket, getContext());
     }
 
@@ -90,6 +94,10 @@ public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothD
     }
 
     private void handleResponse(String data) {
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")){
+            mActivity.dismissProgress();
+            mAppClass.showSnackBar(getContext(),"Response Error");
+        }
         String[] handleData = data.split(";");
         if (handleData[0].substring(5, 7).equals("07")) {
             String[] FirmWareVersion = handleData[3].split(",");
@@ -111,6 +119,7 @@ public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothD
                 mAppClass.showSnackBar(getContext(), "Update successfully");
             }
         }
+        mActivity.dismissProgress();
     }
 
     @Override
