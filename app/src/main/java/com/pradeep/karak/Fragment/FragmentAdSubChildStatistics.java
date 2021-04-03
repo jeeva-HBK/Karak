@@ -41,7 +41,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     BaseActivity mActivity;
     Context context;
     AlertDialog alertDialog;
-    String data = "", cupKarak = "", cupGinger = "", cupSulaimani = "", cupMasala = "", cupCardmom = "", cupMilk = "", cupHotWater = "";
+    String data = "", cupKarak = "0", cupGinger = "0", cupSulaimani = "0", cupMasala = "0", cupCardmom = "0", cupMilk = "0", cupHotWater = "0";
 
     public static final String TAG = "Statistics";
 
@@ -61,6 +61,8 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
         super.onResume();
         if (getTag().equals("TAG_STATISTICS")) {
             readOperatorData();
+        } else {
+            setDataToChart(getChartData(0), getChartbevarage(0), 0);
         }
     }
 

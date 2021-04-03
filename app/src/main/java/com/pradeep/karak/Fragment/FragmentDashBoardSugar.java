@@ -218,7 +218,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
             } // Pan Release
             else if (spiltData[0].substring(5, 7).equals("05")) {
                 if (spiltData[1].equals("ACK")) {
-                    Toast.makeText(getContext(), "Pan Release Ack", Toast.LENGTH_SHORT).show();
+                    mActivity.showProgress();
                 }
             }
             // Dispense Completed
@@ -248,7 +248,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
         LayoutInflater inflater = getLayoutInflater();
         View dialogView2 = inflater.inflate(R.layout.dialog_pan_not_available, null);
         dialogBuilder2.setView(dialogView2);
-
+        dialogBuilder2.setCancelable(false);
         TextView release = dialogView2.findViewById(R.id.txt_Release);
         TextView cancel = dialogView2.findViewById(R.id.txt_cancel);
 
@@ -272,7 +272,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
         LayoutInflater inflater = getLayoutInflater();
         View dialogView2 = inflater.inflate(R.layout.dialog_dispense, null);
         dialogBuilder2.setView(dialogView2);
-
+        dialogBuilder2.setCancelable(false);
         iv = dialogView2.findViewById(R.id.dispenseAlertImageView);
         tv = dialogView2.findViewById(R.id.dispenseAlertTextView);
         iv.setBackgroundResource(resourceID);

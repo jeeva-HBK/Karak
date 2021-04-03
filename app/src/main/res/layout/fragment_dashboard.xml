@@ -39,8 +39,8 @@
 
         <ImageView
             android:id="@+id/btn_disConnect"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_margin="8dp"
             android:padding="3.5dp"
             android:src="@drawable/ic_bluetooth_disconnect"

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentRootConfigurationBinding;
 
 import static com.pradeep.karak.Others.ApplicationClass.MAINTENANCE_PASSWORD;
+import static com.pradeep.karak.Others.ApplicationClass.MASTER_PASSWORD;
 
 
 public class FragmentRootConfiguration extends Fragment implements BluetoothDataCallback {
@@ -51,8 +53,8 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mActivity = (BaseActivity) getActivity();
         mcontext = getContext();
-        //Bundle b = getArguments();
-        //String data = b.getString("CUPCOUNT");
+        // Bundle b = getArguments();
+        // String data = b.getString("CUPCOUNT");
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
         mBinding.autoComplete.setAdapter(arrayAdapter);
@@ -66,11 +68,11 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
                         break;
 
                     case 1:
-                        checkPassword();
+                        checkPassword(MAINTENANCE_PASSWORD, 0);
                         break;
 
                     case 2:
-                        getParentFragmentManager().beginTransaction().replace(mBinding.configFragHost.getId(), new FragmentChildMaster(), "TAG_MASTER").commit();
+                        checkPassword(MASTER_PASSWORD, 1);
                         break;
                 }
             }
@@ -81,7 +83,7 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
         }));
     }
 
-    private void checkPassword() {
+    private void checkPassword(String password, int mode) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(mcontext);
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_password, null);
@@ -89,13 +91,20 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
         AlertDialog alertDialog = dialogBuilder.create();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
-
         EditText editText = dialogView.findViewById(R.id.edt_password);
         View view = dialogView.findViewById(R.id.dialogPass_submit);
+        TextView title = dialogView.findViewById(R.id.txt_maintance_access);
+        if (mode == 1) {
+            title.setText("Master Access");
+        }
         try {
             view.setOnClickListener((view1 -> {
-                if (editText.getText().toString().equals(MAINTENANCE_PASSWORD)) {
-                    getParentFragmentManager().beginTransaction().replace(mBinding.configFragHost.getId(), new FragmentChildMaintenance(), "TAG_MAINTENANCE").commit();
+                if (editText.getText().toString().equals(password)) {
+                    if (mode == 0) {
+                        getParentFragmentManager().beginTransaction().replace(mBinding.configFragHost.getId(), new FragmentChildMaintenance(), "TAG_MAINTENANCE").commit();
+                    } else if (mode == 1) {
+                        getParentFragmentManager().beginTransaction().replace(mBinding.configFragHost.getId(), new FragmentChildMaster(), "TAG_MASTER").commit();
+                    }
                     alertDialog.dismiss();
                 } else {
                     editText.setError("Password Wrong !");

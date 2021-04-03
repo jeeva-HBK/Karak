@@ -22,6 +22,7 @@ public class UtilMethods {
     }
 
     public static boolean checkCRC(String data, String actualCRC) {
+        Log.e("TAG", "checkCRC-Value: " + actualCRC);
         return CRCCalc(data).equals(actualCRC);
     }
 
@@ -40,7 +41,7 @@ public class UtilMethods {
             }
         }
 
-        Log.d("Final CRC", String.valueOf(crc));
+        Log.e("Final CRC", String.valueOf(crc));
         return crc; // & 0x00FF);
     }
 

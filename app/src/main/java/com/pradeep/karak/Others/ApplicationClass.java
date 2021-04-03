@@ -6,9 +6,12 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
@@ -121,11 +124,52 @@ public class ApplicationClass extends Application {
             PRESENT_BOIL_1000ML = "";
 
     // Passwords
-    public static String ADMIN_PASSWORD = "", MAINTENANCE_PASSWORD = "", CUP_COUNT_PASSWORD = "";
+    public static String ADMIN_PASSWORD = "", MAINTENANCE_PASSWORD = "", CUP_COUNT_PASSWORD = "", MASTER_PASSWORD = "4444";
 
     @Override
     public void onCreate() {
         super.onCreate();
+        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+            @Override
+            public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle bundle) {
+
+            }
+
+            @Override
+            public void onActivityStarted(@NonNull Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityResumed(@NonNull Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityPaused(@NonNull Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityStopped(@NonNull Activity activity) {
+
+            }
+
+            @Override
+            public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle bundle) {
+
+            }
+
+            @Override
+            public void onActivityDestroyed(@NonNull Activity activity) {
+                BluetoothHelper helper = BluetoothHelper.getInstance();
+                if (helper != null) {
+                    if (helper.isConnected()) {
+                        helper.disConnect();
+                    }
+                }
+            }
+        });
     }
 
     public void sendData(Activity activity, BluetoothDataCallback callback, String packetToSend, Context mContext) {

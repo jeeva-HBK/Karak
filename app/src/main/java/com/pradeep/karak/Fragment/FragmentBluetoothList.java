@@ -54,8 +54,13 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
     List<BluetoothDevice> scannedDevices;
     BluetoothDevice mBleDevice;
     boolean dataReceived = false;
+    boolean isVisible = false;
     SharedPreferences preferences;
     BluetoothListAdapter bluetoothListAdapter;
+    AlertDialog dispenseAlert, panAlert;
+    ImageView iv;
+    TextView tv;
+
 
     @Nullable
     @Override
@@ -180,7 +185,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
         dataReceived = true;
         BluetoothHelper helper = BluetoothHelper.getInstance(getActivity());
         String[] spiltData = data.split(";");
-        if (spiltData[0].startsWith("01", 5)) {
+        if (spiltData[0].substring(5, 7).equals("01")) {
             if (spiltData[2].equals("ACK")) {
                 if (spiltData[1].equals("00")) {
                     mActivity.updateNavigationUi(R.navigation.navigation);
@@ -189,47 +194,110 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                 }
             }
             helper.setConnected(true);
-        } else if (spiltData[0].startsWith("03", 5)) {
+        } else if (spiltData[0].substring(5, 7).equals("03")) {
             String[] status = spiltData[1].split(","), boilTime = spiltData[2].split(","), bevarageName = spiltData[3].split(",");
-
-            if (status[1].equals("1")) {
+            mActivity.dismissProgress();
+            sendPacket(data);
+            if (status[1].equals("01")) {
                 showPanNotAvailable();
             } else {
                 switch (bevarageName[1]) {
-                    case "1":
-                        showDispenseAlert("Karak", R.drawable.dispense_back);
+                    case "01":
+                        if (!isVisible) {
+                            showDispenseAlert("Karak", R.drawable.dispense_back);
+                        } else {
+                            changeDispenseMsg("Karak", R.drawable.dispense_back);
+                        }
                         break;
-                    case "2":
-                        showDispenseAlert("Ginger Karak", R.drawable.bg_app_button);
+                    case "02":
+                        if (!isVisible) {
+                            showDispenseAlert("Ginger Karak", R.drawable.bg_app_button);
+                        } else {
+                            changeDispenseMsg("Ginger Karak", R.drawable.bg_app_button);
+                        }
                         break;
-                    case "3":
-                        showDispenseAlert("Sulaimani", R.drawable.bg_top_curved);
+                    case "03":
+                        if (!isVisible) {
+                            showDispenseAlert("Sulaimani", R.drawable.bg_top_curved);
+                        } else {
+                            changeDispenseMsg("Sulaimani", R.drawable.bg_top_curved);
+                        }
                         break;
-                    case "4":
-                        showDispenseAlert("Masala Karak", R.drawable.ic_bg_box);
+                    case "04":
+                        if (!isVisible) {
+                            showDispenseAlert("Masala Karak", R.drawable.ic_bg_box);
+                        } else {
+                            changeDispenseMsg("Masala Karak", R.drawable.ic_bg_box);
+                        }
                         break;
-                    case "5":
-                        showDispenseAlert("Cardomom Karak", R.drawable.ic_camera);
+                    case "05":
+                        if (!isVisible) {
+                            showDispenseAlert("Cardomom Karak", R.drawable.ic_camera);
+                        } else {
+                            changeDispenseMsg("Cardomom Karak", R.drawable.ic_camera);
+                        }
                         break;
-                    case "6":
-                        showDispenseAlert("Hot milk", R.drawable.ic_heart);
+                    case "06":
+                        if (!isVisible) {
+                            showDispenseAlert("Hot milk", R.drawable.ic_heart);
+                        } else {
+                            changeDispenseMsg("Hot milk", R.drawable.ic_heart);
+                        }
                         break;
-                    case "7":
-                        showDispenseAlert("Hot Water", R.drawable.ic_operator);
+                    case "07":
+                        if (!isVisible) {
+                            showDispenseAlert("Hot Water", R.drawable.ic_operator);
+                        } else {
+                            changeDispenseMsg("Hot Water", R.drawable.ic_operator);
+                        }
+                        break;
+                }
+
+                switch (status[1]) {
+                    case "02":
+                        mAppClass.showSnackBar(getContext(), "Dispensing Milk & Water");
+                        break;
+                    case "03":
+                        mAppClass.showSnackBar(getContext(), "Preheating");
+                        break;
+                    case "04":
+                        mAppClass.showSnackBar(getContext(), "Dispensing ingredients");
+                        break;
+                    case "05":
+                        mAppClass.showSnackBar(getContext(), "Boiling");
                         break;
                 }
             }
         } // Pan Release
-        else if (spiltData[0].startsWith("05", 5)) {
+        else if (spiltData[0].substring(5, 7).equals("05")) {
             if (spiltData[1].equals("ACK")) {
                 Toast.makeText(getContext(), "Pan Release Ack", Toast.LENGTH_SHORT).show();
             }
         }
         // Dispense Completed
-        else if (spiltData[0].startsWith("04", 5)) {
+        else if (spiltData[0].substring(5, 7).equals("04")) {
             sendPacket(mAppClass.framePacket("04;ACK:"));
+            if (dispenseAlert.isShowing()) {
+                dispenseAlert.dismiss();
+            }
+            mAppClass.showSnackBar(getContext(), "Dispense Completed !");
+            mActivity.updateNavigationUi(R.navigation.navigation);
         }
-        //  mActivity.dismissProgress();
+        // Cancel Dispense
+        else if (spiltData[0].substring(5, 7).equals("06")) {
+            if (spiltData[1].equals("ACK")) {
+                Toast.makeText(getContext(), "Dispense Canceled !", Toast.LENGTH_SHORT).show();
+                mActivity.updateNavigationUi(R.navigation.navigation);
+                if (panAlert.isShowing()) {
+                    panAlert.dismiss();
+                }
+            }
+        }
+    }
+
+    private void changeDispenseMsg(String beverageName, int resourceID) {
+        tv.setText(beverageName);
+        iv.setBackgroundResource(resourceID);
     }
 
     private void showPanNotAvailable() {
@@ -237,16 +305,23 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
         LayoutInflater inflater = getLayoutInflater();
         View dialogView2 = inflater.inflate(R.layout.dialog_pan_not_available, null);
         dialogBuilder2.setView(dialogView2);
-
+        dialogBuilder2.setCancelable(false);
         TextView release = dialogView2.findViewById(R.id.txt_Release);
+        TextView cancel = dialogView2.findViewById(R.id.txt_cancel);
 
         release.setOnClickListener((view -> {
             sendPacket(mAppClass.framePacket("05;"));
+            panAlert.dismiss();
+            mActivity.showProgress();
         }));
 
-        AlertDialog alertDialog2 = dialogBuilder2.create();
-        alertDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        alertDialog2.show();
+        cancel.setOnClickListener(view -> {
+            sendPacket(mAppClass.framePacket("06;"));
+        });
+
+        panAlert = dialogBuilder2.create();
+        panAlert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        panAlert.show();
     }
 
     private void showDispenseAlert(String bevarageName, int resourceID) {
@@ -254,15 +329,16 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
         LayoutInflater inflater = getLayoutInflater();
         View dialogView2 = inflater.inflate(R.layout.dialog_dispense, null);
         dialogBuilder2.setView(dialogView2);
-
-        ImageView iv = dialogView2.findViewById(R.id.dispenseAlertImageView);
-        TextView tV = dialogView2.findViewById(R.id.dispenseAlertTextView);
+        dialogBuilder2.setCancelable(false);
+        iv = dialogView2.findViewById(R.id.dispenseAlertImageView);
+        tv = dialogView2.findViewById(R.id.dispenseAlertTextView);
         iv.setBackgroundResource(resourceID);
-        tV.setText(bevarageName);
+        tv.setText(bevarageName);
 
-        AlertDialog alertDialog2 = dialogBuilder2.create();
-        alertDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        alertDialog2.show();
+        dispenseAlert = dialogBuilder2.create();
+        dispenseAlert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dispenseAlert.show();
+        isVisible = true;
     }
 
     @Override

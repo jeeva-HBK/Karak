@@ -90,7 +90,7 @@ public class SerialSocket extends BluetoothGattCallback {
 
 
    public void disconnect() {
-        Log.d(TAG, "disconnect");
+        Log.e(TAG, "disconnect");
         listener = null; // ignore remaining data and errors
         device = null;
         canceled = true;
@@ -101,9 +101,9 @@ public class SerialSocket extends BluetoothGattCallback {
         readCharacteristic = null;
         writeCharacteristic = null;
         if (gatt != null) {
-            Log.d(TAG, "gatt.disconnect");
+            Log.e(TAG, "gatt.disconnect");
             gatt.disconnect();
-            Log.d(TAG, "gatt.close");
+            Log.e(TAG, "gatt.close");
             try {
                 gatt.close();
             } catch (Exception ignored) {
