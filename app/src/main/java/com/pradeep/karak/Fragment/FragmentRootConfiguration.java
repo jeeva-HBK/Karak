@@ -1,6 +1,7 @@
 package com.pradeep.karak.Fragment;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
     String[] mainMenuList;
     BaseActivity mActivity;
     Context mcontext;
+    ArrayAdapter arrayAdapter;
 
     @Nullable
     @Override
@@ -53,11 +55,7 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mActivity = (BaseActivity) getActivity();
         mcontext = getContext();
-        // Bundle b = getArguments();
-        // String data = b.getString("CUPCOUNT");
-
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
-        mBinding.autoComplete.setAdapter(arrayAdapter);
+        setAdapter();
         getParentFragmentManager().beginTransaction().add(mBinding.configFragHost.getId(), new FragmentChildAdmin(getArguments().getString("CUPCOUNT")), "INIT_ADMIN").commit();
         mBinding.autoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -83,6 +81,12 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
         }));
     }
 
+    private void setAdapter() {
+        arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
+        mBinding.autoComplete.setAdapter(arrayAdapter);
+    }
+
+
     private void checkPassword(String password, int mode) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(mcontext);
         LayoutInflater inflater = this.getLayoutInflater();
@@ -92,8 +96,17 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
         EditText editText = dialogView.findViewById(R.id.edt_password);
-        View view = dialogView.findViewById(R.id.dialogPass_submit);
+        TextView view = dialogView.findViewById(R.id.dialogPass_t_maintiance);
         TextView title = dialogView.findViewById(R.id.txt_maintance_access);
+        alertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                mBinding.autoComplete.setText("Admin");
+                setAdapter();
+                getParentFragmentManager().beginTransaction().replace(mBinding.configFragHost.getId(), new FragmentChildAdmin("emptyData"), "TAG_ADMIN").commit();
+
+            }
+        });
         if (mode == 1) {
             title.setText("Master Access");
         }

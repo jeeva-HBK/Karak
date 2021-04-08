@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -75,7 +74,7 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
                     @Override
                     public void run() {
                         if (!dataReceived) {
-                            Toast.makeText(getContext(), "Timed Out!", Toast.LENGTH_SHORT).show();
+                            mAppclass.showSnackBar(getContext(),getString(R.string.Timeout));
                             mActivity.dismissProgress();
                         }
                     }
@@ -93,8 +92,8 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
 
-        TextView txtView = dialogView.findViewById(R.id.dialogPass);
-        TextView txtView1 = dialogView.findViewById(R.id.dialogPass_t);
+        TextView txtView = dialogView.findViewById(R.id.dialogPass_dismiss);
+        TextView txtView1 = dialogView.findViewById(R.id.dialogPasst_dismiss);
         txtView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

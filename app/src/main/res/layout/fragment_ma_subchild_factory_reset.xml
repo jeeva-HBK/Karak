@@ -70,28 +70,5 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.9" />
 
-
-        <!--<View
-            android:id="@+id/view9"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/edt_back_new"
-            app:layout_constraintBottom_toTopOf="@+id/guideline6"
-            app:layout_constraintEnd_toEndOf="@+id/textView23"
-            app:layout_constraintStart_toStartOf="@+id/textView23"
-            app:layout_constraintTop_toTopOf="@+id/guideline5" />
-
-        <TextView
-            android:id="@+id/factory_reset_save"
-            style="@style/textAppearence"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="SAVE"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/view9"
-            app:layout_constraintEnd_toEndOf="@+id/view9"
-            app:layout_constraintStart_toStartOf="@+id/view9"
-            app:layout_constraintTop_toTopOf="@+id/view9" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

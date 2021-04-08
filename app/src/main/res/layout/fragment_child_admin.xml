@@ -26,7 +26,7 @@
                 android:completionThreshold="0"
                 android:cursorVisible="false"
                 android:focusable="false"
-                android:text="Statistics" />
+                android:text="@string/statistics" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

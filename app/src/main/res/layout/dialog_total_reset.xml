@@ -15,8 +15,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_factory_reset"
@@ -60,8 +59,11 @@
             android:id="@+id/total_reset_ok"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="Ok"
+            android:text="@string/ok"
             android:gravity="center"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:focusable="true"
+            android:clickable="true"
             android:textColor="@color/textColor"
             app:layout_constraintBottom_toBottomOf="@+id/dialogPass_ok"
             app:layout_constraintEnd_toEndOf="@+id/dialogPass_ok"

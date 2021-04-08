@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -100,8 +99,8 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
         confirmDispenseAlert = dialogBuilder.create();
         confirmDispenseAlert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         confirmDispenseAlert.show();
-        View ok = dialogView.findViewById(R.id.dialogPass_ok);
-        View cancel = dialogView.findViewById(R.id.dialogPass_cancel);
+        TextView ok = dialogView.findViewById(R.id.txt_ok);
+        TextView cancel = dialogView.findViewById(R.id.txt_cancel);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,52 +148,52 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
                 } else {
                     switch (bevarageName[1]) {
                         case "01":
-                            if (!isVisible) {
-                                showDispenseAlert("Karak", R.drawable.dispense_back);
+                           if (!isVisible) {
+                                showDispenseAlert("Karak", R.drawable.karak);
                             } else {
-                                changeDispenseMsg("Karak", R.drawable.dispense_back);
+                               changeDispenseMsg("Karak", R.drawable.karak);
                             }
                             break;
                         case "02":
                             if (!isVisible) {
-                                showDispenseAlert("Ginger Karak", R.drawable.bg_app_button);
+                                showDispenseAlert("Ginger Karak", R.drawable.karakginger);
                             } else {
-                                changeDispenseMsg("Ginger Karak", R.drawable.bg_app_button);
+                                changeDispenseMsg("Ginger Karak", R.drawable.karakginger);
                             }
                             break;
                         case "03":
                             if (!isVisible) {
-                                showDispenseAlert("Sulaimani", R.drawable.bg_top_curved);
+                                showDispenseAlert("Sulaimani", R.drawable.sulaimani);
                             } else {
-                                changeDispenseMsg("Sulaimani", R.drawable.bg_top_curved);
+                                changeDispenseMsg("Sulaimani", R.drawable.sulaimani);
                             }
                             break;
                         case "04":
                             if (!isVisible) {
-                                showDispenseAlert("Masala Karak", R.drawable.ic_bg_box);
+                                showDispenseAlert("Masala Karak", R.drawable.karakmasaka);
                             } else {
-                                changeDispenseMsg("Masala Karak", R.drawable.ic_bg_box);
+                                changeDispenseMsg("Masala Karak", R.drawable.karakmasaka);
                             }
                             break;
                         case "05":
                             if (!isVisible) {
-                                showDispenseAlert("Cardomom Karak", R.drawable.ic_camera);
+                                showDispenseAlert("Cardomom Karak", R.drawable.karakcardmom);
                             } else {
-                                changeDispenseMsg("Cardomom Karak", R.drawable.ic_camera);
+                                changeDispenseMsg("Cardomom Karak", R.drawable.karakcardmom);
                             }
                             break;
                         case "06":
                             if (!isVisible) {
-                                showDispenseAlert("Hot milk", R.drawable.ic_heart);
+                                showDispenseAlert("Hot milk", R.drawable.hotmilk);
                             } else {
-                                changeDispenseMsg("Hot milk", R.drawable.ic_heart);
+                                changeDispenseMsg("Hot milk", R.drawable.hotmilk);
                             }
                             break;
                         case "07":
                             if (!isVisible) {
-                                showDispenseAlert("Hot Water", R.drawable.ic_operator);
+                                showDispenseAlert("Hot Water", R.drawable.water);
                             } else {
-                                changeDispenseMsg("Hot Water", R.drawable.ic_operator);
+                                changeDispenseMsg("Hot Water", R.drawable.water);
                             }
                             break;
                     }
@@ -233,7 +232,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
             // Cancel Dispense
             else if (spiltData[0].substring(5, 7).equals("06")) {
                 if (spiltData[1].equals("ACK")) {
-                    Toast.makeText(getContext(), "Dispense Canceled !", Toast.LENGTH_SHORT).show();
+                    mAppclass.showSnackBar(getContext(),getString(R.string.DispenseCanceled));
                     mActivity.updateNavigationUi(R.navigation.navigation);
                     if (panAlert.isShowing()) {
                         panAlert.dismiss();

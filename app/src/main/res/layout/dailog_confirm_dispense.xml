@@ -24,8 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Are You Sure To Continue?"
-            android:textSize="20dp"
+            android:text="@string/are_you_sure_to_continue"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,10 +45,8 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
-
             app:layout_constraintBottom_toTopOf="@+id/dialogPass_ok"
             app:layout_constraintEnd_toEndOf="@+id/view15"
-
             app:layout_constraintStart_toStartOf="@+id/view15"
             app:layout_constraintTop_toBottomOf="@+id/txt_maintance_access"
             app:lottie_autoPlay="true"
@@ -59,9 +57,13 @@
 
         <TextView
             android:id="@+id/txt_ok"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ok"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/ok"
             android:textColor="@color/textColor"
             app:layout_constraintBottom_toBottomOf="@+id/dialogPass_ok"
             app:layout_constraintEnd_toEndOf="@+id/dialogPass_ok"
@@ -81,9 +83,13 @@
 
         <TextView
             android:id="@+id/txt_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/cancel"
             android:textColor="@color/textColor"
             app:layout_constraintBottom_toBottomOf="@+id/dialogPass_cancel"
             app:layout_constraintEnd_toEndOf="@+id/dialogPass_cancel"

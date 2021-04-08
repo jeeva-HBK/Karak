@@ -31,7 +31,7 @@ import com.pradeep.karak.BLE.BluetoothHelper;
 import com.pradeep.karak.BLE.BluetoothScannerCallback;
 import com.pradeep.karak.Callbacks.ItemClickListener;
 import com.pradeep.karak.Others.ApplicationClass;
-import com.pradeep.karak.Others.UtilMethods;
+
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentWelcomeBinding;
 
@@ -100,12 +100,12 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
         }
         Log.e(TAG, "spilteData" + builder);
         // 07;01,1234;02,1234;03,1234;04,00000;05,00000;06,00000;07,00000;08,00000;09,00000;
-        Log.e(TAG, "mCRC: " + UtilMethods.crcCalculate(builder.toString().getBytes()));
+       /* Log.e(TAG, "mCRC: " + UtilMethods.crcCalculate(builder.toString().getBytes()));
         if (UtilMethods.checkCRC(builder.toString(), splitted[splitted.length - 1])) {
             Log.e("TAG", "onActivityCreated: " + data);
         } else {
             Log.e("TAG", "onActivityCreated: Invalid CRC");
-        }
+        }*/
     }
 
     private void loadFav() {

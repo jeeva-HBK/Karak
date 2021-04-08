@@ -22,6 +22,8 @@ import com.pradeep.karak.BLE.BluetoothHelper;
 import com.pradeep.karak.BLE.SerialSocket;
 import com.pradeep.karak.R;
 
+import java.util.zip.CRC32;
+
 // Created on 15 Mar 2021 by Jeeva
 public class ApplicationClass extends Application {
     // Packet_keys

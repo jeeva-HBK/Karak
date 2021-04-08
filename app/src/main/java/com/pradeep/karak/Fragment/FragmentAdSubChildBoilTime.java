@@ -133,7 +133,7 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
             } else if (handleData[0].substring(5, 7).equals("11")) {
                 if (handleData[0].equals("ACK")) {
                     mAppClass.showSnackBar(getContext(),getString(R.string.UpdateSuccessfully));
-                }// TODO: 31-03-2021 check here
+                }
             }
         }
         mActivity.dismissProgress();

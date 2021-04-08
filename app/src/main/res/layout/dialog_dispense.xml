@@ -22,6 +22,7 @@
         android:text=""
         android:textColor="@color/black"
         android:textSize="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/dispenseAlertImageView"
         app:layout_constraintEnd_toEndOf="@+id/view13"
         app:layout_constraintStart_toStartOf="@+id/view13"
@@ -31,8 +32,9 @@
 
     <ImageView
         android:id="@+id/dispenseAlertImageView"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/view13"
         app:layout_constraintEnd_toEndOf="@+id/view13"
         app:layout_constraintStart_toStartOf="@+id/view13"

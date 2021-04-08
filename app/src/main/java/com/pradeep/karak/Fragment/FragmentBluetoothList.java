@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -190,7 +189,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                 if (spiltData[1].equals("00")) {
                     mActivity.updateNavigationUi(R.navigation.navigation);
                 } else if (spiltData[1].equals("01")) {
-                    Toast.makeText(mContext, "Dispensing Please Wait!", Toast.LENGTH_SHORT).show();
+                    mAppClass.showSnackBar(getContext(),getString(R.string.DispensingPleaseWait));
                 }
             }
             helper.setConnected(true);
@@ -271,7 +270,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
         } // Pan Release
         else if (spiltData[0].substring(5, 7).equals("05")) {
             if (spiltData[1].equals("ACK")) {
-                Toast.makeText(getContext(), "Pan Release Ack", Toast.LENGTH_SHORT).show();
+                mAppClass.showSnackBar(getContext(),getString(R.string.PanReleaseAck));
             }
         }
         // Dispense Completed
@@ -286,7 +285,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
         // Cancel Dispense
         else if (spiltData[0].substring(5, 7).equals("06")) {
             if (spiltData[1].equals("ACK")) {
-                Toast.makeText(getContext(), "Dispense Canceled !", Toast.LENGTH_SHORT).show();
+                mAppClass.showSnackBar(getContext(),getString(R.string.DispenseCanceled));
                 mActivity.updateNavigationUi(R.navigation.navigation);
                 if (panAlert.isShowing()) {
                     panAlert.dismiss();

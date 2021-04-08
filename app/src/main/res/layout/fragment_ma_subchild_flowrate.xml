@@ -191,7 +191,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Karak"
+            android:text="@string/karak"
             app:layout_constraintEnd_toEndOf="@+id/flow_rate_karak"
             app:layout_constraintStart_toStartOf="@+id/flow_rate_karak"
             app:layout_constraintTop_toBottomOf="@+id/flow_rate_karak" />
@@ -203,7 +203,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Cardmom Karak"
+            android:text="@string/cardmom_karak"
             app:layout_constraintEnd_toEndOf="@+id/flowrate_cardmom_karak"
             app:layout_constraintStart_toStartOf="@+id/flowrate_cardmom_karak"
             app:layout_constraintTop_toBottomOf="@+id/flowrate_cardmom_karak" />
@@ -257,7 +257,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Masala Karak"
+            android:text="@string/masala_karak"
             app:layout_constraintEnd_toEndOf="@+id/flow_rate_masala_karak"
             app:layout_constraintStart_toStartOf="@+id/flow_rate_masala_karak"
             app:layout_constraintTop_toBottomOf="@+id/flow_rate_masala_karak" />
@@ -269,7 +269,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Milk"
+            android:text="@string/milk"
             app:layout_constraintEnd_toEndOf="@+id/flow_rate_milk"
             app:layout_constraintStart_toStartOf="@+id/flow_rate_milk"
             app:layout_constraintTop_toBottomOf="@+id/flow_rate_milk" />
@@ -322,7 +322,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Ginger Karak"
+            android:text="@string/ginger_karak"
             app:layout_constraintEnd_toEndOf="@+id/flow_rate_ginger_karak"
             app:layout_constraintStart_toStartOf="@+id/flow_rate_ginger_karak"
             app:layout_constraintTop_toBottomOf="@+id/flow_rate_ginger_karak" />
@@ -334,7 +334,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Water"
+            android:text="@string/water"
             app:layout_constraintEnd_toEndOf="@+id/flow_rate_water"
             app:layout_constraintStart_toStartOf="@+id/flow_rate_water"
             app:layout_constraintTop_toBottomOf="@+id/flow_rate_water" />
@@ -367,7 +367,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Sugar"
+            android:text="@string/sugar"
             app:layout_constraintEnd_toEndOf="@+id/flow_rate_sugar"
             app:layout_constraintStart_toStartOf="@+id/flow_rate_sugar"
             app:layout_constraintTop_toBottomOf="@+id/flow_rate_sugar" />
@@ -389,7 +389,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
-            android:text="SAVE"
+            android:text="@string/save"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:focusable="true"
+            android:clickable="true"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/view9"
             app:layout_constraintEnd_toEndOf="@+id/view9"
