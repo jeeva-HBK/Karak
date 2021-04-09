@@ -22,8 +22,6 @@ import com.pradeep.karak.BLE.BluetoothHelper;
 import com.pradeep.karak.BLE.SerialSocket;
 import com.pradeep.karak.R;
 
-import java.util.zip.CRC32;
-
 // Created on 15 Mar 2021 by Jeeva
 public class ApplicationClass extends Application {
     // Packet_keys
@@ -131,6 +129,7 @@ public class ApplicationClass extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+      //  Log.e("Received <-- ", "CRC: " + UtilMethods.CRCCalc(data));
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle bundle) {
@@ -228,6 +227,7 @@ public class ApplicationClass extends Application {
     }
 
     public String framePacket(String packet) {
+        //  return START_PACKET + packet + UtilMethods.CRCCalc(packet) + ";" + END_PACKET;
         return START_PACKET + packet + CRC + END_PACKET;
     }
 

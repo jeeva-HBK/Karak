@@ -31,7 +31,7 @@ import com.pradeep.karak.BLE.BluetoothHelper;
 import com.pradeep.karak.BLE.BluetoothScannerCallback;
 import com.pradeep.karak.Callbacks.ItemClickListener;
 import com.pradeep.karak.Others.ApplicationClass;
-
+import com.pradeep.karak.Others.UtilMethods;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentWelcomeBinding;
 
@@ -73,7 +73,6 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
         mActivity.getSupportActionBar().show();
         mContext = getActivity().getApplicationContext();
         preferences = PreferenceManager.getDefaultSharedPreferences(mContext);
-        checkCRC();
         mBinding.recylerFavList.setLayoutManager(new GridLayoutManager(getContext(), 2));
         loadFav();
         mBinding.imgScan.setOnClickListener(new View.OnClickListener() {
@@ -82,30 +81,6 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
                 mAppClass.navigateTo(getActivity(), R.id.action_fragment_machine_list_to_dialogBluetoothList);
             }
         });
-    }
-
-    private void checkCRC() {
-        String data = "PSIPS07;01,1234;02,1234;03,1234;04,00000;05,00000;06,00000;07,00000;08,00000;09,00000;10,00000;PSIPE";
-
-        data = data.split("PSIPS")[1].split("PSIPE")[0];
-        Log.e(TAG, "spilteData" + data);
-        String[] splitted = data.split(";");
-        Log.e(TAG, "spilteData" + splitted);
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < splitted.length; i++) {
-            if (i != splitted.length - 1) {
-                builder.append(splitted[i]);
-                builder.append(";");
-            }
-        }
-        Log.e(TAG, "spilteData" + builder);
-        // 07;01,1234;02,1234;03,1234;04,00000;05,00000;06,00000;07,00000;08,00000;09,00000;
-       /* Log.e(TAG, "mCRC: " + UtilMethods.crcCalculate(builder.toString().getBytes()));
-        if (UtilMethods.checkCRC(builder.toString(), splitted[splitted.length - 1])) {
-            Log.e("TAG", "onActivityCreated: " + data);
-        } else {
-            Log.e("TAG", "onActivityCreated: Invalid CRC");
-        }*/
     }
 
     private void loadFav() {
