@@ -161,14 +161,14 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
                                 changeDispenseMsg("Ginger Karak", R.drawable.karakginger);
                             }
                             break;
-                        case "03":
+                        case "04":
                             if (!isVisible) {
                                 showDispenseAlert("Sulaimani", R.drawable.sulaimani);
                             } else {
                                 changeDispenseMsg("Sulaimani", R.drawable.sulaimani);
                             }
                             break;
-                        case "04":
+                        case "03":
                             if (!isVisible) {
                                 showDispenseAlert("Masala Karak", R.drawable.karakmasaka);
                             } else {

@@ -75,7 +75,7 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/ic_strong_tea"
+            android:src="@drawable/hotmilk"
             app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="@+id/guideline9" />
@@ -142,6 +142,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginRight="5dp"
             android:text="percup"
+            android:layout_marginLeft="2dp"
             app:layout_constraintBottom_toBottomOf="@+id/txt_milk_tea_gms"
             app:layout_constraintEnd_toEndOf="@+id/view8"
             app:layout_constraintStart_toEndOf="@+id/txt_milk_tea_gms"
@@ -182,6 +183,7 @@
             android:maxLines="1"
             android:textColorHint="@color/textColor"
             app:layout_constraintBottom_toBottomOf="@id/view_line2"
+            app:layout_constraintEnd_toEndOf="@+id/txt_milk_tea_gms"
             app:layout_constraintStart_toStartOf="@+id/txt_milk_tea_gms" />
 
         <TextView

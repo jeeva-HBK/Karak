@@ -75,7 +75,7 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/ic_strong_tea"
+            android:src="@drawable/sulaimani"
             app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="@+id/guideline9" />
@@ -142,6 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginRight="5dp"
+            android:layout_marginLeft="2dp"
             android:text="percup"
             app:layout_constraintBottom_toBottomOf="@+id/txt_sulaimani_tea_gms"
             app:layout_constraintEnd_toEndOf="@+id/view8"
@@ -191,8 +192,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="percup"
-
             app:layout_constraintBottom_toBottomOf="@+id/txt_s_water"
+            app:layout_constraintEnd_toEndOf="@+id/txt_tea_per_cup"
             app:layout_constraintStart_toStartOf="@+id/txt_tea_per_cup"
             app:layout_constraintTop_toTopOf="@+id/txt_s_water" />
 

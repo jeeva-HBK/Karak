@@ -74,7 +74,7 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/ic_strong_tea"
+            android:src="@drawable/karakcardmom"
             app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="@+id/guideline9" />
@@ -137,7 +137,7 @@
             style="@style/textpercup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="2dp"
             android:text="percup"
             app:layout_constraintBottom_toBottomOf="@+id/txt_tea_gms"
             app:layout_constraintEnd_toEndOf="@+id/view8"
@@ -178,6 +178,7 @@
             android:maxLines="1"
             android:textColorHint="@color/textColor"
             app:layout_constraintBottom_toBottomOf="@id/view_line2"
+            app:layout_constraintEnd_toEndOf="@+id/txt_tea_gms"
             app:layout_constraintStart_toStartOf="@+id/txt_tea_gms" />
 
         <TextView
@@ -225,6 +226,7 @@
             android:maxLines="1"
             android:textColorHint="@color/textColor"
             app:layout_constraintBottom_toBottomOf="@id/view_line3"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="@+id/txt_tea_cardmom" />
 
         <TextView
@@ -235,6 +237,7 @@
             android:text="percup"
             app:layout_constraintBottom_toBottomOf="@+id/txt_gms_milk"
             app:layout_constraintEnd_toEndOf="@+id/txt_cardmom_per_cup"
+            app:layout_constraintStart_toStartOf="@+id/txt_cardmom_per_cup"
             app:layout_constraintTop_toTopOf="@+id/txt_gms_milk" />
 
         <View
@@ -272,6 +275,7 @@
             android:maxLines="1"
             android:textColorHint="@color/textColor"
             app:layout_constraintBottom_toBottomOf="@+id/view_line4"
+            app:layout_constraintEnd_toEndOf="@+id/txt_gms_milk"
             app:layout_constraintStart_toStartOf="@+id/txt_gms_milk" />
 
         <TextView
@@ -282,6 +286,7 @@
             android:text="percup"
             app:layout_constraintBottom_toBottomOf="@+id/txt_gms_water"
             app:layout_constraintEnd_toEndOf="@+id/view_line3"
+            app:layout_constraintStart_toStartOf="@+id/txt_Milk_per_cup"
             app:layout_constraintTop_toTopOf="@+id/txt_gms_water" />
 
         <View

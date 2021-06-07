@@ -182,8 +182,8 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:text="@string/_600ml"
-            app:layout_constraintBottom_toTopOf="@+id/guideline7"
-            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintBottom_toTopOf="@id/edt_700ml"
+            app:layout_constraintEnd_toEndOf="@id/edt_600ml"
             app:layout_constraintStart_toStartOf="@+id/edt_600ml"
             app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
