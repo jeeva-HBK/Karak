@@ -438,8 +438,14 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
 
                         @Override
                         public void OnConnectFailed(Exception e) {
-                            stopScan();
-                            mBinding.txtConnect.setText("Rescan");
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mBinding.txtConnect.setText("Rescan");
+                                    stopScan();
+                                }
+                            });
+
                             e.printStackTrace();
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override

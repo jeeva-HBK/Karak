@@ -1,5 +1,6 @@
 package com.pradeep.karak.Fragment;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,7 @@ public class FragmentChildMaster extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        masterMenuList = new String[]{"flow rate", "correction factor", "Preset Boil Time", "Factory Reset", "Total Reset"};
+        masterMenuList = new String[]{"Flow rate", "Correction factor", "Preset Boil Time", "Factory Reset", "Total Reset"};
         mBinding.autoCompleteFlowrate.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.bg_brown_bar));
         getParentFragmentManager().beginTransaction().replace(mBinding.masterFragHost.getId(), new FragmentMaSubChildFlowRate(), "TAG_FlowRate").commit();
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, masterMenuList);

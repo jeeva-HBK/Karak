@@ -90,7 +90,7 @@ public class BluetoothHelper implements SerialListener {
                 return;
             }
             mConnectionListener.cancel();
-            reconnect();
+           reconnect();
         }
 
         @Override
@@ -346,6 +346,7 @@ public class BluetoothHelper implements SerialListener {
     }
 
     private void sendDataToCallback(final String s) {
+        Log.d(TAG, "Received <--" + s);
         mActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {

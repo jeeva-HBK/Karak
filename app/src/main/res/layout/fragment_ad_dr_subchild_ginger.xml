@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -121,18 +120,29 @@
             style="@style/textgms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
             android:background="@android:color/transparent"
-            android:hint="Gms"
+            android:hint="000"
             android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="3"
             android:maxLines="1"
-            android:textColorHint="@color/textColor"
+            android:layout_marginRight="5dp"
+            android:textColorHint="@color/materialgrey"
             app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintEnd_toStartOf="@+id/guideline6"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="@+id/guideline5"
-            android:layout_marginBottom="2dp" />
+            app:layout_constraintEnd_toStartOf="@id/tea_gms"
+           />
+
+        <TextView
+            android:id="@+id/tea_gms"
+            style="@style/textpercup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="Gms"
+            app:layout_constraintBottom_toBottomOf="@id/txt_tea_per_cup"
+            app:layout_constraintEnd_toStartOf="@id/txt_tea_per_cup"
+            app:layout_constraintTop_toTopOf="@id/txt_tea_per_cup" />
 
         <TextView
             android:id="@+id/txt_tea_per_cup"
@@ -140,11 +150,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginRight="2dp"
+            android:layout_marginRight="10dp"
             android:text="percup"
             app:layout_constraintBottom_toBottomOf="@+id/txt_ginger_tea_gms"
             app:layout_constraintEnd_toEndOf="@+id/view8"
-            app:layout_constraintStart_toEndOf="@+id/txt_ginger_tea_gms"
             app:layout_constraintTop_toTopOf="@id/txt_ginger_tea_gms" />
 
         <View
@@ -174,15 +183,26 @@
             android:layout_height="0dp"
             android:layout_marginBottom="2dp"
             android:background="@android:color/transparent"
-            android:hint="Gms"
+            android:hint="000"
             android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="3"
             android:maxLines="1"
-            android:textColorHint="@color/textColor"
+            android:textColorHint="@color/materialgrey"
             app:layout_constraintBottom_toBottomOf="@id/view_line2"
             app:layout_constraintEnd_toEndOf="@+id/txt_ginger_tea_gms"
             app:layout_constraintStart_toStartOf="@+id/txt_ginger_tea_gms" />
+
+        <TextView
+            android:id="@+id/ginger_gms"
+            style="@style/textpercup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gms"
+            app:layout_constraintBottom_toBottomOf="@id/txt_cardmom_per_cup"
+            app:layout_constraintStart_toStartOf="@id/tea_gms"
+            app:layout_constraintEnd_toEndOf="@id/tea_gms"
+            app:layout_constraintTop_toTopOf="@id/txt_cardmom_per_cup" />
 
         <TextView
             android:id="@+id/txt_cardmom_per_cup"
@@ -223,15 +243,28 @@
             android:layout_marginBottom="2dp"
             android:background="@android:color/transparent"
             android:gravity="end"
-            android:hint="%"
-            android:imeOptions="actionNext"
+            android:hint="000"
+            android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLength="3"
             android:maxLines="1"
-            android:textColorHint="@color/textColor"
+            android:textColorHint="@color/materialgrey"
             app:layout_constraintBottom_toBottomOf="@id/view_line3"
             app:layout_constraintEnd_toEndOf="@+id/txt_ginger_ginger"
             app:layout_constraintStart_toStartOf="@+id/txt_ginger_ginger" />
+
+
+
+        <TextView
+            android:id="@+id/milk_gms"
+            style="@style/textpercup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"
+            app:layout_constraintBottom_toBottomOf="@id/txt_Milk_per_cup"
+            app:layout_constraintStart_toStartOf="@id/tea_gms"
+            app:layout_constraintEnd_toEndOf="@id/tea_gms"
+            app:layout_constraintTop_toTopOf="@id/txt_Milk_per_cup" />
 
         <TextView
             android:id="@+id/txt_Milk_per_cup"
@@ -272,15 +305,26 @@
             android:layout_marginBottom="2dp"
             android:background="@android:color/transparent"
             android:gravity="end"
-            android:hint="%"
-            android:imeOptions="actionDone"
-            android:inputType="number"
+            android:hint="000"
+            android:editable="false"
             android:maxLength="3"
             android:maxLines="1"
-            android:textColorHint="@color/textColor"
+            android:textColorHint="@color/materialgrey"
             app:layout_constraintBottom_toBottomOf="@+id/view_line4"
             app:layout_constraintEnd_toEndOf="@+id/txt_ginger_gms_milk"
             app:layout_constraintStart_toStartOf="@+id/txt_ginger_gms_milk" />
+
+
+        <TextView
+            android:id="@+id/water_gms"
+            style="@style/textpercup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"
+            app:layout_constraintBottom_toBottomOf="@id/txt_water_per_cup"
+            app:layout_constraintStart_toStartOf="@id/tea_gms"
+            app:layout_constraintEnd_toEndOf="@id/tea_gms"
+            app:layout_constraintTop_toTopOf="@id/txt_water_per_cup" />
 
         <TextView
             android:id="@+id/txt_water_per_cup"
@@ -314,25 +358,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
-   <!--     <View
-            android:id="@+id/view2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/edt_back_new"
-            app:layout_constraintBottom_toTopOf="@+id/guideline11"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toStartOf="@+id/guideline9"
-            app:layout_constraintTop_toTopOf="@+id/guideline10" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SAVE"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/view2"
-            app:layout_constraintEnd_toEndOf="@+id/view2"
-            app:layout_constraintStart_toStartOf="@+id/view2"
-            app:layout_constraintTop_toTopOf="@+id/view2" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

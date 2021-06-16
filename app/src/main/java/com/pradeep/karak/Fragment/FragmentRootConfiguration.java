@@ -50,7 +50,7 @@ public class FragmentRootConfiguration extends Fragment implements BluetoothData
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mainMenuList = new String[]{"Admin", "maintenance", "master"};
+        mainMenuList = new String[]{"Admin", "Maintenance", "Master"};
         mBinding.autoComplete.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.bg_brown_bar));
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mActivity = (BaseActivity) getActivity();

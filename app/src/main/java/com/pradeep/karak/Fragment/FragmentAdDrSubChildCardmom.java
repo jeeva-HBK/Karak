@@ -32,6 +32,8 @@ public class FragmentAdDrSubChildCardmom extends Fragment implements TextWatcher
     ApplicationClass mAppClass;
     Context mContext;
     public static final String TAG = "cardmom";
+    int maxValue = 100;
+    int water;
 
 
     @Nullable
@@ -67,6 +69,9 @@ public class FragmentAdDrSubChildCardmom extends Fragment implements TextWatcher
             case R.id.txt_gms_milk:
                 DR_CARDAMOM_KARAK_MILK =mAppClass.formDigits(3,mBinding.txtGmsMilk.getText().toString()) + ";";
                 if (mBinding.txtGmsMilk.getText().toString().length() > 0) {
+                    String getValue = mBinding.txtGmsMilk.getText().toString();
+                    water = maxValue - Integer.parseInt(getValue);
+                    mBinding.txtGmsWater.setText(water + "");
                     if (Integer.parseInt(mBinding.txtGmsMilk.getText().toString()) > 100) {
                         DR_CARDAMOM_KARAK_MILK = "100;";
                         mBinding.txtGmsMilk.setText("100");

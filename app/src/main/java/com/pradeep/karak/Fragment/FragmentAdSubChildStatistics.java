@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,11 +60,11 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     @Override
     public void onResume() {
         super.onResume();
-        if (getTag().equals("TAG_STATISTICS")) {
+       // if (getTag().equals("TAG_STATISTICS")) {
             readOperatorData();
-        } else {
-            setDataToChart(getChartData(0), getChartbevarage(0), 0);
-        }
+      //  } else {
+        //    setDataToChart(getChartData(0), getChartbevarage(0), 0);
+      //  }
     }
 
     @Override
@@ -141,6 +142,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
             @Override
             public void onClick(View v) {
                 mAppClass.sendData(getActivity(), FragmentAdSubChildStatistics.this, mAppClass.framePacket(CUP_COUNT_RESET_MESSAGE_ID), getContext());
+                readOperatorData();
             }
         });
     }
@@ -200,6 +202,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
         data.setValueFormatter(new valueFormatter());
         data.setValueTextColor(getResources().getColor(R.color.textColor));
         data.setBarWidth(0.5f);
+        data.setHighlightEnabled(false);
 
         mBinding.chart1.setData(data);
         mBinding.chart1.setScaleEnabled(false);

@@ -30,6 +30,8 @@ public class FragmentAdDrSubChildMilk extends Fragment implements TextWatcherWit
     public static final String TAG = "DrMilk";
     ApplicationClass mAppClass;
     Context mContext;
+    int maxValue = 100;
+    int water;
 
     @Nullable
     @Override
@@ -55,6 +57,9 @@ public class FragmentAdDrSubChildMilk extends Fragment implements TextWatcherWit
             case R.id.txt_milk_tea_gms:
                 DR_MILK = mAppClass.formDigits(3, mBinding.txtMilkTeaGms.getText().toString()) + ";";
                 if (mBinding.txtMilkTeaGms.getText().toString().length() > 0) {
+                    String getValue = mBinding.txtMilkTeaGms.getText().toString();
+                    water = maxValue - Integer.parseInt(getValue);
+                    mBinding.txtMilkWater.setText(water+"");
                     if (Integer.parseInt(mBinding.txtMilkTeaGms.getText().toString()) > 100) {
                         DR_MILK = "100;";
                         mBinding.txtMilkTeaGms.setText("100");

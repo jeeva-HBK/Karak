@@ -122,29 +122,41 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:gravity="end"
-            android:hint="%"
+            android:hint="000"
             android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLength="3"
             android:maxLines="1"
-            android:textColorHint="@color/textColor"
+            android:layout_marginRight="5dp"
+            android:textColorHint="@color/materialgrey"
             app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            app:layout_constraintEnd_toStartOf="@+id/tea_gms"
             app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="@+id/guideline5"
+
             app:layout_constraintTop_toTopOf="@+id/guideline7"
             app:layout_constraintVertical_bias="0.6" />
+
+
+        <TextView
+            android:id="@+id/tea_gms"
+            style="@style/textpercup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="%"
+            app:layout_constraintBottom_toBottomOf="@id/txt_tea_per_cup"
+            app:layout_constraintEnd_toStartOf="@id/txt_tea_per_cup"
+            app:layout_constraintTop_toTopOf="@id/txt_tea_per_cup" />
 
         <TextView
             android:id="@+id/txt_tea_per_cup"
             style="@style/textpercup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="3dp"
+            android:layout_marginRight="10dp"
             android:text="percup"
             app:layout_constraintBottom_toBottomOf="@+id/txt_water_water_gms"
-            app:layout_constraintEnd_toEndOf="@+id/view8"
-            app:layout_constraintStart_toEndOf="@+id/txt_sulaimani_tea_gms" />
+            app:layout_constraintEnd_toEndOf="@+id/view8" />
 
         <View
             android:id="@+id/view"

@@ -75,7 +75,7 @@
             android:gravity="center"
             android:imeOptions="flagNoExtractUi|actionDone"
             android:inputType="number"
-            android:maxLength="5"
+            android:maxLength="10"
             android:padding="5dp"
             android:textColor="@color/textColor"
             android:textColorHint="@color/ash"

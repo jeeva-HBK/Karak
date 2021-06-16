@@ -30,6 +30,8 @@ public class FragmentAdDrSubChildMasala extends Fragment implements TextWatcherW
     ApplicationClass mAppClass;
     Context mContext;
     public static final String TAG = "DrMasala";
+    int maxValue = 100;
+    int water;
 
     @Nullable
     @Override
@@ -66,6 +68,9 @@ public class FragmentAdDrSubChildMasala extends Fragment implements TextWatcherW
             case R.id.txt_masala_gms_milk:
                 DR_MASALA_KARAK_MILK = mAppClass.formDigits(3, mBinding.txtMasalaGmsMilk.getText().toString()) + ";";
                 if (mBinding.txtMasalaGmsMilk.getText().toString().length() > 0) {
+                    String getValue = mBinding.txtMasalaGmsMilk.getText().toString();
+                    water = maxValue - Integer.parseInt(getValue);
+                    mBinding.txtMasalaGmsWater.setText(water + "");
                     if (Integer.parseInt(mBinding.txtMasalaGmsMilk.getText().toString()) > 100) {
                         DR_MASALA_KARAK_MILK = "100;";
                         mBinding.txtMasalaGmsMilk.setText("100");
@@ -74,12 +79,7 @@ public class FragmentAdDrSubChildMasala extends Fragment implements TextWatcherW
                 break;
             case R.id.txt_masala_gms_water:
                 DR_MASALA_KARAKA_WATER = mAppClass.formDigits(3, mBinding.txtMasalaGmsWater.getText().toString()) + ";";
-                if (mBinding.txtMasalaGmsWater.getText().toString().length() > 0) {
-                    if (Integer.parseInt(mBinding.txtMasalaGmsWater.getText().toString()) > 100) {
-                        DR_MASALA_KARAKA_WATER = "100;";
-                        mBinding.txtMasalaGmsWater.setText("100");
-                    }
-                }
+
                 break;
         }
 

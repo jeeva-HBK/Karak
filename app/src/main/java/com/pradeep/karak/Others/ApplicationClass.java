@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -242,8 +243,9 @@ public class ApplicationClass extends Application {
 
     public void showSnackBar(Context context, String message) {
         Snackbar snackbar = Snackbar.make(((Activity) context).findViewById(R.id.cord_lay), message, Snackbar.LENGTH_SHORT);
-        TextView tv = (TextView) snackbar.getView().findViewById(com.google.android.material.R.id.snackbar_text);
+        TextView tv = (TextView) snackbar.getView().findViewById(R.id.snackbar_text);
         tv.setTextColor(Color.WHITE);
+        tv.setTypeface(null, Typeface.BOLD);
         snackbar.show();
     }
 

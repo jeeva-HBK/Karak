@@ -29,6 +29,8 @@ public class FragmentAdDrSubChildGinger extends Fragment implements TextWatcherW
     ApplicationClass mAppClass;
     Context mContext;
     public static final String TAG = "DrGinger";
+    int maxValue = 100;
+    int water;
 
 
     @Nullable
@@ -65,6 +67,9 @@ public class FragmentAdDrSubChildGinger extends Fragment implements TextWatcherW
             case R.id.txt_ginger_gms_milk:
                 DR_GINGER_KARAK_MILK = mAppClass.formDigits(3, mBinding.txtGingerGmsMilk.getText().toString()) + ";";
                 if (mBinding.txtGingerGmsMilk.getText().toString().length() > 0) {
+                    String getValue = mBinding.txtGingerGmsMilk.getText().toString();
+                    water = maxValue - Integer.parseInt(getValue);
+                    mBinding.txtGingerGms.setText(water + "");
                     if (Integer.parseInt(mBinding.txtGingerGmsMilk.getText().toString()) > 100) {
                         DR_GINGER_KARAK_MILK = "100;";
                         mBinding.txtGingerGmsMilk.setText("100");

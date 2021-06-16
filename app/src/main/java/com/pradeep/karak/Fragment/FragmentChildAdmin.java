@@ -1,5 +1,6 @@
 package com.pradeep.karak.Fragment;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

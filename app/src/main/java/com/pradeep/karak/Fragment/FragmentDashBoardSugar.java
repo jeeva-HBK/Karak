@@ -200,7 +200,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
 
                     switch (status[1]) {
                         case "02":
-                            mAppclass.showSnackBar(getContext(), "Dispensing Milk & Water");
+                            mAppclass.showSnackBar(getContext(), "Dispensing");
                             break;
                         case "03":
                             mAppclass.showSnackBar(getContext(), "Preheating");

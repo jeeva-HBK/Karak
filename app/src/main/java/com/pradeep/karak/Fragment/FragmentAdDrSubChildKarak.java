@@ -30,6 +30,8 @@ public class FragmentAdDrSubChildKarak extends Fragment implements TextWatcherWi
     ApplicationClass mAppClass;
     Context mContext;
     public static final String TAG = "Drkarak";
+    int maxValue = 100;
+    int water;
 
     @Nullable
     @Override
@@ -61,6 +63,9 @@ public class FragmentAdDrSubChildKarak extends Fragment implements TextWatcherWi
             case R.id.txt_karak_milk:
                 DR_KARAK_MILK = mAppClass.formDigits(3, mBinding.txtKarakMilk.getText().toString()) + ";";
                 if (mBinding.txtKarakMilk.getText().toString().length() > 0) {
+                    String getValue = mBinding.txtKarakMilk.getText().toString();
+                    water = maxValue - Integer.parseInt(getValue);
+                    mBinding.txtKarakWater.setText(water + "");
                     if (Integer.parseInt(mBinding.txtKarakMilk.getText().toString()) > 100) {
                         DR_KARAK_MILK = "100;";
                         mBinding.txtKarakMilk.setText("100");

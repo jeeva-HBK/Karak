@@ -113,7 +113,7 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
                 public void OnScanCompleted(List<BluetoothDevice> devices) {
                     Log.e(TAG, "OnScanCompleted: " + devices.size());
                     if (devices.size() == 0) {
-                        mAppClass.showSnackBar(getContext(), "No Device Found");
+                  //      mAppClass.showSnackBar(getContext(), "No Device Found");
                         mActivity.dismissProgress();
                     }
                     for (int i = 0; i < devices.size(); i++) {
