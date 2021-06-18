@@ -1,10 +1,12 @@
 package com.pradeep.karak.Fragment;
 
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -189,7 +192,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                 if (spiltData[1].equals("00")) {
                     mActivity.updateNavigationUi(R.navigation.navigation);
                 } else if (spiltData[1].equals("01")) {
-                    mAppClass.showSnackBar(getContext(),getString(R.string.DispensingPleaseWait));
+                    mAppClass.showSnackBar(getContext(), getString(R.string.DispensingPleaseWait));
                 }
             }
             helper.setConnected(true);
@@ -270,7 +273,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
         } // Pan Release
         else if (spiltData[0].substring(5, 7).equals("05")) {
             if (spiltData[1].equals("ACK")) {
-                mAppClass.showSnackBar(getContext(),getString(R.string.PanReleaseAck));
+                mAppClass.showSnackBar(getContext(), getString(R.string.PanReleaseAck));
             }
         }
         // Dispense Completed
@@ -285,7 +288,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
         // Cancel Dispense
         else if (spiltData[0].substring(5, 7).equals("06")) {
             if (spiltData[1].equals("ACK")) {
-                mAppClass.showSnackBar(getContext(),getString(R.string.DispenseCanceled));
+                mAppClass.showSnackBar(getContext(), getString(R.string.DispenseCanceled));
                 mActivity.updateNavigationUi(R.navigation.navigation);
                 if (panAlert.isShowing()) {
                     panAlert.dismiss();
@@ -391,6 +394,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
         Log.e(TAG, "onSaveClicked: " + preferences.getString("savedMac", ""));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void OnItemClick(int pos) {
         stopScan();
@@ -400,6 +404,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
         helper.disConnect();
         mBleDevice = scannedDevices.get(pos);
         new Thread(new Runnable() {
+
             @Override
             public void run() {
                 try {
@@ -457,8 +462,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                             });
                         }
                     });
-                } catch (
-                        Exception e) {
+                } catch (Exception e) {
                     stopScan();
                     mBinding.txtConnect.setText("Rescan");
                     e.printStackTrace();
@@ -482,5 +486,25 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
         super.onPause();
         stopScan();
         Log.e(TAG, "onPause: ");
+    }
+
+    public void bluetoothRestart() {
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        mBluetoothAdapter.disable();
+        Log.e(TAG, "bluetoothRestart: " );
+        mAppClass.popStackBack(getActivity());
+        mAppClass.showSnackBar(getContext(),"Please Wait For 10 sec No Response for Bluetooth");
+        mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mBluetoothAdapter.enable();
+                    }
+
+                }, 10000);
+            }
+        });
     }
 }

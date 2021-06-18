@@ -1,5 +1,6 @@
 package com.pradeep.karak.Fragment;
 
+import android.bluetooth.BluetoothAdapter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -21,7 +22,6 @@ import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentDashboardBinding;
-
 
 import static com.pradeep.karak.Others.ApplicationClass.ADMIN_PASSWORD;
 import static com.pradeep.karak.Others.ApplicationClass.CUP_COUNT_PASSWORD;
@@ -67,20 +67,7 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
         mActivity.showProgress();
         dataReceived = false;
         mAppclass.sendData(getActivity(), FragmentDashBoard.this, framedPacket, getContext());
-        mActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (!dataReceived) {
-                            mAppclass.showSnackBar(getContext(),getString(R.string.Timeout));
-                            mActivity.dismissProgress();
-                        }
-                    }
-                }, 10000);
-            }
-        });
+
     }
 
     private void confirmDisconnect() {
@@ -98,6 +85,7 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
             @Override
             public void onClick(View view) {
                 mAppclass.disconnect();
+           //     disconnectBle();
                 mActivity.updateNavigationUi(R.navigation.scan);
                 alertDialog.dismiss();
             }
@@ -128,7 +116,7 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
                 mAppclass.navigateTo(getActivity(), R.id.action_dashboard_to_fragmentConfiguration, b);
                 alertDialog.dismiss();
             } else {
-                mAppclass.showSnackBar(getContext(),"Password wrong!");
+                mAppclass.showSnackBar(getContext(), "Password wrong!");
             }
         }));
     }
@@ -174,7 +162,6 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
     }
 
     private void handleResponse(String data) {
-        ///  data = "PSIPS07;01,0000;02,0000;03,0000;04,12345;05,54321;06,98765;07,56789;08,55555;09,77777;10,16164;CRC;PSIPE";
         dataReceived = true;
         String[] spiltData = data.split(";");
         if (spiltData[0].substring(5, 7).equals("07")) {

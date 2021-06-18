@@ -121,13 +121,13 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
                 MILK_FLOW_RATE = Milkfr[1];
                 WATER_FLOW_RATE = Waterfr[1];
                 SUGAR_FLOW_RATE = Sugarfr[1];
-                mBinding.flowRateKarak.setText(KARAK_FLOW_RATE);
-                mBinding.flowRateMasalaKarak.setText(MASALA_KARAK_FLOW_RATE);
-                mBinding.flowRateGingerKarak.setText(GINGER_KARAK_FLOW_RATE);
-                mBinding.flowrateCardmomKarak.setText(CARDAMOM_KARAK_FLOW_RATE);
-                mBinding.flowRateMilk.setText(MILK_FLOW_RATE);
-                mBinding.flowRateWater.setText(WATER_FLOW_RATE);
-                mBinding.flowRateSugar.setText(SUGAR_FLOW_RATE);
+                mBinding.flowRateKarak.append(KARAK_FLOW_RATE);
+                mBinding.flowRateMasalaKarak.append(MASALA_KARAK_FLOW_RATE);
+                mBinding.flowRateGingerKarak.append(GINGER_KARAK_FLOW_RATE);
+                mBinding.flowrateCardmomKarak.append(CARDAMOM_KARAK_FLOW_RATE);
+                mBinding.flowRateMilk.append(MILK_FLOW_RATE);
+                mBinding.flowRateWater.append(WATER_FLOW_RATE);
+                mBinding.flowRateSugar.append(SUGAR_FLOW_RATE);
             } else if (handelData[0].substring(5, 7).equals("14")) {
                 if (handelData[1].equals("ACK")) {
                     mAppClass.showSnackBar(getContext(), getString(R.string.UpdateSuccessfully));

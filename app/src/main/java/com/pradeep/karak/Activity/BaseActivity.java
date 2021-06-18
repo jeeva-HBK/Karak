@@ -25,18 +25,26 @@ import com.pradeep.karak.databinding.ActivityBaseBinding;
 // Created on 15 Mar 2021 by Jeeva
 public class BaseActivity extends AppCompatActivity {
     ApplicationClass mAppClass;
+    static ApplicationClass msAppClass;
     ActivityBaseBinding mBinding;
+    static ActivityBaseBinding msBinding;
     NavController mNavController;
     AppBarConfiguration mAppBarConfiguration;
-    public boolean canGoBack;
+    public static boolean canGoBack;
+    static Context msContext;
+    static BaseActivity baseActivity;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_base);
+        msBinding = mBinding;
+        baseActivity = this;
         setSupportActionBar(mBinding.toolbar);
         mAppClass = (ApplicationClass) getApplication();
+        msAppClass = (ApplicationClass) getApplication();
+        msContext = getApplicationContext();
         mNavController = Navigation.findNavController(this, R.id.nav_host_fragment);
         DialogFragment dialog = new DialogFragment();
         FragmentPermissionRequest permissionRequestFragment = new FragmentPermissionRequest(dialog);
@@ -52,6 +60,8 @@ public class BaseActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.dashboard).build();
         NavigationUI.setupActionBarWithNavController(this, mNavController, mAppBarConfiguration);
     }
+
+
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -73,12 +83,17 @@ public class BaseActivity extends AppCompatActivity {
         canGoBack = true;
     }
 
-    public boolean isProgressVisible() {
-        if (mBinding.mainProgressCircular.getVisibility() == View.VISIBLE) {
-            return true;
-        }
-        return false;
+    public static void msDismissProgress() {
+        msBinding.mainProgressCircular.setVisibility(View.GONE);
+        msAppClass.showSnackBar(baseActivity, "Timed out, wait for 10 sec and try again !");
+        baseActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        canGoBack = true;
+        baseActivity.mNavController.setGraph(R.navigation.scan);
+        baseActivity.mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.dashboard).build();
+        NavigationUI.setupActionBarWithNavController(baseActivity, baseActivity.mNavController, baseActivity.mAppBarConfiguration);
     }
+
+
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

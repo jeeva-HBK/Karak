@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -109,6 +111,7 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
         }
         try {
             helper.scanBLE(new BluetoothScannerCallback() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void OnScanCompleted(List<BluetoothDevice> devices) {
                     Log.e(TAG, "OnScanCompleted: " + devices.size());
@@ -144,6 +147,7 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void connectBle(BluetoothDevice mDevice, BluetoothHelper helper) {
         Log.e(TAG, "trying to connect");
         try {

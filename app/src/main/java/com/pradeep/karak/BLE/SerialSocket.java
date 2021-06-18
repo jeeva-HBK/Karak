@@ -14,9 +14,13 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
+
 import com.pradeep.karak.BuildConfig;
+import com.pradeep.karak.Fragment.FragmentBluetoothList;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
@@ -90,7 +94,7 @@ public class SerialSocket extends BluetoothGattCallback {
 
 
     public void disconnect() {
-        Log.e(TAG, "disconnect");
+        Log.e(TAG, "disconnect:5");
         listener = null; // ignore remaining data and errors
         device = null;
         canceled = true;
@@ -137,8 +141,9 @@ public class SerialSocket extends BluetoothGattCallback {
     /**
      * connect-success and most connect-errors are returned asynchronously to listener
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void connect(Context context, SerialListener listener, BluetoothDevice device) throws IOException {
-
+        Log.e(TAG, "connect:1 ");
         if (connected || gatt != null)
             throw new IOException("already connected");
         canceled = false;
@@ -161,6 +166,7 @@ public class SerialSocket extends BluetoothGattCallback {
     }
 
     private void onPairingBroadcastReceive(Context context, Intent intent) {
+        Log.e(TAG, "paring:2 ");
         // for ARM Mbed, Microbit, ... use pairing from Android bluetooth settings
         // for HM10-clone, ... pairing is initiated here
         BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
@@ -186,25 +192,42 @@ public class SerialSocket extends BluetoothGattCallback {
 
     @Override
     public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
+        Log.e(TAG, "onConnectionStateChange:3 ");
         // status directly taken from gat_api.h, e.g. 133=0x85=GATT_ERROR ~= timeout
+        this.gatt = gatt;
         if (newState == BluetoothProfile.STATE_CONNECTED) {
-            Log.d(TAG, "connect status " + status + ", discoverServices");
+            Log.e(TAG, "connect status " + status + ", discoverServices");
             if (!gatt.discoverServices())
                 onSerialConnectError(new IOException("discoverServices failed"));
         } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
             listener.onDisconnected();
-            if (connected)
+            refreshGatt();
+            if (connected) {
                 onSerialIoError(new IOException("gatt status " + status));
-            else
+            } else {
                 onSerialConnectError(new IOException("gatt status " + status));
+            }
         } else {
-            Log.d(TAG, "unknown connect state " + newState + " " + status);
+            Log.e(TAG, "unknown connect state " + newState + " " + status);
         }
-        // continues asynchronously in onServicesDiscovered()
+    }
+
+
+    void refreshGatt() {
+        try {
+            final Method refresh = gatt.getClass().getMethod("refresh");
+            if (refresh != null) {
+                refresh.invoke(gatt);
+                Log.e(TAG, "refreshGatt: success");
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "refreshGatt: error");
+        }
     }
 
     @Override
     public void onServicesDiscovered(BluetoothGatt gatt, int status) {
+        Log.e(TAG, "onServicesDiscovered: 4");
         Log.d(TAG, "servicesDiscovered, status " + status);
         if (canceled)
             return;
@@ -288,6 +311,7 @@ public class SerialSocket extends BluetoothGattCallback {
 
     @Override
     public void onDescriptorWrite(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status) {
+        Log.e(TAG, "onDescriptorWrite: 5");
         if (descriptor.getCharacteristic() == readCharacteristic) {
             Log.d(TAG, "writing read characteristic descriptor finished, status=" + status);
             if (status != BluetoothGatt.GATT_SUCCESS) {
@@ -357,8 +381,10 @@ public class SerialSocket extends BluetoothGattCallback {
         // continues asynchronously in onCharacteristicWrite()
     }
 
+
     @Override
     public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
+
         if (canceled || !connected || writeCharacteristic == null)
             return;
         if (status != BluetoothGatt.GATT_SUCCESS) {
@@ -406,6 +432,7 @@ public class SerialSocket extends BluetoothGattCallback {
         canceled = true;
         if (listener != null)
             listener.onSerialConnectError(e);
+        Log.e(TAG, "onDisconnected: " + "Disconnect TYPE 3");
     }
 
     private void onSerialRead(byte[] data) {

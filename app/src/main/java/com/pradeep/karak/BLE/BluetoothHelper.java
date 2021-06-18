@@ -8,12 +8,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+
+import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.ENUM.ConnectStatus;
-import com.pradeep.karak.Others.UtilMethods;
+import com.pradeep.karak.Others.ApplicationClass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +43,7 @@ public class BluetoothHelper implements SerialListener {
     private Context mContext;
     private boolean isConnected = false, dataReceived = false;
     private String mConnectPacket, mExpectedResponse;
+
     private BroadcastReceiver scanResult = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -51,6 +57,7 @@ public class BluetoothHelper implements SerialListener {
                                     if (!result.contains(device)) {
                                         result.add(device);
                                         callBack.SearchResult(device);
+
                                     }
                                 }
                                 break;
@@ -84,13 +91,14 @@ public class BluetoothHelper implements SerialListener {
         }
     };
     private CountDownTimer mConnectionListener = new CountDownTimer(Long.MAX_VALUE, 1000) {
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public void onTick(long l) {
             if (isConnected) {
                 return;
             }
             mConnectionListener.cancel();
-           reconnect();
+            reconnect();
         }
 
         @Override
@@ -136,6 +144,7 @@ public class BluetoothHelper implements SerialListener {
         return mConnectStatus;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void reconnect() {
         try {
             disConnect();
@@ -277,6 +286,7 @@ public class BluetoothHelper implements SerialListener {
         scan(callBack);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void connectBLE(Context context, BluetoothDevice device, BluetoothConnectCallback connectCallback) throws Exception {
         mConnectStatus = ConnectStatus.CONNECTING;
         this.mContext = context;
@@ -291,6 +301,8 @@ public class BluetoothHelper implements SerialListener {
         this.dataCallback = callback;
         SerialSocket socket = SerialSocket.getInstance();
         socket.write(this, data.getBytes());
+
+
     }
 
     public BluetoothDataCallback getDataCallback() {

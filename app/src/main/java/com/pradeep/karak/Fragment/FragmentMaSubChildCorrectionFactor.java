@@ -118,13 +118,13 @@ public class FragmentMaSubChildCorrectionFactor extends Fragment implements Blue
                 MILK_CORRECTION_FACTOR = MilkCf[1];
                 WATER_CORRECTION_FACTOR = WaterCf[1];
                 SUGAR_CORRECTION_FACTOR = Sugarcf[1];
-                mBinding.correctionFactorKarak.setText(KARAK_CORRECTION_FACTOR);
-                mBinding.correctionMasalaKarak.setText(MASALA_KARAK_CORRECTION_FACTOR);
-                mBinding.correctionGingerKarak.setText(GINGER_KARAK_CORRECTION_FACTOR);
-                mBinding.correctionFactorCardmomKarak.setText(CARDAMOM_KARAK_CORRECTION_FACTOR);
-                mBinding.correctionMilk.setText(MILK_CORRECTION_FACTOR);
-                mBinding.correctionWater.setText(WATER_CORRECTION_FACTOR);
-                mBinding.correctionSugar.setText(SUGAR_CORRECTION_FACTOR);
+                mBinding.correctionFactorKarak.append(KARAK_CORRECTION_FACTOR);
+                mBinding.correctionMasalaKarak.append(MASALA_KARAK_CORRECTION_FACTOR);
+                mBinding.correctionGingerKarak.append(GINGER_KARAK_CORRECTION_FACTOR);
+                mBinding.correctionFactorCardmomKarak.append(CARDAMOM_KARAK_CORRECTION_FACTOR);
+                mBinding.correctionMilk.append(MILK_CORRECTION_FACTOR);
+                mBinding.correctionWater.append(WATER_CORRECTION_FACTOR);
+                mBinding.correctionSugar.append(SUGAR_CORRECTION_FACTOR);
             } else if (handleData[0].substring(5, 7).equals("13")) {
                 if (handleData[1].equals("ACK")) {
                    mAppClass.showSnackBar(getContext(),getString(R.string.UpdateSuccessfully));

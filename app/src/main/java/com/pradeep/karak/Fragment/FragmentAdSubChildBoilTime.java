@@ -48,6 +48,7 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
     String HotMilkParameter;
     String HotWaterParameter;
     BaseActivity mActivity;
+    boolean dataReceived = false;
 
     private static final String TAG = "BoilTime";
 
@@ -102,10 +103,11 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
     }
 
     private void handleResponse(String data) {
-        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")){
+        dataReceived = true;
+        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
             mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(),getString(R.string.Timeout));
-        }else {
+            mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
+        } else {
             String[] handleData = data.split(";");
             if (handleData[0].substring(5, 7).equals("07")) {
                 String[] karakBoilTime = handleData[1].split(","),
@@ -122,17 +124,17 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
                 SULAIMANI_BOIL_TIME = SulaimaniBoilTime[1];
                 HOTMILK_BOIL_TIME = HotMilkBoilTime[1];
                 HOT_WATER_BOIL_TIME = HotWaterBoilTime[1];
-                mBinding.edtBoilTimeKarak.setText(KARAK_BOIL_TIME);
-                mBinding.edtBoilTimeMasalaKarak.setText(MASALA_KARAK_BOIL_TIME);
-                mBinding.edtBoilTimeGingerKarak.setText(GINGER_KARAK_BOIL_TIME);
-                mBinding.edtBoilTimeCardmomKarak.setText(CARDAMOM_KARAK_BOIL_TIME);
-                mBinding.edtBoilTimeSulamani.setText(SULAIMANI_BOIL_TIME);
-                mBinding.edtBoilTimeMilk.setText(HOTMILK_BOIL_TIME);
-                mBinding.edtBoilTimeHotWater.setText(HOT_WATER_BOIL_TIME);
+                mBinding.edtBoilTimeKarak.append(KARAK_BOIL_TIME);
+                mBinding.edtBoilTimeMasalaKarak.append(MASALA_KARAK_BOIL_TIME);
+                mBinding.edtBoilTimeGingerKarak.append(GINGER_KARAK_BOIL_TIME);
+                mBinding.edtBoilTimeCardmomKarak.append(CARDAMOM_KARAK_BOIL_TIME);
+                mBinding.edtBoilTimeSulamani.append(SULAIMANI_BOIL_TIME);
+                mBinding.edtBoilTimeMilk.append(HOTMILK_BOIL_TIME);
+                mBinding.edtBoilTimeHotWater.append(HOT_WATER_BOIL_TIME);
 
             } else if (handleData[0].substring(5, 7).equals("11")) {
                 if (handleData[0].equals("ACK")) {
-                    mAppClass.showSnackBar(getContext(),getString(R.string.UpdateSuccessfully));
+                    mAppClass.showSnackBar(getContext(), getString(R.string.UpdateSuccessfully));
                 }
             }
         }
@@ -143,4 +145,6 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
     public void OnDataReceivedError(Exception e) {
         e.printStackTrace();
     }
+
+
 }

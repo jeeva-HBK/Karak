@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.BLE.BluetoothHelper;
 import com.pradeep.karak.BLE.SerialSocket;
@@ -126,6 +127,7 @@ public class ApplicationClass extends Application {
     // Passwords
     public static String ADMIN_PASSWORD = "", MAINTENANCE_PASSWORD = "", CUP_COUNT_PASSWORD = "", MASTER_PASSWORD = "4444";
 
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -171,6 +173,7 @@ public class ApplicationClass extends Application {
             }
         });
     }
+
 
     public void sendData(Activity activity, BluetoothDataCallback callback, String packetToSend, Context mContext) {
         try {

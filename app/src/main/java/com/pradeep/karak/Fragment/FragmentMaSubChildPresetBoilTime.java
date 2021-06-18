@@ -140,16 +140,16 @@ public class FragmentMaSubChildPresetBoilTime extends Fragment implements Blueto
                 PRESENT_BOIL_800ML = pbt800ml[1];
                 PRESENT_BOIL_900ML = pbt900ml[1];
                 PRESENT_BOIL_1000ML = pbt1000ml[1];
-                mBinding.edt100ml.setText(PRESENT_BOIL_100ML);
-                mBinding.edt200ml.setText(PRESENT_BOIL_200ML);
-                mBinding.edt300ml.setText(PRESENT_BOIL_300ML);
-                mBinding.edt400ml.setText(PRESENT_BOIL_400ML);
-                mBinding.edt500ml.setText(PRESENT_BOIL_500ML);
-                mBinding.edt600ml.setText(PRESENT_BOIL_600ML);
-                mBinding.edt700ml.setText(PRESENT_BOIL_700ML);
-                mBinding.edt800ml.setText(PRESENT_BOIL_800ML);
-                mBinding.edt900ml.setText(PRESENT_BOIL_900ML);
-                mBinding.edt1000ml.setText(PRESENT_BOIL_1000ML);
+                mBinding.edt100ml.append(PRESENT_BOIL_100ML);
+                mBinding.edt200ml.append(PRESENT_BOIL_200ML);
+                mBinding.edt300ml.append(PRESENT_BOIL_300ML);
+                mBinding.edt400ml.append(PRESENT_BOIL_400ML);
+                mBinding.edt500ml.append(PRESENT_BOIL_500ML);
+                mBinding.edt600ml.append(PRESENT_BOIL_600ML);
+                mBinding.edt700ml.append(PRESENT_BOIL_700ML);
+                mBinding.edt800ml.append(PRESENT_BOIL_800ML);
+                mBinding.edt900ml.append(PRESENT_BOIL_900ML);
+                mBinding.edt1000ml.append(PRESENT_BOIL_1000ML);
             } else if (handleData[0].substring(5, 7).equals("15")) {
                 if (handleData[1].equals("ACK")) {
                     mAppClass.showSnackBar(getContext(),getString(R.string.UpdateSuccessfully));
