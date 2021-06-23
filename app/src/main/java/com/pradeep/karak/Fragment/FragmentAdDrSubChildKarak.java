@@ -45,9 +45,9 @@ public class FragmentAdDrSubChildKarak extends Fragment implements TextWatcherWi
         super.onViewCreated(view, savedInstanceState);
         Log.e(TAG, "onViewCreated: ");
         mAppClass = (ApplicationClass) getActivity().getApplication();
-        mBinding.txtKarakTeaGms.setText(DR_KARAK);
-        mBinding.txtKarakMilk.setText(DR_KARAK_MILK);
-        mBinding.txtKarakWater.setText(DR_KARAK_WATER);
+        mBinding.txtKarakTeaGms.append(DR_KARAK);
+        mBinding.txtKarakMilk.append(DR_KARAK_MILK);
+        mBinding.txtKarakWater.append(DR_KARAK_WATER);
         new MultiTextWatcher().registerEditText(mBinding.txtKarakTeaGms)
                 .registerEditText(mBinding.txtKarakMilk).registerEditText(mBinding.txtKarakWater)
                 .setCallback(this);
@@ -58,10 +58,10 @@ public class FragmentAdDrSubChildKarak extends Fragment implements TextWatcherWi
     public void onTextChanged(EditText editText, CharSequence s, int start, int before, int count) {
         switch (editText.getId()) {
             case R.id.txt_karak_tea_gms:
-                DR_KARAK = mAppClass.formDigits(3, mBinding.txtKarakTeaGms.getText().toString()) + ";";
+                DR_KARAK = mAppClass.formDigits(3, mBinding.txtKarakTeaGms.getText().toString());
                 break;
             case R.id.txt_karak_milk:
-                DR_KARAK_MILK = mAppClass.formDigits(3, mBinding.txtKarakMilk.getText().toString()) + ";";
+                DR_KARAK_MILK = mAppClass.formDigits(3, mBinding.txtKarakMilk.getText().toString());
                 if (mBinding.txtKarakMilk.getText().toString().length() > 0) {
                     String getValue = mBinding.txtKarakMilk.getText().toString();
                     water = maxValue - Integer.parseInt(getValue);
@@ -75,7 +75,7 @@ public class FragmentAdDrSubChildKarak extends Fragment implements TextWatcherWi
 
                 break;
             case R.id.txt_karak_water:
-                DR_KARAK_WATER = mAppClass.formDigits(3, mBinding.txtKarakWater.getText().toString()) + ";";
+                DR_KARAK_WATER = mAppClass.formDigits(3, mBinding.txtKarakWater.getText().toString());
                 if (mBinding.txtKarakMilk.getText().toString().length() > 0) {
                     if (Integer.parseInt(mBinding.txtKarakWater.getText().toString()) > 100) {
                         DR_KARAK_WATER = "100;";

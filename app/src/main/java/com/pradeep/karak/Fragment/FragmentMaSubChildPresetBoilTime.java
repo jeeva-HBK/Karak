@@ -114,10 +114,6 @@ public class FragmentMaSubChildPresetBoilTime extends Fragment implements Blueto
     }
 
     private void handleResponse(String data) {
-        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
-            mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
-        }else{
             String[] handleData = data.split(";");
             if (handleData[0].substring(5, 7).equals("07")) {
                 String[] pbt100ml = handleData[1].split(","),
@@ -156,7 +152,7 @@ public class FragmentMaSubChildPresetBoilTime extends Fragment implements Blueto
                 }
             }
             mActivity.dismissProgress();
-        }
+
 
     }
 

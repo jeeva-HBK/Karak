@@ -63,10 +63,6 @@ public class FragmentAdSubChildMachineNumber extends Fragment implements Bluetoo
     }
 
     private void handleDataResponse(String data) {
-        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
-            mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
-        } else {
             String[] spiltData = data.split(";");
             if (spiltData[0].substring(5, 7).equals("18")) {
                 if (spiltData[1].equals("ACK")) {
@@ -77,7 +73,6 @@ public class FragmentAdSubChildMachineNumber extends Fragment implements Bluetoo
                 }
             }
             mActivity.dismissProgress();
-        }
 
     }
 

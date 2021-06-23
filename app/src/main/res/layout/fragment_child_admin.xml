@@ -25,6 +25,7 @@
                 android:background="@drawable/bg_brown_bar"
                 android:completionThreshold="0"
                 android:cursorVisible="false"
+                android:textStyle="bold"
                 android:focusable="false"
                 android:text="@string/statistics" />
 

@@ -1,5 +1,6 @@
 package com.pradeep.karak.Fragment;
 
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -33,7 +34,6 @@ import com.pradeep.karak.BLE.BluetoothHelper;
 import com.pradeep.karak.BLE.BluetoothScannerCallback;
 import com.pradeep.karak.Callbacks.ItemClickListener;
 import com.pradeep.karak.Others.ApplicationClass;
-import com.pradeep.karak.Others.UtilMethods;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentWelcomeBinding;
 
@@ -75,6 +75,7 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
         mActivity.getSupportActionBar().show();
         mContext = getActivity().getApplicationContext();
         preferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+        bluetoothEnable();
         mBinding.recylerFavList.setLayoutManager(new GridLayoutManager(getContext(), 2));
         loadFav();
         mBinding.imgScan.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +93,12 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        bluetoothEnable();
     }
 
     @Override
@@ -116,7 +123,7 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
                 public void OnScanCompleted(List<BluetoothDevice> devices) {
                     Log.e(TAG, "OnScanCompleted: " + devices.size());
                     if (devices.size() == 0) {
-                  //      mAppClass.showSnackBar(getContext(), "No Device Found");
+                        mAppClass.showSnackBar(getContext(), "No Device Found");
                         mActivity.dismissProgress();
                     }
                     for (int i = 0; i < devices.size(); i++) {
@@ -294,7 +301,19 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
 
                 switch (status[1]) {
                     case "02":
-                        mAppClass.showSnackBar(getContext(), "Dispensing Milk & Water");
+                        switch (bevarageName[1]) {
+                            case "01":
+                            case "06":
+                            case "05":
+                            case "03":
+                            case "02":
+                                mAppClass.showSnackBar(getContext(), "Dispensing Milk & Water");
+                                break;
+                            case "04":
+                            case "07":
+                                mAppClass.showSnackBar(getContext(), "Dispensing  Water");
+                                break;
+                        }
                         break;
                     case "03":
                         mAppClass.showSnackBar(getContext(), "Preheating");
@@ -335,7 +354,7 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
     }
 
     private void sendPacket(String packet) {
-        mAppClass.sendData(getActivity(), FragmentWelcome.this, packet, getContext());
+        mAppClass.sendDataDispense(getActivity(), FragmentWelcome.this, packet, getContext());
     }
 
     private void changeDispenseMsg(String beverageName, int resourceID) {
@@ -388,5 +407,11 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
     @Override
     public void OnDataReceivedError(Exception e) {
         e.printStackTrace();
+    }
+
+    void bluetoothEnable() {
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        mBluetoothAdapter.enable();
+        mBluetoothAdapter.startDiscovery();
     }
 }

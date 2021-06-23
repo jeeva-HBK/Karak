@@ -119,7 +119,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
     }
 
     private void sendPacket(String packet) {
-        mAppclass.sendData(getActivity(), FragmentDashBoardSugar.this, packet, getContext());
+        mAppclass.sendDataDispense(getActivity(), FragmentDashBoardSugar.this, packet, getContext());
     }
 
     @Override
@@ -128,10 +128,6 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
     }
 
     private void handleResponse(String data) {
-        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
-            mActivity.dismissProgress();
-            mAppclass.showSnackBar(getContext(), "Response Error");
-        } else {
             mActivity.dismissProgress();
             String[] spiltData = data.split(";");
             if (spiltData[0].substring(5, 7).equals("02")) {
@@ -140,6 +136,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
                 }
             } // Dispensing Status
             else if (spiltData[0].substring(5, 7).equals("03")) {
+                sendPacket(data);
                 String[] status = spiltData[1].split(","), boilTime = spiltData[2].split(","), bevarageName = spiltData[3].split(",");
                 mActivity.dismissProgress();
 
@@ -148,10 +145,10 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
                 } else {
                     switch (bevarageName[1]) {
                         case "01":
-                           if (!isVisible) {
+                            if (!isVisible) {
                                 showDispenseAlert("Karak", R.drawable.karak);
                             } else {
-                               changeDispenseMsg("Karak", R.drawable.karak);
+                                changeDispenseMsg("Karak", R.drawable.karak);
                             }
                             break;
                         case "02":
@@ -177,9 +174,9 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
                             break;
                         case "05":
                             if (!isVisible) {
-                                showDispenseAlert("Cardomom Karak", R.drawable.karakcardmom);
+                                showDispenseAlert("Cardamom Karak", R.drawable.karakcardmom);
                             } else {
-                                changeDispenseMsg("Cardomom Karak", R.drawable.karakcardmom);
+                                changeDispenseMsg("Cardamom Karak", R.drawable.karakcardmom);
                             }
                             break;
                         case "06":
@@ -200,7 +197,19 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
 
                     switch (status[1]) {
                         case "02":
-                            mAppclass.showSnackBar(getContext(), "Dispensing");
+                            switch (bevarageName[1]) {
+                                case "01":
+                                case "06":
+                                case "05":
+                                case "03":
+                                case "02":
+                                    mAppclass.showSnackBar(getContext(), "Dispensing Milk & Water");
+                                    break;
+                                case "04":
+                                case "07":
+                                    mAppclass.showSnackBar(getContext(), "Dispensing  Water");
+                                    break;
+                            }
                             break;
                         case "03":
                             mAppclass.showSnackBar(getContext(), "Preheating");
@@ -213,7 +222,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
                             break;
                     }
                 }
-                sendPacket(data);
+
             } // Pan Release
             else if (spiltData[0].substring(5, 7).equals("05")) {
                 if (spiltData[1].equals("ACK")) {
@@ -232,14 +241,13 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
             // Cancel Dispense
             else if (spiltData[0].substring(5, 7).equals("06")) {
                 if (spiltData[1].equals("ACK")) {
-                    mAppclass.showSnackBar(getContext(),getString(R.string.DispenseCanceled));
+                    mAppclass.showSnackBar(getContext(), getString(R.string.DispenseCanceled));
                     mActivity.updateNavigationUi(R.navigation.navigation);
                     if (panAlert.isShowing()) {
                         panAlert.dismiss();
                     }
                 }
             }
-        }
     }
 
     private void showPanNotAvailable() {

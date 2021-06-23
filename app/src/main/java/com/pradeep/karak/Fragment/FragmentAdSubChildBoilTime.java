@@ -133,7 +133,7 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
                 mBinding.edtBoilTimeHotWater.append(HOT_WATER_BOIL_TIME);
 
             } else if (handleData[0].substring(5, 7).equals("11")) {
-                if (handleData[0].equals("ACK")) {
+                if (handleData[1].equals("ACK")) {
                     mAppClass.showSnackBar(getContext(), getString(R.string.UpdateSuccessfully));
                 }
             }

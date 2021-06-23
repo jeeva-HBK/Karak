@@ -101,10 +101,6 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
     }
 
     private void handleResponse(String data) {
-        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
-            mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
-        } else {
             String[] handelData = data.split(";");
             if (handelData[0].substring(5, 7).equals("07")) {
                 String[] Karakfr = handelData[1].split(","),
@@ -134,7 +130,6 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
                 }
             }
             mActivity.dismissProgress();
-        }
 
     }
 

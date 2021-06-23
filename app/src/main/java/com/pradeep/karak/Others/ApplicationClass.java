@@ -17,11 +17,13 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.BLE.BluetoothDataCallback;
 import com.pradeep.karak.BLE.BluetoothHelper;
 import com.pradeep.karak.BLE.SerialSocket;
 import com.pradeep.karak.R;
+
+import static com.pradeep.karak.Activity.BaseActivity.msDismissProgress;
+import static com.pradeep.karak.Activity.BaseActivity.msDismissProgressUpdateNavigation;
 
 // Created on 15 Mar 2021 by Jeeva
 public class ApplicationClass extends Application {
@@ -91,9 +93,9 @@ public class ApplicationClass extends Application {
     public static String KEY_BEVERAGE_SELECTION = "pckBeverageSelection", KEY_CUP = "pckCup";
 
     // ParameterKeyForDispensingRatio
-    public static String DR_KARAK = "", DR_KARAK_MILK = "", DR_KARAK_WATER = "",
+    public static String DR_KARAK = "", DR_KARAK_MILK = ""+";", DR_KARAK_WATER = ""+";",
             DR_MASALA_KARAK_TEA = "", DR_MASALA_KARAK_MASALA = "", DR_MASALA_KARAK_MILK = "",
-            DR_MASALA_KARAKA_WATER = "", DR_SULAIMANI_TEA = "", DR_SULAIMANI_WATER = "",
+            DR_MASALA_KARAKA_WATER = ""+";", DR_SULAIMANI_TEA = ""+";", DR_SULAIMANI_WATER = "",
             DR_GINGER_KARAK_TEA = "", DR_GINGER_KARAK_GINGER = "", DR_GINGER_KARAK_MILK = "",
             DR_GINGER_WATER = "", DR_CARDAMOM_KARAK_TEA = "", DR_CARADMOM_KARAK_CARDMOM = "",
             DR_CARDAMOM_KARAK_MILK = "", DR_CARDAMOM_KARAK_WATER = "", DR_MILK = "",
@@ -178,12 +180,26 @@ public class ApplicationClass extends Application {
     public void sendData(Activity activity, BluetoothDataCallback callback, String packetToSend, Context mContext) {
         try {
             BluetoothHelper helper = BluetoothHelper.getInstance(activity);
-            helper.sendDataBLE(callback, packetToSend);
+            helper.sendDataBLE(callback, packetToSend, 20000);
         } catch (Exception e) {
-            Toast.makeText(mContext, R.string.errorOccurred, Toast.LENGTH_SHORT).show();
+           // msDismissProgressUpdateNavigation();
+            Toast.makeText(mContext, "No Data for Bluetooth Please reconnect ", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
+
+
+    public void sendDataDispense(Activity activity, BluetoothDataCallback callback, String packetToSend, Context mContext) {
+        try {
+            BluetoothHelper helper = BluetoothHelper.getInstance(activity);
+            helper.sendDataBLEForDispense(callback, packetToSend);
+        } catch (Exception e) {
+
+            Toast.makeText(mContext, "No Data for Bluetooth Please reconnect ", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
 
     public String formDigits(int digits, String value) {
         String finalDigits = null;

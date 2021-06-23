@@ -41,7 +41,7 @@ public class FragmentAdDrSubChildWater extends Fragment implements TextWatcherWi
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
-        mBinding.txtWaterWaterGms.setText(DR_HOT_WATER);
+        mBinding.txtWaterWaterGms.append(DR_HOT_WATER);
         new MultiTextWatcher().registerEditText(mBinding.txtWaterWaterGms).setCallback(this);
     }
 
@@ -49,7 +49,7 @@ public class FragmentAdDrSubChildWater extends Fragment implements TextWatcherWi
     public void onTextChanged(EditText editText, CharSequence s, int start, int before, int count) {
         switch (editText.getId()) {
             case R.id.txt_water_water_gms:
-                DR_HOT_WATER = mAppClass.formDigits(3, mBinding.txtWaterWaterGms.getText().toString()) + ";";
+                DR_HOT_WATER = mAppClass.formDigits(3, mBinding.txtWaterWaterGms.getText().toString()) ;
                 if (mBinding.txtWaterWaterGms.getText().toString().length() > 0) {
                     if (Integer.parseInt(mBinding.txtWaterWaterGms.getText().toString()) > 100) {
                         DR_HOT_WATER = "100;";

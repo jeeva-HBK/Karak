@@ -103,7 +103,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toTopOf="@id/guideline3"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/txt_tea"
@@ -134,7 +134,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/view"
             app:layout_constraintEnd_toStartOf="@+id/tea_gms"
             app:layout_constraintHorizontal_bias="0.75"
-
             android:layout_marginBottom="2dp" />
 
 
@@ -148,6 +147,7 @@
             app:layout_constraintBottom_toBottomOf="@id/txt_tea_per_cup"
             app:layout_constraintEnd_toStartOf="@id/txt_tea_per_cup"
             app:layout_constraintTop_toTopOf="@id/txt_tea_per_cup" />
+
         <TextView
             android:id="@+id/txt_tea_per_cup"
             style="@style/textpercup"
@@ -184,8 +184,8 @@
         <EditText
             android:id="@+id/txt_karak_milk"
             style="@style/textgms"
-            android:layout_width="30dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:background="@android:color/transparent"
             android:gravity="end"
@@ -244,14 +244,15 @@
         <EditText
             android:id="@+id/txt_karak_water"
             style="@style/textgms"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:background="@android:color/transparent"
             android:gravity="end"
+            android:imeOptions="actionDone"
+            android:inputType="number"
             android:hint="000"
             android:maxLength="3"
-            android:editable="false"
             android:maxLines="1"
             android:textColorHint="@color/materialgrey"
             app:layout_constraintBottom_toBottomOf="@id/view_line3"

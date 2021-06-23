@@ -231,7 +231,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Cardmom Karak"
+            android:text="Cardamom Karak"
             app:layout_constraintEnd_toEndOf="@+id/edt_boil_time_cardmom_karak"
             app:layout_constraintStart_toStartOf="@+id/edt_boil_time_cardmom_karak"
             app:layout_constraintTop_toBottomOf="@+id/edt_boil_time_cardmom_karak" />

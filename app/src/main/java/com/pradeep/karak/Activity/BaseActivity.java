@@ -3,6 +3,7 @@ package com.pradeep.karak.Activity;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -62,7 +63,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -85,14 +85,21 @@ public class BaseActivity extends AppCompatActivity {
 
     public static void msDismissProgress() {
         msBinding.mainProgressCircular.setVisibility(View.GONE);
-        msAppClass.showSnackBar(baseActivity, "Timed out, wait for 10 sec and try again !");
+        Log.e("TAG", "msDismissProgress: " );
+        msAppClass.showSnackBar(baseActivity, "Timed out try again !");
         baseActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         canGoBack = true;
-        baseActivity.mNavController.setGraph(R.navigation.scan);
-        baseActivity.mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.dashboard).build();
-        NavigationUI.setupActionBarWithNavController(baseActivity, baseActivity.mNavController, baseActivity.mAppBarConfiguration);
     }
 
+    public static void msDismissProgressUpdateNavigation() {
+        msBinding.mainProgressCircular.setVisibility(View.GONE);
+        msAppClass.showSnackBar(baseActivity, "Timed out try again !");
+        baseActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        canGoBack = true;
+         baseActivity.mNavController.setGraph(R.navigation.scan);
+         baseActivity.mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.dashboard).build();
+         NavigationUI.setupActionBarWithNavController(baseActivity, baseActivity.mNavController, baseActivity.mAppBarConfiguration);
+    }
 
 
     @Override

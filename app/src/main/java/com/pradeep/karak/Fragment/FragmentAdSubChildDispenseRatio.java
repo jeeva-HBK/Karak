@@ -87,7 +87,6 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
         mBinding.IvAdLeftArrow.setVisibility(View.GONE);
         mBinding.IvAdRightArrow.setVisibility(View.VISIBLE);
         mBinding.viewPagerMaintenance.setOffscreenPageLimit(6);
-        //mActivity.showProgress();
         sendData(mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + DISPENSING_READ_SUB_ID));
 
         pageCount.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
@@ -157,15 +156,15 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
 
     private String framePacket() {
         return
-                mAppClass.framePacket(DISPENSING_RATIO_MESSAGE_ID + KARAK_SUB_ID + DR_KARAK + KARAK_MILK_SUB_ID + DR_KARAK_MILK
-                        + KARAK_WATER_SUB_ID + DR_KARAK_WATER + MASALA_KARAK_TEA_SUB_ID + DR_MASALA_KARAK_TEA + MASALA_KARAK_MASALA_SUB_ID
-                        + DR_MASALA_KARAK_MASALA + MASALA_KARAK_MILK_SUB_ID + DR_MASALA_KARAK_MILK + MASALA_KARAK_WATER_SUB_ID
-                        + DR_MASALA_KARAKA_WATER + SULAIMANI_TEA_SUB_ID + DR_SULAIMANI_TEA + SULAIMANI_WATER_SUB_ID + DR_SULAIMANI_WATER
-                        + GINGER_KARAK_TEA_SUB_ID + DR_GINGER_KARAK_TEA + GINGER_KARAK_GINGER_SUB_ID + DR_GINGER_KARAK_GINGER
-                        + GINGER_KARAK_MILK_SUB_ID + DR_GINGER_KARAK_MILK + GINGER_KARAK_WATER_SUB_ID + DR_GINGER_WATER
-                        + CARDAMOM_KARAK_TEA_SUB_ID + DR_CARDAMOM_KARAK_TEA + CARDAMOM_KARAK_CARDAMOM_SUB_ID + DR_CARADMOM_KARAK_CARDMOM
-                        + CARDMOM_KARAK_MILK_SUB_ID + DR_CARDAMOM_KARAK_MILK + CARDMOM_KARAK_WATER + DR_CARDAMOM_KARAK_WATER
-                        + MILK_SUB_ID + DR_MILK + MILK_WATER_SUB_ID + DR_MILK_WATER + HOT_WATER_SUB_ID + DR_HOT_WATER);
+                mAppClass.framePacket(DISPENSING_RATIO_MESSAGE_ID + KARAK_SUB_ID + DR_KARAK + ";" + KARAK_MILK_SUB_ID + DR_KARAK_MILK + ";"
+                        + KARAK_WATER_SUB_ID + DR_KARAK_WATER + ";"  + MASALA_KARAK_TEA_SUB_ID + DR_MASALA_KARAK_TEA + ";"  + MASALA_KARAK_MASALA_SUB_ID
+                        + DR_MASALA_KARAK_MASALA + ";"  + MASALA_KARAK_MILK_SUB_ID + DR_MASALA_KARAK_MILK + ";"  + MASALA_KARAK_WATER_SUB_ID
+                        + DR_MASALA_KARAKA_WATER + ";"  + SULAIMANI_TEA_SUB_ID + DR_SULAIMANI_TEA + ";" + SULAIMANI_WATER_SUB_ID + DR_SULAIMANI_WATER + ";"
+                        + GINGER_KARAK_TEA_SUB_ID + DR_GINGER_KARAK_TEA + ";"  + GINGER_KARAK_GINGER_SUB_ID + DR_GINGER_KARAK_GINGER + ";"
+                        + GINGER_KARAK_MILK_SUB_ID + DR_GINGER_KARAK_MILK + ";" + GINGER_KARAK_WATER_SUB_ID + DR_GINGER_WATER + ";"
+                        + CARDAMOM_KARAK_TEA_SUB_ID + DR_CARDAMOM_KARAK_TEA + ";"  + CARDAMOM_KARAK_CARDAMOM_SUB_ID + DR_CARADMOM_KARAK_CARDMOM + ";"
+                        + CARDMOM_KARAK_MILK_SUB_ID + DR_CARDAMOM_KARAK_MILK + ";" + CARDMOM_KARAK_WATER + ";"  + DR_CARDAMOM_KARAK_WATER+ ";"
+                        + MILK_SUB_ID + DR_MILK+ ";"  + MILK_WATER_SUB_ID + DR_MILK_WATER + ";"  + HOT_WATER_SUB_ID + DR_HOT_WATER+ ";" );
     }
 
     @Override
@@ -175,10 +174,6 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
     }
 
     private void handleResponse(String data) {
-        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")){
-            mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(),getString(R.string.Timeout));
-        }else {
             String[] handleData = data.split(";");
             if (handleData[0].substring(5, 7).equals("07")) {
                 String[] Karak = handleData[1].split(","),
@@ -226,12 +221,12 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
                 mBinding.viewPagerMaintenance.setUserInputEnabled(false);
             } else if (handleData[0].substring(5, 7).equals("10")) {
                 if (handleData[1].equals("ACK")) {
-                    mAppClass.showSnackBar(getContext(),getString(R.string.UpdateSuccessfully));
+                    mAppClass.showSnackBar(getContext(), getString(R.string.UpdateSuccessfully));
                 }
             }
             mActivity.dismissProgress();
         }
-    }
+
 
     @Override
     public void OnDataReceivedError(Exception e) {

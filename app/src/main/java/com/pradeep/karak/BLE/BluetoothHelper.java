@@ -16,12 +16,12 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
-import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.ENUM.ConnectStatus;
-import com.pradeep.karak.Others.ApplicationClass;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.pradeep.karak.Activity.BaseActivity.msDismissProgress;
 
 public class BluetoothHelper implements SerialListener {
     private static final String TAG = "BluetoothHelper";
@@ -191,7 +191,7 @@ public class BluetoothHelper implements SerialListener {
                                 mConnectStatus = ConnectStatus.NOTCONNECTED;
                                 mConnectionListener.start();
                             }
-                        }, mConnectPacket);
+                        }, mConnectPacket,20000);
                     } catch (Exception e) {
                         dataCallback = mTempCallback;
                         mConnectionListener.start();
@@ -296,13 +296,33 @@ public class BluetoothHelper implements SerialListener {
         socket.connect(context, this, device);
     }
 
-    public void sendDataBLE(BluetoothDataCallback callback, String data) throws Exception {
+    public void sendDataBLE(BluetoothDataCallback callback, String data,int Timeout) throws Exception {
+        dataReceived = false;
         Log.e(TAG, "Sent -->" + data);
         this.dataCallback = callback;
         SerialSocket socket = SerialSocket.getInstance();
         socket.write(this, data.getBytes());
+        mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!dataReceived) {
+                            msDismissProgress();
+                        }
+                    }
+                }, Timeout);
+            }
+        });
+    }
 
-
+    public void sendDataBLEForDispense(BluetoothDataCallback callback, String data) throws Exception {
+        dataReceived = false;
+        Log.e(TAG, "Sent -->" + data);
+        this.dataCallback = callback;
+        SerialSocket socket = SerialSocket.getInstance();
+        socket.write(this, data.getBytes());
     }
 
     public BluetoothDataCallback getDataCallback() {
@@ -384,6 +404,7 @@ public class BluetoothHelper implements SerialListener {
                             dataCallback.OnDataReceivedError(new Exception("Invalid CRC"));
                             Log.e(TAG, "Invalid CRC: " );
                         }*/
+                        dataReceived = true;
                         dataCallback.OnDataReceived(framedData);
                         Log.e(TAG, "Received <--" + framedData);
                     } else {

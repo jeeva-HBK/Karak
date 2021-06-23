@@ -118,7 +118,7 @@
         <EditText
             android:id="@+id/txt_milk_tea_gms"
             style="@style/textgms"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:background="@android:color/transparent"
@@ -181,8 +181,8 @@
         <EditText
             android:id="@+id/txt_milk_water"
             style="@style/textgms"
-            android:layout_width="30dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:background="@android:color/transparent"
             android:gravity="end"

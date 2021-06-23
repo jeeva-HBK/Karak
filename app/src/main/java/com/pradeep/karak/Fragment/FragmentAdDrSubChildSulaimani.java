@@ -42,8 +42,8 @@ public class FragmentAdDrSubChildSulaimani extends Fragment implements TextWatch
         Log.e(TAG, "onViewCreated: ");
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
-        mBinding.txtSulaimaniTeaGms.setText(DR_SULAIMANI_TEA);
-        mBinding.txtSWater.setText(DR_SULAIMANI_WATER);
+        mBinding.txtSulaimaniTeaGms.append(DR_SULAIMANI_TEA);
+        mBinding.txtSWater.append(DR_SULAIMANI_WATER);
         new MultiTextWatcher().registerEditText(mBinding.txtSulaimaniTeaGms)
                 .registerEditText(mBinding.txtSWater).setCallback(this);
     }
@@ -52,10 +52,10 @@ public class FragmentAdDrSubChildSulaimani extends Fragment implements TextWatch
     public void onTextChanged(EditText editText, CharSequence s, int start, int before, int count) {
         switch (editText.getId()) {
             case R.id.txt_sulaimani_tea_gms:
-                DR_SULAIMANI_TEA = mAppClass.formDigits(3, mBinding.txtSulaimaniTeaGms.getText().toString()) + ";";
+                DR_SULAIMANI_TEA = mAppClass.formDigits(3, mBinding.txtSulaimaniTeaGms.getText().toString()) ;
                 break;
             case R.id.txt_s_water:
-                DR_SULAIMANI_WATER = mAppClass.formDigits(3, mBinding.txtSWater.getText().toString()) + ";";
+                DR_SULAIMANI_WATER = mAppClass.formDigits(3, mBinding.txtSWater.getText().toString()) ;
                 if (mBinding.txtSWater.getText().toString().length() > 0) {
                     if (Integer.parseInt(mBinding.txtSWater.getText().toString()) > 100) {
                         DR_SULAIMANI_WATER = "100;";

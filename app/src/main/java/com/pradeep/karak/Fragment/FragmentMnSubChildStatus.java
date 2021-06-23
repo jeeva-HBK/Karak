@@ -58,10 +58,6 @@ public class FragmentMnSubChildStatus extends Fragment implements BluetoothDataC
     }
 
     private void handleResponse(String data) {
-        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
-            mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
-        }else {
             String[] spiltData = data.split(";");
             if (spiltData[0].substring(5, 7).equals("07")) {
                 String[] inductionHeater = spiltData[1].split(",");
@@ -78,7 +74,7 @@ public class FragmentMnSubChildStatus extends Fragment implements BluetoothDataC
                 }
             }
             mActivity.dismissProgress();
-        }
+
 
     }
 

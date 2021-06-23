@@ -46,10 +46,10 @@ public class FragmentAdDrSubChildMasala extends Fragment implements TextWatcherW
         Log.e(TAG, "onViewCreated: ");
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
-        mBinding.txtMasalaTeaGms.setText(DR_MASALA_KARAK_TEA);
-        mBinding.txtMasalaMasala.setText(DR_MASALA_KARAK_MASALA);
-        mBinding.txtMasalaGmsMilk.setText(DR_MASALA_KARAK_MILK);
-        mBinding.txtMasalaGmsWater.setText(DR_MASALA_KARAKA_WATER);
+        mBinding.txtMasalaTeaGms.append(DR_MASALA_KARAK_TEA);
+        mBinding.txtMasalaMasala.append(DR_MASALA_KARAK_MASALA);
+        mBinding.txtMasalaGmsMilk.append(DR_MASALA_KARAK_MILK);
+        mBinding.txtMasalaGmsWater.append(DR_MASALA_KARAKA_WATER);
         new MultiTextWatcher().registerEditText(mBinding.txtMasalaTeaGms)
                 .registerEditText(mBinding.txtMasalaMasala).registerEditText(mBinding.txtMasalaGmsMilk)
                 .registerEditText(mBinding.txtMasalaGmsWater).setCallback(this);
@@ -60,13 +60,13 @@ public class FragmentAdDrSubChildMasala extends Fragment implements TextWatcherW
     public void onTextChanged(EditText editText, CharSequence s, int start, int before, int count) {
         switch (editText.getId()) {
             case R.id.txt_masala_tea_gms:
-                DR_MASALA_KARAK_TEA = mAppClass.formDigits(3, mBinding.txtMasalaTeaGms.getText().toString()) + ";";
+                DR_MASALA_KARAK_TEA = mAppClass.formDigits(3, mBinding.txtMasalaTeaGms.getText().toString());
                 break;
             case R.id.txt_masala_masala:
-                DR_MASALA_KARAK_MASALA = mAppClass.formDigits(3, mBinding.txtMasalaMasala.getText().toString()) + ";";
+                DR_MASALA_KARAK_MASALA = mAppClass.formDigits(3, mBinding.txtMasalaMasala.getText().toString());
                 break;
             case R.id.txt_masala_gms_milk:
-                DR_MASALA_KARAK_MILK = mAppClass.formDigits(3, mBinding.txtMasalaGmsMilk.getText().toString()) + ";";
+                DR_MASALA_KARAK_MILK = mAppClass.formDigits(3, mBinding.txtMasalaGmsMilk.getText().toString());
                 if (mBinding.txtMasalaGmsMilk.getText().toString().length() > 0) {
                     String getValue = mBinding.txtMasalaGmsMilk.getText().toString();
                     water = maxValue - Integer.parseInt(getValue);
@@ -78,7 +78,7 @@ public class FragmentAdDrSubChildMasala extends Fragment implements TextWatcherW
                 }
                 break;
             case R.id.txt_masala_gms_water:
-                DR_MASALA_KARAKA_WATER = mAppClass.formDigits(3, mBinding.txtMasalaGmsWater.getText().toString()) + ";";
+                DR_MASALA_KARAKA_WATER = mAppClass.formDigits(3, mBinding.txtMasalaGmsWater.getText().toString()) ;
 
                 break;
         }

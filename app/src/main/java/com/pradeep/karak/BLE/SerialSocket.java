@@ -207,6 +207,7 @@ public class SerialSocket extends BluetoothGattCallback {
             } else {
                 onSerialConnectError(new IOException("gatt status " + status));
             }
+
         } else {
             Log.e(TAG, "unknown connect state " + newState + " " + status);
         }

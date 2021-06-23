@@ -45,8 +45,8 @@ public class FragmentAdDrSubChildMilk extends Fragment implements TextWatcherWit
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
-        mBinding.txtMilkTeaGms.setText(DR_MILK);
-        mBinding.txtMilkWater.setText(DR_MILK_WATER);
+        mBinding.txtMilkTeaGms.append(DR_MILK);
+        mBinding.txtMilkWater.append(DR_MILK_WATER);
         new MultiTextWatcher().registerEditText(mBinding.txtMilkTeaGms).registerEditText(mBinding.txtMilkWater)
                 .setCallback(this);
     }
@@ -55,7 +55,7 @@ public class FragmentAdDrSubChildMilk extends Fragment implements TextWatcherWit
     public void onTextChanged(EditText editText, CharSequence s, int start, int before, int count) {
         switch (editText.getId()) {
             case R.id.txt_milk_tea_gms:
-                DR_MILK = mAppClass.formDigits(3, mBinding.txtMilkTeaGms.getText().toString()) + ";";
+                DR_MILK = mAppClass.formDigits(3, mBinding.txtMilkTeaGms.getText().toString());
                 if (mBinding.txtMilkTeaGms.getText().toString().length() > 0) {
                     String getValue = mBinding.txtMilkTeaGms.getText().toString();
                     water = maxValue - Integer.parseInt(getValue);
@@ -67,7 +67,7 @@ public class FragmentAdDrSubChildMilk extends Fragment implements TextWatcherWit
                 }
                 break;
             case R.id.txt_milk_water:
-                DR_MILK_WATER = mAppClass.formDigits(3, mBinding.txtMilkWater.getText().toString()) + ";";
+                DR_MILK_WATER = mAppClass.formDigits(3, mBinding.txtMilkWater.getText().toString()) ;
                 if (mBinding.txtMilkWater.getText().toString().length() > 0) {
                     if (Integer.parseInt(mBinding.txtMilkWater.getText().toString()) > 100) {
                         DR_MILK_WATER = "100;";

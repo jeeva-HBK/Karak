@@ -473,12 +473,12 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
             @Override
             public void run() {
                 if (!dataReceived) {
-                    mAppClass.showSnackBar(getContext(), "Timed Out");
+                  //  mAppClass.showSnackBar(getContext(), "Timed Out");
                     mActivity.dismissProgress();
                     startScan();
                 }
             }
-        }, 10000);
+        }, 20000);
     }
 
     @Override

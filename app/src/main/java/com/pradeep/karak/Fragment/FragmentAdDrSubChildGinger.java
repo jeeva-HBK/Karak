@@ -46,10 +46,10 @@ public class FragmentAdDrSubChildGinger extends Fragment implements TextWatcherW
         super.onViewCreated(view, savedInstanceState);
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
-        mBinding.txtGingerTeaGms.setText(DR_GINGER_KARAK_TEA);
-        mBinding.txtGingerGinger.setText(DR_GINGER_KARAK_GINGER);
-        mBinding.txtGingerGmsMilk.setText(DR_GINGER_KARAK_MILK);
-        mBinding.txtGingerGms.setText(DR_GINGER_WATER);
+        mBinding.txtGingerTeaGms.append(DR_GINGER_KARAK_TEA);
+        mBinding.txtGingerGinger.append(DR_GINGER_KARAK_GINGER);
+        mBinding.txtGingerGmsMilk.append(DR_GINGER_KARAK_MILK);
+        mBinding.txtGingerGms.append(DR_GINGER_WATER);
         new MultiTextWatcher().registerEditText(mBinding.txtGingerTeaGms).registerEditText(mBinding.txtGingerGinger)
                 .registerEditText(mBinding.txtGingerGmsMilk).registerEditText(mBinding.txtGingerGms)
                 .setCallback(this);
@@ -59,13 +59,13 @@ public class FragmentAdDrSubChildGinger extends Fragment implements TextWatcherW
     public void onTextChanged(EditText editText, CharSequence s, int start, int before, int count) {
         switch (editText.getId()) {
             case R.id.txt_ginger_tea_gms:
-                DR_GINGER_KARAK_TEA = mAppClass.formDigits(3, mBinding.txtGingerTeaGms.getText().toString()) + ";";
+                DR_GINGER_KARAK_TEA = mAppClass.formDigits(3, mBinding.txtGingerTeaGms.getText().toString());
                 break;
             case R.id.txt_ginger_ginger:
-                DR_GINGER_KARAK_GINGER = mAppClass.formDigits(3, mBinding.txtGingerGinger.getText().toString()) + ";";
+                DR_GINGER_KARAK_GINGER = mAppClass.formDigits(3, mBinding.txtGingerGinger.getText().toString());
                 break;
             case R.id.txt_ginger_gms_milk:
-                DR_GINGER_KARAK_MILK = mAppClass.formDigits(3, mBinding.txtGingerGmsMilk.getText().toString()) + ";";
+                DR_GINGER_KARAK_MILK = mAppClass.formDigits(3, mBinding.txtGingerGmsMilk.getText().toString());
                 if (mBinding.txtGingerGmsMilk.getText().toString().length() > 0) {
                     String getValue = mBinding.txtGingerGmsMilk.getText().toString();
                     water = maxValue - Integer.parseInt(getValue);
@@ -77,7 +77,7 @@ public class FragmentAdDrSubChildGinger extends Fragment implements TextWatcherW
                 }
                 break;
             case R.id.txt_ginger_gms:
-                DR_GINGER_WATER = mAppClass.formDigits(3, mBinding.txtGingerGms.getText().toString()) + ";";
+                DR_GINGER_WATER = mAppClass.formDigits(3, mBinding.txtGingerGms.getText().toString()) ;
                 if (mBinding.txtGingerGms.getText().toString().length() > 0) {
                     if (Integer.parseInt(mBinding.txtGingerGms.getText().toString()) > 100) {
                         DR_GINGER_WATER = "100;";

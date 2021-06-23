@@ -94,10 +94,6 @@ public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothD
     }
 
     private void handleResponse(String data) {
-        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
-            mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
-        } else {
             String[] handleData = data.split(";");
             if (handleData[0].substring(5, 7).equals("07")) {
                 String[] FirmWareVersion = handleData[3].split(",");
@@ -120,7 +116,6 @@ public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothD
                 }
             }
             mActivity.dismissProgress();
-        }
 
     }
 

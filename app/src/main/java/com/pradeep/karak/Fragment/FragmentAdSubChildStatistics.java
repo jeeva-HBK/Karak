@@ -4,10 +4,10 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,7 +43,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     Context context;
     AlertDialog alertDialog;
     String data = "", cupKarak = "0", cupGinger = "0", cupSulaimani = "0", cupMasala = "0", cupCardmom = "0", cupMilk = "0", cupHotWater = "0";
-
+    EditText reset;
     public static final String TAG = "Statistics";
 
     public FragmentAdSubChildStatistics(String data) {
@@ -60,11 +60,11 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     @Override
     public void onResume() {
         super.onResume();
-       // if (getTag().equals("TAG_STATISTICS")) {
-            readOperatorData();
-      //  } else {
+        // if (getTag().equals("TAG_STATISTICS")) {
+        readOperatorData();
+        //  } else {
         //    setDataToChart(getChartData(0), getChartbevarage(0), 0);
-      //  }
+        //  }
     }
 
     @Override
@@ -133,6 +133,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_reset_cup_count, null);
+        reset = dialogView.findViewById(R.id.edt_cup_count_reset);
         dialogBuilder.setView(dialogView);
         alertDialog = dialogBuilder.create();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -141,10 +142,23 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
         Go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAppClass.sendData(getActivity(), FragmentAdSubChildStatistics.this, mAppClass.framePacket(CUP_COUNT_RESET_MESSAGE_ID), getContext());
-                readOperatorData();
+                if (dialogBoxValidation()) {
+                    mAppClass.sendData(getActivity(), FragmentAdSubChildStatistics.this, mAppClass.framePacket(CUP_COUNT_RESET_MESSAGE_ID), getContext());
+                    readOperatorData();
+                }
             }
         });
+    }
+
+    boolean dialogBoxValidation() {
+        if (reset.getText().toString().isEmpty()) {
+            mAppClass.showSnackBar(getContext(), "Please enter the password");
+            return false;
+        } else if (!reset.getText().toString().equals(CUP_COUNT_PASSWORD)) {
+            mAppClass.showSnackBar(getContext(), "Password is wrong");
+            return false;
+        }
+        return true;
     }
 
     private ArrayList<String> getChartbevarage(int mode) {
@@ -260,10 +274,6 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     }
 
     private void handleResponse(String data) {
-        if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
-            mActivity.dismissProgress();
-            mAppClass.showSnackBar(getContext(), "Response Error");
-        } else {
             mActivity.dismissProgress();
             String[] spiltData = data.split(";");
             if (spiltData[0].substring(5, 7).equals("09")) {
@@ -291,7 +301,6 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
                 setDataToChart(getChartData(0), getChartbevarage(0), 0);
 
             }
-        }
 
     }
 

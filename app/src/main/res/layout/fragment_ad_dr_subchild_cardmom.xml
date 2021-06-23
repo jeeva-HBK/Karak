@@ -178,7 +178,7 @@
             android:id="@+id/txt_tea_cardmom"
             style="@style/textgms"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:background="@android:color/transparent"
             android:hint="000"
@@ -235,7 +235,7 @@
         <EditText
             android:id="@+id/txt_gms_milk"
             style="@style/textgms"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:background="@android:color/transparent"
@@ -261,6 +261,7 @@
             app:layout_constraintStart_toStartOf="@id/cardmom_gms"
             app:layout_constraintEnd_toEndOf="@id/cardmom_gms"
             app:layout_constraintTop_toTopOf="@id/txt_Milk_per_cup" />
+
         <TextView
             android:id="@+id/txt_Milk_per_cup"
             style="@style/textpercup"
@@ -295,13 +296,15 @@
         <EditText
             android:id="@+id/txt_gms_water"
             style="@style/textgms"
-            android:layout_width="30dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:background="@android:color/transparent"
             android:gravity="end"
             android:hint="000"
             android:editable="false"
+            android:imeOptions="actionDone"
+            android:inputType="number"
             android:maxLength="3"
             android:maxLines="1"
             android:textColorHint="@color/materialgrey"

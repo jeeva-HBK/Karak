@@ -118,7 +118,7 @@
         <EditText
             android:id="@+id/txt_water_water_gms"
             style="@style/textgms"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:gravity="end"
