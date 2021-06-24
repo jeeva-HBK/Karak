@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentChildMasterBinding;
 
+// Created on 20 Mar 2021 by silambu
 public class FragmentChildMaster extends Fragment {
     FragmentChildMasterBinding mBinding;
     private String[] masterMenuList;

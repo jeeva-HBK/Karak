@@ -16,6 +16,7 @@ import com.pradeep.karak.Adapter.MaintenancePagerAdapter;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentChildMaintenanceBinding;
 
+// Created on 21 Mar 2021 by silambu
 public class FragmentChildMaintenance extends Fragment {
     private FragmentChildMaintenanceBinding mBinding;
     public ObservableBoolean oVisible = new ObservableBoolean(true);

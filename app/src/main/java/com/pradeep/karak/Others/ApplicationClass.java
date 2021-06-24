@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -180,7 +181,7 @@ public class ApplicationClass extends Application {
     public void sendData(Activity activity, BluetoothDataCallback callback, String packetToSend, Context mContext) {
         try {
             BluetoothHelper helper = BluetoothHelper.getInstance(activity);
-            helper.sendDataBLE(callback, packetToSend, 20000);
+            helper.sendDataBLE(callback, packetToSend, 10000);
         } catch (Exception e) {
            // msDismissProgressUpdateNavigation();
             Toast.makeText(mContext, "No Data for Bluetooth Please reconnect ", Toast.LENGTH_SHORT).show();
@@ -245,8 +246,7 @@ public class ApplicationClass extends Application {
     }
 
     public String framePacket(String packet) {
-        //  return START_PACKET + packet + UtilMethods.CRCCalc(packet) + ";" + END_PACKET;
-        return START_PACKET + packet + CRC + END_PACKET;
+          return START_PACKET + packet + UtilMethods.CRCCalc(packet) + ";" + END_PACKET;
     }
 
     public boolean hasPermissions(Context context, String... permissions) {
@@ -263,7 +263,9 @@ public class ApplicationClass extends Application {
     public void showSnackBar(Context context, String message) {
         Snackbar snackbar = Snackbar.make(((Activity) context).findViewById(R.id.cord_lay), message, Snackbar.LENGTH_SHORT);
         TextView tv = (TextView) snackbar.getView().findViewById(R.id.snackbar_text);
-        tv.setTextColor(Color.WHITE);
+        tv.setTextColor(Color.BLACK);
+        View sbView = snackbar.getView();
+        sbView.setBackgroundColor(Color.WHITE);
         tv.setTypeface(null, Typeface.BOLD);
         snackbar.show();
     }

@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,6 +35,7 @@ import static com.pradeep.karak.Others.ApplicationClass.CUP_COUNT_PASSWORD;
 import static com.pradeep.karak.Others.ApplicationClass.CUP_COUNT_RESET_MESSAGE_ID;
 import static com.pradeep.karak.Others.ApplicationClass.MAINTENANCE_PASSWORD;
 
+// Created on 20 Mar 2021 by silambu
 public class FragmentAdSubChildStatistics extends Fragment implements BluetoothDataCallback {
     FragmentAdSubchildStatisticsBinding mBinding;
     ApplicationClass mAppClass;
@@ -144,7 +144,6 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
             public void onClick(View v) {
                 if (dialogBoxValidation()) {
                     mAppClass.sendData(getActivity(), FragmentAdSubChildStatistics.this, mAppClass.framePacket(CUP_COUNT_RESET_MESSAGE_ID), getContext());
-                    readOperatorData();
                 }
             }
         });
@@ -155,7 +154,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
             mAppClass.showSnackBar(getContext(), "Please enter the password");
             return false;
         } else if (!reset.getText().toString().equals(CUP_COUNT_PASSWORD)) {
-            mAppClass.showSnackBar(getContext(), "Password is wrong");
+            reset.setError("Password Wrong");
             return false;
         }
         return true;
@@ -274,33 +273,35 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     }
 
     private void handleResponse(String data) {
-            mActivity.dismissProgress();
-            String[] spiltData = data.split(";");
-            if (spiltData[0].substring(5, 7).equals("09")) {
-                if (spiltData[1].equals("ACK")) {
-                    alertDialog.dismiss();
-                    Toast.makeText(context, "CupCount Reset Success !", Toast.LENGTH_SHORT).show();
-                }
-            } else if (spiltData[0].substring(5, 7).equals("07")) {
-                String[] adminPassword = spiltData[2].split(","), maintenancePassword = spiltData[2].split(","), cupcountPassword = spiltData[3].split(","),
-                        ccKarak = spiltData[4].split(","), ccGKarak = spiltData[5].split(","), ccMKarak = spiltData[6].split(","),
-                        ccSulaimani = spiltData[7].split(","), ccCKarak = spiltData[8].split(","), ccMilk = spiltData[9].split(","),
-                        ccWater = spiltData[10].split(",");
-
-                ADMIN_PASSWORD = adminPassword[1];
-                MAINTENANCE_PASSWORD = maintenancePassword[1];
-                CUP_COUNT_PASSWORD = cupcountPassword[1];
-
-                cupKarak = ccKarak[1];
-                cupGinger = ccGKarak[1];
-                cupCardmom = ccCKarak[1];
-                cupMasala = ccMKarak[1];
-                cupSulaimani = ccSulaimani[1];
-                cupMilk = ccMilk[1];
-                cupHotWater = ccWater[1];
-                setDataToChart(getChartData(0), getChartbevarage(0), 0);
+        mActivity.dismissProgress();
+        String[] spiltData = data.split(";");
+        if (spiltData[0].substring(5, 7).equals("09")) {
+            if (spiltData[1].equals("ACK")) {
+                alertDialog.dismiss();
+                readOperatorData();
+                mAppClass.showSnackBar(getContext(), "CupCount Reset Success !");
 
             }
+        } else if (spiltData[0].substring(5, 7).equals("07")) {
+            String[] adminPassword = spiltData[2].split(","), maintenancePassword = spiltData[2].split(","), cupcountPassword = spiltData[3].split(","),
+                    ccKarak = spiltData[4].split(","), ccGKarak = spiltData[5].split(","), ccMKarak = spiltData[6].split(","),
+                    ccSulaimani = spiltData[7].split(","), ccCKarak = spiltData[8].split(","), ccMilk = spiltData[9].split(","),
+                    ccWater = spiltData[10].split(",");
+
+            ADMIN_PASSWORD = adminPassword[1];
+            MAINTENANCE_PASSWORD = maintenancePassword[1];
+            CUP_COUNT_PASSWORD = cupcountPassword[1];
+
+            cupKarak = ccKarak[1];
+            cupGinger = ccGKarak[1];
+            cupCardmom = ccCKarak[1];
+            cupMasala = ccMKarak[1];
+            cupSulaimani = ccSulaimani[1];
+            cupMilk = ccMilk[1];
+            cupHotWater = ccWater[1];
+            setDataToChart(getChartData(0), getChartbevarage(0), 0);
+
+        }
 
     }
 

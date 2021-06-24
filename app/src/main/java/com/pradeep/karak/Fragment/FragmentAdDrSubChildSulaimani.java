@@ -23,6 +23,7 @@ import com.pradeep.karak.databinding.FragmentAdDrSubchildSulaimaniBinding;
 import static com.pradeep.karak.Others.ApplicationClass.DR_SULAIMANI_TEA;
 import static com.pradeep.karak.Others.ApplicationClass.DR_SULAIMANI_WATER;
 
+// Created on 19 Mar 2021 by silambu
 public class FragmentAdDrSubChildSulaimani extends Fragment implements TextWatcherWithInstance {
     FragmentAdDrSubchildSulaimaniBinding mBinding;
     ApplicationClass mAppClass;

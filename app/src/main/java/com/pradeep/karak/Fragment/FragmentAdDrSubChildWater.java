@@ -22,7 +22,7 @@ import com.pradeep.karak.databinding.FragmentAdDrSubchildWaterBinding;
 import static com.pradeep.karak.Others.ApplicationClass.DR_HOT_WATER;
 import static com.pradeep.karak.Others.ApplicationClass.DR_MILK_WATER;
 
-
+// Created on 19 Mar 2021 by silambu
 public class FragmentAdDrSubChildWater extends Fragment implements TextWatcherWithInstance {
     FragmentAdDrSubchildWaterBinding mBinding;
     public static final String TAG = "DrWater";

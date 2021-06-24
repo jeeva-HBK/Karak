@@ -23,7 +23,7 @@ import static com.pradeep.karak.Others.ApplicationClass.DR_GINGER_KARAK_MILK;
 import static com.pradeep.karak.Others.ApplicationClass.DR_GINGER_KARAK_TEA;
 import static com.pradeep.karak.Others.ApplicationClass.DR_GINGER_WATER;
 
-
+// Created on 18 Mar 2021 by silambu
 public class FragmentAdDrSubChildGinger extends Fragment implements TextWatcherWithInstance {
     FragmentAdDrSubchildGingerBinding mBinding;
     ApplicationClass mAppClass;

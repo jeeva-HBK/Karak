@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/dashboard"
         android:name="com.pradeep.karak.Fragment.FragmentDashBoard"
-        android:label=""
+        android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_dashboard_to_fragmentConfiguration"
@@ -20,10 +20,14 @@
     <fragment
         android:id="@+id/fragmentConfiguration"
         android:name="com.pradeep.karak.Fragment.FragmentRootConfiguration"
-        android:label="FragmentConfiguration" />
+        android:label="FragmentConfiguration"
+        tools:layout="@layout/fragment_root_configuration">
+
+    </fragment>
     <fragment
         android:id="@+id/fragmentDashBoardCups"
         android:name="com.pradeep.karak.Fragment.FragmentDashBoardCups"
+        tools:layout="@layout/fragment_dashboard_cups"
         android:label="FragmentDashBoardCups">
         <action
             android:id="@+id/action_fragmentDashBoardCups_to_fragmentDashBoardSugar"
@@ -32,7 +36,8 @@
     <fragment
         android:id="@+id/fragmentDashBoardSugar"
         android:name="com.pradeep.karak.Fragment.FragmentDashBoardSugar"
-        android:label="FragmentDashBoardSugar">
+        android:label="FragmentDashBoardSugar"
+        tools:layout="@layout/fragment_dashboard_sugar">
         <action
             android:id="@+id/action_fragmentDashBoardSugar_to_dashboard"
             app:destination="@id/dashboard" />

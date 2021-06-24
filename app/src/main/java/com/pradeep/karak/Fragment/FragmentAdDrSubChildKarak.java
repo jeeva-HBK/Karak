@@ -24,7 +24,7 @@ import static com.pradeep.karak.Others.ApplicationClass.DR_KARAK;
 import static com.pradeep.karak.Others.ApplicationClass.DR_KARAK_MILK;
 import static com.pradeep.karak.Others.ApplicationClass.DR_KARAK_WATER;
 
-
+// Created on 19 Mar 2021 by silambu
 public class FragmentAdDrSubChildKarak extends Fragment implements TextWatcherWithInstance {
     FragmentAdDrSubchildKarakBinding mBinding;
     ApplicationClass mAppClass;
