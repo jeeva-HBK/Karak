@@ -163,8 +163,8 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
                         + GINGER_KARAK_TEA_SUB_ID + DR_GINGER_KARAK_TEA + ";"  + GINGER_KARAK_GINGER_SUB_ID + DR_GINGER_KARAK_GINGER + ";"
                         + GINGER_KARAK_MILK_SUB_ID + DR_GINGER_KARAK_MILK + ";" + GINGER_KARAK_WATER_SUB_ID + DR_GINGER_WATER + ";"
                         + CARDAMOM_KARAK_TEA_SUB_ID + DR_CARDAMOM_KARAK_TEA + ";"  + CARDAMOM_KARAK_CARDAMOM_SUB_ID + DR_CARADMOM_KARAK_CARDMOM + ";"
-                        + CARDMOM_KARAK_MILK_SUB_ID + DR_CARDAMOM_KARAK_MILK + ";" + CARDMOM_KARAK_WATER + ";"  + DR_CARDAMOM_KARAK_WATER+ ";"
-                        + MILK_SUB_ID + DR_MILK+ ";"  + MILK_WATER_SUB_ID + DR_MILK_WATER + ";"  + HOT_WATER_SUB_ID + DR_HOT_WATER+ ";" );
+                        + CARDMOM_KARAK_MILK_SUB_ID + DR_CARDAMOM_KARAK_MILK + ";" + CARDMOM_KARAK_WATER  + DR_CARDAMOM_KARAK_WATER+ ";"
+                        + MILK_SUB_ID + DR_MILK+ ";"  + MILK_WATER_SUB_ID + DR_MILK_WATER + ";"+ HOT_WATER_SUB_ID + DR_HOT_WATER+ ";" );
     }
 
     @Override

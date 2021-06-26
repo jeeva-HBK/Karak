@@ -136,16 +136,6 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
     @Override
     public void OnDataReceivedError(Exception e) {
         e.printStackTrace();
-        while (retryCount > 5) {
-            if (retryCount <= 4) {
-                sendData(lastSentPacket);
-                retryCount++;
-            } else if (retryCount > 4) {
-                mAppClass.showSnackBar(getContext(), "something went wrong\ntry reconnect!");
-                mAppClass.disconnect();
-            }
-
-        }
 
     }
 }

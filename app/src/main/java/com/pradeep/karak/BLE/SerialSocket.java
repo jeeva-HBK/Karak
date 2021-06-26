@@ -17,7 +17,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.pradeep.karak.BuildConfig;
-import com.pradeep.karak.Fragment.FragmentBluetoothList;
+
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -200,7 +200,6 @@ public class SerialSocket extends BluetoothGattCallback {
             if (!gatt.discoverServices())
                 onSerialConnectError(new IOException("discoverServices failed"));
         } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-            listener.onDisconnected();
             refreshGatt();
             if (connected) {
                 onSerialIoError(new IOException("gatt status " + status));

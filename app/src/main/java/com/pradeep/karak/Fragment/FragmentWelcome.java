@@ -194,7 +194,7 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
     private void sendConnectPacket() {
         int i = 0;
         dataReceived = false;
-        while (i < 5) {
+        while (i < 6) {
             sendData(mAppClass.framePacket("01;"));
             i++;
         }

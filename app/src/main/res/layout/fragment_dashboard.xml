@@ -231,7 +231,7 @@
             style="@style/dashboardTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cardmom karak"
+            android:text="Cardamom karak"
             app:layout_constraintBottom_toBottomOf="@id/v_cardmonKarak"
             app:layout_constraintStart_toStartOf="@+id/txt_masala_karak"
             app:layout_constraintTop_toTopOf="@id/v_cardmonKarak" />

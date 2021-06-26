@@ -417,7 +417,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
 
                                     @Override
                                     public void run() {
-                                        while (i < 5) {
+                                        while (i < 6) {
                                             if (!dataReceived) {
                                                 sendPacket(mAppClass.framePacket("01;"));
                                             }
