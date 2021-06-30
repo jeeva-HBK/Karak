@@ -336,6 +336,9 @@ public class BluetoothHelper implements SerialListener {
         }
     }
 
+
+
+
     private void registerReceiverForBluetooth() {
         if (!isRegistered) {
             isRegistered = true;
@@ -354,6 +357,10 @@ public class BluetoothHelper implements SerialListener {
             mActivity.unregisterReceiver(scanResult);
         }
     }
+
+
+
+
 
     @Override
     public void onSerialConnect() {
