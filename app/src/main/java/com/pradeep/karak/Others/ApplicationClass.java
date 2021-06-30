@@ -181,9 +181,8 @@ public class ApplicationClass extends Application {
     public void sendData(Activity activity, BluetoothDataCallback callback, String packetToSend, Context mContext) {
         try {
             BluetoothHelper helper = BluetoothHelper.getInstance(activity);
-            helper.sendDataBLE(callback, packetToSend, 10000);
+            helper.sendDataBLE(callback, packetToSend, 20000);
         } catch (Exception e) {
-           // msDismissProgressUpdateNavigation();
             Toast.makeText(mContext, "No Data for Bluetooth Please reconnect ", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
@@ -232,7 +231,7 @@ public class ApplicationClass extends Application {
         Navigation.findNavController((Activity) fragAct, R.id.nav_host_fragment).navigate(desID);
     }
 
-    public void navigateTo(FragmentActivity fragAct, int desID, Bundle bundle) {
+    public void navigateToBundle(FragmentActivity fragAct, int desID, Bundle bundle) {
         Navigation.findNavController((Activity) fragAct, R.id.nav_host_fragment).navigate(desID, bundle);
     }
 

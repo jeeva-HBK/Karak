@@ -39,6 +39,8 @@ public class BluetoothFavListAdapter extends RecyclerView.Adapter<BluetoothFavLi
         try {
             JSONObject obj = favArr.getJSONObject(position);
             String deviceMac = obj.getString("mac");
+            String deviceName = obj.getString("name");
+            holder.bleName.setText(deviceName);
             holder.bleText.setText(deviceMac);
             holder.del.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -65,13 +67,14 @@ public class BluetoothFavListAdapter extends RecyclerView.Adapter<BluetoothFavLi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView bleText;
+        TextView bleText,bleName;
         ImageView del, bleImage;
         CardView root;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             bleText = itemView.findViewById(R.id.txtBleMac);
+            bleName = itemView.findViewById(R.id.sve_serial_no);
             bleImage = itemView.findViewById(R.id.imgMachineImage);
             del = itemView.findViewById(R.id.img_del);
             root = itemView.findViewById(R.id.favRoot);

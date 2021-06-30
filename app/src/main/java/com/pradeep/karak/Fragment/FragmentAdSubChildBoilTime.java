@@ -66,7 +66,6 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
         mContext = getContext();
         mActivity = (BaseActivity) getActivity();
         sendData(mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + BOIL_TIME_READ_SUB_ID));
-
         mBinding.txtBoilTimeSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

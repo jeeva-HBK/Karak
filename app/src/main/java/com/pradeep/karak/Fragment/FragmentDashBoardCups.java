@@ -103,6 +103,6 @@ public class FragmentDashBoardCups extends Fragment implements View.OnClickListe
         }
         Bundle b = new Bundle();
         b.putString(KEY_CUP, BevaragePacket + BeverageSubPacketCup);
-        mAppclass.navigateTo(getActivity(), R.id.action_fragmentDashBoardCups_to_fragmentDashBoardSugar, b);
+        mAppclass.navigateToBundle(getActivity(), R.id.action_fragmentDashBoardCups_to_fragmentDashBoardSugar, b);
     }
 }

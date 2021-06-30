@@ -102,7 +102,7 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
     }
 
     @Override
-    public void OnItemClick(int pos) {
+    public void OnItemClick(int pos,String name) {
     }
 
     @Override

@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.23" />
+            app:layout_constraintGuide_percent="0.2" />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.4" />
+            app:layout_constraintGuide_percent="0.45" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline14"
@@ -52,6 +52,24 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.5" />
 
+
+        <View
+            android:id="@+id/view_serial"
+            android:layout_width="2dp"
+            android:layout_height="2dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.28"/>
+
+        <View
+            android:id="@+id/view_serial_1"
+            android:layout_width="2dp"
+            android:layout_height="2dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.42"/>
 
         <TextView
             android:id="@+id/txt_maintance_access"
@@ -80,10 +98,10 @@
             android:textColor="@color/textColor"
             android:textColorHint="@color/ash"
             android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline13"
+            app:layout_constraintBottom_toTopOf="@+id/view_serial_1"
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
             app:layout_constraintStart_toStartOf="@+id/guideline9"
-            app:layout_constraintTop_toBottomOf="@+id/txt_maintance_access" />
+            app:layout_constraintTop_toBottomOf="@+id/view_serial" />
 
 
         <View

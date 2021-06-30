@@ -62,7 +62,7 @@ public class BluetoothListAdapter extends RecyclerView.Adapter<BluetoothListAdap
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.OnItemClick(position);
+                listener.OnItemClick(position,holder.Name.getText().toString());
             }
         });
     }

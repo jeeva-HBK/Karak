@@ -1,6 +1,5 @@
 package com.pradeep.karak.Fragment;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -357,7 +356,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
         String[] ble = data.split("\n");
         JSONObject jsonObject = new JSONObject();
         try {
-            //jsonObject.put("name", ble[0]);
+            jsonObject.put("name", ble[0]);
             jsonObject.put("mac", ble[1]);
             String prefValue = preferences.getString("savedMac", "");
             if (!prefValue.equals("") && prefValue != null) {
@@ -396,7 +395,8 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void OnItemClick(int pos) {
+    public void OnItemClick(int pos, String name) {
+        preferences.edit().putString("macId", name).apply();
         stopScan();
         mBinding.txtConnect.setText("Connecting");
         mActivity.showProgress();
@@ -418,9 +418,14 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                                     @Override
                                     public void run() {
                                         while (i < 6) {
-                                            if (!dataReceived) {
-                                                sendPacket(mAppClass.framePacket("01;"));
-                                            }
+                                            new Handler().postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    if (!dataReceived) {
+                                                        sendPacket(mAppClass.framePacket("01;"));
+                                                    }
+                                                }
+                                            }, 1000 * i);
                                             i++;
                                         }
                                     }
@@ -473,7 +478,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
             @Override
             public void run() {
                 if (!dataReceived) {
-                  //  mAppClass.showSnackBar(getContext(), "Timed Out");
+                    //  mAppClass.showSnackBar(getContext(), "Timed Out");
                     mActivity.dismissProgress();
                     startScan();
                 }
@@ -488,23 +493,4 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
         Log.e(TAG, "onPause: ");
     }
 
-    public void bluetoothRestart() {
-        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        mBluetoothAdapter.disable();
-        Log.e(TAG, "bluetoothRestart: " );
-        mAppClass.popStackBack(getActivity());
-        mAppClass.showSnackBar(getContext(),"Please Wait For 10 sec No Response for Bluetooth");
-        mActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mBluetoothAdapter.enable();
-                    }
-
-                }, 10000);
-            }
-        });
-    }
 }

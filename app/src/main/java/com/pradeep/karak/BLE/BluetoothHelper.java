@@ -170,7 +170,7 @@ public class BluetoothHelper implements SerialListener {
                     try {
                         packetTimeout.start();
                         mTempCallback = getDataCallback();
-                        sendDataBLE(new BluetoothDataCallback() {
+                        sendDataBLEForDispense(new BluetoothDataCallback() {
                             @Override
                             public void OnDataReceived(String data) {
                                 dataCallback = mTempCallback;
@@ -192,7 +192,7 @@ public class BluetoothHelper implements SerialListener {
                                 mConnectStatus = ConnectStatus.NOTCONNECTED;
                                 mConnectionListener.start();
                             }
-                        }, mConnectPacket,20000);
+                        }, mConnectPacket);
                     } catch (Exception e) {
                         dataCallback = mTempCallback;
                         mConnectionListener.start();

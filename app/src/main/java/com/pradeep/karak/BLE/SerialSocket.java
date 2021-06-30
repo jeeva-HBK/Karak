@@ -105,7 +105,7 @@ public class SerialSocket extends BluetoothGattCallback {
         readCharacteristic = null;
         writeCharacteristic = null;
         if (gatt != null) {
-            Log.e(TAG, "gatt.disconnect");
+            Log.e(TAG, "BluetoothHelper"+"gatt.disconnect");
             gatt.disconnect();
             Log.e(TAG, "gatt.close");
             try {
@@ -422,7 +422,7 @@ public class SerialSocket extends BluetoothGattCallback {
      * SerialListener
      */
     private void onSerialConnect() {
-
+        Log.e(TAG, "BluetoothHelper: "+"connected" );
         if (listener != null)
             listener.onSerialConnect();
 

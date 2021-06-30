@@ -113,10 +113,10 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
 
         textView.setOnClickListener((view1 -> {
             if (editText.getText().toString().equals(password)) {
-                mAppclass.navigateTo(getActivity(), R.id.action_dashboard_to_fragmentConfiguration, b);
+                mAppclass.navigateToBundle(getActivity(), R.id.action_dashboard_to_fragmentConfiguration, b);
                 alertDialog.dismiss();
             } else {
-                mAppclass.showSnackBar(getContext(), "Password wrong!");
+             editText.setError("Password Wrong!");
             }
         }));
     }
@@ -153,7 +153,7 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
                 b.putString(KEY_BEVERAGE_SELECTION, "02;01,07");
                 break;
         }
-        mAppclass.navigateTo(getActivity(), R.id.action_dashboard_to_fragmentDashBoardCups, b);
+        mAppclass.navigateToBundle(getActivity(), R.id.action_dashboard_to_fragmentDashBoardCups, b);
     }
 
     @Override

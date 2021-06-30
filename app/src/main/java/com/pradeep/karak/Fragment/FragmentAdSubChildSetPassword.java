@@ -50,9 +50,7 @@ public class FragmentAdSubChildSetPassword extends Fragment implements Bluetooth
         mContext = getContext();
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mActivity = (BaseActivity) getActivity();
-        mBinding.editTextAdminPassword.append(ADMIN_PASSWORD);
-        mBinding.editTextMaintenancePassword.append(MAINTENANCE_PASSWORD);
-        mBinding.editTextCupCountReset.append(CUP_COUNT_PASSWORD);
+        sendData(mAppClass.framePacket("07;01;"));
 
         mBinding.setPasswordSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,14 +101,28 @@ public class FragmentAdSubChildSetPassword extends Fragment implements Bluetooth
     }
 
     private void handleResponse(String data) {
-            String[] splitData = data.split(";");
-            if (splitData[0].substring(5, 7).equals("12")) {
-                if (splitData[1].equals("ACK")) {
-                    mAppClass.showSnackBar(getContext(),getString(R.string.UpdateSuccessfully));
-                }
-            }
+        String[] splitData = data.split(";");
+        if (splitData[0].substring(5, 7).equals("07")) {
             mActivity.dismissProgress();
+            String[] adminPassword = splitData[1].split(","),
+                    maintenancePassword = splitData[2].split(","),
+                    cupcountPassword = splitData[3].split(",");
+
+            ADMIN_PASSWORD = adminPassword[1];
+            MAINTENANCE_PASSWORD = maintenancePassword[1];
+            CUP_COUNT_PASSWORD = cupcountPassword[1];
+
+            mBinding.editTextAdminPassword.append(ADMIN_PASSWORD);
+            mBinding.editTextMaintenancePassword.append(MAINTENANCE_PASSWORD);
+            mBinding.editTextCupCountReset.append(CUP_COUNT_PASSWORD);
         }
+        if (splitData[0].substring(5, 7).equals("12")) {
+            if (splitData[1].equals("ACK")) {
+                mAppClass.showSnackBar(getContext(), getString(R.string.UpdateSuccessfully));
+            }
+        }
+        mActivity.dismissProgress();
+    }
 
 
     @Override
