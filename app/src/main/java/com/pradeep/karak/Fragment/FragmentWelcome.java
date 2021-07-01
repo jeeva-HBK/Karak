@@ -192,12 +192,23 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
     }
 
     private void sendConnectPacket() {
-        int i = 0;
-        dataReceived = false;
-        while (i < 6) {
-            sendData(mAppClass.framePacket("01;"));
-            i++;
-        }
+        mActivity.runOnUiThread(new Runnable() {
+            int i = 0;
+            @Override
+            public void run() {
+                while (i < 6) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (!dataReceived) {
+                                sendPacket(mAppClass.framePacket("01;"));
+                            }
+                        }
+                    }, 1000 * i);
+                    i++;
+                }
+            }
+        });
     }
 
     private void sendData(String framedPacket) {
@@ -243,7 +254,6 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
         } else if (spiltData[0].substring(5, 7).equals("03")) {
             String[] status = spiltData[1].split(","), boilTime = spiltData[2].split(","), bevarageName = spiltData[3].split(",");
             mActivity.dismissProgress();
-            sendPacket(data);
             if (status[1].equals("01")) {
                 showPanNotAvailable();
             } else {
@@ -326,6 +336,7 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
                         break;
                 }
             }
+            sendPacket(data);
         } // Pan Release
         else if (spiltData[0].substring(5, 7).equals("05")) {
             if (spiltData[1].equals("ACK")) {

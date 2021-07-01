@@ -128,126 +128,126 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
     }
 
     private void handleResponse(String data) {
+        Log.e("BluetoothHelper", "DispenseReceived: " + data);
+        mActivity.dismissProgress();
+        String[] spiltData = data.split(";");
+        if (spiltData[0].substring(5, 7).equals("02")) {
+            if (spiltData[1].equals("ACK")) {
+                mActivity.showProgress();
+            }
+        } // Dispensing Status
+        else if (spiltData[0].substring(5, 7).equals("03")) {
+            String[] status = spiltData[1].split(","), boilTime = spiltData[2].split(","), bevarageName = spiltData[3].split(",");
             mActivity.dismissProgress();
-            String[] spiltData = data.split(";");
-            if (spiltData[0].substring(5, 7).equals("02")) {
-                if (spiltData[1].equals("ACK")) {
-                    mActivity.showProgress();
-                }
-            } // Dispensing Status
-            else if (spiltData[0].substring(5, 7).equals("03")) {
-                sendPacket(data);
-                String[] status = spiltData[1].split(","), boilTime = spiltData[2].split(","), bevarageName = spiltData[3].split(",");
-                mActivity.dismissProgress();
 
-                if (status[1].equals("01")) {
-                    showPanNotAvailable();
-                } else {
-                    switch (bevarageName[1]) {
-                        case "01":
-                            if (!isVisible) {
-                                showDispenseAlert("Karak", R.drawable.karak);
-                            } else {
-                                changeDispenseMsg("Karak", R.drawable.karak);
-                            }
-                            break;
-                        case "02":
-                            if (!isVisible) {
-                                showDispenseAlert("Ginger Karak", R.drawable.karakginger);
-                            } else {
-                                changeDispenseMsg("Ginger Karak", R.drawable.karakginger);
-                            }
-                            break;
-                        case "04":
-                            if (!isVisible) {
-                                showDispenseAlert("Sulaimani", R.drawable.sulaimani);
-                            } else {
-                                changeDispenseMsg("Sulaimani", R.drawable.sulaimani);
-                            }
-                            break;
-                        case "03":
-                            if (!isVisible) {
-                                showDispenseAlert("Masala Karak", R.drawable.karakmasaka);
-                            } else {
-                                changeDispenseMsg("Masala Karak", R.drawable.karakmasaka);
-                            }
-                            break;
-                        case "05":
-                            if (!isVisible) {
-                                showDispenseAlert("Cardamom Karak", R.drawable.karakcardmom);
-                            } else {
-                                changeDispenseMsg("Cardamom Karak", R.drawable.karakcardmom);
-                            }
-                            break;
-                        case "06":
-                            if (!isVisible) {
-                                showDispenseAlert("Hot milk", R.drawable.hotmilk);
-                            } else {
-                                changeDispenseMsg("Hot milk", R.drawable.hotmilk);
-                            }
-                            break;
-                        case "07":
-                            if (!isVisible) {
-                                showDispenseAlert("Hot Water", R.drawable.water);
-                            } else {
-                                changeDispenseMsg("Hot Water", R.drawable.water);
-                            }
-                            break;
-                    }
-
-                    switch (status[1]) {
-                        case "02":
-                            switch (bevarageName[1]) {
-                                case "01":
-                                case "06":
-                                case "05":
-                                case "03":
-                                case "02":
-                                    mAppclass.showSnackBar(getContext(), "Dispensing Milk & Water");
-                                    break;
-                                case "04":
-                                case "07":
-                                    mAppclass.showSnackBar(getContext(), "Dispensing  Water");
-                                    break;
-                            }
-                            break;
-                        case "03":
-                            mAppclass.showSnackBar(getContext(), "Preheating");
-                            break;
-                        case "04":
-                            mAppclass.showSnackBar(getContext(), "Dispensing ingredients");
-                            break;
-                        case "05":
-                            mAppclass.showSnackBar(getContext(), "Boiling");
-                            break;
-                    }
+            if (status[1].equals("01")) {
+                showPanNotAvailable();
+            } else {
+                switch (bevarageName[1]) {
+                    case "01":
+                        if (!isVisible) {
+                            showDispenseAlert("Karak", R.drawable.karak);
+                        } else {
+                            changeDispenseMsg("Karak", R.drawable.karak);
+                        }
+                        break;
+                    case "02":
+                        if (!isVisible) {
+                            showDispenseAlert("Ginger Karak", R.drawable.karakginger);
+                        } else {
+                            changeDispenseMsg("Ginger Karak", R.drawable.karakginger);
+                        }
+                        break;
+                    case "04":
+                        if (!isVisible) {
+                            showDispenseAlert("Sulaimani", R.drawable.sulaimani);
+                        } else {
+                            changeDispenseMsg("Sulaimani", R.drawable.sulaimani);
+                        }
+                        break;
+                    case "03":
+                        if (!isVisible) {
+                            showDispenseAlert("Masala Karak", R.drawable.karakmasaka);
+                        } else {
+                            changeDispenseMsg("Masala Karak", R.drawable.karakmasaka);
+                        }
+                        break;
+                    case "05":
+                        if (!isVisible) {
+                            showDispenseAlert("Cardamom Karak", R.drawable.karakcardmom);
+                        } else {
+                            changeDispenseMsg("Cardamom Karak", R.drawable.karakcardmom);
+                        }
+                        break;
+                    case "06":
+                        if (!isVisible) {
+                            showDispenseAlert("Hot milk", R.drawable.hotmilk);
+                        } else {
+                            changeDispenseMsg("Hot milk", R.drawable.hotmilk);
+                        }
+                        break;
+                    case "07":
+                        if (!isVisible) {
+                            showDispenseAlert("Hot Water", R.drawable.water);
+                        } else {
+                            changeDispenseMsg("Hot Water", R.drawable.water);
+                        }
+                        break;
                 }
 
-            } // Pan Release
-            else if (spiltData[0].substring(5, 7).equals("05")) {
-                if (spiltData[1].equals("ACK")) {
-                    mActivity.showProgress();
+                switch (status[1]) {
+                    case "02":
+                        switch (bevarageName[1]) {
+                            case "01":
+                            case "06":
+                            case "05":
+                            case "03":
+                            case "02":
+                                mAppclass.showSnackBar(getContext(), "Dispensing Milk & Water");
+                                break;
+                            case "04":
+                            case "07":
+                                mAppclass.showSnackBar(getContext(), "Dispensing  Water");
+                                break;
+                        }
+                        break;
+                    case "03":
+                        mAppclass.showSnackBar(getContext(), "Preheating");
+                        break;
+                    case "04":
+                        mAppclass.showSnackBar(getContext(), "Dispensing ingredients");
+                        break;
+                    case "05":
+                        mAppclass.showSnackBar(getContext(), "Boiling");
+                        break;
                 }
             }
-            // Dispense Completed
-            else if (spiltData[0].substring(5, 7).equals("04")) {
-                sendPacket(mAppclass.framePacket("04;ACK:"));
-                if (dispenseAlert.isShowing()) {
-                    dispenseAlert.dismiss();
-                }
-                mAppclass.showSnackBar(getContext(), "Dispense Completed !");
+            sendPacket(data);
+        } // Pan Release
+        else if (spiltData[0].substring(5, 7).equals("05")) {
+            if (spiltData[1].equals("ACK")) {
+                mActivity.showProgress();
+            }
+        }
+        // Dispense Completed
+        else if (spiltData[0].substring(5, 7).equals("04")) {
+            sendPacket(mAppclass.framePacket("04;ACK:"));
+            if (dispenseAlert.isShowing()) {
+                dispenseAlert.dismiss();
+            }
+            mAppclass.showSnackBar(getContext(), "Dispense Completed !");
+            mActivity.updateNavigationUi(R.navigation.navigation);
+        }
+        // Cancel Dispense
+        else if (spiltData[0].substring(5, 7).equals("06")) {
+            if (spiltData[1].equals("ACK")) {
+                mAppclass.showSnackBar(getContext(), getString(R.string.DispenseCanceled));
                 mActivity.updateNavigationUi(R.navigation.navigation);
-            }
-            // Cancel Dispense
-            else if (spiltData[0].substring(5, 7).equals("06")) {
-                if (spiltData[1].equals("ACK")) {
-                    mAppclass.showSnackBar(getContext(), getString(R.string.DispenseCanceled));
-                    mActivity.updateNavigationUi(R.navigation.navigation);
-                    if (panAlert.isShowing()) {
-                        panAlert.dismiss();
-                    }
+                if (panAlert.isShowing()) {
+                    panAlert.dismiss();
                 }
             }
+        }
     }
 
     private void showPanNotAvailable() {

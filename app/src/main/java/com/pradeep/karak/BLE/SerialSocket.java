@@ -18,7 +18,6 @@ import androidx.annotation.RequiresApi;
 
 import com.pradeep.karak.BuildConfig;
 
-
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -105,7 +104,7 @@ public class SerialSocket extends BluetoothGattCallback {
         readCharacteristic = null;
         writeCharacteristic = null;
         if (gatt != null) {
-            Log.e(TAG, "BluetoothHelper"+"gatt.disconnect");
+            Log.e(TAG, "BluetoothHelper" + "gatt.disconnect");
             gatt.disconnect();
             Log.e(TAG, "gatt.close");
             try {
@@ -200,6 +199,7 @@ public class SerialSocket extends BluetoothGattCallback {
             if (!gatt.discoverServices())
                 onSerialConnectError(new IOException("discoverServices failed"));
         } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
+            listener.onDisconnected();
             refreshGatt();
             if (connected) {
                 onSerialIoError(new IOException("gatt status " + status));
@@ -422,7 +422,7 @@ public class SerialSocket extends BluetoothGattCallback {
      * SerialListener
      */
     private void onSerialConnect() {
-        Log.e(TAG, "BluetoothHelper: "+"connected" );
+        Log.e(TAG, "BluetoothHelper: " + "connected");
         if (listener != null)
             listener.onSerialConnect();
 

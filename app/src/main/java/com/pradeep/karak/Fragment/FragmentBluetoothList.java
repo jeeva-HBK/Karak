@@ -468,8 +468,13 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                         }
                     });
                 } catch (Exception e) {
-                    stopScan();
-                    mBinding.txtConnect.setText("Rescan");
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            stopScan();
+                            mBinding.txtConnect.setText("Rescan");
+                        }
+                    });
                     e.printStackTrace();
                 }
             }
@@ -478,7 +483,6 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
             @Override
             public void run() {
                 if (!dataReceived) {
-                    //  mAppClass.showSnackBar(getContext(), "Timed Out");
                     mActivity.dismissProgress();
                     startScan();
                 }

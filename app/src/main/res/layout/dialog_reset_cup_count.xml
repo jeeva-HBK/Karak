@@ -40,7 +40,7 @@
             android:hint="Password"
             android:imeOptions="flagNoExtractUi|actionDone"
             android:inputType="numberPassword"
-            android:maxLength="5"
+            android:maxLength="4"
             android:padding="5dp"
             android:textColor="@color/textColor"
             android:textColorHint="@color/ash"

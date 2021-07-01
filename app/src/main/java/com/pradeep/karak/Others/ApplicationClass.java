@@ -23,8 +23,18 @@ import com.pradeep.karak.BLE.BluetoothHelper;
 import com.pradeep.karak.BLE.SerialSocket;
 import com.pradeep.karak.R;
 
+import org.acra.ACRA;
+import org.acra.annotation.AcraMailSender;
+import org.acra.annotation.AcraToast;
+
 import static com.pradeep.karak.Activity.BaseActivity.msDismissProgress;
 import static com.pradeep.karak.Activity.BaseActivity.msDismissProgressUpdateNavigation;
+
+
+@AcraMailSender(mailTo = "silambarasanraxgbc@gmail.com")
+
+@AcraToast(resText = R.string.acra_toast_text,
+        length = Toast.LENGTH_LONG)
 
 // Created on 15 Mar 2021 by Jeeva
 public class ApplicationClass extends Application {
@@ -269,4 +279,10 @@ public class ApplicationClass extends Application {
         snackbar.show();
     }
 
+
+    @Override
+    protected void attachBaseContext(Context baseContext) {
+        super.attachBaseContext(baseContext);
+        ACRA.init(this);
+    }
 }

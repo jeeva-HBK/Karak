@@ -9,10 +9,10 @@
     <string name="camera">CAMERA</string>
     <string name="scan_qr_codes_found_in_ibrew_machines">Scan QR Codes found in IBrew Machines.</string>
     <string name="location">LOCATION</string>
-    <string name="location_permission_description">This app does not use location information, but scanning for iBrew Machines requires this permission. \n The scan result can contain location information, so Google decided that starting with android 6.0 apps have to request permission.</string>
-    <string name="connecting_to_ibrew_machines_that_uses_bluetooth">Connecting to iBrew Machines that uses Bluetooth.</string>
+    <string name="location_permission_description">This app does not use location information, but scanning for karak Machines requires this permission. \n The scan result can contain location information, so Google decided that starting with android 6.0 apps have to request permission.</string>
+    <string name="connecting_to_ibrew_machines_that_uses_bluetooth">Connecting to karak Machines that uses Bluetooth.</string>
     <string name="bluetooth">BLUETOOTH</string>
-    <string name="connecting_to_ibrew_machines_that_uses_wifi">Connecting to iBrew Machines that uses Wifi.</string>
+    <string name="connecting_to_ibrew_machines_that_uses_wifi">Connecting to Karak Machines that uses Wifi.</string>
     <string name="wifi">WIFI</string>
     <string name="allow_access">Allow access</string>
     <string name="acra_toast_text">Sorry the application crashed</string>

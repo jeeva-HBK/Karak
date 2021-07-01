@@ -85,7 +85,6 @@ public class BaseActivity extends AppCompatActivity {
 
     public static void msDismissProgress() {
         msBinding.mainProgressCircular.setVisibility(View.GONE);
-        Log.e("TAG", "msDismissProgress: " );
         msAppClass.showSnackBar(baseActivity, "Timed out try again !");
         baseActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         canGoBack = true;
@@ -96,9 +95,9 @@ public class BaseActivity extends AppCompatActivity {
         msAppClass.showSnackBar(baseActivity, "Timed out try again !");
         baseActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         canGoBack = true;
-         baseActivity.mNavController.setGraph(R.navigation.scan);
-         baseActivity.mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.dashboard).build();
-         NavigationUI.setupActionBarWithNavController(baseActivity, baseActivity.mNavController, baseActivity.mAppBarConfiguration);
+        baseActivity.mNavController.setGraph(R.navigation.scan);
+        baseActivity.mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.dashboard).build();
+        NavigationUI.setupActionBarWithNavController(baseActivity, baseActivity.mNavController, baseActivity.mAppBarConfiguration);
     }
 
 
@@ -136,5 +135,28 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("TAG", "onResume: ");
+    }
 
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("TAG", "onPause: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("TAG", "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("TAG", "onDestory: ");
+    }
 }
