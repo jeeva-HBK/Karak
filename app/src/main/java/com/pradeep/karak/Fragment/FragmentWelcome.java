@@ -317,22 +317,22 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
                             case "05":
                             case "03":
                             case "02":
-                                mAppClass.showSnackBar(getContext(), "Dispensing Milk & Water");
+                                mAppClass.showSnackBar(getContext(), "Status : Dispensing Milk & Water"+"\n"+"Countdown : "+boilTime[1]);
                                 break;
                             case "04":
                             case "07":
-                                mAppClass.showSnackBar(getContext(), "Dispensing  Water");
+                                mAppClass.showSnackBar(getContext(), "Status : Dispensing  Water "+"\n"+"Countdown : "+boilTime[1]);
                                 break;
                         }
                         break;
                     case "03":
-                        mAppClass.showSnackBar(getContext(), "Preheating");
+                        mAppClass.showSnackBar(getContext(), "Status : Preheating "+"\n"+"Countdown : "+boilTime[1]);
                         break;
                     case "04":
-                        mAppClass.showSnackBar(getContext(), "Dispensing ingredients");
+                        mAppClass.showSnackBar(getContext(), "Status : Dispensing ingredients"+"\n"+"Countdown : "+boilTime[1]);
                         break;
                     case "05":
-                        mAppClass.showSnackBar(getContext(), "Boiling");
+                        mAppClass.showSnackBar(getContext(), "Status : Boiling"+"\n"+"Countdown : "+boilTime[1]);
                         break;
                 }
             }

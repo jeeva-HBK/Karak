@@ -112,7 +112,7 @@ public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothD
                 }
             } else if (handleData[0].substring(5, 7).equals("17")) {
                 if (handleData[1].equals("ACK")) {
-                    mAppClass.showSnackBar(getContext(), getString(R.string.UpdateSuccessfully));
+                    mAppClass.showSnackBar(getContext(),"Total Reset Successfully");
                 }
             }
             mActivity.dismissProgress();

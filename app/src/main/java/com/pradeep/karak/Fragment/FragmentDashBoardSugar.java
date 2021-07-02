@@ -203,22 +203,22 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
                             case "05":
                             case "03":
                             case "02":
-                                mAppclass.showSnackBar(getContext(), "Dispensing Milk & Water");
+                                mAppclass.showSnackBar(getContext(), "Status : Dispensing Milk & Water"+"\n"+"Countdown : "+boilTime[1]);
                                 break;
                             case "04":
                             case "07":
-                                mAppclass.showSnackBar(getContext(), "Dispensing  Water");
+                                mAppclass.showSnackBar(getContext(), "Status : Dispensing  Water "+"\n"+"Countdown : "+boilTime[1]);
                                 break;
                         }
                         break;
                     case "03":
-                        mAppclass.showSnackBar(getContext(), "Preheating");
+                        mAppclass.showSnackBar(getContext(), "Status : Preheating "+"\n"+"Countdown : "+boilTime[1]);
                         break;
                     case "04":
-                        mAppclass.showSnackBar(getContext(), "Dispensing ingredients");
+                        mAppclass.showSnackBar(getContext(), "Status : Dispensing ingredients"+"\n"+"Countdown : "+boilTime[1]);
                         break;
                     case "05":
-                        mAppclass.showSnackBar(getContext(), "Boiling");
+                        mAppclass.showSnackBar(getContext(), "Status : Boiling"+"\n"+"Countdown : "+boilTime[1]);
                         break;
                 }
             }

@@ -91,6 +91,7 @@ public class FragmentMaSubChildFactoryReset extends Fragment implements Bluetoot
             String[] splitData = data.split(";");
             if (splitData[0].substring(5, 7).equals("16"))
                 if (splitData[1].equals("ACK")) { alertDialog.dismiss();
+                mAppClass.showSnackBar(getContext(),"Factory Reset Successfully");
                 }
             mActivity.dismissProgress();
 

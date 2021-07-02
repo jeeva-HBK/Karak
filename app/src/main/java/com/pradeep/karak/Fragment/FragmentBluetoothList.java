@@ -413,7 +413,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                         public void OnConnectSuccess() {
                             try {
                                 mActivity.runOnUiThread(new Runnable() {
-                                    int i = 0;
+                                    int i = 1;
 
                                     @Override
                                     public void run() {
