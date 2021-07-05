@@ -32,7 +32,7 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
     FragmentDashboardBinding mBinding;
     ApplicationClass mAppclass;
     BaseActivity mActivity;
-    private boolean dataReceived = false;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -65,7 +65,6 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
 
     private void sendPacket(String framedPacket) {
         mActivity.showProgress();
-        dataReceived = false;
         mAppclass.sendData(getActivity(), FragmentDashBoard.this, framedPacket, getContext());
 
     }
@@ -162,7 +161,7 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
     }
 
     private void handleResponse(String data) {
-        dataReceived = true;
+
         String[] spiltData = data.split(";");
         if (spiltData[0].substring(5, 7).equals("07")) {
             mActivity.dismissProgress();

@@ -28,7 +28,7 @@ import org.acra.annotation.AcraMailSender;
 import org.acra.annotation.AcraToast;
 
 import static com.pradeep.karak.Activity.BaseActivity.msDismissProgress;
-import static com.pradeep.karak.Activity.BaseActivity.msDismissProgressUpdateNavigation;
+
 
 
 @AcraMailSender(mailTo = "silambarasanraxgbc@gmail.com")
@@ -193,7 +193,7 @@ public class ApplicationClass extends Application {
             BluetoothHelper helper = BluetoothHelper.getInstance(activity);
             helper.sendDataBLE(callback, packetToSend, 20000);
         } catch (Exception e) {
-            Toast.makeText(mContext, "No Data for Bluetooth Please reconnect ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "No Data for Bluetooth Please reconnect your device ", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
@@ -204,8 +204,7 @@ public class ApplicationClass extends Application {
             BluetoothHelper helper = BluetoothHelper.getInstance(activity);
             helper.sendDataBLEForDispense(callback, packetToSend);
         } catch (Exception e) {
-
-            Toast.makeText(mContext, "No Data for Bluetooth Please reconnect ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "No Data for Bluetooth Please reconnect your device", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
@@ -241,8 +240,9 @@ public class ApplicationClass extends Application {
         Navigation.findNavController((Activity) fragAct, R.id.nav_host_fragment).navigate(desID);
     }
 
-    public void navigateToBundle(FragmentActivity fragAct, int desID, Bundle bundle) {
-        Navigation.findNavController((Activity) fragAct, R.id.nav_host_fragment).navigate(desID, bundle);
+
+    public void navigateToBundle(FragmentActivity activity, int fragmentIDinNavigation, Bundle b) {
+        Navigation.findNavController((Activity) activity, R.id.nav_host_fragment).navigate(fragmentIDinNavigation, b);
     }
 
     public void popStackBack(FragmentActivity activity) {

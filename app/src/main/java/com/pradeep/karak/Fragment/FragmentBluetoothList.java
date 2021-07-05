@@ -96,7 +96,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
     }
 
     private void sendPacket(String packet) {
-        mAppClass.sendData(getActivity(), FragmentBluetoothList.this, packet, getContext());
+        mAppClass.sendDataDispense(getActivity(), FragmentBluetoothList.this, packet, getContext());
     }
 
     private void stopScan() {

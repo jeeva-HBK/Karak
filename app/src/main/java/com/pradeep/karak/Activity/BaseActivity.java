@@ -22,6 +22,7 @@ import com.pradeep.karak.Fragment.FragmentPermissionRequest;
 import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.ActivityBaseBinding;
+;
 
 // Created on 15 Mar 2021 by Jeeva
 public class BaseActivity extends AppCompatActivity {
@@ -86,11 +87,12 @@ public class BaseActivity extends AppCompatActivity {
     public static void msDismissProgress() {
         msBinding.mainProgressCircular.setVisibility(View.GONE);
         msAppClass.showSnackBar(baseActivity, "Timed out try again !");
+        Log.e("TAG", "msDismissProgress: " );
         baseActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         canGoBack = true;
     }
 
-    public static void msDismissProgressUpdateNavigation() {
+    /*public static void msDismissProgressUpdateNavigation() {
         msBinding.mainProgressCircular.setVisibility(View.GONE);
         msAppClass.showSnackBar(baseActivity, "Timed out try again !");
         baseActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -98,7 +100,7 @@ public class BaseActivity extends AppCompatActivity {
         baseActivity.mNavController.setGraph(R.navigation.scan);
         baseActivity.mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.dashboard).build();
         NavigationUI.setupActionBarWithNavController(baseActivity, baseActivity.mNavController, baseActivity.mAppBarConfiguration);
-    }
+    }*/
 
 
     @Override

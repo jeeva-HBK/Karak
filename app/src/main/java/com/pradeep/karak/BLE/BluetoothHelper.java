@@ -42,7 +42,7 @@ public class BluetoothHelper implements SerialListener {
     private ConnectStatus mConnectStatus = ConnectStatus.NOTCONNECTED;
     private BluetoothDevice mConnectedDevice;
     private Context mContext;
-    private boolean isConnected = false, dataReceived = false;
+    private boolean isConnected = false, dataReceived;
     private String mConnectPacket, mExpectedResponse;
 
     private BroadcastReceiver scanResult = new BroadcastReceiver() {
@@ -319,7 +319,6 @@ public class BluetoothHelper implements SerialListener {
     }
 
     public void sendDataBLEForDispense(BluetoothDataCallback callback, String data) throws Exception {
-        dataReceived = false;
         Log.e(TAG, "Sent -->" + data);
         this.dataCallback = callback;
         SerialSocket socket = SerialSocket.getInstance();
@@ -387,6 +386,7 @@ public class BluetoothHelper implements SerialListener {
 
     private void sendDataToCallback(final String s) {
         Log.d(TAG, "Received <--" + s);
+        dataReceived = true;
         mActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -412,7 +412,6 @@ public class BluetoothHelper implements SerialListener {
                             dataCallback.OnDataReceivedError(new Exception("Invalid CRC"));
                             Log.e(TAG, "Invalid CRC: " );
                         }*/
-                        dataReceived = true;
                         dataCallback.OnDataReceived(framedData);
                         Log.e(TAG, "Received <--" + framedData);
                     } else {

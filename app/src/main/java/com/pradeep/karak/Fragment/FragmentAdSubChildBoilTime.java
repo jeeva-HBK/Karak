@@ -48,7 +48,7 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
     String HotMilkParameter;
     String HotWaterParameter;
     BaseActivity mActivity;
-    boolean dataReceived = false;
+
 
     private static final String TAG = "BoilTime";
 
@@ -102,7 +102,6 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
     }
 
     private void handleResponse(String data) {
-        dataReceived = true;
         if (data.equals("PSIPSTIMEOUT;CRC;PSIPE")) {
             mActivity.dismissProgress();
             mAppClass.showSnackBar(getContext(), getString(R.string.Timeout));
