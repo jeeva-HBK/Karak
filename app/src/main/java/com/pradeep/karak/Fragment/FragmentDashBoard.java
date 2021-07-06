@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -110,14 +111,18 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
         EditText editText = dialogView.findViewById(R.id.edt_admin_password);
         TextView textView = dialogView.findViewById(R.id.dialogPass_t);
 
-        textView.setOnClickListener((view1 -> {
-            if (editText.getText().toString().equals(password)) {
-                mAppclass.navigateToBundle(getActivity(), R.id.action_dashboard_to_fragmentConfiguration, b);
-                alertDialog.dismiss();
-            } else {
-             editText.setError("Password Wrong!");
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (editText.getText().toString().equals(password)) {
+                    alertDialog.dismiss();
+                     mAppclass.navigateToBundle(getActivity(), R.id.action_dashboard_to_fragmentConfiguration, b);
+                } else {
+                    editText.setError("Password Wrong!");
+                }
             }
-        }));
+        });
     }
 
     @Override
@@ -174,6 +179,8 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
             Bundle b = new Bundle();
             b.putString("CUPCOUNT", data);
             checkPassword(ADMIN_PASSWORD, b);
+
+            Log.e("TAG", "<---ADMIN_PASSWORD: "+ADMIN_PASSWORD );
         }
     }
 
