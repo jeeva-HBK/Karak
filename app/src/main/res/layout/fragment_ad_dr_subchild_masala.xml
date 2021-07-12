@@ -308,6 +308,8 @@
             android:background="@android:color/transparent"
             android:gravity="end"
             android:hint="000"
+            android:clickable="false"
+            android:enabled="false"
             android:editable="false"
             android:imeOptions="actionDone"
             android:maxLength="3"

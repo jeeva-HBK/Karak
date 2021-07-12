@@ -189,6 +189,8 @@
             android:hint="000"
             android:maxLength="3"
             android:maxLines="1"
+            android:clickable="false"
+            android:enabled="false"
             android:editable="false"
             android:textColorHint="@color/materialgrey"
             app:layout_constraintBottom_toBottomOf="@id/view_line2"
