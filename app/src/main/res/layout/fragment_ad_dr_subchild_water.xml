@@ -123,6 +123,7 @@
             android:background="@android:color/transparent"
             android:gravity="end"
             android:hint="000"
+            android:padding="4dp"
             android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLength="3"

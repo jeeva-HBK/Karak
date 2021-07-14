@@ -24,6 +24,8 @@ import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentDashboardBinding;
 
+
+import static com.pradeep.karak.Fragment.FragmentAdDrSubChildGinger.TAG;
 import static com.pradeep.karak.Others.ApplicationClass.ADMIN_PASSWORD;
 import static com.pradeep.karak.Others.ApplicationClass.CUP_COUNT_PASSWORD;
 import static com.pradeep.karak.Others.ApplicationClass.KEY_BEVERAGE_SELECTION;
@@ -44,8 +46,11 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mAppclass = (ApplicationClass) getActivity().getApplication();
+
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
         mActivity = (BaseActivity) getActivity();
+
+        BaseActivity.canGoBack = false;
         mActivity.dismissProgress();
         mBinding.btnOperator.setOnClickListener(view1 -> {
             sendPacket(mAppclass.framePacket("07;01;"));
@@ -62,6 +67,34 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
         mBinding.vCardmonKarak.setOnClickListener(this);
         mBinding.vHotMilk.setOnClickListener(this);
         mBinding.vHotWater.setOnClickListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.e(TAG, "onResume: " );
+        BaseActivity.canGoBack = false;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.e(TAG, "onStart: " );
+        BaseActivity.canGoBack = false;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.e(TAG, "onPause: " );
+        BaseActivity.canGoBack = true;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.e(TAG, "onPause: " );
+        BaseActivity.canGoBack = true;
     }
 
     private void sendPacket(String framedPacket) {

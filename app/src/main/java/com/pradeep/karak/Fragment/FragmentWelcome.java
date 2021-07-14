@@ -260,55 +260,54 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
                 switch (bevarageName[1]) {
                     case "01":
                         if (!isVisible) {
-                            showDispenseAlert("Karak", R.drawable.dispense_back);
+                            showDispenseAlert("Karak", R.drawable.karak);
                         } else {
-                            changeDispenseMsg("Karak", R.drawable.dispense_back);
+                            changeDispenseMsg("Karak", R.drawable.karak);
                         }
                         break;
                     case "02":
                         if (!isVisible) {
-                            showDispenseAlert("Ginger Karak", R.drawable.bg_app_button);
+                            showDispenseAlert("Ginger Karak", R.drawable.karakginger);
                         } else {
-                            changeDispenseMsg("Ginger Karak", R.drawable.bg_app_button);
-                        }
-                        break;
-                    case "03":
-                        if (!isVisible) {
-                            showDispenseAlert("Sulaimani", R.drawable.bg_top_curved);
-                        } else {
-                            changeDispenseMsg("Sulaimani", R.drawable.bg_top_curved);
+                            changeDispenseMsg("Ginger Karak", R.drawable.karakginger);
                         }
                         break;
                     case "04":
                         if (!isVisible) {
-                            showDispenseAlert("Masala Karak", R.drawable.ic_bg_box);
+                            showDispenseAlert("Sulaimani", R.drawable.sulaimani);
                         } else {
-                            changeDispenseMsg("Masala Karak", R.drawable.ic_bg_box);
+                            changeDispenseMsg("Sulaimani", R.drawable.sulaimani);
+                        }
+                        break;
+                    case "03":
+                        if (!isVisible) {
+                            showDispenseAlert("Masala Karak", R.drawable.karakmasaka);
+                        } else {
+                            changeDispenseMsg("Masala Karak", R.drawable.karakmasaka);
                         }
                         break;
                     case "05":
                         if (!isVisible) {
-                            showDispenseAlert("Cardomom Karak", R.drawable.ic_camera);
+                            showDispenseAlert("Cardamom Karak", R.drawable.karakcardmom);
                         } else {
-                            changeDispenseMsg("Cardomom Karak", R.drawable.ic_camera);
+                            changeDispenseMsg("Cardamom Karak", R.drawable.karakcardmom);
                         }
                         break;
                     case "06":
                         if (!isVisible) {
-                            showDispenseAlert("Hot milk", R.drawable.ic_heart);
+                            showDispenseAlert("Hot milk", R.drawable.hotmilk);
                         } else {
-                            changeDispenseMsg("Hot milk", R.drawable.ic_heart);
+                            changeDispenseMsg("Hot milk", R.drawable.hotmilk);
                         }
                         break;
                     case "07":
                         if (!isVisible) {
-                            showDispenseAlert("Hot Water", R.drawable.ic_operator);
+                            showDispenseAlert("Hot Water", R.drawable.water);
                         } else {
-                            changeDispenseMsg("Hot Water", R.drawable.ic_operator);
+                            changeDispenseMsg("Hot Water", R.drawable.water);
                         }
                         break;
                 }
-
                 switch (status[1]) {
                     case "02":
                         switch (bevarageName[1]) {
@@ -317,22 +316,23 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
                             case "05":
                             case "03":
                             case "02":
-                                mAppClass.showSnackBar(getContext(), "Status : Dispensing Milk & Water"+"\n"+"Countdown : "+boilTime[1]);
+                                mAppClass.showSnackBar(getContext(), "Status : Dispensing Milk & Water");
                                 break;
                             case "04":
                             case "07":
-                                mAppClass.showSnackBar(getContext(), "Status : Dispensing  Water "+"\n"+"Countdown : "+boilTime[1]);
+                                mAppClass.showSnackBar(getContext(), "Status : Dispensing  Water "
+                                );
                                 break;
                         }
                         break;
                     case "03":
-                        mAppClass.showSnackBar(getContext(), "Status : Preheating "+"\n"+"Countdown : "+boilTime[1]);
+                        mAppClass.showSnackBar(getContext(), "Status : Preheating " + "\n" + "Countdown : " + boilTime[1]);
                         break;
                     case "04":
-                        mAppClass.showSnackBar(getContext(), "Status : Dispensing ingredients"+"\n"+"Countdown : "+boilTime[1]);
+                        mAppClass.showSnackBar(getContext(), "Status : Dispensing ingredients");
                         break;
                     case "05":
-                        mAppClass.showSnackBar(getContext(), "Status : Boiling"+"\n"+"Countdown : "+boilTime[1]);
+                        mAppClass.showSnackBar(getContext(), "Status : Boiling" + "\n" + "Countdown : " + boilTime[1]);
                         break;
                 }
             }

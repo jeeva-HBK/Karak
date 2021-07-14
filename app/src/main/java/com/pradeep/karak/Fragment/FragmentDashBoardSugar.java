@@ -32,10 +32,13 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
     BaseActivity mActivity;
     private static final String TAG = "FragmentDashBoardSugar";
 
+    public int isDispensing;
+    public boolean mini = true;
     AlertDialog dispenseAlert, panAlert, confirmDispenseAlert;
     ImageView iv;
     TextView tv;
     boolean isVisible = false;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,8 +51,8 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
         mAppclass = (ApplicationClass) getActivity().getApplication();
         mActivity = (BaseActivity) getActivity();
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        isDispensing = 0;
         mBinding.view.setOnClickListener(this);
-
         Bundle b = getArguments();
         BevaragePacket = b.getString(KEY_CUP);
         BevarageSubPacketSugar = "";
@@ -115,13 +118,14 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
                 try {
                     mAppclass.navigateTo(getActivity(), R.id.action_fragmentDashBoardSugar_to_dashboard);
                     confirmDispenseAlert.dismiss();
-                }catch (Exception e){
-                   e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
             }
         });
     }
+
 
     private void sendPacket(String packet) {
         mAppclass.sendDataDispense(getActivity(), FragmentDashBoardSugar.this, packet, getContext());
@@ -241,14 +245,16 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
             if (dispenseAlert.isShowing()) {
                 dispenseAlert.dismiss();
             }
+            isDispensing = 1;
             mAppclass.showSnackBar(getContext(), "Dispense Completed !");
-            mActivity.updateNavigationUi(R.navigation.navigation);
-        }
-        // Cancel Dispense
-        else if (spiltData[0].substring(5, 7).equals("06")) {
+            if (mini) {
+                mAppclass.navigateTo(getActivity(), R.id.action_fragmentDashBoardSugar_to_dashboard);
+            }
+            // Cancel Dispense
+        } else if (spiltData[0].substring(5, 7).equals("06")) {
             if (spiltData[1].equals("ACK")) {
                 mAppclass.showSnackBar(getContext(), getString(R.string.DispenseCanceled));
-                mActivity.updateNavigationUi(R.navigation.navigation);
+                mAppclass.navigateTo(getActivity(), R.id.action_fragmentDashBoardSugar_to_dashboard);
                 if (panAlert.isShowing()) {
                     panAlert.dismiss();
                 }
@@ -305,6 +311,28 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
     @Override
     public void OnDataReceivedError(Exception e) {
         e.printStackTrace();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!mini) {
+            switch (isDispensing) {
+                case 0:
+                    break;
+                case 1:
+                    Log.e(TAG, "onResume: ");
+                    mAppclass.navigateTo(getActivity(), R.id.action_fragmentDashBoardSugar_to_dashboard);
+                    break;
+            }
+        }
+        mini = true;
+    }
+
+    @Override
+    public void onPause() {
+        mini = false;
+        super.onPause();
     }
 }
 
