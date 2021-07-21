@@ -3,6 +3,7 @@ package com.pradeep.karak.Fragment;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -26,6 +27,15 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.pradeep.karak.Activity.BaseActivity;
 import com.pradeep.karak.Adapter.BluetoothFavListAdapter;
 import com.pradeep.karak.BLE.BluetoothConnectCallback;
@@ -75,7 +85,6 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
         mActivity.getSupportActionBar().show();
         mContext = getActivity().getApplicationContext();
         preferences = PreferenceManager.getDefaultSharedPreferences(mContext);
-        bluetoothEnable();
         mBinding.recylerFavList.setLayoutManager(new GridLayoutManager(getContext(), 2));
         loadFav();
         mBinding.imgScan.setOnClickListener(new View.OnClickListener() {
@@ -98,11 +107,12 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
     @Override
     public void onResume() {
         super.onResume();
-        bluetoothEnable();
+        Log.e(TAG, "onResume: " );
+        displayLocationSettingsRequest(mContext);
     }
 
     @Override
-    public void OnItemClick(int pos,String name) {
+    public void OnItemClick(int pos, String name) {
     }
 
     @Override
@@ -194,6 +204,7 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
     private void sendConnectPacket() {
         mActivity.runOnUiThread(new Runnable() {
             int i = 0;
+
             @Override
             public void run() {
                 while (i < 6) {
@@ -424,5 +435,48 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         mBluetoothAdapter.enable();
         mBluetoothAdapter.startDiscovery();
+    }
+
+
+    private void displayLocationSettingsRequest(Context context) {
+        GoogleApiClient googleApiClient = new GoogleApiClient.Builder(context)
+                .addApi(LocationServices.API).build();
+        googleApiClient.connect();
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(10000);
+        locationRequest.setFastestInterval(10000 / 2);
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(locationRequest);
+        builder.setAlwaysShow(true);
+        PendingResult<LocationSettingsResult> result = LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build());
+        result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+            @Override
+            public void onResult(LocationSettingsResult result) {
+                final Status status = result.getStatus();
+                switch (status.getStatusCode()) {
+                    case LocationSettingsStatusCodes.SUCCESS:
+                        Log.i(TAG, "All location settings are satisfied.");
+                        break;
+                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                        Log.i(TAG, "Location settings are not satisfied. Show the user a dialog to upgrade location settings ");
+                        try {
+                            status.startResolutionForResult(getActivity(), 199);
+                        } catch (IntentSender.SendIntentException e) {
+                            Log.i(TAG, "PendingIntent unable to execute request.");
+                        }
+                        break;
+                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                        Log.i(TAG, "Location settings are inadequate, and cannot be fixed here. Dialog not created.");
+                        break;
+                }
+            }
+        });
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.e(TAG, "onPause: " );
     }
 }

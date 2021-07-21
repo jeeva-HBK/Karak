@@ -28,7 +28,7 @@ import org.acra.annotation.AcraMailSender;
 import org.acra.annotation.AcraToast;
 
 import static com.pradeep.karak.Activity.BaseActivity.msDismissProgress;
-
+import static com.pradeep.karak.Activity.BaseActivity.msDismissProgressUpdateNavigation;
 
 
 @AcraMailSender(mailTo = "silambarasanraxgbc@gmail.com")
@@ -194,6 +194,7 @@ public class ApplicationClass extends Application {
             helper.sendDataBLE(callback, packetToSend, 20000);
         } catch (Exception e) {
             Toast.makeText(mContext, "No Data for Bluetooth Please reconnect your device ", Toast.LENGTH_SHORT).show();
+            msDismissProgressUpdateNavigation();
             e.printStackTrace();
         }
     }

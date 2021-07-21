@@ -2,6 +2,7 @@ package com.pradeep.karak.Fragment;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.pradeep.karak.R;
@@ -36,6 +38,8 @@ public class FragmentPermissionRequest extends Fragment {
     private FragmentPermissionRequestBinding mbinding;
     private Context mContext;
     private int mRequestCode = 1709;
+    protected static final int REQUEST_CHECK_SETTINGS = 0x1;
+
 
     public FragmentPermissionRequest(com.pradeep.karak.Fragment.DialogFragment parent) {
         this.parent = parent;
@@ -55,6 +59,7 @@ public class FragmentPermissionRequest extends Fragment {
         mbinding.btnAllowAccess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 requestPermissions(PERMISSIONS, mRequestCode);
             }
         });
@@ -75,5 +80,6 @@ public class FragmentPermissionRequest extends Fragment {
         }
 
     }
+
 
 }

@@ -93,15 +93,14 @@ public class BaseActivity extends AppCompatActivity {
         canGoBack = true;
     }
 
-    /*public static void msDismissProgressUpdateNavigation() {
+    public static void msDismissProgressUpdateNavigation() {
         msBinding.mainProgressCircular.setVisibility(View.GONE);
-        msAppClass.showSnackBar(baseActivity, "Timed out try again !");
         baseActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         canGoBack = true;
         baseActivity.mNavController.setGraph(R.navigation.scan);
         baseActivity.mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.dashboard).build();
         NavigationUI.setupActionBarWithNavController(baseActivity, baseActivity.mNavController, baseActivity.mAppBarConfiguration);
-    }*/
+    }
 
 
     @Override
