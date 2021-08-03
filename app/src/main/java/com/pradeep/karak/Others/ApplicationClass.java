@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -238,12 +239,22 @@ public class ApplicationClass extends Application {
     }
 
     public void navigateTo(FragmentActivity fragAct, int desID) {
-        Navigation.findNavController((Activity) fragAct, R.id.nav_host_fragment).navigate(desID);
+        try {
+            Navigation.findNavController((Activity) fragAct, R.id.nav_host_fragment).navigate(desID);
+        }catch (Exception e){
+            Log.e("TAG", "navigateToBundle: "+e );
+        }
+
     }
 
 
     public void navigateToBundle(FragmentActivity activity, int fragmentIDinNavigation, Bundle b) {
-        Navigation.findNavController((Activity) activity, R.id.nav_host_fragment).navigate(fragmentIDinNavigation, b);
+        try {
+            Navigation.findNavController((Activity) activity, R.id.nav_host_fragment).navigate(fragmentIDinNavigation, b);
+        }catch (Exception e){
+            Log.e("TAG", "navigateToBundle: "+e );
+        }
+
     }
 
     public void popStackBack(FragmentActivity activity) {
