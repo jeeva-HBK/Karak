@@ -4,21 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="170dp"
     android:layout_margin="10dp"
-    android:background="@color/white"
+    android:background="#030407"
     android:clickable="true"
     android:focusable="true"
     app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="#030407"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imgMachineImage"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/ic_coffee_machine"
-            app:layout_constraintBottom_toTopOf="@+id/txtBleMac"
+            android:src="@drawable/app_logo"
+            app:layout_constraintBottom_toTopOf="@+id/sve_serial_no"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="8dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +43,7 @@
             android:textSize="14sp"
             android:text="123"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/textColor"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/imgMachineImage"
             app:layout_constraintStart_toStartOf="@id/imgMachineImage"
@@ -57,7 +58,7 @@
             android:marqueeRepeatLimit="marquee_forever"
 
             android:text="12"
-            android:textColor="@color/black"
+            android:textColor="@color/textColor"
             android:textSize="12sp"
             android:textStyle="bold"
             android:layout_marginBottom="2dp"

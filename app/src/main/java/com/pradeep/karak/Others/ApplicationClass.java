@@ -295,6 +295,6 @@ public class ApplicationClass extends Application {
     @Override
     protected void attachBaseContext(Context baseContext) {
         super.attachBaseContext(baseContext);
-        ACRA.init(this);
+     //   ACRA.init(this);
     }
 }
