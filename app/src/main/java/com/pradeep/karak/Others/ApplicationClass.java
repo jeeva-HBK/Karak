@@ -114,9 +114,12 @@ public class ApplicationClass extends Application {
             DR_MILK_WATER = "", DR_HOT_WATER = "";
 
     // ParameterKeyForBoilTime
-    public static String KARAK_BOIL_TIME = "", MASALA_KARAK_BOIL_TIME = "",
-            GINGER_KARAK_BOIL_TIME = "", CARDAMOM_KARAK_BOIL_TIME = "",
-            SULAIMANI_BOIL_TIME = "", HOTMILK_BOIL_TIME = "", HOT_WATER_BOIL_TIME = "";
+    public static String BOIL_TIME_100ML = "",
+            BOIL_TIME_200ML = "", BOIL_TIME_300ML = "",
+            BOIL_TIME_400ML = "",BOIL_TIME_500ML = "",
+            BOIL_TIME_600ML = "", BOIL_TIME_700ML = "",
+            BOIL_TIME_800ML = "", BOIL_TIME_900ML = "",
+            BOIL_TIME_1000ML = "";
 
     // ParameterKeyForCorrectionFactor
     public static String KARAK_CORRECTION_FACTOR = "", MASALA_KARAK_CORRECTION_FACTOR = "",
