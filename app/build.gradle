@@ -3,8 +3,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.1"
+    compileSdkVersion 32
+    buildToolsVersion "30.0.3"
     android.buildFeatures.dataBinding = true
     lintOptions {
         checkReleaseBuilds false
@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId "com.pradeep.karak"
         minSdkVersion 22
-        targetSdkVersion 30
+        targetSdkVersion 32
         versionCode 1
         versionName "1.1.2"
 
