@@ -19,7 +19,9 @@ import com.pradeep.karak.Others.MultiTextWatcher;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentAdDrSubchildWaterBinding;
 
+import static com.pradeep.karak.Others.ApplicationClass.DR_CUP_ML;
 import static com.pradeep.karak.Others.ApplicationClass.DR_HOT_WATER;
+import static com.pradeep.karak.Others.ApplicationClass.DR_HOT_WATER_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.DR_MILK_WATER;
 
 // Created on 19 Mar 2021 by silambu
@@ -42,7 +44,10 @@ public class FragmentAdDrSubChildWater extends Fragment implements TextWatcherWi
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mContext = getContext();
         mBinding.txtWaterWaterGms.append(DR_HOT_WATER);
-        new MultiTextWatcher().registerEditText(mBinding.txtWaterWaterGms).setCallback(this);
+        mBinding.txtWaterSugarGms.append(DR_HOT_WATER_SUGAR);
+        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
+        new MultiTextWatcher().registerEditText(mBinding.txtWaterWaterGms)
+                .registerEditText(mBinding.txtWaterSugarGms).setCallback(this);
     }
 
     @Override
@@ -56,6 +61,10 @@ public class FragmentAdDrSubChildWater extends Fragment implements TextWatcherWi
                         mBinding.txtWaterWaterGms.setText("100");
                     }
                 }
+                break;
+            case R.id.txt_water_sugar_gms:
+                DR_HOT_WATER_SUGAR = mAppClass.formDigits(3, mBinding.txtWaterSugarGms.getText().toString()) ;
+                break;
         }
     }
 

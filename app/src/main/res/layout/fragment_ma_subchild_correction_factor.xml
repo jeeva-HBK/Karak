@@ -231,7 +231,7 @@
 
 
         <EditText
-            android:id="@+id/correction_milk"
+            android:id="@+id/correction_coffee"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -269,10 +269,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Milk"
-            app:layout_constraintEnd_toEndOf="@+id/correction_milk"
-            app:layout_constraintStart_toStartOf="@+id/correction_milk"
-            app:layout_constraintTop_toBottomOf="@+id/correction_milk" />
+            android:text="Coffee"
+            app:layout_constraintEnd_toEndOf="@+id/correction_coffee"
+            app:layout_constraintStart_toStartOf="@+id/correction_coffee"
+            app:layout_constraintTop_toBottomOf="@+id/correction_coffee" />
 
         <EditText
             android:id="@+id/correction_ginger_karak"
@@ -296,7 +296,7 @@
 
 
         <EditText
-            android:id="@+id/correction_water"
+            android:id="@+id/correction_milk"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -335,11 +335,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Water"
-            app:layout_constraintEnd_toEndOf="@+id/correction_water"
-            app:layout_constraintStart_toStartOf="@+id/correction_water"
-            app:layout_constraintTop_toBottomOf="@+id/correction_water" />
-
+            android:text="Milk"
+            app:layout_constraintEnd_toEndOf="@+id/correction_milk"
+            app:layout_constraintStart_toStartOf="@+id/correction_milk"
+            app:layout_constraintTop_toBottomOf="@+id/correction_milk" />
 
         <EditText
             android:id="@+id/correction_sugar"
@@ -349,7 +348,7 @@
             android:background="@drawable/edt_back_new"
             android:gravity="center"
             android:hint="0000"
-            android:imeOptions="actionDone"
+            android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="4"
             android:padding="5dp"
@@ -357,12 +356,33 @@
             android:textColorHint="@color/ash"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline17"
-            app:layout_constraintEnd_toStartOf="@+id/guideline4"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintEnd_toEndOf="@+id/textView10"
+            app:layout_constraintStart_toStartOf="@+id/textView10"
+            app:layout_constraintTop_toTopOf="@+id/guideline16" />
+
+
+        <EditText
+            android:id="@+id/correction_water"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:background="@drawable/edt_back_new"
+            android:gravity="center"
+            android:hint="0000"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:maxLength="4"
+            android:padding="5dp"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/ash"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline17"
+            app:layout_constraintEnd_toEndOf="@+id/textView1"
+            app:layout_constraintStart_toStartOf="@+id/textView1"
             app:layout_constraintTop_toTopOf="@+id/guideline16" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textView21"
             style="@style/textAppearence"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -372,6 +392,18 @@
             app:layout_constraintEnd_toEndOf="@+id/correction_sugar"
             app:layout_constraintStart_toStartOf="@+id/correction_sugar"
             app:layout_constraintTop_toBottomOf="@+id/correction_sugar" />
+
+        <TextView
+            android:id="@+id/textView22"
+            style="@style/textAppearence"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="Water"
+            app:layout_constraintEnd_toEndOf="@+id/correction_water"
+            app:layout_constraintStart_toStartOf="@+id/correction_water"
+            app:layout_constraintTop_toBottomOf="@+id/correction_water" />
 
 
         <View

@@ -65,6 +65,7 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
         mBinding.vSulaimani.setOnClickListener(this);
         mBinding.vMasalaKarak.setOnClickListener(this);
         mBinding.vCardmonKarak.setOnClickListener(this);
+        mBinding.vCoffee.setOnClickListener(this);
         mBinding.vHotMilk.setOnClickListener(this);
         mBinding.vHotWater.setOnClickListener(this);
     }
@@ -100,7 +101,6 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
     private void sendPacket(String framedPacket) {
         mActivity.showProgress();
         mAppclass.sendData(getActivity(), FragmentDashBoard.this, framedPacket, getContext());
-
     }
 
     private void confirmDisconnect() {
@@ -182,6 +182,10 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
                 b.putString(KEY_BEVERAGE_SELECTION, "02;01,05");
                 break;
 
+            case R.id.v_coffee:
+                b.putString(KEY_BEVERAGE_SELECTION, "02;01,08");
+                break;
+
             case R.id.v_hotMilk:
                 b.putString(KEY_BEVERAGE_SELECTION, "02;01,06");
                 break;
@@ -203,7 +207,9 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
         String[] spiltData = data.split(";");
         if (spiltData[0].substring(5, 7).equals("07")) {
             mActivity.dismissProgress();
-            String[] adminPassword = spiltData[1].split(","), maintenancePassword = spiltData[2].split(","), cupcountPassword = spiltData[3].split(",");
+            String[] adminPassword = spiltData[1].split(","),
+                    maintenancePassword = spiltData[2].split(","),
+                    cupcountPassword = spiltData[3].split(",");
 
             ADMIN_PASSWORD = adminPassword[1];
             MAINTENANCE_PASSWORD = maintenancePassword[1];

@@ -76,6 +76,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/sulaimani"
+            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="@+id/guideline9" />
@@ -86,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="Sulaimani"
+            android:text="Serving volume per cup"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintStart_toStartOf="@+id/guideline5" />
@@ -109,6 +110,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="2dp"
             android:text="Tea"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/view"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintHorizontal_bias="0.05"
@@ -116,33 +118,33 @@
             app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
         <EditText
-            android:id="@+id/txt_sulaimani_tea_gms"
+            android:id="@+id/edt_txt_cup_ml"
             style="@style/textgms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:gravity="end"
+            android:gravity="start"
             android:hint="000"
             android:padding="4dp"
             android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="3"
-            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:maxLines="1"
             android:textColorHint="@color/materialgrey"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintEnd_toStartOf="@+id/tea_gms"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintTop_toTopOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintBottom_toTopOf="@id/view"
+            app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
         <TextView
             android:id="@+id/tea_gms"
             style="@style/textpercup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:text="Gms"
+            android:layout_marginRight="25dp"
+            android:text="ml"
             app:layout_constraintBottom_toBottomOf="@id/txt_tea_per_cup"
             app:layout_constraintEnd_toStartOf="@id/txt_tea_per_cup"
             app:layout_constraintTop_toTopOf="@id/txt_tea_per_cup" />
@@ -156,9 +158,10 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="2dp"
             android:text="percup"
-            app:layout_constraintBottom_toBottomOf="@+id/txt_sulaimani_tea_gms"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_txt_cup_ml"
             app:layout_constraintEnd_toEndOf="@+id/view8"
-            app:layout_constraintTop_toTopOf="@id/txt_sulaimani_tea_gms" />
+            app:layout_constraintTop_toTopOf="@id/edt_txt_cup_ml" />
 
         <View
             android:id="@+id/view"
@@ -169,136 +172,6 @@
             app:layout_constraintEnd_toEndOf="@id/txt_tea_per_cup"
             app:layout_constraintStart_toStartOf="@+id/txt_tea" />
 
-        <TextView
-            android:id="@+id/txt_cardmom"
-            style="@style/textstyledispenseRation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:paddingBottom="2dp"
-            android:text="Water"
-            app:layout_constraintStart_toStartOf="@+id/txt_tea"
-            app:layout_constraintTop_toBottomOf="@+id/txt_tea" />
-
-        <EditText
-            android:id="@+id/txt_s_water"
-            style="@style/textgms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:background="@android:color/transparent"
-            android:gravity="end"
-            android:hint="000"
-            android:imeOptions="actionNext"
-            android:inputType="number"
-            android:maxLength="3"
-            android:padding="4dp"
-            android:maxLines="1"
-            android:textColorHint="@color/materialgrey"
-            app:layout_constraintBottom_toBottomOf="@id/view_line3"
-            app:layout_constraintStart_toStartOf="@+id/txt_sulaimani_tea_gms" />
-
-        <TextView
-            android:id="@+id/water_gms"
-            style="@style/textpercup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="%"
-            app:layout_constraintBottom_toBottomOf="@id/txt_cardmom_per_cup"
-            app:layout_constraintStart_toStartOf="@id/tea_gms"
-            app:layout_constraintEnd_toEndOf="@id/tea_gms"
-            app:layout_constraintTop_toTopOf="@id/txt_cardmom_per_cup" />
-
-        <TextView
-            android:id="@+id/txt_cardmom_per_cup"
-            style="@style/textpercup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="percup"
-            app:layout_constraintBottom_toBottomOf="@+id/txt_s_water"
-            app:layout_constraintEnd_toEndOf="@+id/txt_tea_per_cup"
-            app:layout_constraintStart_toStartOf="@+id/txt_tea_per_cup"
-            app:layout_constraintTop_toTopOf="@+id/txt_s_water" />
-        <View
-            android:id="@+id/view_line3"
-            android:layout_width="0dp"
-            android:layout_height="8dp"
-            android:background="@drawable/ic_line"
-            app:layout_constraintBottom_toBottomOf="@+id/txt_cardmom"
-            app:layout_constraintEnd_toEndOf="@id/txt_cardmom_per_cup"
-            app:layout_constraintStart_toStartOf="@+id/txt_cardmom" />
-
-        <TextView
-            android:id="@+id/txt_sugar"
-            style="@style/textstyledispenseRation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:paddingBottom="2dp"
-            android:text="Sugar"
-            app:layout_constraintStart_toStartOf="@+id/txt_cardmom"
-            app:layout_constraintTop_toBottomOf="@+id/txt_cardmom" />
-
-        <EditText
-            android:id="@+id/txt_s_sugar"
-            style="@style/textgms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:background="@android:color/transparent"
-            android:gravity="end"
-            android:hint="000"
-            android:imeOptions="actionDone"
-            android:inputType="number"
-            android:maxLength="3"
-            android:padding="4dp"
-            android:maxLines="1"
-            android:textColorHint="@color/materialgrey"
-            app:layout_constraintBottom_toBottomOf="@id/view_line2"
-            app:layout_constraintStart_toStartOf="@+id/txt_s_water" />
-
-        <TextView
-            android:id="@+id/sugar_gms"
-            style="@style/textpercup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gms"
-            app:layout_constraintBottom_toBottomOf="@id/txt_sugar_per_cup"
-            app:layout_constraintStart_toStartOf="@id/water_gms"
-            app:layout_constraintEnd_toEndOf="@id/water_gms"
-            app:layout_constraintTop_toTopOf="@id/txt_sugar_per_cup" />
-
-        <TextView
-            android:id="@+id/txt_sugar_per_cup"
-            style="@style/textpercup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="percup"
-            app:layout_constraintBottom_toBottomOf="@+id/txt_s_sugar"
-            app:layout_constraintEnd_toEndOf="@+id/txt_cardmom_per_cup"
-            app:layout_constraintStart_toStartOf="@+id/txt_cardmom_per_cup"
-            app:layout_constraintTop_toTopOf="@+id/txt_s_sugar" />
-        <View
-            android:id="@+id/view_line2"
-            android:layout_width="0dp"
-            android:layout_height="8dp"
-            android:background="@drawable/ic_line"
-            app:layout_constraintBottom_toBottomOf="@id/txt_sugar"
-            app:layout_constraintEnd_toEndOf="@+id/txt_sugar_per_cup"
-            app:layout_constraintStart_toStartOf="@id/txt_sugar" />
-
-
-        <TextView
-            android:id="@+id/txt_serving_percu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="100ml serving per cup"
-            android:textColor="@color/textColor"
-            android:textSize="22dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline6"
-            app:layout_constraintStart_toStartOf="@+id/guideline5"
-            app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

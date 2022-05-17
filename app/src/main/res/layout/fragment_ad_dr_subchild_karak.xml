@@ -254,12 +254,12 @@
             android:editable="false"
             android:padding="4dp"
             android:hint="000"
-            android:imeOptions="actionDone"
+            android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="3"
             android:maxLines="1"
             android:textColorHint="@color/materialgrey"
-            app:layout_constraintBottom_toBottomOf="@id/view_line3"
+            app:layout_constraintBottom_toBottomOf="@id/view_line4"
             app:layout_constraintStart_toStartOf="@+id/txt_karak_milk" />
 
         <TextView
@@ -283,15 +283,75 @@
             app:layout_constraintEnd_toEndOf="@+id/txt_cardmom_per_cup"
             app:layout_constraintStart_toStartOf="@+id/txt_cardmom_per_cup"
             app:layout_constraintTop_toTopOf="@+id/txt_karak_water" />
-
         <View
-            android:id="@+id/view_line3"
+            android:id="@+id/view_line4"
             android:layout_width="0dp"
             android:layout_height="8dp"
             android:background="@drawable/ic_line"
             app:layout_constraintBottom_toBottomOf="@id/txt_Milk"
             app:layout_constraintEnd_toEndOf="@+id/txt_Milk_per_cup"
             app:layout_constraintStart_toStartOf="@id/txt_Milk" />
+
+        <TextView
+            android:id="@+id/txt_sugar"
+            style="@style/textstyledispenseRation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:paddingBottom="2dp"
+            android:text="Sugar"
+            app:layout_constraintStart_toStartOf="@+id/txt_Milk"
+            app:layout_constraintTop_toBottomOf="@+id/txt_Milk" />
+
+        <EditText
+            android:id="@+id/txt_karak_sugar"
+            style="@style/textgms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:enabled="false"
+            android:editable="false"
+            android:padding="4dp"
+            android:hint="000"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="3"
+            android:maxLines="1"
+            android:textColorHint="@color/materialgrey"
+            app:layout_constraintBottom_toBottomOf="@id/view_line3"
+            app:layout_constraintStart_toStartOf="@+id/txt_karak_water" />
+
+        <TextView
+            android:id="@+id/sugar_gms"
+            style="@style/textpercup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gms"
+            app:layout_constraintBottom_toBottomOf="@id/txt_Sugar_per_cup"
+            app:layout_constraintEnd_toEndOf="@id/tea_gms"
+            app:layout_constraintStart_toStartOf="@id/tea_gms"
+            app:layout_constraintTop_toTopOf="@id/txt_Sugar_per_cup" />
+
+        <TextView
+            android:id="@+id/txt_Sugar_per_cup"
+            style="@style/textpercup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="percup"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_karak_sugar"
+            app:layout_constraintEnd_toEndOf="@+id/txt_Milk_per_cup"
+            app:layout_constraintStart_toStartOf="@+id/txt_Milk_per_cup"
+            app:layout_constraintTop_toTopOf="@+id/txt_karak_sugar" />
+        <View
+            android:id="@+id/view_line3"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="@drawable/ic_line"
+            app:layout_constraintBottom_toBottomOf="@id/txt_sugar"
+            app:layout_constraintEnd_toEndOf="@+id/txt_Sugar_per_cup"
+            app:layout_constraintStart_toStartOf="@id/txt_sugar" />
 
 
         <TextView

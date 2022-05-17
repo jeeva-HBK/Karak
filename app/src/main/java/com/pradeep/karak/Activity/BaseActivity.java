@@ -64,8 +64,6 @@ public class BaseActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, mNavController, mAppBarConfiguration);
     }
 
-
-
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -103,11 +101,9 @@ public class BaseActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(baseActivity, baseActivity.mNavController, baseActivity.mAppBarConfiguration);
     }
 
-
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         View v = getCurrentFocus();
-
         if (v != null &&
                 (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) &&
                 v instanceof EditText &&

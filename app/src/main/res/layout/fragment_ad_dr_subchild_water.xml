@@ -99,8 +99,10 @@
             android:background="@drawable/dispense_back"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
-            app:layout_constraintTop_toTopOf="@id/guideline3" />
+            app:layout_constraintTop_toTopOf="@id/guideline3"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/txt_water_gms"
@@ -109,7 +111,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="2dp"
             android:text="Water"
-            app:layout_constraintBottom_toTopOf="@id/view"
+            app:layout_constraintBottom_toTopOf="@id/view9"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -121,21 +123,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:gravity="end"
             android:hint="000"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="2dp"
             android:padding="4dp"
-            android:imeOptions="actionDone"
+            android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="3"
             android:maxLines="1"
-            android:layout_marginRight="5dp"
             android:textColorHint="@color/materialgrey"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintBottom_toBottomOf="@+id/view9"
             app:layout_constraintEnd_toStartOf="@+id/tea_gms"
-            app:layout_constraintHorizontal_bias="0.75"
-
-            app:layout_constraintTop_toTopOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintHorizontal_bias="0.75" />
 
 
         <TextView
@@ -154,19 +153,83 @@
             style="@style/textpercup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
             android:text="percup"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/txt_water_water_gms"
-            app:layout_constraintEnd_toEndOf="@+id/view8" />
-
+            app:layout_constraintEnd_toEndOf="@+id/view8"
+            app:layout_constraintTop_toTopOf="@id/txt_water_water_gms"/>
         <View
-            android:id="@+id/view"
+            android:id="@+id/view9"
             android:layout_width="0dp"
             android:layout_height="8dp"
             android:background="@drawable/ic_line"
             app:layout_constraintBottom_toBottomOf="@+id/txt_water_gms"
             app:layout_constraintEnd_toEndOf="@id/txt_tea_per_cup"
             app:layout_constraintStart_toStartOf="@+id/txt_water_gms" />
+
+        <TextView
+            android:id="@+id/txt_sugar_gms"
+            style="@style/textstyledispenseRation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:paddingBottom="2dp"
+            android:text="Sugar"
+            app:layout_constraintStart_toStartOf="@+id/txt_water_gms"
+            app:layout_constraintTop_toBottomOf="@+id/txt_water_gms" />
+
+        <EditText
+            android:id="@+id/txt_water_sugar_gms"
+            style="@style/textgms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="5dp"
+            android:background="@android:color/transparent"
+            android:hint="000"
+            android:padding="4dp"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="3"
+            android:maxLines="1"
+            android:textColorHint="@color/materialgrey"
+            app:layout_constraintBottom_toBottomOf="@id/view"
+            app:layout_constraintEnd_toEndOf="@+id/txt_water_water_gms"
+            app:layout_constraintStart_toStartOf="@+id/txt_water_water_gms" />
+
+
+        <TextView
+            android:id="@+id/sugar_gms"
+            style="@style/textpercup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gms"
+            android:layout_marginRight="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/txt_sugar_per_cup"
+            app:layout_constraintEnd_toEndOf="@id/tea_gms"
+            app:layout_constraintStart_toStartOf="@id/tea_gms"
+            app:layout_constraintTop_toTopOf="@id/txt_sugar_per_cup" />
+
+        <TextView
+            android:id="@+id/txt_sugar_per_cup"
+            style="@style/textpercup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="percup"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_water_sugar_gms"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/txt_tea_per_cup"
+            app:layout_constraintTop_toTopOf="@+id/txt_water_sugar_gms" />
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="@drawable/ic_line"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_sugar_gms"
+            app:layout_constraintEnd_toEndOf="@id/txt_sugar_per_cup"
+            app:layout_constraintStart_toStartOf="@+id/txt_sugar_gms" />
 
 
 

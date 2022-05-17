@@ -20,6 +20,8 @@ import com.pradeep.karak.Others.MultiTextWatcher;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentAdDrSubchildSulaimaniBinding;
 
+import static com.pradeep.karak.Others.ApplicationClass.DR_CUP_ML;
+import static com.pradeep.karak.Others.ApplicationClass.DR_SULAIMANI_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.DR_SULAIMANI_TEA;
 import static com.pradeep.karak.Others.ApplicationClass.DR_SULAIMANI_WATER;
 
@@ -45,8 +47,10 @@ public class FragmentAdDrSubChildSulaimani extends Fragment implements TextWatch
         mContext = getContext();
         mBinding.txtSulaimaniTeaGms.append(DR_SULAIMANI_TEA);
         mBinding.txtSWater.append(DR_SULAIMANI_WATER);
+        mBinding.txtSSugar.append(DR_SULAIMANI_SUGAR);
+        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
         new MultiTextWatcher().registerEditText(mBinding.txtSulaimaniTeaGms)
-                .registerEditText(mBinding.txtSWater).setCallback(this);
+                .registerEditText(mBinding.txtSWater).registerEditText(mBinding.txtSSugar).setCallback(this);
     }
 
     @Override
@@ -63,6 +67,9 @@ public class FragmentAdDrSubChildSulaimani extends Fragment implements TextWatch
                         mBinding.txtSWater.setText("100");
                     }
                 }
+                break;
+            case R.id.txt_s_sugar:
+                DR_SULAIMANI_SUGAR = mAppClass.formDigits(3, mBinding.txtSSugar.getText().toString()) ;
                 break;
         }
 

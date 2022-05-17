@@ -88,6 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="100ml Serving per Cup"
                 android:textColor="@color/textColor"
                 android:textSize="18dp"

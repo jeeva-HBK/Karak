@@ -21,7 +21,8 @@
     <string name="unkown">unknown</string>
     <string name="errorOccurred">error occurred</string>
     <string name="Timeout">Timeout</string>
-    <string name="UpdateSuccessfully">Update successfully</string>
+    <string name="UpdateSuccessfully">Updated successfully</string>
+    <string name="FlushUpdateSuccessfully">Flush Completed</string>
     <string name="MachineNumberAddedSuccessfully">Machine Number Added Successfully</string>
     <string name="DispenseCanceled">"Dispense Canceled !</string>
     <string name="TimedOut">Timed Out!</string>
@@ -31,7 +32,7 @@
     <string name="are_you_sure_to_continue">Are You Sure To Continue?</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
-    <string name="confirm_discconect">Confirm Discconect</string>
+    <string name="confirm_discconect">Confirm Disconnect</string>
     <string name="are_you_sure_you_want_to_disconnect">Are you sure you want to disconnect ?</string>
     <string name="maintenance_access">Maintenance Access</string>
     <string name="release">Release</string>
@@ -48,6 +49,7 @@
     <string name="ginger_karak">Ginger Karak</string>
     <string name="water">Water</string>
     <string name="sugar">Sugar</string>
+    <string name="coffee">Coffee</string>
     <string name="_1000ml">1000ml</string>
     <string name="_500ml">500ml</string>
     <string name="_900ml">900ml</string>
@@ -58,10 +60,21 @@
     <string name="_200ml">200ml</string>
     <string name="_600ml">600ml</string>
     <string name="_100ml">100ml</string>
+    <string name="_1cup">1 Cup</string>
+    <string name="_2cup">2 Cup</string>
+    <string name="_3cup">3 Cup</string>
+    <string name="_4cup">4 Cup</string>
+    <string name="_5cup">5 Cup</string>
+    <string name="_6cup">6 Cup</string>
+    <string name="_7cup">7 Cup</string>
+    <string name="_8cup">8 Cup</string>
+    <string name="_9cup">9 Cup</string>
+    <string name="_10cup">10 Cup</string>
     <string name="fimware_version">Fimware Version</string>
     <string name="mobile_app_version">Mobile App Version</string>
     <string name="induction_heater">Induction Heater</string>
     <string name="proximity_sensor">Proximity Sensor</string>
     <string name="touch_to_search_for_ibrew_karak_maker">Touch to search for iBrew Karak Maker</string>
+    <string name="no_ml_percup">serving per cup</string>
 
 </resources>

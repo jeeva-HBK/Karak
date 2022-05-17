@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:id="@+id/llay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+
+                android:id="@+id/img_coff"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:padding="20dp"
+                android:src="@drawable/ic_coffee" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_coff"
+                android:layout_centerHorizontal="true"
+                android:text="@string/coffee"
+                android:textColor="@color/textColor"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/img_milk"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:padding="20dp"
+                android:src="@drawable/hotmilk" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_milk"
+                android:layout_centerHorizontal="true"
+                android:text="@string/milk"
+                android:textSize="25sp"
+                android:textColor="@color/textColor"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    <TextView
+        android:id="@+id/btn_flush"
+        style="@style/textAppearence"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="FLUSH"
+        android:background="@drawable/edt_back_new"
+        android:focusable="true"
+        android:clickable="true"
+        android:textColor="@color/white"
+        />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

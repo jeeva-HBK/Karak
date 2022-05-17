@@ -7,15 +7,17 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.pradeep.karak.Fragment.FragmentAdDrSubChildCardmom;
+import com.pradeep.karak.Fragment.FragmentAdDrSubChildCoffee;
 import com.pradeep.karak.Fragment.FragmentAdDrSubChildGinger;
 import com.pradeep.karak.Fragment.FragmentAdDrSubChildKarak;
 import com.pradeep.karak.Fragment.FragmentAdDrSubChildMasala;
 import com.pradeep.karak.Fragment.FragmentAdDrSubChildMilk;
+import com.pradeep.karak.Fragment.FragmentAdDrSubChildPerCupMLConfiguration;
 import com.pradeep.karak.Fragment.FragmentAdDrSubChildSulaimani;
 import com.pradeep.karak.Fragment.FragmentAdDrSubChildWater;
 
 public class DispenseRatioPagerAdapter extends FragmentStateAdapter {
-    private int Num = 7;
+    private int Num = 9;
 
     public DispenseRatioPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
@@ -25,20 +27,23 @@ public class DispenseRatioPagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch (position) {
-
             case 0:
-                return new FragmentAdDrSubChildKarak();
+                return new FragmentAdDrSubChildPerCupMLConfiguration();
             case 1:
-                return new FragmentAdDrSubChildGinger();
+                return new FragmentAdDrSubChildKarak();
             case 2:
-                return new FragmentAdDrSubChildSulaimani();
+                return new FragmentAdDrSubChildGinger();
             case 3:
-                return new FragmentAdDrSubChildMasala();
+                return new FragmentAdDrSubChildSulaimani();
             case 4:
-                return new FragmentAdDrSubChildCardmom();
+                return new FragmentAdDrSubChildMasala();
             case 5:
-                return new FragmentAdDrSubChildMilk();
+                return new FragmentAdDrSubChildCardmom();
             case 6:
+                return new FragmentAdDrSubChildCoffee();
+            case 7:
+                return new FragmentAdDrSubChildMilk();
+            case 8:
                 return new FragmentAdDrSubChildWater();
         }
         return null;

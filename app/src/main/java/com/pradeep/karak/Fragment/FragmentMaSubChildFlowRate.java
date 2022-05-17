@@ -19,6 +19,8 @@ import com.pradeep.karak.databinding.FragmentMaSubchildFlowrateBinding;
 
 import static com.pradeep.karak.Others.ApplicationClass.CARDAMOM_KARAK_FLOW_RATE;
 import static com.pradeep.karak.Others.ApplicationClass.CARDAMOM_KARAK_FLOW_RATE_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.COFFEE_FLOW_RATE;
+import static com.pradeep.karak.Others.ApplicationClass.COFFEE_FLOW_RATE_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.FLOW_RATE_READ_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.GINGER_KARAK_FLOW_RATE;
 import static com.pradeep.karak.Others.ApplicationClass.GINGER_KARAK_FLOW_RATE_SUB_ID;
@@ -40,13 +42,8 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
     FragmentMaSubchildFlowrateBinding mBinding;
     ApplicationClass mAppClass;
     Context mContext;
-    String KarakFrParameter;
-    String MasalaFrParameter;
-    String GingerFrParameter;
-    String CardamomFrParameter;
-    String MilkFrParameter;
-    String WaterFrParameter;
-    String SugarFrParameter;
+    String KarakFrParameter, MasalaFrParameter, GingerFrParameter, CardamomFrParameter,
+            MilkFrParameter, WaterFrParameter, SugarFrParameter, CoffeeFrParameter;
     BaseActivity mActivity;
     int retryCount = 0;
     String lastSentPacket = "";
@@ -88,11 +85,17 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
         MilkFrParameter = mAppClass.formDigits(4, mBinding.flowRateMilk.getText().toString()) + ";";
         WaterFrParameter = mAppClass.formDigits(4, mBinding.flowRateWater.getText().toString()) + ";";
         SugarFrParameter = mAppClass.formDigits(4, mBinding.flowRateSugar.getText().toString()) + ";";
+        CoffeeFrParameter = mAppClass.formDigits(4,mBinding.flowRateCoffee.getText().toString()) + ";";
 
-        return mAppClass.framePacket(SEND_FLOW_RATE_MESSAGE_ID + KARAK_FLOW_RATE_SUB_ID + KarakFrParameter +
-                MASALA_KARAK_FLOW_RATE_FACTOR_SUB_ID + MasalaFrParameter + GINGER_KARAK_FLOW_RATE_SUB_ID + GingerFrParameter +
-                CARDAMOM_KARAK_FLOW_RATE_SUB_ID + CardamomFrParameter + MILK_FLOW_RATE_SUB_ID + MilkFrParameter +
-                WATER_FLOW_RATE_SUB_ID + WaterFrParameter + SUGAR_FLOW_RATE_SUB_ID + SugarFrParameter);
+        return mAppClass.framePacket(SEND_FLOW_RATE_MESSAGE_ID +
+                KARAK_FLOW_RATE_SUB_ID + KarakFrParameter +
+                MASALA_KARAK_FLOW_RATE_FACTOR_SUB_ID + MasalaFrParameter +
+                GINGER_KARAK_FLOW_RATE_SUB_ID + GingerFrParameter +
+                CARDAMOM_KARAK_FLOW_RATE_SUB_ID + CardamomFrParameter +
+                MILK_FLOW_RATE_SUB_ID + MilkFrParameter +
+                WATER_FLOW_RATE_SUB_ID + WaterFrParameter +
+                SUGAR_FLOW_RATE_SUB_ID + SugarFrParameter +
+                COFFEE_FLOW_RATE_SUB_ID + CoffeeFrParameter);
     }
 
     @Override
@@ -109,7 +112,8 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
                         CardamomKarakfr = handelData[4].split(","),
                         Milkfr = handelData[5].split(","),
                         Waterfr = handelData[6].split(","),
-                        Sugarfr = handelData[7].split(",");
+                        Sugarfr = handelData[7].split(","),
+                        Coffeefr = handelData[8].split(",");
                 KARAK_FLOW_RATE = Karakfr[1];
                 MASALA_KARAK_FLOW_RATE = MasalaKarakfr[1];
                 GINGER_KARAK_FLOW_RATE = GingerKarakfr[1];
@@ -117,6 +121,7 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
                 MILK_FLOW_RATE = Milkfr[1];
                 WATER_FLOW_RATE = Waterfr[1];
                 SUGAR_FLOW_RATE = Sugarfr[1];
+                COFFEE_FLOW_RATE = Coffeefr[1];
                 mBinding.flowRateKarak.append(KARAK_FLOW_RATE);
                 mBinding.flowRateMasalaKarak.append(MASALA_KARAK_FLOW_RATE);
                 mBinding.flowRateGingerKarak.append(GINGER_KARAK_FLOW_RATE);
@@ -124,6 +129,7 @@ public class FragmentMaSubChildFlowRate extends Fragment implements BluetoothDat
                 mBinding.flowRateMilk.append(MILK_FLOW_RATE);
                 mBinding.flowRateWater.append(WATER_FLOW_RATE);
                 mBinding.flowRateSugar.append(SUGAR_FLOW_RATE);
+                mBinding.flowRateCoffee.append(COFFEE_FLOW_RATE);
             } else if (handelData[0].substring(5, 7).equals("14")) {
                 if (handelData[1].equals("ACK")) {
                     mAppClass.showSnackBar(getContext(), getString(R.string.UpdateSuccessfully));

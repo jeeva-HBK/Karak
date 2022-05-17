@@ -18,9 +18,11 @@ import com.pradeep.karak.Others.MultiTextWatcher;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentAdDrSubchildGingerBinding;
 
+import static com.pradeep.karak.Others.ApplicationClass.DR_CUP_ML;
 import static com.pradeep.karak.Others.ApplicationClass.DR_GINGER_KARAK_GINGER;
 import static com.pradeep.karak.Others.ApplicationClass.DR_GINGER_KARAK_MILK;
 import static com.pradeep.karak.Others.ApplicationClass.DR_GINGER_KARAK_TEA;
+import static com.pradeep.karak.Others.ApplicationClass.DR_GINGER_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.DR_GINGER_WATER;
 
 // Created on 18 Mar 2021 by silambu
@@ -50,9 +52,11 @@ public class FragmentAdDrSubChildGinger extends Fragment implements TextWatcherW
         mBinding.txtGingerGinger.append(DR_GINGER_KARAK_GINGER);
         mBinding.txtGingerGmsMilk.append(DR_GINGER_KARAK_MILK);
         mBinding.txtGingerGms.append(DR_GINGER_WATER);
+        mBinding.txtSugarGms.append(DR_GINGER_SUGAR);
+        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
         new MultiTextWatcher().registerEditText(mBinding.txtGingerTeaGms).registerEditText(mBinding.txtGingerGinger)
                 .registerEditText(mBinding.txtGingerGmsMilk).registerEditText(mBinding.txtGingerGms)
-                .setCallback(this);
+                .registerEditText(mBinding.txtSugarGms).setCallback(this);
     }
 
     @Override
@@ -84,6 +88,9 @@ public class FragmentAdDrSubChildGinger extends Fragment implements TextWatcherW
                         mBinding.txtGingerGms.setText("100");
                     }
                 }
+                break;
+            case R.id.txt_sugar_gms:
+                DR_GINGER_SUGAR = mAppClass.formDigits(3, mBinding.txtSugarGms.getText().toString());
                 break;
         }
 

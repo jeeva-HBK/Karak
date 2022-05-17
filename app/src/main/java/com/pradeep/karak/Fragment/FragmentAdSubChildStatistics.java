@@ -42,7 +42,8 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
     BaseActivity mActivity;
     Context context;
     AlertDialog alertDialog;
-    String data = "", cupKarak = "0", cupGinger = "0", cupSulaimani = "0", cupMasala = "0", cupCardmom = "0", cupMilk = "0", cupHotWater = "0";
+    String data = "", cupKarak = "0", cupGinger = "0", cupSulaimani = "0", cupMasala = "0",
+            cupCardmom = "0", cupMilk = "0", cupHotWater = "0", cupCoffee = "0";
     EditText reset;
     public static final String TAG = "Statistics";
 
@@ -97,7 +98,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
                     case 2:
                         mBinding.IvAdLeftArrow.setVisibility(View.VISIBLE);
                         mBinding.IvAdRightArrow.setVisibility(View.GONE);
-                        setDataToChart(getChartData(2), getChartbevarage(2), 0);
+                        setDataToChart(getChartData(2), getChartbevarage(2), 1);
                         break;
                 }
             }
@@ -122,7 +123,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
 
     private void readOperatorData() {
         mActivity.showProgress();
-        sendData(mAppClass.framePacket("07;01;"));
+        sendData(mAppClass.framePacket("07;001;"));
     }
 
     private void sendData(String framedPacket) {
@@ -175,8 +176,9 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
                 break;
 
             case 2:
+                values.add("Coffee");
                 values.add("Milk");
-                values.add("water");
+                values.add("Water");
                 break;
         }
         return values;
@@ -197,8 +199,9 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
                 break;
 
             case 2:
-                entries.add(0, new BarEntry(0, Float.parseFloat(cupMilk)));
-                entries.add(1, new BarEntry(1, Float.parseFloat(cupHotWater)));
+                entries.add(0, new BarEntry(0, Float.parseFloat(cupCoffee)));
+                entries.add(1, new BarEntry(1, Float.parseFloat(cupMilk)));
+                entries.add(2, new BarEntry(2, Float.parseFloat(cupHotWater)));
                 break;
         }
         return entries;
@@ -283,10 +286,17 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
 
             }
         } else if (spiltData[0].substring(5, 7).equals("07")) {
-            String[] adminPassword = spiltData[2].split(","), maintenancePassword = spiltData[2].split(","), cupcountPassword = spiltData[3].split(","),
-                    ccKarak = spiltData[4].split(","), ccGKarak = spiltData[5].split(","), ccMKarak = spiltData[6].split(","),
-                    ccSulaimani = spiltData[7].split(","), ccCKarak = spiltData[8].split(","), ccMilk = spiltData[9].split(","),
-                    ccWater = spiltData[10].split(",");
+                String[] adminPassword = spiltData[1].split(","),
+                        maintenancePassword = spiltData[2].split(","),
+                        cupcountPassword = spiltData[3].split(","),
+                        ccKarak = spiltData[4].split(","),
+                        ccGKarak = spiltData[5].split(","),
+                        ccMKarak = spiltData[6].split(","),
+                        ccSulaimani = spiltData[7].split(","),
+                        ccCKarak = spiltData[8].split(","),
+                        ccMilk = spiltData[9].split(","),
+                        ccWater = spiltData[10].split(",");
+                       // ccCoffee = spiltData[11].split(",");
 
             ADMIN_PASSWORD = adminPassword[1];
             MAINTENANCE_PASSWORD = maintenancePassword[1];
@@ -299,6 +309,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
             cupSulaimani = ccSulaimani[1];
             cupMilk = ccMilk[1];
             cupHotWater = ccWater[1];
+            //cupCoffee = ccCoffee[1];
             setDataToChart(getChartData(0), getChartbevarage(0), 0);
 
         }

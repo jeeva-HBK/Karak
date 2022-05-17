@@ -219,7 +219,7 @@
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:background="@drawable/bg_button_state"
-            app:layout_constraintBottom_toTopOf="@+id/v_hotMilk"
+            app:layout_constraintBottom_toTopOf="@+id/v_coffee"
             app:layout_constraintEnd_toEndOf="@id/v_masalaKarak"
             app:layout_constraintStart_toStartOf="@id/v_masalaKarak"
             app:layout_constraintTop_toBottomOf="@+id/v_masalaKarak">
@@ -246,6 +246,38 @@
             app:layout_constraintEnd_toEndOf="@+id/img_masala_karak"
             app:layout_constraintStart_toStartOf="@+id/img_masala_karak"
             app:layout_constraintTop_toTopOf="@id/v_cardmonKarak" />
+        <View
+            android:id="@+id/v_coffee"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="5dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:background="@drawable/bg_button_state"
+            app:layout_constraintBottom_toTopOf="@+id/v_hotMilk"
+            app:layout_constraintEnd_toEndOf="@id/v_cardmonKarak"
+            app:layout_constraintStart_toStartOf="@id/v_cardmonKarak"
+            app:layout_constraintTop_toBottomOf="@+id/v_cardmonKarak">
+
+        </View>
+        <TextView
+            android:id="@+id/txt_coffee"
+            style="@style/dashboardTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/coffee"
+            app:layout_constraintBottom_toBottomOf="@id/v_coffee"
+            app:layout_constraintStart_toStartOf="@+id/txt_cardmom_karak"
+            app:layout_constraintTop_toTopOf="@id/v_coffee" />
+        <ImageView
+            android:id="@+id/img_coffee"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_coffee"
+            app:layout_constraintBottom_toBottomOf="@id/v_coffee"
+            app:layout_constraintEnd_toEndOf="@+id/img_cardmom_karak"
+            app:layout_constraintStart_toStartOf="@+id/img_cardmom_karak"
+            app:layout_constraintTop_toTopOf="@id/v_coffee" />
 
         <View
             android:id="@+id/v_hotMilk"
@@ -255,9 +287,9 @@
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             app:layout_constraintBottom_toTopOf="@+id/v_hotWater"
-            app:layout_constraintEnd_toEndOf="@id/v_cardmonKarak"
-            app:layout_constraintStart_toStartOf="@id/v_cardmonKarak"
-            app:layout_constraintTop_toBottomOf="@+id/v_cardmonKarak">
+            app:layout_constraintEnd_toEndOf="@id/v_coffee"
+            app:layout_constraintStart_toStartOf="@id/v_coffee"
+            app:layout_constraintTop_toBottomOf="@+id/v_coffee">
 
         </View>
 
@@ -268,7 +300,7 @@
             android:layout_height="wrap_content"
             android:text="Hot Milk"
             app:layout_constraintBottom_toBottomOf="@id/v_hotMilk"
-            app:layout_constraintStart_toStartOf="@+id/txt_cardmom_karak"
+            app:layout_constraintStart_toStartOf="@+id/txt_coffee"
             app:layout_constraintTop_toTopOf="@id/v_hotMilk" />
 
 
@@ -278,8 +310,8 @@
             android:layout_height="30dp"
             android:src="@drawable/hotmilk"
             app:layout_constraintBottom_toBottomOf="@id/v_hotMilk"
-            app:layout_constraintEnd_toEndOf="@+id/img_cardmom_karak"
-            app:layout_constraintStart_toStartOf="@+id/img_cardmom_karak"
+            app:layout_constraintEnd_toEndOf="@+id/img_coffee"
+            app:layout_constraintStart_toStartOf="@+id/img_coffee"
             app:layout_constraintTop_toTopOf="@id/v_hotMilk" />
 
         <View

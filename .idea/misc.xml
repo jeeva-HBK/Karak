@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/drawable/ic_bg_box.xml" value="0.165" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/drawable/ic_line.xml" value="0.2085" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/activity_base.xml" value="0.16802536231884058" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/bluetooth_fav_list_item.xml" value="0.27395833333333336" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/content_base.xml" value="0.15581031787389266" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/custom_autocomplete.xml" value="0.15572916666666667" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/dialog_bluetoothlist.xml" value="0.16802536231884058" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_dr_subchild_cardmom.xml" value="0.33" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_dr_subchild_coffee.xml" value="0.27395833333333336" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_dr_subchild_ginger.xml" value="0.33" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_dr_subchild_karak.xml" value="0.16" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_dr_subchild_masala.xml" value="0.33" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_dr_subchild_milk.xml" value="0.33" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_dr_subchild_percup_configuration.xml" value="0.31145833333333334" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_dr_subchild_sulaimani.xml" value="0.15572916666666667" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_dr_subchild_water.xml" value="0.5" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_subchild_boil_time.xml" value="0.15572916666666667" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_subchild_boiltime.xml" value="0.25" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_subchild_dispenseratio.xml" value="0.15572916666666667" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_subchild_flush.xml" value="0.25" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ad_subchild_statistics.xml" value="0.15572916666666667" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_child_admin.xml" value="0.15572916666666667" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_child_maintenance.xml" value="0.15572916666666667" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_dashboard_cups.xml" value="0.15572916666666667" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_dashboard_sugar.xml" value="0.25" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ma_subchild_correction_factor.xml" value="0.33" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ma_subchild_flowrate.xml" value="0.2" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_ma_subchild_preset_boil_time.xml" value="0.15572916666666667" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_root_configuration.xml" value="0.15572916666666667" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/fragment_welcome.xml" value="0.16802536231884058" />
+        <entry key="..\:/GIT/Repository/Karak_Tea_Maker/app/src/main/res/layout/item_buletooth.xml" value="0.27395833333333336" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

@@ -63,32 +63,32 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
         mBinding.txtSugar0.setOnClickListener(this);
         mBinding.txtSugar1.setOnClickListener(this);
         mBinding.txtSugar2.setOnClickListener(this);
-        mBinding.txtSugar3.setOnClickListener(this);
-        mBinding.txtSugar4.setOnClickListener(this);
+       // mBinding.txtSugar3.setOnClickListener(this);
+       // mBinding.txtSugar4.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.txtSugar0:
+            /*case R.id.txtSugar0:
+                BevarageSubPacketSugar = ";03,00;";
+                break;*/
+
+            case R.id.txtSugar1:
                 BevarageSubPacketSugar = ";03,00;";
                 break;
 
-            case R.id.txtSugar1:
+            case R.id.txtSugar2:
                 BevarageSubPacketSugar = ";03,01;";
                 break;
 
-            case R.id.txtSugar2:
-                BevarageSubPacketSugar = ";03,02;";
-                break;
-
-            case R.id.txtSugar3:
+           /* case R.id.txtSugar3:
                 BevarageSubPacketSugar = ";03,03;";
                 break;
 
             case R.id.txtSugar4:
                 BevarageSubPacketSugar = ";03,04;";
-                break;
+                break;*/
         }
         confirmDispense(BevaragePacket + BevarageSubPacketSugar);
     }

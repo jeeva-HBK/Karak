@@ -6,13 +6,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black">
-
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.00" />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
+            app:layout_constraintGuide_percent="0.11" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -121,6 +126,31 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.85" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline0">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoComplete"
+                style="@style/centerBlackText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_brown_bar"
+                android:completionThreshold="0"
+                android:cursorVisible="false"
+                android:textStyle="bold"
+                android:focusable="false"
+                android:text="@string/karak" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <EditText
             android:id="@+id/edt_100ml"
             android:layout_width="0dp"
@@ -133,7 +163,6 @@
             android:inputType="number"
             android:maxLength="4"
             android:padding="5dp"
-
             android:textColor="@color/textColor"
             android:textColorHint="@color/ash"
             android:textSize="15sp"
@@ -148,7 +177,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/_100ml"
+            android:text="@string/_1cup"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/edt_100ml"
@@ -181,7 +210,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="@string/_600ml"
+            android:text="@string/_6cup"
             app:layout_constraintBottom_toTopOf="@id/edt_700ml"
             app:layout_constraintEnd_toEndOf="@id/edt_600ml"
             app:layout_constraintStart_toStartOf="@+id/edt_600ml"
@@ -214,7 +243,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/_200ml"
+            android:text="@string/_2cup"
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -247,7 +276,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/_700ml"
+            android:text="@string/_7cup"
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintStart_toStartOf="@+id/guideline6"
@@ -279,7 +308,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/_300ml"
+            android:text="@string/_3cup"
             app:layout_constraintBottom_toTopOf="@+id/guideline11"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -312,7 +341,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/_800ml"
+            android:text="@string/_8cup"
             app:layout_constraintBottom_toTopOf="@+id/guideline11"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintStart_toStartOf="@+id/guideline6"
@@ -344,7 +373,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/_400ml"
+            android:text="@string/_4cup"
             app:layout_constraintBottom_toTopOf="@+id/guideline13"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -376,7 +405,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/_900ml"
+            android:text="@string/_9cup"
             app:layout_constraintBottom_toTopOf="@+id/guideline13"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintStart_toStartOf="@+id/guideline6"
@@ -411,7 +440,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="@string/_500ml"
+            android:text="@string/_5cup"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toTopOf="@+id/guideline18" />
@@ -443,7 +472,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="@string/_1000ml"
+            android:text="@string/_10cup"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintStart_toStartOf="@+id/guideline6"
             app:layout_constraintTop_toTopOf="@+id/guideline18" />

@@ -17,6 +17,7 @@ import com.pradeep.karak.databinding.FragmentDashboardCupsBinding;
 
 import static com.pradeep.karak.Others.ApplicationClass.BevaragePacket;
 import static com.pradeep.karak.Others.ApplicationClass.BeverageSubPacketCup;
+import static com.pradeep.karak.Others.ApplicationClass.DR_CUP_ML;
 import static com.pradeep.karak.Others.ApplicationClass.KEY_BEVERAGE_SELECTION;
 import static com.pradeep.karak.Others.ApplicationClass.KEY_CUP;
 
@@ -39,7 +40,12 @@ public class FragmentDashBoardCups extends Fragment implements View.OnClickListe
         BevaragePacket = b.getString(KEY_BEVERAGE_SELECTION);
         BeverageSubPacketCup = "";
         Log.e(TAG, "onViewCreated: " + BevaragePacket);
-
+        if(DR_CUP_ML.isEmpty()) {
+            mBinding.textView10.setVisibility(View.GONE);
+        } else {
+            mBinding.textView10.setVisibility(View.VISIBLE);
+            mBinding.textView10.setText(DR_CUP_ML+"ml Serving per Cup");
+        }
         mBinding.viewBackCups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

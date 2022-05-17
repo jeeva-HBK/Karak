@@ -430,8 +430,7 @@ public class FragmentBluetoothList extends Fragment implements BluetoothDataCall
                                         }
                                     }
                                 });
-                            } catch (
-                                    Exception e) {
+                            } catch (Exception e) {
                                 stopScan();
                                 Log.e(TAG, "OnConnectSuccess: Catch");
                                 mActivity.runOnUiThread(new Runnable() {

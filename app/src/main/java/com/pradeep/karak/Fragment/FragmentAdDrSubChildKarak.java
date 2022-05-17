@@ -20,8 +20,10 @@ import com.pradeep.karak.Others.MultiTextWatcher;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentAdDrSubchildKarakBinding;
 
+import static com.pradeep.karak.Others.ApplicationClass.DR_CUP_ML;
 import static com.pradeep.karak.Others.ApplicationClass.DR_KARAK;
 import static com.pradeep.karak.Others.ApplicationClass.DR_KARAK_MILK;
+import static com.pradeep.karak.Others.ApplicationClass.DR_KARAK_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.DR_KARAK_WATER;
 
 // Created on 19 Mar 2021 by silambu
@@ -48,9 +50,11 @@ public class FragmentAdDrSubChildKarak extends Fragment implements TextWatcherWi
         mBinding.txtKarakTeaGms.append(DR_KARAK);
         mBinding.txtKarakMilk.append(DR_KARAK_MILK);
         mBinding.txtKarakWater.append(DR_KARAK_WATER);
+        mBinding.txtKarakSugar.append(DR_KARAK_SUGAR);
+        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
         new MultiTextWatcher().registerEditText(mBinding.txtKarakTeaGms)
                 .registerEditText(mBinding.txtKarakMilk).registerEditText(mBinding.txtKarakWater)
-                .setCallback(this);
+                .registerEditText(mBinding.txtKarakSugar).setCallback(this);
     }
 
 
@@ -83,6 +87,9 @@ public class FragmentAdDrSubChildKarak extends Fragment implements TextWatcherWi
                     }
                 }
 
+                break;
+            case R.id.txt_karak_sugar:
+                DR_KARAK_SUGAR = mAppClass.formDigits(3, mBinding.txtKarakSugar.getText().toString());
                 break;
         }
 

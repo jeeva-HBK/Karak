@@ -39,7 +39,8 @@ public class FragmentChildAdmin extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mainMenuList = new String[]{"Statistics", "Boil Time", "Set Dispense Ratio", "Set Password", "Serial Number"};
+        mainMenuList = new String[]{"Statistics", "Boil Time", "Set Dispense Ratio", "Set Password",
+                "Serial Number","Machine Cleaning"};
         mBinding.autoComplete.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.bg_brown_bar));
         getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildStatistics(data), "INIT_STATISTICS").commit();
         ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.custom_autocomplete, mainMenuList);
@@ -63,6 +64,9 @@ public class FragmentChildAdmin extends Fragment {
                         break;
                     case 4:
                         getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildMachineNumber(), "TAG_MACHINE_NUMBER").commit();
+                        break;
+                    case 5:
+                        getParentFragmentManager().beginTransaction().replace(mBinding.adminFragHost.getId(), new FragmentAdSubChildMachineCleaning(), "TAG_MACHINE_CLEANING").commit();
                         break;
                 }
             }

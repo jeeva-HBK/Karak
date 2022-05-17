@@ -19,6 +19,8 @@ import com.pradeep.karak.Others.MultiTextWatcher;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentAdDrSubchildMasalaBinding;
 
+import static com.pradeep.karak.Others.ApplicationClass.DR_CUP_ML;
+import static com.pradeep.karak.Others.ApplicationClass.DR_MASALA_KARAKA_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.DR_MASALA_KARAKA_WATER;
 import static com.pradeep.karak.Others.ApplicationClass.DR_MASALA_KARAK_MASALA;
 import static com.pradeep.karak.Others.ApplicationClass.DR_MASALA_KARAK_MILK;
@@ -50,9 +52,11 @@ public class FragmentAdDrSubChildMasala extends Fragment implements TextWatcherW
         mBinding.txtMasalaMasala.append(DR_MASALA_KARAK_MASALA);
         mBinding.txtMasalaGmsMilk.append(DR_MASALA_KARAK_MILK);
         mBinding.txtMasalaGmsWater.append(DR_MASALA_KARAKA_WATER);
+        mBinding.txtMasalaGmsSugar.append(DR_MASALA_KARAKA_SUGAR);
+        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
         new MultiTextWatcher().registerEditText(mBinding.txtMasalaTeaGms)
                 .registerEditText(mBinding.txtMasalaMasala).registerEditText(mBinding.txtMasalaGmsMilk)
-                .registerEditText(mBinding.txtMasalaGmsWater).setCallback(this);
+                .registerEditText(mBinding.txtMasalaGmsWater).registerEditText(mBinding.txtMasalaGmsSugar).setCallback(this);
     }
 
 
@@ -79,7 +83,9 @@ public class FragmentAdDrSubChildMasala extends Fragment implements TextWatcherW
                 break;
             case R.id.txt_masala_gms_water:
                 DR_MASALA_KARAKA_WATER = mAppClass.formDigits(3, mBinding.txtMasalaGmsWater.getText().toString()) ;
-
+                break;
+            case R.id.txt_masala_gms_sugar:
+                DR_MASALA_KARAK_TEA = mAppClass.formDigits(3, mBinding.txtMasalaGmsSugar.getText().toString());
                 break;
         }
 

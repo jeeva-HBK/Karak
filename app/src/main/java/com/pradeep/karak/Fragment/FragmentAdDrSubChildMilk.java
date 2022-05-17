@@ -21,7 +21,9 @@ import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentAdDrSubchildMilkBinding;
 
 import static com.pradeep.karak.Others.ApplicationClass.DR_CARDAMOM_KARAK_WATER;
+import static com.pradeep.karak.Others.ApplicationClass.DR_CUP_ML;
 import static com.pradeep.karak.Others.ApplicationClass.DR_MILK;
+import static com.pradeep.karak.Others.ApplicationClass.DR_MILK_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.DR_MILK_WATER;
 
 // Created on 19 Mar 2021 by silambu
@@ -47,8 +49,10 @@ public class FragmentAdDrSubChildMilk extends Fragment implements TextWatcherWit
         mContext = getContext();
         mBinding.txtMilkTeaGms.append(DR_MILK);
         mBinding.txtMilkWater.append(DR_MILK_WATER);
+        mBinding.txtMilkSugar.append(DR_MILK_SUGAR);
+        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
         new MultiTextWatcher().registerEditText(mBinding.txtMilkTeaGms).registerEditText(mBinding.txtMilkWater)
-                .setCallback(this);
+                .registerEditText(mBinding.txtMilkSugar).setCallback(this);
     }
 
     @Override
@@ -75,7 +79,9 @@ public class FragmentAdDrSubChildMilk extends Fragment implements TextWatcherWit
                     }
                 }
                 break;
-
+            case R.id.txt_milk_sugar:
+                DR_MILK_SUGAR = mAppClass.formDigits(3, mBinding.txtMilkSugar.getText().toString());
+                break;
         }
     }
 

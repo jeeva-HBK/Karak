@@ -23,44 +23,68 @@ import com.pradeep.karak.databinding.FragmentAdSubchildDispenseratioBinding;
 import static com.pradeep.karak.Others.ApplicationClass.CARDAMOM_KARAK_CARDAMOM_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.CARDAMOM_KARAK_TEA_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.CARDMOM_KARAK_MILK_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.CARDMOM_KARAK_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.CARDMOM_KARAK_WATER;
+import static com.pradeep.karak.Others.ApplicationClass.COFFEE_MILK_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.COFFEE_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.COFFEE_SUGAR_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.COFFEE_WATER_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.DISPENSING_RATIO_MESSAGE_ID;
 import static com.pradeep.karak.Others.ApplicationClass.DISPENSING_READ_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.DR_CARADMOM_KARAK_CARDMOM;
 import static com.pradeep.karak.Others.ApplicationClass.DR_CARDAMOM_KARAK_MILK;
+import static com.pradeep.karak.Others.ApplicationClass.DR_CARDAMOM_KARAK_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.DR_CARDAMOM_KARAK_TEA;
 import static com.pradeep.karak.Others.ApplicationClass.DR_CARDAMOM_KARAK_WATER;
+import static com.pradeep.karak.Others.ApplicationClass.DR_COFFEE;
+import static com.pradeep.karak.Others.ApplicationClass.DR_COFFEE_MILK;
+import static com.pradeep.karak.Others.ApplicationClass.DR_COFFEE_SUGAR;
+import static com.pradeep.karak.Others.ApplicationClass.DR_COFFEE_WATER;
+import static com.pradeep.karak.Others.ApplicationClass.DR_CUP_ML;
 import static com.pradeep.karak.Others.ApplicationClass.DR_GINGER_KARAK_GINGER;
 import static com.pradeep.karak.Others.ApplicationClass.DR_GINGER_KARAK_MILK;
 import static com.pradeep.karak.Others.ApplicationClass.DR_GINGER_KARAK_TEA;
+import static com.pradeep.karak.Others.ApplicationClass.DR_GINGER_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.DR_GINGER_WATER;
 import static com.pradeep.karak.Others.ApplicationClass.DR_HOT_WATER;
+import static com.pradeep.karak.Others.ApplicationClass.DR_HOT_WATER_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.DR_KARAK;
 import static com.pradeep.karak.Others.ApplicationClass.DR_KARAK_MILK;
+import static com.pradeep.karak.Others.ApplicationClass.DR_KARAK_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.DR_KARAK_WATER;
+import static com.pradeep.karak.Others.ApplicationClass.DR_MASALA_KARAKA_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.DR_MASALA_KARAKA_WATER;
 import static com.pradeep.karak.Others.ApplicationClass.DR_MASALA_KARAK_MASALA;
 import static com.pradeep.karak.Others.ApplicationClass.DR_MASALA_KARAK_MILK;
 import static com.pradeep.karak.Others.ApplicationClass.DR_MASALA_KARAK_TEA;
 import static com.pradeep.karak.Others.ApplicationClass.DR_MILK;
+import static com.pradeep.karak.Others.ApplicationClass.DR_MILK_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.DR_MILK_WATER;
+import static com.pradeep.karak.Others.ApplicationClass.DR_SULAIMANI_SUGAR;
 import static com.pradeep.karak.Others.ApplicationClass.DR_SULAIMANI_TEA;
 import static com.pradeep.karak.Others.ApplicationClass.DR_SULAIMANI_WATER;
 import static com.pradeep.karak.Others.ApplicationClass.GINGER_KARAK_GINGER_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.GINGER_KARAK_MILK_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.GINGER_KARAK_SUGAR_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.GINGER_KARAK_TEA_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.GINGER_KARAK_WATER_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.GO_TO_OPERATOR_PAGE_MESSAGE_ID;
+import static com.pradeep.karak.Others.ApplicationClass.HOT_SUGAR_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.HOT_WATER_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.KARAK_MILK_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.KARAK_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.KARAK_SUGAR_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.KARAK_WATER_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.MASALA_KARAK_MASALA_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.MASALA_KARAK_MILK_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.MASALA_KARAK_SUGAR_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.MASALA_KARAK_TEA_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.MASALA_KARAK_WATER_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.MILK_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.MILK_SUGAR_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.MILK_WATER_SUB_ID;
+import static com.pradeep.karak.Others.ApplicationClass.NO_OF_CUP_ML;
+import static com.pradeep.karak.Others.ApplicationClass.SULAIMANI_SUGAR_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.SULAIMANI_TEA_SUB_ID;
 import static com.pradeep.karak.Others.ApplicationClass.SULAIMANI_WATER_SUB_ID;
 
@@ -86,7 +110,7 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
         ObservableInt pageCount = new ObservableInt(0);
         mBinding.IvAdLeftArrow.setVisibility(View.GONE);
         mBinding.IvAdRightArrow.setVisibility(View.VISIBLE);
-        mBinding.viewPagerMaintenance.setOffscreenPageLimit(6);
+        mBinding.viewPagerMaintenance.setOffscreenPageLimit(8);
         sendData(mAppClass.framePacket(GO_TO_OPERATOR_PAGE_MESSAGE_ID + DISPENSING_READ_SUB_ID));
 
         pageCount.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
@@ -125,8 +149,18 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
                         break;
                     case 6:
                         mBinding.IvAdLeftArrow.setVisibility(View.VISIBLE);
-                        mBinding.IvAdRightArrow.setVisibility(View.GONE);
+                        mBinding.IvAdRightArrow.setVisibility(View.VISIBLE);
                         mBinding.viewPagerMaintenance.setCurrentItem(6);
+                        break;
+                    case 7:
+                        mBinding.IvAdLeftArrow.setVisibility(View.VISIBLE);
+                        mBinding.IvAdRightArrow.setVisibility(View.VISIBLE);
+                        mBinding.viewPagerMaintenance.setCurrentItem(7);
+                        break;
+                    case 8:
+                        mBinding.IvAdLeftArrow.setVisibility(View.VISIBLE);
+                        mBinding.IvAdRightArrow.setVisibility(View.GONE);
+                        mBinding.viewPagerMaintenance.setCurrentItem(8);
                         break;
                 }
             }
@@ -156,15 +190,25 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
 
     private String framePacket() {
         return
-                mAppClass.framePacket(DISPENSING_RATIO_MESSAGE_ID + KARAK_SUB_ID + DR_KARAK + ";" + KARAK_MILK_SUB_ID + DR_KARAK_MILK + ";"
-                        + KARAK_WATER_SUB_ID + DR_KARAK_WATER + ";"  + MASALA_KARAK_TEA_SUB_ID + DR_MASALA_KARAK_TEA + ";"  + MASALA_KARAK_MASALA_SUB_ID
-                        + DR_MASALA_KARAK_MASALA + ";"  + MASALA_KARAK_MILK_SUB_ID + DR_MASALA_KARAK_MILK + ";"  + MASALA_KARAK_WATER_SUB_ID
-                        + DR_MASALA_KARAKA_WATER + ";"  + SULAIMANI_TEA_SUB_ID + DR_SULAIMANI_TEA + ";" + SULAIMANI_WATER_SUB_ID + DR_SULAIMANI_WATER + ";"
+                mAppClass.framePacket(DISPENSING_RATIO_MESSAGE_ID
+                        + KARAK_SUB_ID + DR_KARAK + ";" + KARAK_MILK_SUB_ID + DR_KARAK_MILK + ";"
+                        + KARAK_WATER_SUB_ID + DR_KARAK_WATER + ";"  + KARAK_SUGAR_SUB_ID + DR_KARAK_SUGAR + ";"
+                        + MASALA_KARAK_TEA_SUB_ID + DR_MASALA_KARAK_TEA + ";"  + MASALA_KARAK_MASALA_SUB_ID
+                        + DR_MASALA_KARAK_MASALA + ";"  + MASALA_KARAK_MILK_SUB_ID + DR_MASALA_KARAK_MILK + ";"
+                        + MASALA_KARAK_WATER_SUB_ID + DR_MASALA_KARAKA_WATER + ";"+ MASALA_KARAK_SUGAR_SUB_ID + DR_MASALA_KARAKA_SUGAR + ";"
+                        + SULAIMANI_TEA_SUB_ID + DR_SULAIMANI_TEA + ";" + SULAIMANI_WATER_SUB_ID + DR_SULAIMANI_WATER + ";"
+                        + SULAIMANI_SUGAR_SUB_ID + DR_SULAIMANI_SUGAR + ";"
                         + GINGER_KARAK_TEA_SUB_ID + DR_GINGER_KARAK_TEA + ";"  + GINGER_KARAK_GINGER_SUB_ID + DR_GINGER_KARAK_GINGER + ";"
                         + GINGER_KARAK_MILK_SUB_ID + DR_GINGER_KARAK_MILK + ";" + GINGER_KARAK_WATER_SUB_ID + DR_GINGER_WATER + ";"
+                        + GINGER_KARAK_SUGAR_SUB_ID + DR_GINGER_SUGAR + ";"
                         + CARDAMOM_KARAK_TEA_SUB_ID + DR_CARDAMOM_KARAK_TEA + ";"  + CARDAMOM_KARAK_CARDAMOM_SUB_ID + DR_CARADMOM_KARAK_CARDMOM + ";"
                         + CARDMOM_KARAK_MILK_SUB_ID + DR_CARDAMOM_KARAK_MILK + ";" + CARDMOM_KARAK_WATER  + DR_CARDAMOM_KARAK_WATER+ ";"
-                        + MILK_SUB_ID + DR_MILK+ ";"  + MILK_WATER_SUB_ID + DR_MILK_WATER + ";"+ HOT_WATER_SUB_ID + DR_HOT_WATER+ ";" );
+                        + CARDMOM_KARAK_SUGAR + DR_CARDAMOM_KARAK_SUGAR + ";"
+                        + MILK_SUB_ID + DR_MILK+ ";"  + MILK_WATER_SUB_ID + DR_MILK_WATER + ";"+ MILK_SUGAR_SUB_ID + DR_MILK_SUGAR + ";"
+                        + HOT_WATER_SUB_ID + DR_HOT_WATER+ ";" + HOT_SUGAR_SUB_ID + DR_HOT_WATER_SUGAR+ ";"
+                        + COFFEE_SUB_ID + DR_COFFEE + ";" + COFFEE_MILK_SUB_ID + DR_COFFEE_MILK + ";"
+                        + COFFEE_WATER_SUB_ID + DR_COFFEE_WATER + ";" + COFFEE_SUGAR_SUB_ID + DR_COFFEE_SUGAR + ";"
+                        + NO_OF_CUP_ML + DR_CUP_ML + ";");
     }
 
     @Override
@@ -179,44 +223,68 @@ public class FragmentAdSubChildDispenseRatio extends Fragment implements Bluetoo
                 String[] Karak = handleData[1].split(","),
                         KarakMilk = handleData[2].split(","),
                         KarakWater = handleData[3].split(","),
-                        MasalaKarakTea = handleData[4].split(","),
-                        MasalaKarakMasala = handleData[5].split(","),
-                        MasalaMilk = handleData[6].split(","),
-                        MasalaWater = handleData[7].split(","),
-                        SulamaniTea = handleData[8].split(","),
-                        SulamaniWater = handleData[9].split(","),
-                        Gingerkarak = handleData[10].split(","),
-                        GingerKaraKGinger = handleData[11].split(","),
-                        GingerMilk = handleData[12].split(","),
-                        GingerWater = handleData[13].split(","),
-                        CardamomTea = handleData[14].split(","),
-                        CardamomKarak = handleData[15].split(","),
-                        CardamomMilk = handleData[16].split(","),
-                        CardamomWater = handleData[17].split(","),
-                        Milk = handleData[18].split(","),
-                        MilkWater = handleData[19].split(","),
-                        HotWater = handleData[20].split(",");
+                        KarakSugar = handleData[4].split(","),
+                        MasalaKarakTea = handleData[5].split(","),
+                        MasalaKarakMasala = handleData[6].split(","),
+                        MasalaMilk = handleData[7].split(","),
+                        MasalaWater = handleData[8].split(","),
+                        MasalaSugar = handleData[9].split(","),
+                        SulamaniTea = handleData[10].split(","),
+                        SulamaniWater = handleData[11].split(","),
+                        SulamaniSugar = handleData[12].split(","),
+                        Gingerkarak = handleData[13].split(","),
+                        GingerKaraKGinger = handleData[14].split(","),
+                        GingerMilk = handleData[15].split(","),
+                        GingerWater = handleData[16].split(","),
+                        GingerSugar = handleData[17].split(","),
+                        CardamomTea = handleData[18].split(","),
+                        CardamomKarak = handleData[19].split(","),
+                        CardamomMilk = handleData[20].split(","),
+                        CardamomWater = handleData[21].split(","),
+                        CardamomSugar = handleData[22].split(","),
+                        Milk = handleData[23].split(","),
+                        MilkWater = handleData[24].split(","),
+                        MilkSugar = handleData[25].split(","),
+                        HotWater = handleData[26].split(","),
+                        HotWaterSugar = handleData[27].split(","),
+                        Coffee = handleData[28].split(","),
+                        CoffeeMilk = handleData[29].split(","),
+                        CoffeeWater = handleData[30].split(","),
+                        CoffeeSugar = handleData[31].split(","),
+                        NoofcupML = handleData[32].split(",");
 
                 DR_KARAK = Karak[1];
                 DR_KARAK_MILK = KarakMilk[1];
                 DR_KARAK_WATER = KarakWater[1];
+                DR_KARAK_SUGAR = KarakSugar[1];
                 DR_MASALA_KARAK_TEA = MasalaKarakTea[1];
                 DR_MASALA_KARAK_MASALA = MasalaKarakMasala[1];
                 DR_MASALA_KARAK_MILK = MasalaMilk[1];
                 DR_MASALA_KARAKA_WATER = MasalaWater[1];
+                DR_MASALA_KARAKA_SUGAR = MasalaSugar[1];
                 DR_SULAIMANI_TEA = SulamaniTea[1];
                 DR_SULAIMANI_WATER = SulamaniWater[1];
+                DR_SULAIMANI_SUGAR = SulamaniSugar[1];
                 DR_GINGER_KARAK_TEA = Gingerkarak[1];
                 DR_GINGER_KARAK_GINGER = GingerKaraKGinger[1];
                 DR_GINGER_KARAK_MILK = GingerMilk[1];
                 DR_GINGER_WATER = GingerWater[1];
+                DR_GINGER_SUGAR = GingerSugar[1];
                 DR_CARDAMOM_KARAK_TEA = CardamomTea[1];
                 DR_CARADMOM_KARAK_CARDMOM = CardamomKarak[1];
                 DR_CARDAMOM_KARAK_MILK = CardamomMilk[1];
                 DR_CARDAMOM_KARAK_WATER = CardamomWater[1];
+                DR_CARDAMOM_KARAK_SUGAR = CardamomSugar[1];
                 DR_MILK = Milk[1];
                 DR_MILK_WATER = MilkWater[1];
+                DR_MILK_SUGAR = MilkSugar[1];
                 DR_HOT_WATER = HotWater[1];
+                DR_HOT_WATER_SUGAR = HotWaterSugar[1];
+                DR_COFFEE = Coffee[1];
+                DR_COFFEE_MILK = CoffeeMilk[1];
+                DR_COFFEE_WATER = CoffeeWater[1];
+                DR_COFFEE_SUGAR = CoffeeSugar[1];
+                DR_CUP_ML = NoofcupML[1];
                 mBinding.viewPagerMaintenance.setAdapter(new DispenseRatioPagerAdapter(getActivity()));
                 mBinding.viewPagerMaintenance.setUserInputEnabled(false);
             } else if (handleData[0].substring(5, 7).equals("10")) {
