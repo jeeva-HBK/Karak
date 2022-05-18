@@ -31,6 +31,8 @@ import static com.pradeep.karak.Others.ApplicationClass.CUP_COUNT_PASSWORD;
 import static com.pradeep.karak.Others.ApplicationClass.KEY_BEVERAGE_SELECTION;
 import static com.pradeep.karak.Others.ApplicationClass.MAINTENANCE_PASSWORD;
 
+import java.util.Objects;
+
 public class FragmentDashBoard extends Fragment implements View.OnClickListener, BluetoothDataCallback {
     FragmentDashboardBinding mBinding;
     ApplicationClass mAppclass;
@@ -53,7 +55,7 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
         BaseActivity.canGoBack = false;
         mActivity.dismissProgress();
         mBinding.btnOperator.setOnClickListener(view1 -> {
-            sendPacket(mAppclass.framePacket("07;01;"));
+            sendPacket(mAppclass.framePacket("07;001;"));
         });
 
         mBinding.btnDisConnect.setOnClickListener((view1 -> {
@@ -154,6 +156,7 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
                 } else {
                     editText.setError("Password Wrong!");
                 }
+
             }
         });
     }

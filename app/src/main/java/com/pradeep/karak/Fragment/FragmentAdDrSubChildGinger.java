@@ -53,10 +53,15 @@ public class FragmentAdDrSubChildGinger extends Fragment implements TextWatcherW
         mBinding.txtGingerGmsMilk.append(DR_GINGER_KARAK_MILK);
         mBinding.txtGingerGms.append(DR_GINGER_WATER);
         mBinding.txtSugarGms.append(DR_GINGER_SUGAR);
-        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
         new MultiTextWatcher().registerEditText(mBinding.txtGingerTeaGms).registerEditText(mBinding.txtGingerGinger)
                 .registerEditText(mBinding.txtGingerGmsMilk).registerEditText(mBinding.txtGingerGms)
                 .registerEditText(mBinding.txtSugarGms).setCallback(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
     }
 
     @Override

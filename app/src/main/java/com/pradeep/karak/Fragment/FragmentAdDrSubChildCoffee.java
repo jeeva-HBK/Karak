@@ -51,12 +51,16 @@ public class FragmentAdDrSubChildCoffee extends Fragment implements TextWatcherW
         mBinding.txtCoffeeMilk.append(DR_COFFEE_MILK);
         mBinding.txtCoffeeWater.append(DR_COFFEE_WATER);
         mBinding.txtCoffeeSugar.append(DR_COFFEE_SUGAR);
-        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
         new MultiTextWatcher().registerEditText(mBinding.txtCoffeeTeaGms)
                 .registerEditText(mBinding.txtCoffeeMilk).registerEditText(mBinding.txtCoffeeWater)
                 .registerEditText(mBinding.txtCoffeeSugar).setCallback(this);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
+    }
 
     @Override
     public void onTextChanged(EditText editText, CharSequence s, int start, int before, int count) {

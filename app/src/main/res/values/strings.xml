@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">karak</string>
+    <string name="app_name">Karak</string>
 
     <string name="scan">Scan</string>
     <string name="pairing_request">Pairing request</string>

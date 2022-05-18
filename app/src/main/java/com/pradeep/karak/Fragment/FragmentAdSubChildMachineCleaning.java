@@ -1,5 +1,6 @@
 package com.pradeep.karak.Fragment;
 
+import static com.pradeep.karak.Others.ApplicationClass.MACHINE_FLUSH_ACK_ID;
 import static com.pradeep.karak.Others.ApplicationClass.MACHINE_FLUSH_ID;
 
 import android.content.Context;
@@ -92,10 +93,9 @@ public class FragmentAdSubChildMachineCleaning extends Fragment implements Bluet
         }*/
         if (splitData[0].substring(5, 7).equals("22")) {
             mActivity.dismissProgress();
-            if (splitData[2].equals("ACK")) {
+                mAppClass.sendData(getActivity(), FragmentAdSubChildMachineCleaning.this, mAppClass.framePacket(MACHINE_FLUSH_ACK_ID + ";" + flushType + ";ACK;"), getContext());
                 mAppClass.showSnackBar(getContext(), splitData[1].equals("1") ? "Coffee flush completed" :
                         "Tea flush completed");
-            }
         }
     }
 

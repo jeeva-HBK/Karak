@@ -51,12 +51,16 @@ public class FragmentAdDrSubChildKarak extends Fragment implements TextWatcherWi
         mBinding.txtKarakMilk.append(DR_KARAK_MILK);
         mBinding.txtKarakWater.append(DR_KARAK_WATER);
         mBinding.txtKarakSugar.append(DR_KARAK_SUGAR);
-        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
         new MultiTextWatcher().registerEditText(mBinding.txtKarakTeaGms)
                 .registerEditText(mBinding.txtKarakMilk).registerEditText(mBinding.txtKarakWater)
                 .registerEditText(mBinding.txtKarakSugar).setCallback(this);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBinding.txtServingPercu.setText(DR_CUP_ML +"ml "+getString(R.string.no_ml_percup));
+    }
 
     @Override
     public void onTextChanged(EditText editText, CharSequence s, int start, int before, int count) {

@@ -45,9 +45,14 @@ public class FragmentAdDrSubChildWater extends Fragment implements TextWatcherWi
         mContext = getContext();
         mBinding.txtWaterWaterGms.append(DR_HOT_WATER);
         mBinding.txtWaterSugarGms.append(DR_HOT_WATER_SUGAR);
-        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
         new MultiTextWatcher().registerEditText(mBinding.txtWaterWaterGms)
                 .registerEditText(mBinding.txtWaterSugarGms).setCallback(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
     }
 
     @Override

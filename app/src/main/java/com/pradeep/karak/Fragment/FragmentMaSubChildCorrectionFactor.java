@@ -81,7 +81,7 @@ public class FragmentMaSubChildCorrectionFactor extends Fragment implements Blue
         MilkParameter = mAppClass.formDigits(4, mBinding.correctionMilk.getText().toString()) + ";";
         WaterParameter = mAppClass.formDigits(4, mBinding.correctionWater.getText().toString()) + ";";
         SugarParamter = mAppClass.formDigits(4, mBinding.correctionSugar.getText().toString()) + ";";
-        CoffeeParameter = mAppClass.formDigits(4,mBinding.correctionCoffee.getText().toString() + ";");
+        CoffeeParameter = mAppClass.formDigits(4,mBinding.correctionCoffee.getText().toString()) + ";";
         return mAppClass.framePacket(SEND_CORRECTION_FACTOR_MESSAGE_ID + KARAK_CORRECTION_FACTOR_SUB_ID + KarakParameter +
                 MASALA_KARAK_CORRECTION_FACTOR_SUB_ID + MasalaKarakParameter + GINGER_KARAK_CORRECTION_FACTOR_SUB_ID +
                 GingerKarakParameter + CARDAMOM_KARAK_CORRECTION_FACTOR_SUB_ID + CardamomKarakParameter + MILK_CORRECTION_FACTOR_SUB_ID +
@@ -118,7 +118,7 @@ public class FragmentMaSubChildCorrectionFactor extends Fragment implements Blue
                 mBinding.correctionMasalaKarak.append(MASALA_KARAK_CORRECTION_FACTOR);
                 mBinding.correctionGingerKarak.append(GINGER_KARAK_CORRECTION_FACTOR);
                 mBinding.correctionFactorCardmomKarak.append(CARDAMOM_KARAK_CORRECTION_FACTOR);
-                mBinding.correctionCoffee.append(MILK_CORRECTION_FACTOR);
+                mBinding.correctionMilk.append(MILK_CORRECTION_FACTOR);
                 mBinding.correctionWater.append(WATER_CORRECTION_FACTOR);
                 mBinding.correctionSugar.append(SUGAR_CORRECTION_FACTOR);
                 mBinding.correctionCoffee.append(COFFEE_CORRECTION_FACTOR);

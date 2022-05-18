@@ -50,9 +50,14 @@ public class FragmentAdDrSubChildMilk extends Fragment implements TextWatcherWit
         mBinding.txtMilkTeaGms.append(DR_MILK);
         mBinding.txtMilkWater.append(DR_MILK_WATER);
         mBinding.txtMilkSugar.append(DR_MILK_SUGAR);
-        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
         new MultiTextWatcher().registerEditText(mBinding.txtMilkTeaGms).registerEditText(mBinding.txtMilkWater)
                 .registerEditText(mBinding.txtMilkSugar).setCallback(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
     }
 
     @Override

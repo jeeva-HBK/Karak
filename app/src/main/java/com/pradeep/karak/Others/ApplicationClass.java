@@ -32,7 +32,7 @@ import static com.pradeep.karak.Activity.BaseActivity.msDismissProgress;
 import static com.pradeep.karak.Activity.BaseActivity.msDismissProgressUpdateNavigation;
 
 
-@AcraMailSender(mailTo = "silambarasanraxgbc@gmail.com")
+@AcraMailSender(mailTo = "mobileapp@raxgbc.co.in")
 
 @AcraToast(resText = R.string.acra_toast_text,
         length = Toast.LENGTH_LONG)
@@ -55,8 +55,8 @@ public class ApplicationClass extends Application {
             FACTORY_RESET_MESSAGE_ID = "16;",
             TOTAL_RESET_MESSAGE_ID = "17;",
             MACHINE_NUMBER_MESSAGE_ID = "18;",
-            MACHINE_FLUSH_ID = "22",
-
+            MACHINE_FLUSH_ID = "21",
+            MACHINE_FLUSH_ACK_ID = "22",
 
     // 10 -> DispensingRatio
     KARAK_SUB_ID = "01,", KARAK_MILK_SUB_ID = "02,", KARAK_WATER_SUB_ID = "03,", KARAK_SUGAR_SUB_ID = "04,",
@@ -70,7 +70,7 @@ public class ApplicationClass extends Application {
             MILK_SUB_ID = "23,", MILK_WATER_SUB_ID = "24,", MILK_SUGAR_SUB_ID = "25,",
             HOT_WATER_SUB_ID = "26,", HOT_SUGAR_SUB_ID = "27,",
             COFFEE_SUB_ID = "28,", COFFEE_MILK_SUB_ID = "29,", COFFEE_WATER_SUB_ID = "30,", COFFEE_SUGAR_SUB_ID = "31,",
-            NO_OF_CUP_ML = "32",
+            NO_OF_CUP_ML = "32,",
 
     // 11 -> BoilTime
             BOIL_TIME_KARAK_FIRST_CUP = "01,", BOIL_TIME_KARAK_SECOND_CUP = "02,",
@@ -141,11 +141,11 @@ public class ApplicationClass extends Application {
     // Data Read Packet
     DISPENSING_READ_SUB_ID = "012;", BOIL_TIME_READ_SUB_KARAK_ID = "044;",
             BOIL_TIME_READ_SUB_GINGERKARAK_ID = "054;", BOIL_TIME_READ_SUB_MASALAKARAK_ID = "064;",
-            BOIL_TIME_READ_SUB_SULAIMANI_ID = "074", BOIL_TIME_READ_SUB_CARDAMOM_ID = "084;",
+            BOIL_TIME_READ_SUB_SULAIMANI_ID = "074;", BOIL_TIME_READ_SUB_CARDAMOM_ID = "084;",
             BOIL_TIME_READ_SUB_MILK_ID = "094;", BOIL_TIME_READ_SUB_WATER_ID = "104;",
             BOIL_TIME_READ_SUB_COFFEE_ID = "114;",
             CORRECTION_FACTOR_READ_SUB_ID = "124;", FLOW_RATE_READ_SUB_ID = "132;",
-            PRESET_BOIL_TIME_READ_SUB_ID = "140;", INDUCTION_HEATER_PROXIMITY_SENSOR_FIRMWARE = "62;";
+            PRESET_BOIL_TIME_READ_SUB_ID = "140;", INDUCTION_HEATER_PROXIMITY_SENSOR_FIRMWARE = "150;";
 
     // Static_Keys
     public static String KEY_BEVERAGE_SELECTION = "pckBeverageSelection", KEY_CUP = "pckCup";

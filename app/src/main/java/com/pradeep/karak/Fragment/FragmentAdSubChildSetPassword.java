@@ -50,7 +50,7 @@ public class FragmentAdSubChildSetPassword extends Fragment implements Bluetooth
         mContext = getContext();
         mAppClass = (ApplicationClass) getActivity().getApplication();
         mActivity = (BaseActivity) getActivity();
-        sendData(mAppClass.framePacket("07;01;"));
+        sendData(mAppClass.framePacket("07;001;"));
 
         mBinding.setPasswordSave.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -126,7 +126,7 @@
             android:gravity="start"
             android:hint="000"
             android:padding="4dp"
-            android:imeOptions="actionNext"
+            android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLength="3"
             android:layout_marginLeft="5dp"

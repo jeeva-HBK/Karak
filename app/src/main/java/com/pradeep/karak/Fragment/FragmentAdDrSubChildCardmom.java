@@ -55,11 +55,16 @@ public class FragmentAdDrSubChildCardmom extends Fragment implements TextWatcher
         mBinding.txtGmsMilk.append(DR_CARDAMOM_KARAK_MILK);
         mBinding.txtGmsWater.append(DR_CARDAMOM_KARAK_WATER);
         mBinding.txtGmsSugar.append(DR_CARDAMOM_KARAK_SUGAR);
-        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
         new MultiTextWatcher().registerEditText(mBinding.txtTeaGms).registerEditText(mBinding.txtTeaCardmom)
                 .registerEditText(mBinding.txtGmsMilk).registerEditText(mBinding.txtGmsWater)
                 .registerEditText(mBinding.txtGmsSugar).setCallback(this);
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
     }
 
     @Override

@@ -53,12 +53,16 @@ public class FragmentAdDrSubChildMasala extends Fragment implements TextWatcherW
         mBinding.txtMasalaGmsMilk.append(DR_MASALA_KARAK_MILK);
         mBinding.txtMasalaGmsWater.append(DR_MASALA_KARAKA_WATER);
         mBinding.txtMasalaGmsSugar.append(DR_MASALA_KARAKA_SUGAR);
-        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
         new MultiTextWatcher().registerEditText(mBinding.txtMasalaTeaGms)
                 .registerEditText(mBinding.txtMasalaMasala).registerEditText(mBinding.txtMasalaGmsMilk)
                 .registerEditText(mBinding.txtMasalaGmsWater).registerEditText(mBinding.txtMasalaGmsSugar).setCallback(this);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBinding.txtServingPercu.setText(DR_CUP_ML+"ml "+getString(R.string.no_ml_percup));
+    }
 
     @Override
     public void onTextChanged(EditText editText, CharSequence s, int start, int before, int count) {

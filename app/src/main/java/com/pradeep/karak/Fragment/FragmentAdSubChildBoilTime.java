@@ -216,16 +216,16 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
             BOIL_TIME_800ML = pbt800ml[1];
             BOIL_TIME_900ML = pbt900ml[1];
             BOIL_TIME_1000ML = pbt1000ml[1];
-            mBinding.edt100ml.append(BOIL_TIME_100ML);
-            mBinding.edt200ml.append(BOIL_TIME_200ML);
-            mBinding.edt300ml.append(BOIL_TIME_300ML);
-            mBinding.edt400ml.append(BOIL_TIME_400ML);
-            mBinding.edt500ml.append(BOIL_TIME_500ML);
-            mBinding.edt600ml.append(BOIL_TIME_600ML);
-            mBinding.edt700ml.append(BOIL_TIME_700ML);
-            mBinding.edt800ml.append(BOIL_TIME_800ML);
-            mBinding.edt900ml.append(BOIL_TIME_900ML);
-            mBinding.edt1000ml.append(BOIL_TIME_1000ML);
+            mBinding.edt100ml.setText(BOIL_TIME_100ML);
+            mBinding.edt200ml.setText(BOIL_TIME_200ML);
+            mBinding.edt300ml.setText(BOIL_TIME_300ML);
+            mBinding.edt400ml.setText(BOIL_TIME_400ML);
+            mBinding.edt500ml.setText(BOIL_TIME_500ML);
+            mBinding.edt600ml.setText(BOIL_TIME_600ML);
+            mBinding.edt700ml.setText(BOIL_TIME_700ML);
+            mBinding.edt800ml.setText(BOIL_TIME_800ML);
+            mBinding.edt900ml.setText(BOIL_TIME_900ML);
+            mBinding.edt1000ml.setText(BOIL_TIME_1000ML);
         } else if (handleData[0].substring(5, 7).equals("11")) {
             if (handleData[2].equals("ACK")) {
                 mAppClass.showSnackBar(getContext(),getString(R.string.UpdateSuccessfully));
