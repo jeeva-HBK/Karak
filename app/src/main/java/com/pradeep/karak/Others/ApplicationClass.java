@@ -55,6 +55,8 @@ public class ApplicationClass extends Application {
             FACTORY_RESET_MESSAGE_ID = "16;",
             TOTAL_RESET_MESSAGE_ID = "17;",
             MACHINE_NUMBER_MESSAGE_ID = "18;",
+            FACTORY_RESET_ACK_MESSAGE_ID = "19",
+            TOTAL_RESET_ACK_MESSAGE_ID = "20",
             MACHINE_FLUSH_ID = "21",
             MACHINE_FLUSH_ACK_ID = "22",
 

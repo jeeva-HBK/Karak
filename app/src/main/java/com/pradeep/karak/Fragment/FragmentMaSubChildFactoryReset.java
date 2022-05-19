@@ -20,7 +20,9 @@ import com.pradeep.karak.Others.ApplicationClass;
 import com.pradeep.karak.R;
 import com.pradeep.karak.databinding.FragmentMaSubchildFactoryResetBinding;
 
+import static com.pradeep.karak.Others.ApplicationClass.FACTORY_RESET_ACK_MESSAGE_ID;
 import static com.pradeep.karak.Others.ApplicationClass.FACTORY_RESET_MESSAGE_ID;
+import static com.pradeep.karak.Others.ApplicationClass.TOTAL_RESET_ACK_MESSAGE_ID;
 
 public class FragmentMaSubChildFactoryReset extends Fragment implements BluetoothDataCallback {
 
@@ -66,6 +68,7 @@ public class FragmentMaSubChildFactoryReset extends Fragment implements Bluetoot
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                alertDialog.dismiss();
                 sendData(mAppClass.framePacket(FACTORY_RESET_MESSAGE_ID));
             }
         });
@@ -89,12 +92,11 @@ public class FragmentMaSubChildFactoryReset extends Fragment implements Bluetoot
 
     private void handleResponse(String data) {
             String[] splitData = data.split(";");
-            if (splitData[0].substring(5, 7).equals("16"))
-                if (splitData[1].equals("ACK")) { alertDialog.dismiss();
-                mAppClass.showSnackBar(getContext(),"Factory Reset Successfully");
-                }
-            mActivity.dismissProgress();
-
+            if (splitData[0].substring(5, 7).equals(FACTORY_RESET_ACK_MESSAGE_ID)) {
+                mActivity.dismissProgress();
+                mAppClass.showSnackBar(getContext(), "Factory Reset Successfully");
+                mAppClass.sendData(getActivity(), FragmentMaSubChildFactoryReset.this, mAppClass.framePacket(FACTORY_RESET_ACK_MESSAGE_ID + "ACK;"), getContext());
+            }
     }
 
     @Override

@@ -202,6 +202,13 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
                             changeDispenseMsg("Hot Water", R.drawable.water);
                         }
                         break;
+                    case "08":
+                        if (!isVisible) {
+                            showDispenseAlert("Coffee", R.drawable.ic_coffee);
+                        } else {
+                            changeDispenseMsg("Coffee", R.drawable.ic_coffee);
+                        }
+                        break;
                 }
 
                 switch (status[1]) {
@@ -211,13 +218,13 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
                             case "06":
                             case "05":
                             case "03":
+                            case "08":
                             case "02":
                                 mAppclass.showSnackBar(getContext(), "Status : Dispensing Milk & Water");
                                 break;
                             case "04":
                             case "07":
-                                mAppclass.showSnackBar(getContext(), "Status : Dispensing  Water "
-                                );
+                                mAppclass.showSnackBar(getContext(), "Status : Dispensing  Water ");
                                 break;
                         }
                         break;

@@ -209,6 +209,7 @@ public class FragmentDashBoard extends Fragment implements View.OnClickListener,
 
         String[] spiltData = data.split(";");
         if (spiltData[0].substring(5, 7).equals("07")) {
+
             mActivity.dismissProgress();
             String[] adminPassword = spiltData[1].split(","),
                     maintenancePassword = spiltData[2].split(","),

@@ -369,7 +369,7 @@
             android:background="@drawable/edt_back_new"
             android:gravity="center"
             android:hint="0000"
-            android:imeOptions="actionNext"
+            android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLength="4"
             android:padding="5dp"

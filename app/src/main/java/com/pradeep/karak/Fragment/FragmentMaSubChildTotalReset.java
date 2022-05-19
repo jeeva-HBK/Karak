@@ -24,6 +24,7 @@ import com.pradeep.karak.databinding.FragmentMaSubchildTotalResetBinding;
 
 import static com.pradeep.karak.Others.ApplicationClass.GO_TO_OPERATOR_PAGE_MESSAGE_ID;
 import static com.pradeep.karak.Others.ApplicationClass.INDUCTION_HEATER_PROXIMITY_SENSOR_FIRMWARE;
+import static com.pradeep.karak.Others.ApplicationClass.TOTAL_RESET_ACK_MESSAGE_ID;
 import static com.pradeep.karak.Others.ApplicationClass.TOTAL_RESET_MESSAGE_ID;
 
 public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothDataCallback {
@@ -96,6 +97,7 @@ public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothD
     private void handleResponse(String data) {
             String[] handleData = data.split(";");
             if (handleData[0].substring(5, 7).equals("07")) {
+                mActivity.dismissProgress();
                 String[] FirmWareVersion = handleData[3].split(",");
                 mBinding.txtFimwareAppVersion.setText(FirmWareVersion[1]);
                 String version = "";
@@ -110,13 +112,11 @@ public class FragmentMaSubChildTotalReset extends Fragment implements BluetoothD
                 } else {
                     mBinding.txtMobileAppVersion.setText("version_Error");
                 }
-            } else if (handleData[0].substring(5, 7).equals("17")) {
-                if (handleData[1].equals("ACK")) {
+            } else if (handleData[0].substring(5, 7).equals(TOTAL_RESET_ACK_MESSAGE_ID)) {
+                    mActivity.dismissProgress();
                     mAppClass.showSnackBar(getContext(),"Total Reset Successfully");
-                }
+                    mAppClass.sendData(getActivity(), FragmentMaSubChildTotalReset.this, mAppClass.framePacket(TOTAL_RESET_ACK_MESSAGE_ID + "ACK;"), getContext());
             }
-            mActivity.dismissProgress();
-
     }
 
     @Override
