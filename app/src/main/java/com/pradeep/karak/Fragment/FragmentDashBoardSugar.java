@@ -25,6 +25,7 @@ import com.pradeep.karak.databinding.FragmentDashboardSugarBinding;
 import static com.pradeep.karak.Others.ApplicationClass.BevaragePacket;
 import static com.pradeep.karak.Others.ApplicationClass.BevarageSubPacketSugar;
 import static com.pradeep.karak.Others.ApplicationClass.KEY_CUP;
+import static org.acra.ACRA.log;
 
 public class FragmentDashBoardSugar extends Fragment implements View.OnClickListener, BluetoothDataCallback {
     FragmentDashboardSugarBinding mBinding;
@@ -242,6 +243,7 @@ public class FragmentDashBoardSugar extends Fragment implements View.OnClickList
             sendPacket(data);
         } // Pan Release
         else if (spiltData[0].substring(5, 7).equals("05")) {
+            Log.e("Response",spiltData[0].substring(5, 7));
             if (spiltData[1].equals("ACK")) {
                 mActivity.showProgress();
             }

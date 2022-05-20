@@ -295,8 +295,8 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
                         ccSulaimani = spiltData[7].split(","),
                         ccCKarak = spiltData[8].split(","),
                         ccMilk = spiltData[9].split(","),
-                        ccWater = spiltData[10].split(",");
-                       // ccCoffee = spiltData[11].split(",");
+                        ccWater = spiltData[10].split(","),
+                        ccCoffee = spiltData[11].split(",");
 
             ADMIN_PASSWORD = adminPassword[1];
             MAINTENANCE_PASSWORD = maintenancePassword[1];
@@ -309,7 +309,7 @@ public class FragmentAdSubChildStatistics extends Fragment implements BluetoothD
             cupSulaimani = ccSulaimani[1];
             cupMilk = ccMilk[1];
             cupHotWater = ccWater[1];
-            //cupCoffee = ccCoffee[1];
+            cupCoffee = ccCoffee[1];
             setDataToChart(getChartData(0), getChartbevarage(0), 0);
 
         }
