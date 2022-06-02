@@ -89,7 +89,7 @@ public class FragmentAdDrSubChildMasala extends Fragment implements TextWatcherW
                 DR_MASALA_KARAKA_WATER = mAppClass.formDigits(3, mBinding.txtMasalaGmsWater.getText().toString()) ;
                 break;
             case R.id.txt_masala_gms_sugar:
-                DR_MASALA_KARAK_TEA = mAppClass.formDigits(3, mBinding.txtMasalaGmsSugar.getText().toString());
+                DR_MASALA_KARAKA_SUGAR = mAppClass.formDigits(3, mBinding.txtMasalaGmsSugar.getText().toString());
                 break;
         }
 

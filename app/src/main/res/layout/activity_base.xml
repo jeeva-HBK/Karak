@@ -61,6 +61,34 @@
             </com.airbnb.lottie.LottieAnimationView>
 
         </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/flush_progress_circular"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.85"
+            android:background="@color/black"
+            android:clickable="false"
+            android:focusable="false"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:text="Flush in Progress"
+                android:gravity="center|bottom"
+                android:textColor="@color/white"
+                android:textSize="25sp"/>
 
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:lottie_autoPlay="true"
+                android:layout_gravity="center"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/lottie_coffe">
+
+            </com.airbnb.lottie.LottieAnimationView>
+
+        </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

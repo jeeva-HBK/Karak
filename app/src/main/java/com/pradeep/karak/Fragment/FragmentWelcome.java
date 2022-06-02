@@ -195,7 +195,8 @@ public class FragmentWelcome extends Fragment implements ItemClickListener, Blue
                     e.printStackTrace();
                 }
             });
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             mActivity.dismissProgress();
             e.printStackTrace();
         }

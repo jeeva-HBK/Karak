@@ -143,7 +143,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:text="Gms"
+            android:text="ml"
             app:layout_constraintBottom_toBottomOf="@id/txt_tea_per_cup"
             app:layout_constraintEnd_toStartOf="@id/txt_tea_per_cup"
             app:layout_constraintTop_toTopOf="@id/txt_tea_per_cup" />

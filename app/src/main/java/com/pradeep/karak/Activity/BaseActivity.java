@@ -84,6 +84,19 @@ public class BaseActivity extends AppCompatActivity {
         canGoBack = true;
     }
 
+    public void showFlushProgress() {
+        mBinding.flushProgressCircular.setVisibility(View.VISIBLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        canGoBack = false;
+    }
+
+    public void dismissFlushProgress() {
+        mBinding.flushProgressCircular.setVisibility(View.GONE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        canGoBack = true;
+    }
+
     public static void msDismissProgress() {
         msBinding.mainProgressCircular.setVisibility(View.GONE);
         msAppClass.showSnackBar(baseActivity, "Timed out try again !");

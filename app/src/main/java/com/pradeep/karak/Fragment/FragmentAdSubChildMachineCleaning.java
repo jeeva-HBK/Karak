@@ -71,7 +71,7 @@ public class FragmentAdSubChildMachineCleaning extends Fragment implements Bluet
     }
 
     private void sendData(String framedPacket) {
-        mActivity.showProgress();
+        mActivity.showFlushProgress();
         mAppClass.sendData(getActivity(), FragmentAdSubChildMachineCleaning.this, framedPacket, getContext());
     }
 
@@ -92,10 +92,10 @@ public class FragmentAdSubChildMachineCleaning extends Fragment implements Bluet
             }
         }*/
         if (splitData[0].substring(5, 7).equals("22")) {
-            mActivity.dismissProgress();
+            mActivity.dismissFlushProgress();
                 mAppClass.sendData(getActivity(), FragmentAdSubChildMachineCleaning.this, mAppClass.framePacket(MACHINE_FLUSH_ACK_ID + ";" + flushType + ";ACK;"), getContext());
                 mAppClass.showSnackBar(getContext(), splitData[1].equals("1") ? "Coffee flush completed" :
-                        "Tea flush completed");
+                        "Milk flush completed");
         }
     }
 

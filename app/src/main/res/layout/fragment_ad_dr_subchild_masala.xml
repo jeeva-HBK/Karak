@@ -373,6 +373,7 @@
             android:gravity="end"
             android:hint="000"
             android:padding="4dp"
+            android:inputType="number"
             android:imeOptions="actionDone"
             android:maxLength="3"
             android:maxLines="1"
