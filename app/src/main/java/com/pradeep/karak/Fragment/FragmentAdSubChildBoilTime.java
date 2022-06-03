@@ -104,7 +104,7 @@ public class FragmentAdSubChildBoilTime extends Fragment implements BluetoothDat
                         sendData(framePacket(BOIL_TIME_GINGERKARAK_FIRST_CUP, BOIL_TIME_GINGERKARAK_SECOND_CUP,
                                 BOIL_TIME_GINGERKARAK_THIRD_CUP, BOIL_TIME_GINGERKARAK_FOURTH_CUP,
                                 BOIL_TIME_GINGERKARAK_FIVTH_CUP, BOIL_TIME_GINGERKARAK_SIXTH_CUP,
-                                BOIL_TIME_GINGERKARAK_SECOND_CUP,BOIL_TIME_GINGERKARAK_EIGHTH_CUP,
+                                BOIL_TIME_GINGERKARAK_SEVENTH_CUP,BOIL_TIME_GINGERKARAK_EIGHTH_CUP,
                                 BOIL_TIME_GINGERKARAK_NINETH_CUP, BOIL_TIME_GINGERKARAK_TENTH_CUP));
                         break;
                     case "Sulaimani":
