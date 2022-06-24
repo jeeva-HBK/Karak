@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,27 +23,45 @@ import com.pradeep.karak.databinding.FragmentPermissionRequestBinding;
 
 public class FragmentPermissionRequest extends Fragment {
 
-    public static String[] PERMISSIONS = new String[]{
-            Manifest.permission.BLUETOOTH,
-            Manifest.permission.BLUETOOTH_ADMIN,
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.INTERNET,
-            Manifest.permission.CAMERA,
-            Manifest.permission.ACCESS_WIFI_STATE,
-            Manifest.permission.CHANGE_WIFI_STATE,
-            Manifest.permission.CHANGE_NETWORK_STATE,
-            Manifest.permission.ACCESS_NETWORK_STATE
-    };
+
     private com.pradeep.karak.Fragment.DialogFragment parent;
     private FragmentPermissionRequestBinding mbinding;
     private Context mContext;
     private int mRequestCode = 1709;
     protected static final int REQUEST_CHECK_SETTINGS = 0x1;
-
+    public static String[] PERMISSIONS;
 
     public FragmentPermissionRequest(com.pradeep.karak.Fragment.DialogFragment parent) {
         this.parent = parent;
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
+            PERMISSIONS = new String[]{
+                    Manifest.permission.BLUETOOTH,
+                    Manifest.permission.BLUETOOTH_CONNECT,
+                    Manifest.permission.BLUETOOTH_SCAN,
+                    Manifest.permission.BLUETOOTH_ADMIN,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.INTERNET,
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.ACCESS_WIFI_STATE,
+                    Manifest.permission.CHANGE_WIFI_STATE,
+                    Manifest.permission.CHANGE_NETWORK_STATE,
+                    Manifest.permission.ACCESS_NETWORK_STATE
+            };
+        } else {
+            PERMISSIONS = new String[]{
+                    Manifest.permission.BLUETOOTH,
+                    Manifest.permission.BLUETOOTH_ADMIN,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.INTERNET,
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.ACCESS_WIFI_STATE,
+                    Manifest.permission.CHANGE_WIFI_STATE,
+                    Manifest.permission.CHANGE_NETWORK_STATE,
+                    Manifest.permission.ACCESS_NETWORK_STATE
+            };
+        }
     }
 
     @Nullable
@@ -56,6 +75,7 @@ public class FragmentPermissionRequest extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mContext = getContext();
+
         mbinding.btnAllowAccess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

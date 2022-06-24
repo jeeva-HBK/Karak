@@ -1,7 +1,9 @@
 package com.pradeep.karak.Activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
